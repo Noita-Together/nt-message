@@ -57,46 +57,6 @@ declare class ProtoHax {
     each(fieldId: number, cb: (phax: ProtoHax) => void): ProtoHax;
 }
 
-/**
- * Create an encoder-decoder pair for lossy-encoding radian
- * values (`armR`) to integers that can be compactly encoded
- * as varints.
- * @param targetBytes The size, in bytes, of encoded values
- * when serialized as a varint
- */
-declare const createArmrCoder: (targetBytes: number) => {
-    /**
-     * Lossily encode `v`, a value in radians between -PI and PI,
-     * as an unsigned integer to fit within `targetBytes` of
-     * serialized protobuf output.
-     * @see {createArmrCoder}
-     */
-    encodeArmR: (v: number) => number;
-    /**
-     * Decode a lossily-encoded value `v` to a value in radians
-     * between -PI and PI.
-     * @see {createArmrCoder}
-     */
-    decodeArmR: (v: number) => number;
-};
-declare const createDeltaCoder: (fractionalDigits: number) => {
-    encodeDelta: (len: number, get: (i: number) => number) => {
-        init: number;
-        deltas: number[];
-    };
-    decodeDelta: (init: number, deltas: number[], set: (i: number, v: number) => void) => void;
-};
-declare const encodeBitfield: (len: number, next: (i: number) => number) => number;
-declare const decodeBitfield: (len: number, val: number, set: (i: number, val: number) => void) => void;
-declare const encodeStable: (len: number, get: (i: number) => number) => {
-    idxs: number[];
-    vals: number[];
-};
-declare const decodeStable: (len: number, idxs: number[], vals: number[], set: (i: number, val: number) => void) => void;
-
-declare const maybePlayerMove: (envelope: Buffer) => Buffer;
-declare const tagPlayerMove: (cpf: Buffer, pmId: Buffer) => Buffer | undefined;
-
 /** Namespace NT. */
 declare namespace NT {
 
@@ -12296,6 +12256,54 @@ declare namespace NT {
     }
 }
 
+/**
+ * Create an encoder-decoder pair for lossy-encoding radian
+ * values (`armR`) to integers that can be compactly encoded
+ * as varints.
+ * @param targetBytes The size, in bytes, of encoded values
+ * when serialized as a varint
+ */
+declare const createArmrCoder: (targetBytes: number) => {
+    /**
+     * Lossily encode `v`, a value in radians between -PI and PI,
+     * as an unsigned integer to fit within `targetBytes` of
+     * serialized protobuf output.
+     * @see {createArmrCoder}
+     */
+    encodeArmR: (v: number) => number;
+    /**
+     * Decode a lossily-encoded value `v` to a value in radians
+     * between -PI and PI.
+     * @see {createArmrCoder}
+     */
+    decodeArmR: (v: number) => number;
+};
+declare const createDeltaCoder: (fractionalDigits: number) => {
+    encodeDelta: (len: number, get: (i: number) => number) => {
+        init: number;
+        deltas: number[];
+    };
+    decodeDelta: (init: number, deltas: number[], set: (i: number, v: number) => void) => void;
+};
+declare const encodeBitfield: (len: number, next: (i: number) => number) => number;
+declare const decodeBitfield: (len: number, val: number, set: (i: number, val: number) => void) => void;
+declare const encodeStable: (len: number, get: (i: number) => number) => {
+    idxs: number[];
+    vals: number[];
+};
+declare const decodeStable: (len: number, idxs: number[], vals: number[], set: (i: number, val: number) => void) => void;
+interface FrameCoderConfig {
+    armrTargetBytes?: number;
+    deltaCoderFractionalDigits?: number;
+}
+declare const createFrameCoder: (opts?: FrameCoderConfig) => {
+    encodeFrames: (frames: NT.PlayerFrame[]) => NT.CompactPlayerFrames;
+    decodeFrames: (pm: NT.CompactPlayerFrames) => NT.PlayerFrame[];
+};
+
+declare const maybePlayerMove: (envelope: Buffer) => Buffer;
+declare const tagPlayerMove: (cpf: Buffer, pmId: Buffer) => Buffer | undefined;
+
 interface ActionCreator<T> {
     (data: Exclude<T, undefined | null>, encoded: true): Uint8Array;
     (data: Exclude<T, undefined | null>, encoded: false): NT.Envelope;
@@ -12318,4 +12326,4 @@ type LobbyActionCreators = {
  */
 declare const M: GameActionCreators & LobbyActionCreators;
 
-export { M, NT, ProtoHax, createArmrCoder, createDeltaCoder, decodeBitfield, decodeStable, encodeBitfield, encodeStable, maybePlayerMove, tagPlayerMove };
+export { M, NT, ProtoHax, createArmrCoder, createDeltaCoder, createFrameCoder, decodeBitfield, decodeStable, encodeBitfield, encodeStable, maybePlayerMove, tagPlayerMove };

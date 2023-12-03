@@ -1,3 +1,5 @@
+import { NT } from './gen/pbjs_pb';
+
 /**
  * Create an encoder-decoder pair for lossy-encoding radian
  * values (`armR`) to integers that can be compactly encoded
@@ -22,7 +24,7 @@ export const createArmrCoder = (targetBytes: number) => {
      * between -PI and PI.
      * @see {createArmrCoder}
      */
-    decodeArmR: (v: number) => (v * pi2) / factor - Math.PI,
+    decodeArmR: (v: number) => (v * pi2) / factor - Math.PI
   };
 };
 
@@ -55,7 +57,7 @@ export const createDeltaCoder = (fractionalDigits: number) => {
         cum += deltas[i] / factor;
         set(i + 1, cum);
       }
-    },
+    }
   };
 };
 
@@ -96,7 +98,7 @@ export const decodeStable = (
   len: number,
   idxs: number[],
   vals: number[],
-  set: (i: number, val: number) => void,
+  set: (i: number, val: number) => void
 ): void => {
   if (idxs.length !== vals.length) throw new Error('Invalid data: arrays must be same length');
   let cur = 0;
@@ -107,4 +109,69 @@ export const decodeStable = (
     }
     set(i, cur);
   }
+};
+
+export interface FrameCoderConfig {
+  armrTargetBytes?: number;
+  deltaCoderFractionalDigits?: number;
+}
+
+export const createFrameCoder = (opts: FrameCoderConfig = {}) => {
+  const { encodeArmR, decodeArmR } = createArmrCoder(opts.armrTargetBytes ?? 1);
+  const { encodeDelta, decodeDelta } = createDeltaCoder(opts.deltaCoderFractionalDigits ?? 1);
+
+  const encodeFrames = (frames: NT.PlayerFrame[]): NT.CompactPlayerFrames => {
+    const numFrames = frames.length;
+    if (numFrames === 0) return new NT.CompactPlayerFrames();
+    if (numFrames > 32) throw new Error('cannot compact more than 32 frames');
+
+    const { init: xInit, deltas: xDeltas } = encodeDelta(numFrames, (i) => frames[i]!.x!);
+    const { init: yInit, deltas: yDeltas } = encodeDelta(numFrames, (i) => frames[i]!.y!);
+    const armR: number[] = frames.map((f) => encodeArmR(f.armR!));
+    const armScaleY = encodeBitfield(numFrames, (i) => frames[i]!.armScaleY!);
+    const scaleX = encodeBitfield(numFrames, (i) => frames[i]!.scaleX!);
+    const { idxs: animIdx, vals: animVal } = encodeStable(numFrames, (i) => frames[i]!.anim!);
+    const { idxs: heldIdx, vals: heldVal } = encodeStable(numFrames, (i) => frames[i]!.held!);
+
+    return new NT.CompactPlayerFrames({
+      xInit,
+      xDeltas,
+      yInit,
+      yDeltas,
+      armR,
+      armScaleY,
+      scaleX,
+      animIdx,
+      animVal,
+      heldIdx,
+      heldVal
+    });
+  };
+
+  const decodeFrames = (pm: NT.CompactPlayerFrames): NT.PlayerFrame[] => {
+    const numFrames = pm.armR.length;
+    const frames: NT.PlayerFrame[] = new Array(numFrames);
+
+    for (let i = 0; i < numFrames; i++) {
+      frames[i] = new NT.PlayerFrame({ armR: decodeArmR(pm.armR[i]) });
+    }
+    decodeDelta(pm.xInit, pm.xDeltas, (i, v) => {
+      frames[i].x = v;
+    });
+    decodeDelta(pm.yInit, pm.yDeltas, (i, v) => {
+      frames[i].y = v;
+    });
+    decodeBitfield(numFrames, pm.armScaleY, (i, v) => {
+      frames[i].armScaleY = v;
+    });
+    decodeBitfield(numFrames, pm.scaleX, (i, v) => {
+      frames[i].scaleX = v;
+    });
+    decodeStable(numFrames, pm.animIdx, pm.animVal, (i, v) => (frames[i].anim = v));
+    decodeStable(numFrames, pm.heldIdx, pm.heldVal, (i, v) => (frames[i].held = v));
+
+    return frames;
+  };
+
+  return { encodeFrames, decodeFrames };
 };

@@ -1,6 +1,7 @@
 export { ProtoHax } from './protohax/protohax';
 
 export {
+  createFrameCoder,
   createArmrCoder,
   createDeltaCoder,
   encodeBitfield,

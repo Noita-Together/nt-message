@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Generated protobuf.js serialize/deserialize and supporting functions for Noita Together",
   "scripts": {
+    "prepush": "npm run genproto && npm test && npm run build",
     "test": "tsc --noEmit && npx jest",
     "build": "npx tsup src/index.ts --dts --sourcemap --format esm,cjs",
     "genproto": "mkdir -p ./src/gen && pbjs --es6 -w es6 -t static-module proto/messages.proto -o ./src/gen/pbjs_pb.js && pbts -o ./src/gen/pbjs_pb.d.ts ./src/gen/pbjs_pb.js && pbjs -t json proto/messages.proto -o ./src/gen/pbjs_pb.json"

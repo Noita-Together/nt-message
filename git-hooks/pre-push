@@ -15,7 +15,7 @@ fi
 current_branch="$(git symbolic-ref HEAD | sed -e 's,.*/\(.*\),\1,')"
 
 if [[ "$current_branch" = "$protected_branch" ]]; then
-    if ! (npm run genproto && npm test && npm run build); then
+    if ! npm run prepush; then
         printf "\n%s\n\n" "Build/test failed"
         exit 1
     fi

@@ -6,10 +6,11 @@ import { NT } from './gen/pbjs_pb';
 import {
   createArmrCoder,
   createDeltaCoder,
+  createFrameCoder,
   decodeBitfield,
   decodeStable,
   encodeBitfield,
-  encodeStable,
+  encodeStable
 } from './compact_move';
 
 const infile = PATH.resolve(__dirname, '../ndjson');
@@ -24,7 +25,7 @@ const stats: { [K in StatKey]: Stat } & { messages: number } = {
   armScaleY: { min: Infinity, max: -Infinity, zero: 0, nan: 0 },
   scaleX: { min: Infinity, max: -Infinity, zero: 0, nan: 0 },
   anim: { min: Infinity, max: -Infinity, zero: 0, nan: 0 },
-  held: { min: Infinity, max: -Infinity, zero: 0, nan: 0 },
+  held: { min: Infinity, max: -Infinity, zero: 0, nan: 0 }
 };
 
 const addStat = (key: StatKey, v: number) => {
@@ -54,71 +55,11 @@ const addStats = (obj: any) => {
 
 let lastStats = Date.now() + 5000;
 
-const DELTA_FACTOR = 2 ** 6;
-const ROT_FACTOR = 2 ** 7;
-
-const { encodeArmR, decodeArmR } = createArmrCoder(1);
-const { encodeDelta, decodeDelta } = createDeltaCoder(1);
-
-export const encodeFrames = (frames: NT.PlayerFrame[]): NT.CompactPlayerFrames => {
-  const numFrames = frames.length;
-  if (numFrames === 0) return new NT.CompactPlayerFrames();
-  if (numFrames > 32) throw new Error('cannot compact more than 32 frames');
-
-  const { init: xInit, deltas: xDeltas } = encodeDelta(numFrames, (i) => frames[i]!.x!);
-  const { init: yInit, deltas: yDeltas } = encodeDelta(numFrames, (i) => frames[i]!.y!);
-  const armR: number[] = frames.map((f) => encodeArmR(f.armR!));
-  const armScaleY = encodeBitfield(numFrames, (i) => frames[i]!.armScaleY!);
-  const scaleX = encodeBitfield(numFrames, (i) => frames[i]!.scaleX!);
-  const { idxs: animIdx, vals: animVal } = encodeStable(numFrames, (i) => frames[i]!.anim!);
-  const { idxs: heldIdx, vals: heldVal } = encodeStable(numFrames, (i) => frames[i]!.held!);
-
-  return new NT.CompactPlayerFrames({
-    xInit,
-    xDeltas,
-    yInit,
-    yDeltas,
-    armR,
-    armScaleY,
-    scaleX,
-    animIdx,
-    animVal,
-    heldIdx,
-    heldVal,
-  });
-};
-
-const getBit = (v: number, i: number) => (((v >>> i) & 1) << 1) - 1;
-export const decodeFrames = (pm: NT.CompactPlayerFrames): NT.PlayerFrame[] => {
-  const numFrames = pm.armR.length;
-  const frames: NT.PlayerFrame[] = new Array(numFrames);
-
-  for (let i = 0; i < numFrames; i++) {
-    frames[i] = new NT.PlayerFrame({ armR: decodeArmR(pm.armR[i]) });
-  }
-  decodeDelta(pm.xInit, pm.xDeltas, (i, v) => {
-    frames[i].x = v;
-  });
-  decodeDelta(pm.yInit, pm.yDeltas, (i, v) => {
-    frames[i].y = v;
-  });
-  decodeBitfield(numFrames, pm.armScaleY, (i, v) => {
-    frames[i].armScaleY = v;
-  });
-  decodeBitfield(numFrames, pm.scaleX, (i, v) => {
-    frames[i].scaleX = v;
-  });
-  decodeStable(numFrames, pm.animIdx, pm.animVal, (i, v) => (frames[i].anim = v));
-  decodeStable(numFrames, pm.heldIdx, pm.heldVal, (i, v) => (frames[i].held = v));
-
-  return frames;
-};
-
 const diffFrame = (
   a: NT.PlayerFrame,
   b: NT.PlayerFrame,
   xyTolerance: number = 0.051,
-  armrTolerance: number = (Math.PI * 2 + 1) / 2 ** 7,
+  armrTolerance: number = (Math.PI * 2 + 1) / 2 ** 7
 ) => {
   let samey = true;
   samey &&= Math.abs(a.x! - b.x!) < xyTolerance;
@@ -136,7 +77,7 @@ const diffFrame = (
     armScaleY: [a.armScaleY, b.armScaleY],
     scaleX: [a.scaleX, b.scaleX],
     held: [a.held, b.held],
-    anim: [a.anim, b.anim],
+    anim: [a.anim, b.anim]
   };
 };
 const diffFrames = (a: NT.PlayerFrame[], b: NT.PlayerFrame[]) => {
@@ -149,7 +90,7 @@ const diffFrames = (a: NT.PlayerFrame[], b: NT.PlayerFrame[]) => {
 const calcPrecision = (
   { x, y, armR }: { x: number; y: number; armR: number },
   a: NT.PlayerFrame[],
-  b: NT.PlayerFrame[],
+  b: NT.PlayerFrame[]
 ) => {
   for (let i = 0; i < a.length; i++) {
     x = Math.max(x, Math.abs(a[i].x! - b[i].x!));
@@ -164,12 +105,15 @@ const bytesAt = (players: number, bytes: number) => bytes * (players + 1);
 let oldSize = 0;
 let newSize = 0;
 let lineCount = 0;
+
+const { encodeFrames, decodeFrames } = createFrameCoder();
+
 if (require.main === module) {
   (async function processLineByLine() {
     try {
       const rl = createInterface({
         input: createReadStream(infile),
-        crlfDelay: Infinity,
+        crlfDelay: Infinity
       });
 
       let prec = { x: 0, y: 0, armR: 0 };
@@ -209,7 +153,7 @@ if (require.main === module) {
         oldSizeAt90: oldSizeAt90.toLocaleString() + 'b',
         newSize: newSize.toLocaleString() + 'b',
         newSizeAt90: newSizeAt90.toLocaleString() + 'b',
-        pctAt90: ((100 * newSizeAt90) / oldSizeAt90).toFixed(2) + '%',
+        pctAt90: ((100 * newSizeAt90) / oldSizeAt90).toFixed(2) + '%'
       });
       console.log(prec);
       // console.log(stats);
