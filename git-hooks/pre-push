@@ -1,0 +1,29 @@
+#!/bin/bash
+# Run the following command in the root of your project to install this pre-push hook:
+# cp git-hooks/pre-push .git/hooks/pre-push; chmod 700 .git/hooks/pre-push
+
+set -e
+
+protected_branch="main"
+
+# Check if we actually have commits to push
+commits="$(git log "@{u}..")"
+if [ -z "$commits" ]; then
+    exit 0
+fi
+
+current_branch="$(git symbolic-ref HEAD | sed -e 's,.*/\(.*\),\1,')"
+
+if [[ "$current_branch" = "$protected_branch" ]]; then
+    if ! (npm run genproto && npm test && npm run build); then
+        printf "\n%s\n\n" "Build/test failed"
+        exit 1
+    fi
+
+    if ! git diff --quiet; then
+        git status
+        printf "\n%s\n\n" "Build generated differences; commit the result then try again"
+        exit 1
+    fi
+fi
+exit 0
