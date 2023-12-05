@@ -4,7 +4,13 @@ module.exports = {
   testEnvironment: 'node',
   testMatch: ['**/*.test.ts'],
   transform: {
-    '\\.js$': 'babel-jest',
-    '\\.ts$': 'ts-jest',
-  },
+    '\\.ts$': ['ts-jest', { useESM: true }],
+    '\\.js$': 'babel-jest'
+  }
+  // transform: {
+  //   '\\.js$': 'babel-jest',
+  //   '\\.ts$': 'ts-jest'
+  // },
+  // roots: ['<rootDir>'],
+  // extensionsToTreatAsEsm: ['.ts']
 };

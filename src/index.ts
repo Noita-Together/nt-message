@@ -14,4 +14,4 @@ export { maybePlayerMove, tagPlayerMove } from './protoutil';
 
 export { M } from './util';
 
-export { NT } from './gen/pbjs_pb';
+export { NT } from './pbjs_pb';

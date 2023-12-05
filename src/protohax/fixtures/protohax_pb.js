@@ -1,11 +1,13 @@
 /*eslint-disable block-scoped-var, id-length, no-control-regex, no-magic-numbers, no-prototype-builtins, no-redeclare, no-shadow, no-var, sort-vars*/
-import * as $protobuf from "protobufjs/minimal";
+"use strict";
+
+var $protobuf = require("protobufjs/minimal");
 
 // Common aliases
-const $Reader = $protobuf.Reader, $Writer = $protobuf.Writer, $util = $protobuf.util;
+var $Reader = $protobuf.Reader, $Writer = $protobuf.Writer, $util = $protobuf.util;
 
 // Exported root namespace
-const $root = $protobuf.roots["default"] || ($protobuf.roots["default"] = {});
+var $root = $protobuf.roots["default"] || ($protobuf.roots["default"] = {});
 
 /**
  * Enum enum.
@@ -15,15 +17,15 @@ const $root = $protobuf.roots["default"] || ($protobuf.roots["default"] = {});
  * @property {number} ENUM_ONE=1 ENUM_ONE value
  * @property {number} ENUM_TWO=2 ENUM_TWO value
  */
-export const Enum = $root.Enum = (() => {
-    const valuesById = {}, values = Object.create(valuesById);
+$root.Enum = (function() {
+    var valuesById = {}, values = Object.create(valuesById);
     values[valuesById[0] = "ENUM_UNSPECIFIED"] = 0;
     values[valuesById[1] = "ENUM_ONE"] = 1;
     values[valuesById[2] = "ENUM_TWO"] = 2;
     return values;
 })();
 
-export const Message = $root.Message = (() => {
+$root.Message = (function() {
 
     /**
      * Properties of a Message.
@@ -69,7 +71,7 @@ export const Message = $root.Message = (() => {
         this.repeatedMessage = [];
         this.unpackedInt32 = [];
         if (properties)
-            for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+            for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                 if (properties[keys[i]] != null)
                     this[keys[i]] = properties[keys[i]];
     }
@@ -320,21 +322,21 @@ export const Message = $root.Message = (() => {
             $root.Message.encode(message.singleMessage, writer.uint32(/* id 27, wireType 2 =*/218).fork()).ldelim();
         if (message.repeatedInt32 != null && message.repeatedInt32.length) {
             writer.uint32(/* id 111, wireType 2 =*/890).fork();
-            for (let i = 0; i < message.repeatedInt32.length; ++i)
+            for (var i = 0; i < message.repeatedInt32.length; ++i)
                 writer.int32(message.repeatedInt32[i]);
             writer.ldelim();
         }
         if (message.repeatedString != null && message.repeatedString.length)
-            for (let i = 0; i < message.repeatedString.length; ++i)
+            for (var i = 0; i < message.repeatedString.length; ++i)
                 writer.uint32(/* id 122, wireType 2 =*/978).string(message.repeatedString[i]);
         if (message.repeatedBytes != null && message.repeatedBytes.length)
-            for (let i = 0; i < message.repeatedBytes.length; ++i)
+            for (var i = 0; i < message.repeatedBytes.length; ++i)
                 writer.uint32(/* id 123, wireType 2 =*/986).bytes(message.repeatedBytes[i]);
         if (message.repeatedMessage != null && message.repeatedMessage.length)
-            for (let i = 0; i < message.repeatedMessage.length; ++i)
+            for (var i = 0; i < message.repeatedMessage.length; ++i)
                 $root.Message.encode(message.repeatedMessage[i], writer.uint32(/* id 127, wireType 2 =*/1018).fork()).ldelim();
         if (message.unpackedInt32 != null && message.unpackedInt32.length)
-            for (let i = 0; i < message.unpackedInt32.length; ++i)
+            for (var i = 0; i < message.unpackedInt32.length; ++i)
                 writer.uint32(/* id 211, wireType 0 =*/1688).int32(message.unpackedInt32[i]);
         return writer;
     };
@@ -366,9 +368,9 @@ export const Message = $root.Message = (() => {
     Message.decode = function decode(reader, length) {
         if (!(reader instanceof $Reader))
             reader = $Reader.create(reader);
-        let end = length === undefined ? reader.len : reader.pos + length, message = new $root.Message();
+        var end = length === undefined ? reader.len : reader.pos + length, message = new $root.Message();
         while (reader.pos < end) {
-            let tag = reader.uint32();
+            var tag = reader.uint32();
             switch (tag >>> 3) {
             case 1: {
                     message.lMessage = $root.Message.decode(reader, reader.uint32());
@@ -446,7 +448,7 @@ export const Message = $root.Message = (() => {
                     if (!(message.repeatedInt32 && message.repeatedInt32.length))
                         message.repeatedInt32 = [];
                     if ((tag & 7) === 2) {
-                        let end2 = reader.uint32() + reader.pos;
+                        var end2 = reader.uint32() + reader.pos;
                         while (reader.pos < end2)
                             message.repeatedInt32.push(reader.int32());
                     } else
@@ -475,7 +477,7 @@ export const Message = $root.Message = (() => {
                     if (!(message.unpackedInt32 && message.unpackedInt32.length))
                         message.unpackedInt32 = [];
                     if ((tag & 7) === 2) {
-                        let end2 = reader.uint32() + reader.pos;
+                        var end2 = reader.uint32() + reader.pos;
                         while (reader.pos < end2)
                             message.unpackedInt32.push(reader.int32());
                     } else
@@ -518,7 +520,7 @@ export const Message = $root.Message = (() => {
         if (typeof message !== "object" || message === null)
             return "object expected";
         if (message.lMessage != null && message.hasOwnProperty("lMessage")) {
-            let error = $root.Message.verify(message.lMessage);
+            var error = $root.Message.verify(message.lMessage);
             if (error)
                 return "lMessage." + error;
         }
@@ -577,36 +579,36 @@ export const Message = $root.Message = (() => {
             if (typeof message.singleFloat !== "number")
                 return "singleFloat: number expected";
         if (message.singleMessage != null && message.hasOwnProperty("singleMessage")) {
-            let error = $root.Message.verify(message.singleMessage);
+            var error = $root.Message.verify(message.singleMessage);
             if (error)
                 return "singleMessage." + error;
         }
         if (message.repeatedInt32 != null && message.hasOwnProperty("repeatedInt32")) {
             if (!Array.isArray(message.repeatedInt32))
                 return "repeatedInt32: array expected";
-            for (let i = 0; i < message.repeatedInt32.length; ++i)
+            for (var i = 0; i < message.repeatedInt32.length; ++i)
                 if (!$util.isInteger(message.repeatedInt32[i]))
                     return "repeatedInt32: integer[] expected";
         }
         if (message.repeatedString != null && message.hasOwnProperty("repeatedString")) {
             if (!Array.isArray(message.repeatedString))
                 return "repeatedString: array expected";
-            for (let i = 0; i < message.repeatedString.length; ++i)
+            for (var i = 0; i < message.repeatedString.length; ++i)
                 if (!$util.isString(message.repeatedString[i]))
                     return "repeatedString: string[] expected";
         }
         if (message.repeatedBytes != null && message.hasOwnProperty("repeatedBytes")) {
             if (!Array.isArray(message.repeatedBytes))
                 return "repeatedBytes: array expected";
-            for (let i = 0; i < message.repeatedBytes.length; ++i)
+            for (var i = 0; i < message.repeatedBytes.length; ++i)
                 if (!(message.repeatedBytes[i] && typeof message.repeatedBytes[i].length === "number" || $util.isString(message.repeatedBytes[i])))
                     return "repeatedBytes: buffer[] expected";
         }
         if (message.repeatedMessage != null && message.hasOwnProperty("repeatedMessage")) {
             if (!Array.isArray(message.repeatedMessage))
                 return "repeatedMessage: array expected";
-            for (let i = 0; i < message.repeatedMessage.length; ++i) {
-                let error = $root.Message.verify(message.repeatedMessage[i]);
+            for (var i = 0; i < message.repeatedMessage.length; ++i) {
+                var error = $root.Message.verify(message.repeatedMessage[i]);
                 if (error)
                     return "repeatedMessage." + error;
             }
@@ -614,7 +616,7 @@ export const Message = $root.Message = (() => {
         if (message.unpackedInt32 != null && message.hasOwnProperty("unpackedInt32")) {
             if (!Array.isArray(message.unpackedInt32))
                 return "unpackedInt32: array expected";
-            for (let i = 0; i < message.unpackedInt32.length; ++i)
+            for (var i = 0; i < message.unpackedInt32.length; ++i)
                 if (!$util.isInteger(message.unpackedInt32[i]))
                     return "unpackedInt32: integer[] expected";
         }
@@ -632,7 +634,7 @@ export const Message = $root.Message = (() => {
     Message.fromObject = function fromObject(object) {
         if (object instanceof $root.Message)
             return object;
-        let message = new $root.Message();
+        var message = new $root.Message();
         if (object.lMessage != null) {
             if (typeof object.lMessage !== "object")
                 throw TypeError(".Message.lMessage: object expected");
@@ -735,21 +737,21 @@ export const Message = $root.Message = (() => {
             if (!Array.isArray(object.repeatedInt32))
                 throw TypeError(".Message.repeatedInt32: array expected");
             message.repeatedInt32 = [];
-            for (let i = 0; i < object.repeatedInt32.length; ++i)
+            for (var i = 0; i < object.repeatedInt32.length; ++i)
                 message.repeatedInt32[i] = object.repeatedInt32[i] | 0;
         }
         if (object.repeatedString) {
             if (!Array.isArray(object.repeatedString))
                 throw TypeError(".Message.repeatedString: array expected");
             message.repeatedString = [];
-            for (let i = 0; i < object.repeatedString.length; ++i)
+            for (var i = 0; i < object.repeatedString.length; ++i)
                 message.repeatedString[i] = String(object.repeatedString[i]);
         }
         if (object.repeatedBytes) {
             if (!Array.isArray(object.repeatedBytes))
                 throw TypeError(".Message.repeatedBytes: array expected");
             message.repeatedBytes = [];
-            for (let i = 0; i < object.repeatedBytes.length; ++i)
+            for (var i = 0; i < object.repeatedBytes.length; ++i)
                 if (typeof object.repeatedBytes[i] === "string")
                     $util.base64.decode(object.repeatedBytes[i], message.repeatedBytes[i] = $util.newBuffer($util.base64.length(object.repeatedBytes[i])), 0);
                 else if (object.repeatedBytes[i].length >= 0)
@@ -759,7 +761,7 @@ export const Message = $root.Message = (() => {
             if (!Array.isArray(object.repeatedMessage))
                 throw TypeError(".Message.repeatedMessage: array expected");
             message.repeatedMessage = [];
-            for (let i = 0; i < object.repeatedMessage.length; ++i) {
+            for (var i = 0; i < object.repeatedMessage.length; ++i) {
                 if (typeof object.repeatedMessage[i] !== "object")
                     throw TypeError(".Message.repeatedMessage: object expected");
                 message.repeatedMessage[i] = $root.Message.fromObject(object.repeatedMessage[i]);
@@ -769,7 +771,7 @@ export const Message = $root.Message = (() => {
             if (!Array.isArray(object.unpackedInt32))
                 throw TypeError(".Message.unpackedInt32: array expected");
             message.unpackedInt32 = [];
-            for (let i = 0; i < object.unpackedInt32.length; ++i)
+            for (var i = 0; i < object.unpackedInt32.length; ++i)
                 message.unpackedInt32[i] = object.unpackedInt32[i] | 0;
         }
         return message;
@@ -787,7 +789,7 @@ export const Message = $root.Message = (() => {
     Message.toObject = function toObject(message, options) {
         if (!options)
             options = {};
-        let object = {};
+        var object = {};
         if (options.arrays || options.defaults) {
             object.repeatedInt32 = [];
             object.repeatedString = [];
@@ -799,31 +801,31 @@ export const Message = $root.Message = (() => {
             object.lMessage = null;
             object.singleInt32 = 0;
             if ($util.Long) {
-                let long = new $util.Long(0, 0, false);
+                var long = new $util.Long(0, 0, false);
                 object.singleInt64 = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
             } else
                 object.singleInt64 = options.longs === String ? "0" : 0;
             object.singleUint32 = 0;
             if ($util.Long) {
-                let long = new $util.Long(0, 0, true);
+                var long = new $util.Long(0, 0, true);
                 object.singleUint64 = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
             } else
                 object.singleUint64 = options.longs === String ? "0" : 0;
             object.singleSint32 = 0;
             if ($util.Long) {
-                let long = new $util.Long(0, 0, false);
+                var long = new $util.Long(0, 0, false);
                 object.singleSint64 = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
             } else
                 object.singleSint64 = options.longs === String ? "0" : 0;
             object.singleBool = false;
             object.singleEnum = options.enums === String ? "ENUM_UNSPECIFIED" : 0;
             if ($util.Long) {
-                let long = new $util.Long(0, 0, false);
+                var long = new $util.Long(0, 0, false);
                 object.singleFixed64 = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
             } else
                 object.singleFixed64 = options.longs === String ? "0" : 0;
             if ($util.Long) {
-                let long = new $util.Long(0, 0, false);
+                var long = new $util.Long(0, 0, false);
                 object.singleSfixed64 = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
             } else
                 object.singleSfixed64 = options.longs === String ? "0" : 0;
@@ -894,27 +896,27 @@ export const Message = $root.Message = (() => {
             object.singleMessage = $root.Message.toObject(message.singleMessage, options);
         if (message.repeatedInt32 && message.repeatedInt32.length) {
             object.repeatedInt32 = [];
-            for (let j = 0; j < message.repeatedInt32.length; ++j)
+            for (var j = 0; j < message.repeatedInt32.length; ++j)
                 object.repeatedInt32[j] = message.repeatedInt32[j];
         }
         if (message.repeatedString && message.repeatedString.length) {
             object.repeatedString = [];
-            for (let j = 0; j < message.repeatedString.length; ++j)
+            for (var j = 0; j < message.repeatedString.length; ++j)
                 object.repeatedString[j] = message.repeatedString[j];
         }
         if (message.repeatedBytes && message.repeatedBytes.length) {
             object.repeatedBytes = [];
-            for (let j = 0; j < message.repeatedBytes.length; ++j)
+            for (var j = 0; j < message.repeatedBytes.length; ++j)
                 object.repeatedBytes[j] = options.bytes === String ? $util.base64.encode(message.repeatedBytes[j], 0, message.repeatedBytes[j].length) : options.bytes === Array ? Array.prototype.slice.call(message.repeatedBytes[j]) : message.repeatedBytes[j];
         }
         if (message.repeatedMessage && message.repeatedMessage.length) {
             object.repeatedMessage = [];
-            for (let j = 0; j < message.repeatedMessage.length; ++j)
+            for (var j = 0; j < message.repeatedMessage.length; ++j)
                 object.repeatedMessage[j] = $root.Message.toObject(message.repeatedMessage[j], options);
         }
         if (message.unpackedInt32 && message.unpackedInt32.length) {
             object.unpackedInt32 = [];
-            for (let j = 0; j < message.unpackedInt32.length; ++j)
+            for (var j = 0; j < message.unpackedInt32.length; ++j)
                 object.unpackedInt32[j] = message.unpackedInt32[j];
         }
         return object;
@@ -949,4 +951,4 @@ export const Message = $root.Message = (() => {
     return Message;
 })();
 
-export { $root as default };
+module.exports = $root;

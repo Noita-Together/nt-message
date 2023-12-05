@@ -1,4 +1,4 @@
-import { NT } from './gen/pbjs_pb';
+import { NT } from './pbjs_pb';
 import { gameActions, lobbyActions } from './pbreflect';
 
 export interface ActionCreator<T> {

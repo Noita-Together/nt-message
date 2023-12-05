@@ -1,20 +1,21 @@
 {
   "compilerOptions": {
-    "target": "ESNext",
+    "target": "ES2018",
     "lib": ["esnext"],
     "skipLibCheck": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
-    "noEmit": true,
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
-    "module": "CommonJS",
-    "moduleResolution": "node",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "incremental": false,
     "allowJs": true,
+    "declaration": true,
+    "outDir": "dist"
   },
-  "include": ["src/**/*.ts", "src/**/*.js"],
-  "exclude": ["node_modules", "coverage"]
+  "include": ["src/**/*.ts", "src/**/*.js", "src/**/*.json"],
+  "exclude": ["node_modules", "coverage", "**/*.test.ts", "src/protohax/fixtures/**"]
 }

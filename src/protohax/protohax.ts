@@ -1,16 +1,18 @@
+import Long from 'long';
+
 export const enum Wiretype {
   VARINT = 0,
   I64 = 1,
   LEN = 2,
   SGROUP = 3,
   EGROUP = 4,
-  I32 = 5,
+  I32 = 5
 }
 
 export const enum DigResult {
   SUCCESS = 0,
   NOT_FOUND = 1,
-  ERROR = 2,
+  ERROR = 2
 }
 
 export const EMPTY_BUFFER = Buffer.of();
@@ -160,20 +162,20 @@ export class ProtoHax {
     return this.last >>> 0;
   }
 
-  private readVarint64(): bigint {
-    if (!this.ok) return 0n;
+  private readVarint64(): Long {
+    if (!this.ok) return Long.ZERO;
     this.varint();
 
-    var big = BigInt(this.last);
+    var big = Long.fromNumber(this.last);
     if (this.ok) return big;
 
     // it's a big one, read the rest. this could probably be
     // done more efficiently by working with in 32 bit space
     // as regular js numbers. however, that's a pain and i'm
     // just looking for something that clearly works for now
-    for (var b = 0, shift = 28n; shift < 70n; shift += 7n) {
+    for (var b = 0, shift = 28; shift < 70; shift += 7) {
       b = this.buf[this.pos++];
-      big |= (BigInt(b) & 0x7fn) << shift;
+      big = big.or(Long.fromNumber(b).and(0x07f).shiftLeft(shift));
 
       if ((b & 0x80) === 0) break; // we hit the end of the varint
     }
@@ -183,7 +185,7 @@ export class ProtoHax {
 
     // we can technically construct >64bit values; we rely on
     // the calling functions to interpret and truncate the data
-    return big & 0xffffffffffffffffn;
+    return big.and(Long.NEG_ONE);
   }
 
   // varint     := int32 | int64 | uint32 | uint64 | bool | enum | sint32 | sint64;
@@ -192,17 +194,17 @@ export class ProtoHax {
     if (!this.ok) return 0;
     return this.readVarint32() | 0;
   }
-  Int64(): bigint {
-    if (!this.ok) return 0n;
-    return BigInt.asIntN(64, this.readVarint64());
+  Int64(): Long {
+    if (!this.ok) return Long.ZERO;
+    return this.readVarint64();
   }
   Uint32(): number {
     if (!this.ok) return 0;
     return this.readVarint32() >>> 0;
   }
-  Uint64(): bigint {
-    if (!this.ok) return 0n;
-    return BigInt.asUintN(64, this.readVarint64());
+  Uint64(): Long {
+    if (!this.ok) return Long.UZERO;
+    return this.readVarint64().toUnsigned();
   }
   Bool(): boolean {
     if (!this.ok) return false;
@@ -226,10 +228,10 @@ export class ProtoHax {
     var zze = this.readVarint32();
     return (zze >>> 1) ^ -(zze & 1);
   }
-  Sint64(): bigint {
-    if (!this.ok) return 0n;
+  Sint64(): Long {
+    if (!this.ok) return Long.ZERO;
     var zze = this.readVarint64();
-    return (zze >> 1n) ^ -(zze & 1n);
+    return zze.shiftRight(1).xor(zze.and(Long.ONE).negate());
   }
 
   // i32        := sfixed32 | fixed32 | float;
@@ -257,17 +259,21 @@ export class ProtoHax {
   // i64        := sfixed64 | fixed64 | double;
   //                 encoded as 8-byte little-endian;
   //                 memcpy of the equivalent C types (u?int64_t, double)
-  Sfixed64(): bigint {
-    if (!this.ok || this.pos > this.end - 8) return 0n;
-    var val = this.buf.readBigInt64LE(this.pos);
-    this.pos += 8;
-    return val;
+  Sfixed64(): Long {
+    if (!this.ok || this.pos > this.end - 8) return Long.ZERO;
+    var lo = this.buf.readUint32LE(this.pos);
+    this.pos += 4;
+    var hi = this.buf.readUint32LE(this.pos);
+    this.pos += 4;
+    return Long.fromBits(lo, hi);
   }
-  Fixed64(): bigint {
-    if (!this.ok || this.pos > this.end - 8) return 0n;
-    var val = this.buf.readBigUint64LE(this.pos);
-    this.pos += 8;
-    return val;
+  Fixed64(): Long {
+    if (!this.ok || this.pos > this.end - 8) return Long.ZERO;
+    var lo = this.buf.readUint32LE(this.pos);
+    this.pos += 4;
+    var hi = this.buf.readUint32LE(this.pos);
+    this.pos += 4;
+    return Long.fromBits(lo, hi);
   }
   Double(): number {
     if (!this.ok || this.pos > this.end - 8) return 0;

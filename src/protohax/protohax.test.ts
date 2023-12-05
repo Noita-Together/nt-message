@@ -5,13 +5,11 @@ import fieldSpec from './fixtures/protohax_pb.json';
 
 describe('ProtoHax', () => {
   describe('single numeric values', () => {
-    type proto_scalar = number | bigint | boolean | Enum | Long;
+    type proto_scalar = number | boolean | Enum | Long;
     type messageScalar = { [K in keyof Message as Message[K] extends proto_scalar | proto_scalar[] ? K : never]: K };
     type messageScalars = messageScalar[keyof messageScalar] & keyof Message;
 
-    type fakeBigint<T> = T extends bigint ? string : T extends bigint[] ? string[] : T;
-
-    const scalar = <T extends messageScalars>(key: T, value: fakeBigint<Message[T]>) => ({ key, value });
+    const scalar = <T extends messageScalars>(key: T, value: proto_scalar) => ({ key, value });
 
     type phaxReadMethod = {
       [K in keyof ProtoHax as ProtoHax[K] extends () => proto_scalar | proto_scalar[] ? K : never]: K;
@@ -49,9 +47,9 @@ describe('ProtoHax', () => {
       scalar('singleSfixed32',  -1            ),
       scalar('singleFloat',     asSingle(-1.1)),
       scalar('singleDouble',    -1.1          ),
-      scalar('singleInt64',    new Long(-1)   ),
-      scalar('singleSint64',   new Long(-1)   ),
-      scalar('singleSfixed64', new Long(-1)   ),
+      scalar('singleInt64',     Long.NEG_ONE  ),
+      scalar('singleSint64',    Long.NEG_ONE  ),
+      scalar('singleSfixed64',  Long.NEG_ONE  ),
 
       // zero
       scalar('singleInt32',     0          ),
@@ -61,11 +59,11 @@ describe('ProtoHax', () => {
       scalar('singleSfixed32',  0          ),
       scalar('singleFloat',     0          ),
       scalar('singleDouble',    0          ),
-      scalar('singleInt64',     new Long(0)),
-      scalar('singleUint64',    new Long(0)),
-      scalar('singleSint64',    new Long(0)),
-      scalar('singleFixed64',   new Long(0)),
-      scalar('singleSfixed64',  new Long(0)),
+      scalar('singleInt64',     Long.ZERO  ),
+      scalar('singleUint64',    Long.ZERO  ),
+      scalar('singleSint64',    Long.ZERO  ),
+      scalar('singleFixed64',   Long.ZERO  ),
+      scalar('singleSfixed64',  Long.ZERO  ),
 
       // one
       scalar('singleInt32',     1            ),
@@ -75,15 +73,15 @@ describe('ProtoHax', () => {
       scalar('singleSfixed32',  1            ),
       scalar('singleFloat',     asSingle(1.1)),
       scalar('singleDouble',    1.1          ),
-      scalar('singleInt64',    new Long(1)   ),
-      scalar('singleUint64',   new Long(1)   ),
-      scalar('singleSint64',   new Long(1)   ),
-      scalar('singleFixed64',  new Long(1)   ),
-      scalar('singleSfixed64', new Long(1)   ),
+      scalar('singleInt64',     Long.ONE     ),
+      scalar('singleUint64',    Long.ONE     ),
+      scalar('singleSint64',    Long.ONE     ),
+      scalar('singleFixed64',   Long.ONE     ),
+      scalar('singleSfixed64',  Long.ONE     ),
 
       // varint edges
       scalar('singleInt32', 1<<30),
-      scalar('singleInt64', Long.fromString((0b01100110_10110010_10010111_01011001_10100110_11001001_10111010_00110011n).toString())),
+      scalar('singleInt64', new Long(0b10100110_11001001_10111010_00110011, 0b01100110_10110010_10010111_01011001)),
 
       // booleans
       scalar('singleBool', true),
@@ -96,10 +94,9 @@ describe('ProtoHax', () => {
     ];
 
     it.each(tests)('$key $value', ({ key, value }) => {
-      const n = typeof value === 'string' ? BigInt(value) : value;
       const pbjs_encoded = Buffer.from(
         Message.encode({
-          [key]: n
+          [key]: value
         }).finish()
       );
 
@@ -111,7 +108,7 @@ describe('ProtoHax', () => {
       expect(readMethod).not.toBeUndefined();
 
       const res = phax.with(fieldId!)[readMethod!]();
-      expect(res.toString()).toEqual(n.toString());
+      expect(res.toString()).toEqual(value.toString());
     });
   });
 
@@ -303,15 +300,15 @@ describe('ProtoHax', () => {
         Message.encode({
           lMessage: Message.encode({ singleDouble: 1 }),
           singleInt32: 1,
-          singleInt64: 1n,
+          singleInt64: Long.ONE,
           singleUint32: 1,
-          singleUint64: 1n,
+          singleUint64: Long.ONE,
           singleSint32: 1,
-          singleSint64: 1n,
+          singleSint64: Long.ONE,
           singleBool: true,
           singleEnum: Enum.ENUM_ONE,
-          singleFixed64: 1n,
-          singleSfixed64: 1n,
+          singleFixed64: Long.ONE,
+          singleSfixed64: Long.ONE,
           singleDouble: 1,
           singleString: 'hi',
           singleBytes: Buffer.from('hi'),

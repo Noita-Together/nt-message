@@ -1,4 +1,4 @@
-import { NT } from './gen/pbjs_pb';
+import { NT } from './pbjs_pb';
 
 /**
  * Create an encoder-decoder pair for lossy-encoding radian

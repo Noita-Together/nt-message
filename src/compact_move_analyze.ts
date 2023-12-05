@@ -2,16 +2,8 @@ import PATH from 'node:path';
 import { once } from 'node:events';
 import { createReadStream } from 'node:fs';
 import { createInterface } from 'node:readline';
-import { NT } from './gen/pbjs_pb';
-import {
-  createArmrCoder,
-  createDeltaCoder,
-  createFrameCoder,
-  decodeBitfield,
-  decodeStable,
-  encodeBitfield,
-  encodeStable
-} from './compact_move';
+import { NT } from './pbjs_pb';
+import { createFrameCoder } from './compact_move';
 
 const infile = PATH.resolve(__dirname, '../ndjson');
 
@@ -108,57 +100,55 @@ let lineCount = 0;
 
 const { encodeFrames, decodeFrames } = createFrameCoder();
 
-if (require.main === module) {
-  (async function processLineByLine() {
-    try {
-      const rl = createInterface({
-        input: createReadStream(infile),
-        crlfDelay: Infinity
-      });
+(async function processLineByLine() {
+  try {
+    const rl = createInterface({
+      input: createReadStream(infile),
+      crlfDelay: Infinity
+    });
 
-      let prec = { x: 0, y: 0, armR: 0 };
+    let prec = { x: 0, y: 0, armR: 0 };
 
-      rl.on('line', (line) => {
-        const obj = JSON.parse(line);
-        if (!obj.frames || !obj.frames.length) return;
-        oldSize += NT.OldClientPlayerMove.encode(obj).finish().length;
-        const compact = encodeFrames(obj.frames);
-        newSize += NT.CompactPlayerFrames.encode(compact).finish().length;
-        const roundtrip = decodeFrames(compact);
-        const diff = diffFrames(obj.frames, roundtrip);
-        if (diff) {
-          console.log(lineCount);
-          console.log(diff);
-          process.exit();
-        }
-        prec = calcPrecision(prec, obj.frames, roundtrip);
-        lineCount++;
-        //   stats.messages++;
-        //   try {
-        //     obj.frames.forEach((frame: any) => addStats(frame));
-        //   } catch (e) {}
-        //   if (Date.now() > lastStats) {
-        //     console.log(stats);
-        //     lastStats = Date.now() + 5000;
-        //   }
-      });
+    rl.on('line', (line) => {
+      const obj = JSON.parse(line);
+      if (!obj.frames || !obj.frames.length) return;
+      oldSize += NT.OldClientPlayerMove.encode(obj).finish().length;
+      const compact = encodeFrames(obj.frames);
+      newSize += NT.CompactPlayerFrames.encode(compact).finish().length;
+      const roundtrip = decodeFrames(compact);
+      const diff = diffFrames(obj.frames, roundtrip);
+      if (diff) {
+        console.log(lineCount);
+        console.log(diff);
+        process.exit();
+      }
+      prec = calcPrecision(prec, obj.frames, roundtrip);
+      lineCount++;
+      //   stats.messages++;
+      //   try {
+      //     obj.frames.forEach((frame: any) => addStats(frame));
+      //   } catch (e) {}
+      //   if (Date.now() > lastStats) {
+      //     console.log(stats);
+      //     lastStats = Date.now() + 5000;
+      //   }
+    });
 
-      await once(rl, 'close');
+    await once(rl, 'close');
 
-      console.log('File processed.');
-      const oldSizeAt90 = bytesAt(90, oldSize);
-      const newSizeAt90 = bytesAt(90, newSize);
-      console.log({
-        oldSize: oldSize.toLocaleString() + 'b',
-        oldSizeAt90: oldSizeAt90.toLocaleString() + 'b',
-        newSize: newSize.toLocaleString() + 'b',
-        newSizeAt90: newSizeAt90.toLocaleString() + 'b',
-        pctAt90: ((100 * newSizeAt90) / oldSizeAt90).toFixed(2) + '%'
-      });
-      console.log(prec);
-      // console.log(stats);
-    } catch (err) {
-      console.error(err);
-    }
-  })();
-}
+    console.log('File processed.');
+    const oldSizeAt90 = bytesAt(90, oldSize);
+    const newSizeAt90 = bytesAt(90, newSize);
+    console.log({
+      oldSize: oldSize.toLocaleString() + 'b',
+      oldSizeAt90: oldSizeAt90.toLocaleString() + 'b',
+      newSize: newSize.toLocaleString() + 'b',
+      newSizeAt90: newSizeAt90.toLocaleString() + 'b',
+      pctAt90: ((100 * newSizeAt90) / oldSizeAt90).toFixed(2) + '%'
+    });
+    console.log(prec);
+    // console.log(stats);
+  } catch (err) {
+    console.error(err);
+  }
+})();

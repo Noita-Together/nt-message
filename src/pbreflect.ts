@@ -1,5 +1,4 @@
-import def from './gen/pbjs_pb.json';
-
+import def from './pbjs_pb.json';
 const NT = def.nested.NT.nested;
 
 type FieldList = { [key: string]: { type: string; id: number } };
@@ -22,8 +21,8 @@ for (const [msgName, defs] of Object.entries(NT) as [keyof typeof NT, (typeof NT
 }
 
 export const gameActions = Object.keys(
-  def.nested.NT.nested.GameAction.fields,
+  def.nested.NT.nested.GameAction.fields
 ) as (keyof typeof def.nested.NT.nested.GameAction.fields)[];
 export const lobbyActions = Object.keys(
-  def.nested.NT.nested.LobbyAction.fields,
+  def.nested.NT.nested.LobbyAction.fields
 ) as (keyof typeof def.nested.NT.nested.LobbyAction.fields)[];

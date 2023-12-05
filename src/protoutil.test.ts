@@ -1,4 +1,4 @@
-import { NT } from './gen/pbjs_pb';
+import { NT } from './pbjs_pb';
 import { maybePlayerMove, tagPlayerMove } from './protoutil';
 
 const asSingle = (v: number) => {
@@ -19,11 +19,11 @@ describe('PlayerMove userId tagging', () => {
         sPlayerMoves: {
           userFrames: [
             {
-              userId: 'foo',
-            },
-          ],
-        },
-      },
+              userId: 'foo'
+            }
+          ]
+        }
+      }
     });
   });
   it('works as expected', () => {
@@ -38,7 +38,7 @@ describe('PlayerMove userId tagging', () => {
       armScaleY: 1,
       scaleX: 1,
       heldIdx: [1],
-      heldVal: [1],
+      heldVal: [1]
     };
 
     const encoded = NT.Envelope.encode({ gameAction: { cPlayerMove: frames } }).finish();
@@ -58,11 +58,11 @@ describe('PlayerMove userId tagging', () => {
               ...frames,
               userId: '12345',
               xInit: asSingle(frames.xInit!),
-              yInit: asSingle(frames.yInit!),
-            },
-          ],
-        },
-      },
+              yInit: asSingle(frames.yInit!)
+            }
+          ]
+        }
+      }
     };
     expect(decoded.toJSON()).toEqual(expected);
   });
@@ -79,7 +79,7 @@ describe('PlayerMove userId tagging', () => {
       armScaleY: 1,
       scaleX: 1,
       heldIdx: [1],
-      heldVal: [1],
+      heldVal: [1]
     };
 
     const encoded = NT.Envelope.encode({ gameAction: { cPlayerMove: frames } }).finish();
@@ -109,17 +109,17 @@ describe('PlayerMove userId tagging', () => {
               ...frames,
               userId: '12345',
               xInit: asSingle(frames.xInit!),
-              yInit: asSingle(frames.yInit!),
+              yInit: asSingle(frames.yInit!)
             },
             {
               ...frames,
               userId: '6789',
               xInit: asSingle(frames.xInit!),
-              yInit: asSingle(frames.yInit!),
-            },
-          ],
-        },
-      },
+              yInit: asSingle(frames.yInit!)
+            }
+          ]
+        }
+      }
     };
     expect(decoded.toJSON()).toEqual(expected);
   });
@@ -136,7 +136,7 @@ describe('PlayerMove userId tagging', () => {
       scaleX: 1,
       heldIdx: [1],
       heldVal: [1],
-      userId: 'rejected',
+      userId: 'rejected'
     };
     const encoded = NT.Envelope.encode({ gameAction: { cPlayerMove: frames } }).finish();
     const playerMovePayload = maybePlayerMove(Buffer.from(encoded));
