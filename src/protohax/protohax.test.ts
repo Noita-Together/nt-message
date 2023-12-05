@@ -1,13 +1,15 @@
-import { Enum, Message } from './fixtures/protohax_pb';
+import { Fixtures } from './fixtures/protohax_pb';
 import { ProtoHax } from './protohax';
 import Long from 'long';
 import fieldSpec from './fixtures/protohax_pb.json';
 
 describe('ProtoHax', () => {
   describe('single numeric values', () => {
-    type proto_scalar = number | boolean | Enum | Long;
-    type messageScalar = { [K in keyof Message as Message[K] extends proto_scalar | proto_scalar[] ? K : never]: K };
-    type messageScalars = messageScalar[keyof messageScalar] & keyof Message;
+    type proto_scalar = number | boolean | Fixtures.Enum | Long;
+    type messageScalar = {
+      [K in keyof Fixtures.Message as Fixtures.Message[K] extends proto_scalar | proto_scalar[] ? K : never]: K;
+    };
+    type messageScalars = messageScalar[keyof messageScalar] & keyof Fixtures.Message;
 
     const scalar = <T extends messageScalars>(key: T, value: proto_scalar) => ({ key, value });
 
@@ -36,11 +38,11 @@ describe('ProtoHax', () => {
       singleFixed64: 'Fixed64',
       singleSfixed64: 'Sfixed64',
       singleBool: 'Bool',
-      singleEnum: 'Enum'
+      singleEnum: 'Enum',
     };
 
     // prettier-ignore
-    const tests: {key: keyof Message, value: any}[] = [
+    const tests: {key: keyof Fixtures.Message, value: any}[] = [
       // small negatives
       scalar('singleInt32',     -1 ), // TODO: deal with reading negative varints when we expect 32 bits (but the encoder wrote 64 bits)
       scalar('singleSint32',    -1            ),
@@ -88,19 +90,19 @@ describe('ProtoHax', () => {
       scalar('singleBool', false),
 
       // enums
-      scalar('singleEnum', Enum.ENUM_UNSPECIFIED),
-      scalar('singleEnum', Enum.ENUM_ONE),
-      scalar('singleEnum', Enum.ENUM_TWO),
+      scalar('singleEnum', Fixtures.Enum.ENUM_UNSPECIFIED),
+      scalar('singleEnum', Fixtures.Enum.ENUM_ONE),
+      scalar('singleEnum', Fixtures.Enum.ENUM_TWO),
     ];
 
     it.each(tests)('$key $value', ({ key, value }) => {
       const pbjs_encoded = Buffer.from(
-        Message.encode({
-          [key]: value
+        Fixtures.Message.encode({
+          [key]: value,
         }).finish()
       );
 
-      const fieldId = (fieldSpec.nested.Message.fields as any)[key]?.id;
+      const fieldId = (fieldSpec.nested.Fixtures.nested.Message.fields as any)[key]?.id;
       expect(fieldId).not.toBeUndefined();
 
       const phax = new ProtoHax(pbjs_encoded);
@@ -115,9 +117,9 @@ describe('ProtoHax', () => {
   describe('packed repeated', () => {
     it('reads with .Packed()', () => {
       const expected = [1, 2, 3];
-      const pbjs_encoded = Buffer.from(Message.encode({ repeatedInt32: expected }).finish());
+      const pbjs_encoded = Buffer.from(Fixtures.Message.encode({ repeatedInt32: expected }).finish());
 
-      const fieldId = fieldSpec.nested.Message.fields.repeatedInt32.id;
+      const fieldId = fieldSpec.nested.Fixtures.nested.Message.fields.repeatedInt32.id;
       expect(fieldId).not.toBeUndefined();
 
       const phax = new ProtoHax(pbjs_encoded);
@@ -127,15 +129,15 @@ describe('ProtoHax', () => {
     });
     it('reads with value readers', () => {
       const expected = [1, 2, 3];
-      const pbes_encoded = Buffer.from(Message.encode({ repeatedInt32: expected }).finish());
+      const pbes_encoded = Buffer.from(Fixtures.Message.encode({ repeatedInt32: expected }).finish());
 
-      const fieldId = fieldSpec.nested.Message.fields.repeatedInt32.id;
+      const fieldId = fieldSpec.nested.Fixtures.nested.Message.fields.repeatedInt32.id;
       expect(fieldId).not.toBeUndefined();
 
       const phax = new ProtoHax(pbes_encoded);
 
       let actual: number[] = [];
-      phax.if(fieldId!, (phax) => {
+      phax.if(fieldId!, phax => {
         while (!phax.atEnd()) {
           actual.push(phax.Int32());
         }
@@ -147,9 +149,9 @@ describe('ProtoHax', () => {
   describe('length-delimited', () => {
     it('reads a string', () => {
       const expected = 'hi there ☃';
-      const pbes_encoded = Buffer.from(Message.encode({ singleString: expected }).finish());
+      const pbes_encoded = Buffer.from(Fixtures.Message.encode({ singleString: expected }).finish());
 
-      const fieldId = fieldSpec.nested.Message.fields.singleString.id;
+      const fieldId = fieldSpec.nested.Fixtures.nested.Message.fields.singleString.id;
       expect(fieldId).not.toBeUndefined();
 
       const phax = new ProtoHax(pbes_encoded);
@@ -160,9 +162,9 @@ describe('ProtoHax', () => {
     });
     it('reads bytes', () => {
       const expected = Buffer.from('hi there ☃');
-      const pbes_encoded = Buffer.from(Message.encode({ singleBytes: expected }).finish());
+      const pbes_encoded = Buffer.from(Fixtures.Message.encode({ singleBytes: expected }).finish());
 
-      const fieldId = fieldSpec.nested.Message.fields.singleBytes.id;
+      const fieldId = fieldSpec.nested.Fixtures.nested.Message.fields.singleBytes.id;
       expect(fieldId).not.toBeUndefined();
 
       const phax = new ProtoHax(pbes_encoded);
@@ -173,24 +175,24 @@ describe('ProtoHax', () => {
     });
     it('reads messages', () => {
       const pbes_encoded = Buffer.from(
-        Message.encode({
+        Fixtures.Message.encode({
           lMessage: {
-            singleBool: true
+            singleBool: true,
           },
-          repeatedMessage: [{ singleEnum: Enum.ENUM_ONE }, { singleEnum: Enum.ENUM_TWO }]
+          repeatedMessage: [{ singleEnum: Fixtures.Enum.ENUM_ONE }, { singleEnum: Fixtures.Enum.ENUM_TWO }],
         }).finish()
       );
 
-      const lMessage = fieldSpec.nested.Message.fields.lMessage.id;
+      const lMessage = fieldSpec.nested.Fixtures.nested.Message.fields.lMessage.id;
       expect(lMessage).not.toBeUndefined();
-      const singleBool = fieldSpec.nested.Message.fields.singleBool.id;
+      const singleBool = fieldSpec.nested.Fixtures.nested.Message.fields.singleBool.id;
       expect(singleBool).not.toBeUndefined();
-      const repeatedMessage = fieldSpec.nested.Message.fields.repeatedMessage.id;
+      const repeatedMessage = fieldSpec.nested.Fixtures.nested.Message.fields.repeatedMessage.id;
       expect(repeatedMessage).not.toBeUndefined();
-      const singleEnum = fieldSpec.nested.Message.fields.singleEnum.id;
+      const singleEnum = fieldSpec.nested.Fixtures.nested.Message.fields.singleEnum.id;
       expect(singleEnum).not.toBeUndefined();
 
-      const expected = [true, Enum.ENUM_ONE, Enum.ENUM_TWO];
+      const expected = [true, Fixtures.Enum.ENUM_ONE, Fixtures.Enum.ENUM_TWO];
       const actual: [boolean, number, number] = [] as any;
 
       actual.push(
@@ -201,7 +203,7 @@ describe('ProtoHax', () => {
       );
 
       new ProtoHax(pbes_encoded) //
-        .each(repeatedMessage!, (phax) => actual.push(phax.with(singleEnum!).Enum()));
+        .each(repeatedMessage!, phax => actual.push(phax.with(singleEnum!).Enum()));
 
       expect(actual).toEqual(expected);
     });
@@ -210,9 +212,9 @@ describe('ProtoHax', () => {
   describe('if', () => {
     it('finds the first value', () => {
       const expected = 1;
-      const pbes_encoded = Buffer.from(Message.encode({ singleInt32: expected }).finish());
+      const pbes_encoded = Buffer.from(Fixtures.Message.encode({ singleInt32: expected }).finish());
 
-      const fieldId = fieldSpec.nested.Message.fields.singleInt32.id;
+      const fieldId = fieldSpec.nested.Fixtures.nested.Message.fields.singleInt32.id;
       expect(fieldId).not.toBeUndefined();
 
       let found = false;
@@ -223,9 +225,9 @@ describe('ProtoHax', () => {
     });
     it('does nothing on no match', () => {
       const expected = 1;
-      const pbes_encoded = Buffer.from(Message.encode({ singleInt32: expected }).finish());
+      const pbes_encoded = Buffer.from(Fixtures.Message.encode({ singleInt32: expected }).finish());
 
-      const fieldId = fieldSpec.nested.Message.fields.singleBool.id;
+      const fieldId = fieldSpec.nested.Fixtures.nested.Message.fields.singleBool.id;
       expect(fieldId).not.toBeUndefined();
 
       let found = false;
@@ -239,9 +241,9 @@ describe('ProtoHax', () => {
       // with arbitrary / unrelated data in the last-read value property. this caused an exception
       // when the last-read value indicated a group wiretype ("not implemented").
       // TODO: this.seek could return a boolean directly indicating whether it terminates an operation
-      const pbes_encoded = Buffer.from(Message.encode({ singleString: 'hi there11' }).finish());
+      const pbes_encoded = Buffer.from(Fixtures.Message.encode({ singleString: 'hi there11' }).finish());
 
-      const fieldId = fieldSpec.nested.Message.fields.singleInt32.id;
+      const fieldId = fieldSpec.nested.Fixtures.nested.Message.fields.singleInt32.id;
       expect(fieldId).not.toBeUndefined();
 
       let found = false;
@@ -254,42 +256,42 @@ describe('ProtoHax', () => {
   describe('each', () => {
     it('reads scalars', () => {
       const expected = [1, 2, 3];
-      const pbes_encoded = Buffer.from(Message.encode({ unpackedInt32: expected }).finish());
+      const pbes_encoded = Buffer.from(Fixtures.Message.encode({ unpackedInt32: expected }).finish());
 
-      const fieldId = fieldSpec.nested.Message.fields.unpackedInt32.id;
+      const fieldId = fieldSpec.nested.Fixtures.nested.Message.fields.unpackedInt32.id;
       expect(fieldId).not.toBeUndefined();
 
       const phax = new ProtoHax(pbes_encoded);
 
       let actual: number[] = [];
-      phax.each(fieldId!, (phax) => actual.push(phax.Int32()));
+      phax.each(fieldId!, phax => actual.push(phax.Int32()));
       expect(actual).toEqual(expected);
     });
     it('reads strings', () => {
       const expected = ['a', 'b'];
-      const pbes_encoded = Buffer.from(Message.encode({ repeatedString: expected }).finish());
+      const pbes_encoded = Buffer.from(Fixtures.Message.encode({ repeatedString: expected }).finish());
 
-      const fieldId = fieldSpec.nested.Message.fields.repeatedString.id;
+      const fieldId = fieldSpec.nested.Fixtures.nested.Message.fields.repeatedString.id;
       expect(fieldId).not.toBeUndefined();
 
       const phax = new ProtoHax(pbes_encoded);
 
       const actual: string[] = [];
-      phax.each(fieldId!, (phax) => actual.push(phax.String()));
+      phax.each(fieldId!, phax => actual.push(phax.String()));
 
       expect(expected).toEqual(actual);
     });
     it('reads bytes', () => {
-      const expected = ['a', 'b'].map((s) => Buffer.from(s));
-      const pbes_encoded = Buffer.from(Message.encode({ repeatedBytes: expected }).finish());
+      const expected = ['a', 'b'].map(s => Buffer.from(s));
+      const pbes_encoded = Buffer.from(Fixtures.Message.encode({ repeatedBytes: expected }).finish());
 
-      const fieldId = fieldSpec.nested.Message.fields.repeatedBytes.id;
+      const fieldId = fieldSpec.nested.Fixtures.nested.Message.fields.repeatedBytes.id;
       expect(fieldId).not.toBeUndefined();
 
       const phax = new ProtoHax(pbes_encoded);
 
       const actual: Buffer[] = [];
-      phax.each(fieldId!, (phax) => actual.push(phax.Bytes()));
+      phax.each(fieldId!, phax => actual.push(phax.Bytes()));
 
       expect(expected).toEqual(actual);
     });
@@ -297,8 +299,8 @@ describe('ProtoHax', () => {
   describe('skip', () => {
     it('can skip over everything', () => {
       const pbes_encoded = Buffer.from(
-        Message.encode({
-          lMessage: Message.encode({ singleDouble: 1 }),
+        Fixtures.Message.encode({
+          lMessage: { singleDouble: 1 },
           singleInt32: 1,
           singleInt64: Long.ONE,
           singleUint32: 1,
@@ -306,7 +308,7 @@ describe('ProtoHax', () => {
           singleSint32: 1,
           singleSint64: Long.ONE,
           singleBool: true,
-          singleEnum: Enum.ENUM_ONE,
+          singleEnum: Fixtures.Enum.ENUM_ONE,
           singleFixed64: Long.ONE,
           singleSfixed64: Long.ONE,
           singleDouble: 1,
@@ -315,16 +317,16 @@ describe('ProtoHax', () => {
           singleFixed32: 1,
           singleSfixed32: 1,
           singleFloat: 1,
-          singleMessage: Message.encode({ singleDouble: 1 }),
+          singleMessage: { singleDouble: 1 },
           repeatedInt32: [1],
           repeatedString: ['hi'],
           repeatedBytes: [Buffer.from('hi')],
-          repeatedMessage: [Message.encode({ singleDouble: 1 })],
-          unpackedInt32: [1]
+          repeatedMessage: [{ singleDouble: 1 }],
+          unpackedInt32: [1],
         }).finish()
       );
       const phax = new ProtoHax(pbes_encoded);
-      phax.if(1337, (phax) => {
+      phax.if(1337, phax => {
         throw new Error('should not be called');
       });
     });

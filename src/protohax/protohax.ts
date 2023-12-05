@@ -6,13 +6,13 @@ export const enum Wiretype {
   LEN = 2,
   SGROUP = 3,
   EGROUP = 4,
-  I32 = 5
+  I32 = 5,
 }
 
 export const enum DigResult {
   SUCCESS = 0,
   NOT_FOUND = 1,
-  ERROR = 2
+  ERROR = 2,
 }
 
 export const EMPTY_BUFFER = Buffer.of();

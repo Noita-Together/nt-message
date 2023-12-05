@@ -17,7 +17,7 @@ const stats: { [K in StatKey]: Stat } & { messages: number } = {
   armScaleY: { min: Infinity, max: -Infinity, zero: 0, nan: 0 },
   scaleX: { min: Infinity, max: -Infinity, zero: 0, nan: 0 },
   anim: { min: Infinity, max: -Infinity, zero: 0, nan: 0 },
-  held: { min: Infinity, max: -Infinity, zero: 0, nan: 0 }
+  held: { min: Infinity, max: -Infinity, zero: 0, nan: 0 },
 };
 
 const addStat = (key: StatKey, v: number) => {
@@ -69,7 +69,7 @@ const diffFrame = (
     armScaleY: [a.armScaleY, b.armScaleY],
     scaleX: [a.scaleX, b.scaleX],
     held: [a.held, b.held],
-    anim: [a.anim, b.anim]
+    anim: [a.anim, b.anim],
   };
 };
 const diffFrames = (a: NT.PlayerFrame[], b: NT.PlayerFrame[]) => {
@@ -104,12 +104,12 @@ const { encodeFrames, decodeFrames } = createFrameCoder();
   try {
     const rl = createInterface({
       input: createReadStream(infile),
-      crlfDelay: Infinity
+      crlfDelay: Infinity,
     });
 
     let prec = { x: 0, y: 0, armR: 0 };
 
-    rl.on('line', (line) => {
+    rl.on('line', line => {
       const obj = JSON.parse(line);
       if (!obj.frames || !obj.frames.length) return;
       oldSize += NT.OldClientPlayerMove.encode(obj).finish().length;
@@ -144,7 +144,7 @@ const { encodeFrames, decodeFrames } = createFrameCoder();
       oldSizeAt90: oldSizeAt90.toLocaleString() + 'b',
       newSize: newSize.toLocaleString() + 'b',
       newSizeAt90: newSizeAt90.toLocaleString() + 'b',
-      pctAt90: ((100 * newSizeAt90) / oldSizeAt90).toFixed(2) + '%'
+      pctAt90: ((100 * newSizeAt90) / oldSizeAt90).toFixed(2) + '%',
     });
     console.log(prec);
     // console.log(stats);

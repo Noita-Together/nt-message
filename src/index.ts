@@ -7,7 +7,7 @@ export {
   encodeBitfield,
   decodeBitfield,
   encodeStable,
-  decodeStable
+  decodeStable,
 } from './compact_move';
 
 export { maybePlayerMove, tagPlayerMove } from './protoutil';

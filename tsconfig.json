@@ -14,8 +14,9 @@
     "incremental": false,
     "allowJs": true,
     "declaration": true,
-    "outDir": "dist"
+    "outDir": "dist",
+    "newLine": "lf"
   },
-  "include": ["src/**/*.ts", "src/**/*.js", "src/**/*.json"],
+  "include": ["src/**/*.ts"],
   "exclude": ["node_modules", "coverage", "**/*.test.ts", "src/protohax/fixtures/**"]
 }

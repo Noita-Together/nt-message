@@ -29,11 +29,15 @@ for (const key of gameActions) {
   M[key] = ((data, encoded) =>
     encoded
       ? NT.Envelope.encode({ gameAction: { [key]: data } }).finish()
-      : NT.Envelope.fromObject({ gameAction: { [key]: data } })) as ActionCreator<NT.IGameAction[typeof key]>;
+      : NT.Envelope.fromObject({
+          gameAction: { [key]: data },
+        })) as ActionCreator<NT.IGameAction[typeof key]>;
 }
 for (const key of lobbyActions) {
   M[key] = ((data, encoded) =>
     encoded
       ? NT.Envelope.encode({ lobbyAction: { [key]: data } }).finish()
-      : NT.Envelope.fromObject({ lobbyAction: { [key]: data } })) as ActionCreator<NT.ILobbyAction[typeof key]>;
+      : NT.Envelope.fromObject({
+          lobbyAction: { [key]: data },
+        })) as ActionCreator<NT.ILobbyAction[typeof key]>;
 }

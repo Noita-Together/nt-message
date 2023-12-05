@@ -1,19 +1,25 @@
 /*eslint-disable block-scoped-var, id-length, no-control-regex, no-magic-numbers, no-prototype-builtins, no-redeclare, no-shadow, no-var, sort-vars*/
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
+
 var $protobuf = require("protobufjs/minimal");
+
 // Common aliases
 var $Reader = $protobuf.Reader, $Writer = $protobuf.Writer, $util = $protobuf.util;
+
 // Exported root namespace
 var $root = $protobuf.roots["default"] || ($protobuf.roots["default"] = {});
-$root.NT = (function () {
+
+$root.NT = (function() {
+
     /**
      * Namespace NT.
      * @exports NT
      * @namespace
      */
     var NT = {};
-    NT.Envelope = (function () {
+
+    NT.Envelope = (function() {
+
         /**
          * Properties of an Envelope.
          * @memberof NT
@@ -21,6 +27,7 @@ $root.NT = (function () {
          * @property {NT.IGameAction|null} [gameAction] Envelope gameAction
          * @property {NT.ILobbyAction|null} [lobbyAction] Envelope lobbyAction
          */
+
         /**
          * Constructs a new Envelope.
          * @memberof NT
@@ -35,6 +42,7 @@ $root.NT = (function () {
                     if (properties[keys[i]] != null)
                         this[keys[i]] = properties[keys[i]];
         }
+
         /**
          * Envelope gameAction.
          * @member {NT.IGameAction|null|undefined} gameAction
@@ -42,6 +50,7 @@ $root.NT = (function () {
          * @instance
          */
         Envelope.prototype.gameAction = null;
+
         /**
          * Envelope lobbyAction.
          * @member {NT.ILobbyAction|null|undefined} lobbyAction
@@ -49,8 +58,10 @@ $root.NT = (function () {
          * @instance
          */
         Envelope.prototype.lobbyAction = null;
+
         // OneOf field names bound to virtual getters and setters
         var $oneOfFields;
+
         /**
          * Envelope kind.
          * @member {"gameAction"|"lobbyAction"|undefined} kind
@@ -61,6 +72,7 @@ $root.NT = (function () {
             get: $util.oneOfGetter($oneOfFields = ["gameAction", "lobbyAction"]),
             set: $util.oneOfSetter($oneOfFields)
         });
+
         /**
          * Creates a new Envelope instance using the specified properties.
          * @function create
@@ -72,6 +84,7 @@ $root.NT = (function () {
         Envelope.create = function create(properties) {
             return new Envelope(properties);
         };
+
         /**
          * Encodes the specified Envelope message. Does not implicitly {@link NT.Envelope.verify|verify} messages.
          * @function encode
@@ -85,11 +98,12 @@ $root.NT = (function () {
             if (!writer)
                 writer = $Writer.create();
             if (message.gameAction != null && Object.hasOwnProperty.call(message, "gameAction"))
-                $root.NT.GameAction.encode(message.gameAction, writer.uint32(/* id 1, wireType 2 =*/ 10).fork()).ldelim();
+                $root.NT.GameAction.encode(message.gameAction, writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
             if (message.lobbyAction != null && Object.hasOwnProperty.call(message, "lobbyAction"))
-                $root.NT.LobbyAction.encode(message.lobbyAction, writer.uint32(/* id 50, wireType 2 =*/ 402).fork()).ldelim();
+                $root.NT.LobbyAction.encode(message.lobbyAction, writer.uint32(/* id 50, wireType 2 =*/402).fork()).ldelim();
             return writer;
         };
+
         /**
          * Encodes the specified Envelope message, length delimited. Does not implicitly {@link NT.Envelope.verify|verify} messages.
          * @function encodeDelimited
@@ -102,6 +116,7 @@ $root.NT = (function () {
         Envelope.encodeDelimited = function encodeDelimited(message, writer) {
             return this.encode(message, writer).ldelim();
         };
+
         /**
          * Decodes an Envelope message from the specified reader or buffer.
          * @function decode
@@ -120,21 +135,22 @@ $root.NT = (function () {
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                    case 1: {
+                case 1: {
                         message.gameAction = $root.NT.GameAction.decode(reader, reader.uint32());
                         break;
                     }
-                    case 50: {
+                case 50: {
                         message.lobbyAction = $root.NT.LobbyAction.decode(reader, reader.uint32());
                         break;
                     }
-                    default:
-                        reader.skipType(tag & 7);
-                        break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
                 }
             }
             return message;
         };
+
         /**
          * Decodes an Envelope message from the specified reader or buffer, length delimited.
          * @function decodeDelimited
@@ -150,6 +166,7 @@ $root.NT = (function () {
                 reader = new $Reader(reader);
             return this.decode(reader, reader.uint32());
         };
+
         /**
          * Verifies an Envelope message.
          * @function verify
@@ -182,6 +199,7 @@ $root.NT = (function () {
             }
             return null;
         };
+
         /**
          * Creates an Envelope message from a plain object. Also converts values to their respective internal types.
          * @function fromObject
@@ -206,6 +224,7 @@ $root.NT = (function () {
             }
             return message;
         };
+
         /**
          * Creates a plain object from an Envelope message. Also converts values to other types if specified.
          * @function toObject
@@ -231,6 +250,7 @@ $root.NT = (function () {
             }
             return object;
         };
+
         /**
          * Converts this Envelope to JSON.
          * @function toJSON
@@ -241,6 +261,7 @@ $root.NT = (function () {
         Envelope.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
+
         /**
          * Gets the default type url for Envelope
          * @function getTypeUrl
@@ -255,9 +276,12 @@ $root.NT = (function () {
             }
             return typeUrlPrefix + "/NT.Envelope";
         };
+
         return Envelope;
     })();
-    NT.GameAction = (function () {
+
+    NT.GameAction = (function() {
+
         /**
          * Properties of a GameAction.
          * @memberof NT
@@ -304,6 +328,7 @@ $root.NT = (function () {
          * @property {NT.IServerAngerySteve|null} [sAngerySteve] GameAction sAngerySteve
          * @property {NT.IServerStatsUpdate|null} [sStatUpdate] GameAction sStatUpdate
          */
+
         /**
          * Constructs a new GameAction.
          * @memberof NT
@@ -318,6 +343,7 @@ $root.NT = (function () {
                     if (properties[keys[i]] != null)
                         this[keys[i]] = properties[keys[i]];
         }
+
         /**
          * GameAction cPlayerMove.
          * @member {NT.ICompactPlayerFrames|null|undefined} cPlayerMove
@@ -325,6 +351,7 @@ $root.NT = (function () {
          * @instance
          */
         GameAction.prototype.cPlayerMove = null;
+
         /**
          * GameAction sPlayerMoves.
          * @member {NT.IServerPlayerMoves|null|undefined} sPlayerMoves
@@ -332,6 +359,7 @@ $root.NT = (function () {
          * @instance
          */
         GameAction.prototype.sPlayerMoves = null;
+
         /**
          * GameAction cPlayerUpdate.
          * @member {NT.IClientPlayerUpdate|null|undefined} cPlayerUpdate
@@ -339,6 +367,7 @@ $root.NT = (function () {
          * @instance
          */
         GameAction.prototype.cPlayerUpdate = null;
+
         /**
          * GameAction sPlayerUpdate.
          * @member {NT.IServerPlayerUpdate|null|undefined} sPlayerUpdate
@@ -346,6 +375,7 @@ $root.NT = (function () {
          * @instance
          */
         GameAction.prototype.sPlayerUpdate = null;
+
         /**
          * GameAction cPlayerUpdateInventory.
          * @member {NT.IClientPlayerUpdateInventory|null|undefined} cPlayerUpdateInventory
@@ -353,6 +383,7 @@ $root.NT = (function () {
          * @instance
          */
         GameAction.prototype.cPlayerUpdateInventory = null;
+
         /**
          * GameAction sPlayerUpdateInventory.
          * @member {NT.IServerPlayerUpdateInventory|null|undefined} sPlayerUpdateInventory
@@ -360,6 +391,7 @@ $root.NT = (function () {
          * @instance
          */
         GameAction.prototype.sPlayerUpdateInventory = null;
+
         /**
          * GameAction cHostItemBank.
          * @member {NT.IClientHostItemBank|null|undefined} cHostItemBank
@@ -367,6 +399,7 @@ $root.NT = (function () {
          * @instance
          */
         GameAction.prototype.cHostItemBank = null;
+
         /**
          * GameAction sHostItemBank.
          * @member {NT.IServerHostItemBank|null|undefined} sHostItemBank
@@ -374,6 +407,7 @@ $root.NT = (function () {
          * @instance
          */
         GameAction.prototype.sHostItemBank = null;
+
         /**
          * GameAction cHostUserTake.
          * @member {NT.IClientHostUserTake|null|undefined} cHostUserTake
@@ -381,6 +415,7 @@ $root.NT = (function () {
          * @instance
          */
         GameAction.prototype.cHostUserTake = null;
+
         /**
          * GameAction sHostUserTake.
          * @member {NT.IServerHostUserTake|null|undefined} sHostUserTake
@@ -388,6 +423,7 @@ $root.NT = (function () {
          * @instance
          */
         GameAction.prototype.sHostUserTake = null;
+
         /**
          * GameAction cHostUserTakeGold.
          * @member {NT.IClientHostUserTakeGold|null|undefined} cHostUserTakeGold
@@ -395,6 +431,7 @@ $root.NT = (function () {
          * @instance
          */
         GameAction.prototype.cHostUserTakeGold = null;
+
         /**
          * GameAction sHostUserTakeGold.
          * @member {NT.IServerHostUserTakeGold|null|undefined} sHostUserTakeGold
@@ -402,6 +439,7 @@ $root.NT = (function () {
          * @instance
          */
         GameAction.prototype.sHostUserTakeGold = null;
+
         /**
          * GameAction cPlayerAddGold.
          * @member {NT.IClientPlayerAddGold|null|undefined} cPlayerAddGold
@@ -409,6 +447,7 @@ $root.NT = (function () {
          * @instance
          */
         GameAction.prototype.cPlayerAddGold = null;
+
         /**
          * GameAction sPlayerAddGold.
          * @member {NT.IServerPlayerAddGold|null|undefined} sPlayerAddGold
@@ -416,6 +455,7 @@ $root.NT = (function () {
          * @instance
          */
         GameAction.prototype.sPlayerAddGold = null;
+
         /**
          * GameAction cPlayerTakeGold.
          * @member {NT.IClientPlayerTakeGold|null|undefined} cPlayerTakeGold
@@ -423,6 +463,7 @@ $root.NT = (function () {
          * @instance
          */
         GameAction.prototype.cPlayerTakeGold = null;
+
         /**
          * GameAction sPlayerTakeGold.
          * @member {NT.IServerPlayerTakeGold|null|undefined} sPlayerTakeGold
@@ -430,6 +471,7 @@ $root.NT = (function () {
          * @instance
          */
         GameAction.prototype.sPlayerTakeGold = null;
+
         /**
          * GameAction cPlayerAddItem.
          * @member {NT.IClientPlayerAddItem|null|undefined} cPlayerAddItem
@@ -437,6 +479,7 @@ $root.NT = (function () {
          * @instance
          */
         GameAction.prototype.cPlayerAddItem = null;
+
         /**
          * GameAction sPlayerAddItem.
          * @member {NT.IServerPlayerAddItem|null|undefined} sPlayerAddItem
@@ -444,6 +487,7 @@ $root.NT = (function () {
          * @instance
          */
         GameAction.prototype.sPlayerAddItem = null;
+
         /**
          * GameAction cPlayerTakeItem.
          * @member {NT.IClientPlayerTakeItem|null|undefined} cPlayerTakeItem
@@ -451,6 +495,7 @@ $root.NT = (function () {
          * @instance
          */
         GameAction.prototype.cPlayerTakeItem = null;
+
         /**
          * GameAction sPlayerTakeItem.
          * @member {NT.IServerPlayerTakeItem|null|undefined} sPlayerTakeItem
@@ -458,6 +503,7 @@ $root.NT = (function () {
          * @instance
          */
         GameAction.prototype.sPlayerTakeItem = null;
+
         /**
          * GameAction cPlayerPickup.
          * @member {NT.IClientPlayerPickup|null|undefined} cPlayerPickup
@@ -465,6 +511,7 @@ $root.NT = (function () {
          * @instance
          */
         GameAction.prototype.cPlayerPickup = null;
+
         /**
          * GameAction sPlayerPickup.
          * @member {NT.IServerPlayerPickup|null|undefined} sPlayerPickup
@@ -472,6 +519,7 @@ $root.NT = (function () {
          * @instance
          */
         GameAction.prototype.sPlayerPickup = null;
+
         /**
          * GameAction cNemesisAbility.
          * @member {NT.IClientNemesisAbility|null|undefined} cNemesisAbility
@@ -479,6 +527,7 @@ $root.NT = (function () {
          * @instance
          */
         GameAction.prototype.cNemesisAbility = null;
+
         /**
          * GameAction sNemesisAbility.
          * @member {NT.IServerNemesisAbility|null|undefined} sNemesisAbility
@@ -486,6 +535,7 @@ $root.NT = (function () {
          * @instance
          */
         GameAction.prototype.sNemesisAbility = null;
+
         /**
          * GameAction cNemesisPickupItem.
          * @member {NT.IClientNemesisPickupItem|null|undefined} cNemesisPickupItem
@@ -493,6 +543,7 @@ $root.NT = (function () {
          * @instance
          */
         GameAction.prototype.cNemesisPickupItem = null;
+
         /**
          * GameAction sNemesisPickupItem.
          * @member {NT.IServerNemesisPickupItem|null|undefined} sNemesisPickupItem
@@ -500,6 +551,7 @@ $root.NT = (function () {
          * @instance
          */
         GameAction.prototype.sNemesisPickupItem = null;
+
         /**
          * GameAction cChat.
          * @member {NT.IClientChat|null|undefined} cChat
@@ -507,6 +559,7 @@ $root.NT = (function () {
          * @instance
          */
         GameAction.prototype.cChat = null;
+
         /**
          * GameAction sChat.
          * @member {NT.IServerChat|null|undefined} sChat
@@ -514,6 +567,7 @@ $root.NT = (function () {
          * @instance
          */
         GameAction.prototype.sChat = null;
+
         /**
          * GameAction cPlayerDeath.
          * @member {NT.IClientPlayerDeath|null|undefined} cPlayerDeath
@@ -521,6 +575,7 @@ $root.NT = (function () {
          * @instance
          */
         GameAction.prototype.cPlayerDeath = null;
+
         /**
          * GameAction sPlayerDeath.
          * @member {NT.IServerPlayerDeath|null|undefined} sPlayerDeath
@@ -528,6 +583,7 @@ $root.NT = (function () {
          * @instance
          */
         GameAction.prototype.sPlayerDeath = null;
+
         /**
          * GameAction cPlayerNewGamePlus.
          * @member {NT.IClientPlayerNewGamePlus|null|undefined} cPlayerNewGamePlus
@@ -535,6 +591,7 @@ $root.NT = (function () {
          * @instance
          */
         GameAction.prototype.cPlayerNewGamePlus = null;
+
         /**
          * GameAction sPlayerNewGamePlus.
          * @member {NT.IServerPlayerNewGamePlus|null|undefined} sPlayerNewGamePlus
@@ -542,6 +599,7 @@ $root.NT = (function () {
          * @instance
          */
         GameAction.prototype.sPlayerNewGamePlus = null;
+
         /**
          * GameAction cPlayerSecretHourglass.
          * @member {NT.IClientPlayerSecretHourglass|null|undefined} cPlayerSecretHourglass
@@ -549,6 +607,7 @@ $root.NT = (function () {
          * @instance
          */
         GameAction.prototype.cPlayerSecretHourglass = null;
+
         /**
          * GameAction sPlayerSecretHourglass.
          * @member {NT.IServerPlayerSecretHourglass|null|undefined} sPlayerSecretHourglass
@@ -556,6 +615,7 @@ $root.NT = (function () {
          * @instance
          */
         GameAction.prototype.sPlayerSecretHourglass = null;
+
         /**
          * GameAction cCustomModEvent.
          * @member {NT.IClientCustomModEvent|null|undefined} cCustomModEvent
@@ -563,6 +623,7 @@ $root.NT = (function () {
          * @instance
          */
         GameAction.prototype.cCustomModEvent = null;
+
         /**
          * GameAction sCustomModEvent.
          * @member {NT.IServerCustomModEvent|null|undefined} sCustomModEvent
@@ -570,6 +631,7 @@ $root.NT = (function () {
          * @instance
          */
         GameAction.prototype.sCustomModEvent = null;
+
         /**
          * GameAction cRespawnPenalty.
          * @member {NT.IClientRespawnPenalty|null|undefined} cRespawnPenalty
@@ -577,6 +639,7 @@ $root.NT = (function () {
          * @instance
          */
         GameAction.prototype.cRespawnPenalty = null;
+
         /**
          * GameAction sRespawnPenalty.
          * @member {NT.IServerRespawnPenalty|null|undefined} sRespawnPenalty
@@ -584,6 +647,7 @@ $root.NT = (function () {
          * @instance
          */
         GameAction.prototype.sRespawnPenalty = null;
+
         /**
          * GameAction cAngerySteve.
          * @member {NT.IClientAngerySteve|null|undefined} cAngerySteve
@@ -591,6 +655,7 @@ $root.NT = (function () {
          * @instance
          */
         GameAction.prototype.cAngerySteve = null;
+
         /**
          * GameAction sAngerySteve.
          * @member {NT.IServerAngerySteve|null|undefined} sAngerySteve
@@ -598,6 +663,7 @@ $root.NT = (function () {
          * @instance
          */
         GameAction.prototype.sAngerySteve = null;
+
         /**
          * GameAction sStatUpdate.
          * @member {NT.IServerStatsUpdate|null|undefined} sStatUpdate
@@ -605,8 +671,10 @@ $root.NT = (function () {
          * @instance
          */
         GameAction.prototype.sStatUpdate = null;
+
         // OneOf field names bound to virtual getters and setters
         var $oneOfFields;
+
         /**
          * GameAction action.
          * @member {"cPlayerMove"|"sPlayerMoves"|"cPlayerUpdate"|"sPlayerUpdate"|"cPlayerUpdateInventory"|"sPlayerUpdateInventory"|"cHostItemBank"|"sHostItemBank"|"cHostUserTake"|"sHostUserTake"|"cHostUserTakeGold"|"sHostUserTakeGold"|"cPlayerAddGold"|"sPlayerAddGold"|"cPlayerTakeGold"|"sPlayerTakeGold"|"cPlayerAddItem"|"sPlayerAddItem"|"cPlayerTakeItem"|"sPlayerTakeItem"|"cPlayerPickup"|"sPlayerPickup"|"cNemesisAbility"|"sNemesisAbility"|"cNemesisPickupItem"|"sNemesisPickupItem"|"cChat"|"sChat"|"cPlayerDeath"|"sPlayerDeath"|"cPlayerNewGamePlus"|"sPlayerNewGamePlus"|"cPlayerSecretHourglass"|"sPlayerSecretHourglass"|"cCustomModEvent"|"sCustomModEvent"|"cRespawnPenalty"|"sRespawnPenalty"|"cAngerySteve"|"sAngerySteve"|"sStatUpdate"|undefined} action
@@ -617,6 +685,7 @@ $root.NT = (function () {
             get: $util.oneOfGetter($oneOfFields = ["cPlayerMove", "sPlayerMoves", "cPlayerUpdate", "sPlayerUpdate", "cPlayerUpdateInventory", "sPlayerUpdateInventory", "cHostItemBank", "sHostItemBank", "cHostUserTake", "sHostUserTake", "cHostUserTakeGold", "sHostUserTakeGold", "cPlayerAddGold", "sPlayerAddGold", "cPlayerTakeGold", "sPlayerTakeGold", "cPlayerAddItem", "sPlayerAddItem", "cPlayerTakeItem", "sPlayerTakeItem", "cPlayerPickup", "sPlayerPickup", "cNemesisAbility", "sNemesisAbility", "cNemesisPickupItem", "sNemesisPickupItem", "cChat", "sChat", "cPlayerDeath", "sPlayerDeath", "cPlayerNewGamePlus", "sPlayerNewGamePlus", "cPlayerSecretHourglass", "sPlayerSecretHourglass", "cCustomModEvent", "sCustomModEvent", "cRespawnPenalty", "sRespawnPenalty", "cAngerySteve", "sAngerySteve", "sStatUpdate"]),
             set: $util.oneOfSetter($oneOfFields)
         });
+
         /**
          * Creates a new GameAction instance using the specified properties.
          * @function create
@@ -628,6 +697,7 @@ $root.NT = (function () {
         GameAction.create = function create(properties) {
             return new GameAction(properties);
         };
+
         /**
          * Encodes the specified GameAction message. Does not implicitly {@link NT.GameAction.verify|verify} messages.
          * @function encode
@@ -641,89 +711,90 @@ $root.NT = (function () {
             if (!writer)
                 writer = $Writer.create();
             if (message.cPlayerMove != null && Object.hasOwnProperty.call(message, "cPlayerMove"))
-                $root.NT.CompactPlayerFrames.encode(message.cPlayerMove, writer.uint32(/* id 1, wireType 2 =*/ 10).fork()).ldelim();
+                $root.NT.CompactPlayerFrames.encode(message.cPlayerMove, writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
             if (message.sPlayerMoves != null && Object.hasOwnProperty.call(message, "sPlayerMoves"))
-                $root.NT.ServerPlayerMoves.encode(message.sPlayerMoves, writer.uint32(/* id 2, wireType 2 =*/ 18).fork()).ldelim();
+                $root.NT.ServerPlayerMoves.encode(message.sPlayerMoves, writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
             if (message.cPlayerUpdate != null && Object.hasOwnProperty.call(message, "cPlayerUpdate"))
-                $root.NT.ClientPlayerUpdate.encode(message.cPlayerUpdate, writer.uint32(/* id 3, wireType 2 =*/ 26).fork()).ldelim();
+                $root.NT.ClientPlayerUpdate.encode(message.cPlayerUpdate, writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
             if (message.sPlayerUpdate != null && Object.hasOwnProperty.call(message, "sPlayerUpdate"))
-                $root.NT.ServerPlayerUpdate.encode(message.sPlayerUpdate, writer.uint32(/* id 4, wireType 2 =*/ 34).fork()).ldelim();
+                $root.NT.ServerPlayerUpdate.encode(message.sPlayerUpdate, writer.uint32(/* id 4, wireType 2 =*/34).fork()).ldelim();
             if (message.cPlayerUpdateInventory != null && Object.hasOwnProperty.call(message, "cPlayerUpdateInventory"))
-                $root.NT.ClientPlayerUpdateInventory.encode(message.cPlayerUpdateInventory, writer.uint32(/* id 5, wireType 2 =*/ 42).fork()).ldelim();
+                $root.NT.ClientPlayerUpdateInventory.encode(message.cPlayerUpdateInventory, writer.uint32(/* id 5, wireType 2 =*/42).fork()).ldelim();
             if (message.sPlayerUpdateInventory != null && Object.hasOwnProperty.call(message, "sPlayerUpdateInventory"))
-                $root.NT.ServerPlayerUpdateInventory.encode(message.sPlayerUpdateInventory, writer.uint32(/* id 6, wireType 2 =*/ 50).fork()).ldelim();
+                $root.NT.ServerPlayerUpdateInventory.encode(message.sPlayerUpdateInventory, writer.uint32(/* id 6, wireType 2 =*/50).fork()).ldelim();
             if (message.cHostItemBank != null && Object.hasOwnProperty.call(message, "cHostItemBank"))
-                $root.NT.ClientHostItemBank.encode(message.cHostItemBank, writer.uint32(/* id 7, wireType 2 =*/ 58).fork()).ldelim();
+                $root.NT.ClientHostItemBank.encode(message.cHostItemBank, writer.uint32(/* id 7, wireType 2 =*/58).fork()).ldelim();
             if (message.sHostItemBank != null && Object.hasOwnProperty.call(message, "sHostItemBank"))
-                $root.NT.ServerHostItemBank.encode(message.sHostItemBank, writer.uint32(/* id 8, wireType 2 =*/ 66).fork()).ldelim();
+                $root.NT.ServerHostItemBank.encode(message.sHostItemBank, writer.uint32(/* id 8, wireType 2 =*/66).fork()).ldelim();
             if (message.cHostUserTake != null && Object.hasOwnProperty.call(message, "cHostUserTake"))
-                $root.NT.ClientHostUserTake.encode(message.cHostUserTake, writer.uint32(/* id 9, wireType 2 =*/ 74).fork()).ldelim();
+                $root.NT.ClientHostUserTake.encode(message.cHostUserTake, writer.uint32(/* id 9, wireType 2 =*/74).fork()).ldelim();
             if (message.sHostUserTake != null && Object.hasOwnProperty.call(message, "sHostUserTake"))
-                $root.NT.ServerHostUserTake.encode(message.sHostUserTake, writer.uint32(/* id 10, wireType 2 =*/ 82).fork()).ldelim();
+                $root.NT.ServerHostUserTake.encode(message.sHostUserTake, writer.uint32(/* id 10, wireType 2 =*/82).fork()).ldelim();
             if (message.cHostUserTakeGold != null && Object.hasOwnProperty.call(message, "cHostUserTakeGold"))
-                $root.NT.ClientHostUserTakeGold.encode(message.cHostUserTakeGold, writer.uint32(/* id 11, wireType 2 =*/ 90).fork()).ldelim();
+                $root.NT.ClientHostUserTakeGold.encode(message.cHostUserTakeGold, writer.uint32(/* id 11, wireType 2 =*/90).fork()).ldelim();
             if (message.sHostUserTakeGold != null && Object.hasOwnProperty.call(message, "sHostUserTakeGold"))
-                $root.NT.ServerHostUserTakeGold.encode(message.sHostUserTakeGold, writer.uint32(/* id 12, wireType 2 =*/ 98).fork()).ldelim();
+                $root.NT.ServerHostUserTakeGold.encode(message.sHostUserTakeGold, writer.uint32(/* id 12, wireType 2 =*/98).fork()).ldelim();
             if (message.cPlayerAddGold != null && Object.hasOwnProperty.call(message, "cPlayerAddGold"))
-                $root.NT.ClientPlayerAddGold.encode(message.cPlayerAddGold, writer.uint32(/* id 13, wireType 2 =*/ 106).fork()).ldelim();
+                $root.NT.ClientPlayerAddGold.encode(message.cPlayerAddGold, writer.uint32(/* id 13, wireType 2 =*/106).fork()).ldelim();
             if (message.sPlayerAddGold != null && Object.hasOwnProperty.call(message, "sPlayerAddGold"))
-                $root.NT.ServerPlayerAddGold.encode(message.sPlayerAddGold, writer.uint32(/* id 14, wireType 2 =*/ 114).fork()).ldelim();
+                $root.NT.ServerPlayerAddGold.encode(message.sPlayerAddGold, writer.uint32(/* id 14, wireType 2 =*/114).fork()).ldelim();
             if (message.cPlayerTakeGold != null && Object.hasOwnProperty.call(message, "cPlayerTakeGold"))
-                $root.NT.ClientPlayerTakeGold.encode(message.cPlayerTakeGold, writer.uint32(/* id 15, wireType 2 =*/ 122).fork()).ldelim();
+                $root.NT.ClientPlayerTakeGold.encode(message.cPlayerTakeGold, writer.uint32(/* id 15, wireType 2 =*/122).fork()).ldelim();
             if (message.sPlayerTakeGold != null && Object.hasOwnProperty.call(message, "sPlayerTakeGold"))
-                $root.NT.ServerPlayerTakeGold.encode(message.sPlayerTakeGold, writer.uint32(/* id 16, wireType 2 =*/ 130).fork()).ldelim();
+                $root.NT.ServerPlayerTakeGold.encode(message.sPlayerTakeGold, writer.uint32(/* id 16, wireType 2 =*/130).fork()).ldelim();
             if (message.cPlayerAddItem != null && Object.hasOwnProperty.call(message, "cPlayerAddItem"))
-                $root.NT.ClientPlayerAddItem.encode(message.cPlayerAddItem, writer.uint32(/* id 17, wireType 2 =*/ 138).fork()).ldelim();
+                $root.NT.ClientPlayerAddItem.encode(message.cPlayerAddItem, writer.uint32(/* id 17, wireType 2 =*/138).fork()).ldelim();
             if (message.sPlayerAddItem != null && Object.hasOwnProperty.call(message, "sPlayerAddItem"))
-                $root.NT.ServerPlayerAddItem.encode(message.sPlayerAddItem, writer.uint32(/* id 18, wireType 2 =*/ 146).fork()).ldelim();
+                $root.NT.ServerPlayerAddItem.encode(message.sPlayerAddItem, writer.uint32(/* id 18, wireType 2 =*/146).fork()).ldelim();
             if (message.cPlayerTakeItem != null && Object.hasOwnProperty.call(message, "cPlayerTakeItem"))
-                $root.NT.ClientPlayerTakeItem.encode(message.cPlayerTakeItem, writer.uint32(/* id 19, wireType 2 =*/ 154).fork()).ldelim();
+                $root.NT.ClientPlayerTakeItem.encode(message.cPlayerTakeItem, writer.uint32(/* id 19, wireType 2 =*/154).fork()).ldelim();
             if (message.sPlayerTakeItem != null && Object.hasOwnProperty.call(message, "sPlayerTakeItem"))
-                $root.NT.ServerPlayerTakeItem.encode(message.sPlayerTakeItem, writer.uint32(/* id 20, wireType 2 =*/ 162).fork()).ldelim();
+                $root.NT.ServerPlayerTakeItem.encode(message.sPlayerTakeItem, writer.uint32(/* id 20, wireType 2 =*/162).fork()).ldelim();
             if (message.cPlayerPickup != null && Object.hasOwnProperty.call(message, "cPlayerPickup"))
-                $root.NT.ClientPlayerPickup.encode(message.cPlayerPickup, writer.uint32(/* id 21, wireType 2 =*/ 170).fork()).ldelim();
+                $root.NT.ClientPlayerPickup.encode(message.cPlayerPickup, writer.uint32(/* id 21, wireType 2 =*/170).fork()).ldelim();
             if (message.sPlayerPickup != null && Object.hasOwnProperty.call(message, "sPlayerPickup"))
-                $root.NT.ServerPlayerPickup.encode(message.sPlayerPickup, writer.uint32(/* id 22, wireType 2 =*/ 178).fork()).ldelim();
+                $root.NT.ServerPlayerPickup.encode(message.sPlayerPickup, writer.uint32(/* id 22, wireType 2 =*/178).fork()).ldelim();
             if (message.cNemesisAbility != null && Object.hasOwnProperty.call(message, "cNemesisAbility"))
-                $root.NT.ClientNemesisAbility.encode(message.cNemesisAbility, writer.uint32(/* id 23, wireType 2 =*/ 186).fork()).ldelim();
+                $root.NT.ClientNemesisAbility.encode(message.cNemesisAbility, writer.uint32(/* id 23, wireType 2 =*/186).fork()).ldelim();
             if (message.sNemesisAbility != null && Object.hasOwnProperty.call(message, "sNemesisAbility"))
-                $root.NT.ServerNemesisAbility.encode(message.sNemesisAbility, writer.uint32(/* id 24, wireType 2 =*/ 194).fork()).ldelim();
+                $root.NT.ServerNemesisAbility.encode(message.sNemesisAbility, writer.uint32(/* id 24, wireType 2 =*/194).fork()).ldelim();
             if (message.cNemesisPickupItem != null && Object.hasOwnProperty.call(message, "cNemesisPickupItem"))
-                $root.NT.ClientNemesisPickupItem.encode(message.cNemesisPickupItem, writer.uint32(/* id 25, wireType 2 =*/ 202).fork()).ldelim();
+                $root.NT.ClientNemesisPickupItem.encode(message.cNemesisPickupItem, writer.uint32(/* id 25, wireType 2 =*/202).fork()).ldelim();
             if (message.sNemesisPickupItem != null && Object.hasOwnProperty.call(message, "sNemesisPickupItem"))
-                $root.NT.ServerNemesisPickupItem.encode(message.sNemesisPickupItem, writer.uint32(/* id 26, wireType 2 =*/ 210).fork()).ldelim();
+                $root.NT.ServerNemesisPickupItem.encode(message.sNemesisPickupItem, writer.uint32(/* id 26, wireType 2 =*/210).fork()).ldelim();
             if (message.cChat != null && Object.hasOwnProperty.call(message, "cChat"))
-                $root.NT.ClientChat.encode(message.cChat, writer.uint32(/* id 27, wireType 2 =*/ 218).fork()).ldelim();
+                $root.NT.ClientChat.encode(message.cChat, writer.uint32(/* id 27, wireType 2 =*/218).fork()).ldelim();
             if (message.sChat != null && Object.hasOwnProperty.call(message, "sChat"))
-                $root.NT.ServerChat.encode(message.sChat, writer.uint32(/* id 28, wireType 2 =*/ 226).fork()).ldelim();
+                $root.NT.ServerChat.encode(message.sChat, writer.uint32(/* id 28, wireType 2 =*/226).fork()).ldelim();
             if (message.cPlayerDeath != null && Object.hasOwnProperty.call(message, "cPlayerDeath"))
-                $root.NT.ClientPlayerDeath.encode(message.cPlayerDeath, writer.uint32(/* id 29, wireType 2 =*/ 234).fork()).ldelim();
+                $root.NT.ClientPlayerDeath.encode(message.cPlayerDeath, writer.uint32(/* id 29, wireType 2 =*/234).fork()).ldelim();
             if (message.sPlayerDeath != null && Object.hasOwnProperty.call(message, "sPlayerDeath"))
-                $root.NT.ServerPlayerDeath.encode(message.sPlayerDeath, writer.uint32(/* id 30, wireType 2 =*/ 242).fork()).ldelim();
+                $root.NT.ServerPlayerDeath.encode(message.sPlayerDeath, writer.uint32(/* id 30, wireType 2 =*/242).fork()).ldelim();
             if (message.cPlayerNewGamePlus != null && Object.hasOwnProperty.call(message, "cPlayerNewGamePlus"))
-                $root.NT.ClientPlayerNewGamePlus.encode(message.cPlayerNewGamePlus, writer.uint32(/* id 31, wireType 2 =*/ 250).fork()).ldelim();
+                $root.NT.ClientPlayerNewGamePlus.encode(message.cPlayerNewGamePlus, writer.uint32(/* id 31, wireType 2 =*/250).fork()).ldelim();
             if (message.sPlayerNewGamePlus != null && Object.hasOwnProperty.call(message, "sPlayerNewGamePlus"))
-                $root.NT.ServerPlayerNewGamePlus.encode(message.sPlayerNewGamePlus, writer.uint32(/* id 32, wireType 2 =*/ 258).fork()).ldelim();
+                $root.NT.ServerPlayerNewGamePlus.encode(message.sPlayerNewGamePlus, writer.uint32(/* id 32, wireType 2 =*/258).fork()).ldelim();
             if (message.cPlayerSecretHourglass != null && Object.hasOwnProperty.call(message, "cPlayerSecretHourglass"))
-                $root.NT.ClientPlayerSecretHourglass.encode(message.cPlayerSecretHourglass, writer.uint32(/* id 33, wireType 2 =*/ 266).fork()).ldelim();
+                $root.NT.ClientPlayerSecretHourglass.encode(message.cPlayerSecretHourglass, writer.uint32(/* id 33, wireType 2 =*/266).fork()).ldelim();
             if (message.sPlayerSecretHourglass != null && Object.hasOwnProperty.call(message, "sPlayerSecretHourglass"))
-                $root.NT.ServerPlayerSecretHourglass.encode(message.sPlayerSecretHourglass, writer.uint32(/* id 34, wireType 2 =*/ 274).fork()).ldelim();
+                $root.NT.ServerPlayerSecretHourglass.encode(message.sPlayerSecretHourglass, writer.uint32(/* id 34, wireType 2 =*/274).fork()).ldelim();
             if (message.cCustomModEvent != null && Object.hasOwnProperty.call(message, "cCustomModEvent"))
-                $root.NT.ClientCustomModEvent.encode(message.cCustomModEvent, writer.uint32(/* id 35, wireType 2 =*/ 282).fork()).ldelim();
+                $root.NT.ClientCustomModEvent.encode(message.cCustomModEvent, writer.uint32(/* id 35, wireType 2 =*/282).fork()).ldelim();
             if (message.sCustomModEvent != null && Object.hasOwnProperty.call(message, "sCustomModEvent"))
-                $root.NT.ServerCustomModEvent.encode(message.sCustomModEvent, writer.uint32(/* id 36, wireType 2 =*/ 290).fork()).ldelim();
+                $root.NT.ServerCustomModEvent.encode(message.sCustomModEvent, writer.uint32(/* id 36, wireType 2 =*/290).fork()).ldelim();
             if (message.cRespawnPenalty != null && Object.hasOwnProperty.call(message, "cRespawnPenalty"))
-                $root.NT.ClientRespawnPenalty.encode(message.cRespawnPenalty, writer.uint32(/* id 37, wireType 2 =*/ 298).fork()).ldelim();
+                $root.NT.ClientRespawnPenalty.encode(message.cRespawnPenalty, writer.uint32(/* id 37, wireType 2 =*/298).fork()).ldelim();
             if (message.sRespawnPenalty != null && Object.hasOwnProperty.call(message, "sRespawnPenalty"))
-                $root.NT.ServerRespawnPenalty.encode(message.sRespawnPenalty, writer.uint32(/* id 38, wireType 2 =*/ 306).fork()).ldelim();
+                $root.NT.ServerRespawnPenalty.encode(message.sRespawnPenalty, writer.uint32(/* id 38, wireType 2 =*/306).fork()).ldelim();
             if (message.cAngerySteve != null && Object.hasOwnProperty.call(message, "cAngerySteve"))
-                $root.NT.ClientAngerySteve.encode(message.cAngerySteve, writer.uint32(/* id 39, wireType 2 =*/ 314).fork()).ldelim();
+                $root.NT.ClientAngerySteve.encode(message.cAngerySteve, writer.uint32(/* id 39, wireType 2 =*/314).fork()).ldelim();
             if (message.sAngerySteve != null && Object.hasOwnProperty.call(message, "sAngerySteve"))
-                $root.NT.ServerAngerySteve.encode(message.sAngerySteve, writer.uint32(/* id 40, wireType 2 =*/ 322).fork()).ldelim();
+                $root.NT.ServerAngerySteve.encode(message.sAngerySteve, writer.uint32(/* id 40, wireType 2 =*/322).fork()).ldelim();
             if (message.sStatUpdate != null && Object.hasOwnProperty.call(message, "sStatUpdate"))
-                $root.NT.ServerStatsUpdate.encode(message.sStatUpdate, writer.uint32(/* id 42, wireType 2 =*/ 338).fork()).ldelim();
+                $root.NT.ServerStatsUpdate.encode(message.sStatUpdate, writer.uint32(/* id 42, wireType 2 =*/338).fork()).ldelim();
             return writer;
         };
+
         /**
          * Encodes the specified GameAction message, length delimited. Does not implicitly {@link NT.GameAction.verify|verify} messages.
          * @function encodeDelimited
@@ -736,6 +807,7 @@ $root.NT = (function () {
         GameAction.encodeDelimited = function encodeDelimited(message, writer) {
             return this.encode(message, writer).ldelim();
         };
+
         /**
          * Decodes a GameAction message from the specified reader or buffer.
          * @function decode
@@ -754,177 +826,178 @@ $root.NT = (function () {
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                    case 1: {
+                case 1: {
                         message.cPlayerMove = $root.NT.CompactPlayerFrames.decode(reader, reader.uint32());
                         break;
                     }
-                    case 2: {
+                case 2: {
                         message.sPlayerMoves = $root.NT.ServerPlayerMoves.decode(reader, reader.uint32());
                         break;
                     }
-                    case 3: {
+                case 3: {
                         message.cPlayerUpdate = $root.NT.ClientPlayerUpdate.decode(reader, reader.uint32());
                         break;
                     }
-                    case 4: {
+                case 4: {
                         message.sPlayerUpdate = $root.NT.ServerPlayerUpdate.decode(reader, reader.uint32());
                         break;
                     }
-                    case 5: {
+                case 5: {
                         message.cPlayerUpdateInventory = $root.NT.ClientPlayerUpdateInventory.decode(reader, reader.uint32());
                         break;
                     }
-                    case 6: {
+                case 6: {
                         message.sPlayerUpdateInventory = $root.NT.ServerPlayerUpdateInventory.decode(reader, reader.uint32());
                         break;
                     }
-                    case 7: {
+                case 7: {
                         message.cHostItemBank = $root.NT.ClientHostItemBank.decode(reader, reader.uint32());
                         break;
                     }
-                    case 8: {
+                case 8: {
                         message.sHostItemBank = $root.NT.ServerHostItemBank.decode(reader, reader.uint32());
                         break;
                     }
-                    case 9: {
+                case 9: {
                         message.cHostUserTake = $root.NT.ClientHostUserTake.decode(reader, reader.uint32());
                         break;
                     }
-                    case 10: {
+                case 10: {
                         message.sHostUserTake = $root.NT.ServerHostUserTake.decode(reader, reader.uint32());
                         break;
                     }
-                    case 11: {
+                case 11: {
                         message.cHostUserTakeGold = $root.NT.ClientHostUserTakeGold.decode(reader, reader.uint32());
                         break;
                     }
-                    case 12: {
+                case 12: {
                         message.sHostUserTakeGold = $root.NT.ServerHostUserTakeGold.decode(reader, reader.uint32());
                         break;
                     }
-                    case 13: {
+                case 13: {
                         message.cPlayerAddGold = $root.NT.ClientPlayerAddGold.decode(reader, reader.uint32());
                         break;
                     }
-                    case 14: {
+                case 14: {
                         message.sPlayerAddGold = $root.NT.ServerPlayerAddGold.decode(reader, reader.uint32());
                         break;
                     }
-                    case 15: {
+                case 15: {
                         message.cPlayerTakeGold = $root.NT.ClientPlayerTakeGold.decode(reader, reader.uint32());
                         break;
                     }
-                    case 16: {
+                case 16: {
                         message.sPlayerTakeGold = $root.NT.ServerPlayerTakeGold.decode(reader, reader.uint32());
                         break;
                     }
-                    case 17: {
+                case 17: {
                         message.cPlayerAddItem = $root.NT.ClientPlayerAddItem.decode(reader, reader.uint32());
                         break;
                     }
-                    case 18: {
+                case 18: {
                         message.sPlayerAddItem = $root.NT.ServerPlayerAddItem.decode(reader, reader.uint32());
                         break;
                     }
-                    case 19: {
+                case 19: {
                         message.cPlayerTakeItem = $root.NT.ClientPlayerTakeItem.decode(reader, reader.uint32());
                         break;
                     }
-                    case 20: {
+                case 20: {
                         message.sPlayerTakeItem = $root.NT.ServerPlayerTakeItem.decode(reader, reader.uint32());
                         break;
                     }
-                    case 21: {
+                case 21: {
                         message.cPlayerPickup = $root.NT.ClientPlayerPickup.decode(reader, reader.uint32());
                         break;
                     }
-                    case 22: {
+                case 22: {
                         message.sPlayerPickup = $root.NT.ServerPlayerPickup.decode(reader, reader.uint32());
                         break;
                     }
-                    case 23: {
+                case 23: {
                         message.cNemesisAbility = $root.NT.ClientNemesisAbility.decode(reader, reader.uint32());
                         break;
                     }
-                    case 24: {
+                case 24: {
                         message.sNemesisAbility = $root.NT.ServerNemesisAbility.decode(reader, reader.uint32());
                         break;
                     }
-                    case 25: {
+                case 25: {
                         message.cNemesisPickupItem = $root.NT.ClientNemesisPickupItem.decode(reader, reader.uint32());
                         break;
                     }
-                    case 26: {
+                case 26: {
                         message.sNemesisPickupItem = $root.NT.ServerNemesisPickupItem.decode(reader, reader.uint32());
                         break;
                     }
-                    case 27: {
+                case 27: {
                         message.cChat = $root.NT.ClientChat.decode(reader, reader.uint32());
                         break;
                     }
-                    case 28: {
+                case 28: {
                         message.sChat = $root.NT.ServerChat.decode(reader, reader.uint32());
                         break;
                     }
-                    case 29: {
+                case 29: {
                         message.cPlayerDeath = $root.NT.ClientPlayerDeath.decode(reader, reader.uint32());
                         break;
                     }
-                    case 30: {
+                case 30: {
                         message.sPlayerDeath = $root.NT.ServerPlayerDeath.decode(reader, reader.uint32());
                         break;
                     }
-                    case 31: {
+                case 31: {
                         message.cPlayerNewGamePlus = $root.NT.ClientPlayerNewGamePlus.decode(reader, reader.uint32());
                         break;
                     }
-                    case 32: {
+                case 32: {
                         message.sPlayerNewGamePlus = $root.NT.ServerPlayerNewGamePlus.decode(reader, reader.uint32());
                         break;
                     }
-                    case 33: {
+                case 33: {
                         message.cPlayerSecretHourglass = $root.NT.ClientPlayerSecretHourglass.decode(reader, reader.uint32());
                         break;
                     }
-                    case 34: {
+                case 34: {
                         message.sPlayerSecretHourglass = $root.NT.ServerPlayerSecretHourglass.decode(reader, reader.uint32());
                         break;
                     }
-                    case 35: {
+                case 35: {
                         message.cCustomModEvent = $root.NT.ClientCustomModEvent.decode(reader, reader.uint32());
                         break;
                     }
-                    case 36: {
+                case 36: {
                         message.sCustomModEvent = $root.NT.ServerCustomModEvent.decode(reader, reader.uint32());
                         break;
                     }
-                    case 37: {
+                case 37: {
                         message.cRespawnPenalty = $root.NT.ClientRespawnPenalty.decode(reader, reader.uint32());
                         break;
                     }
-                    case 38: {
+                case 38: {
                         message.sRespawnPenalty = $root.NT.ServerRespawnPenalty.decode(reader, reader.uint32());
                         break;
                     }
-                    case 39: {
+                case 39: {
                         message.cAngerySteve = $root.NT.ClientAngerySteve.decode(reader, reader.uint32());
                         break;
                     }
-                    case 40: {
+                case 40: {
                         message.sAngerySteve = $root.NT.ServerAngerySteve.decode(reader, reader.uint32());
                         break;
                     }
-                    case 42: {
+                case 42: {
                         message.sStatUpdate = $root.NT.ServerStatsUpdate.decode(reader, reader.uint32());
                         break;
                     }
-                    default:
-                        reader.skipType(tag & 7);
-                        break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
                 }
             }
             return message;
         };
+
         /**
          * Decodes a GameAction message from the specified reader or buffer, length delimited.
          * @function decodeDelimited
@@ -940,6 +1013,7 @@ $root.NT = (function () {
                 reader = new $Reader(reader);
             return this.decode(reader, reader.uint32());
         };
+
         /**
          * Verifies a GameAction message.
          * @function verify
@@ -1362,6 +1436,7 @@ $root.NT = (function () {
             }
             return null;
         };
+
         /**
          * Creates a GameAction message from a plain object. Also converts values to their respective internal types.
          * @function fromObject
@@ -1581,6 +1656,7 @@ $root.NT = (function () {
             }
             return message;
         };
+
         /**
          * Creates a plain object from a GameAction message. Also converts values to other types if specified.
          * @function toObject
@@ -1801,6 +1877,7 @@ $root.NT = (function () {
             }
             return object;
         };
+
         /**
          * Converts this GameAction to JSON.
          * @function toJSON
@@ -1811,6 +1888,7 @@ $root.NT = (function () {
         GameAction.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
+
         /**
          * Gets the default type url for GameAction
          * @function getTypeUrl
@@ -1825,9 +1903,12 @@ $root.NT = (function () {
             }
             return typeUrlPrefix + "/NT.GameAction";
         };
+
         return GameAction;
     })();
-    NT.PlayerFrame = (function () {
+
+    NT.PlayerFrame = (function() {
+
         /**
          * Properties of a PlayerFrame.
          * @memberof NT
@@ -1840,6 +1921,7 @@ $root.NT = (function () {
          * @property {number|null} [anim] PlayerFrame anim
          * @property {number|null} [held] PlayerFrame held
          */
+
         /**
          * Constructs a new PlayerFrame.
          * @memberof NT
@@ -1854,6 +1936,7 @@ $root.NT = (function () {
                     if (properties[keys[i]] != null)
                         this[keys[i]] = properties[keys[i]];
         }
+
         /**
          * PlayerFrame x.
          * @member {number|null|undefined} x
@@ -1861,6 +1944,7 @@ $root.NT = (function () {
          * @instance
          */
         PlayerFrame.prototype.x = null;
+
         /**
          * PlayerFrame y.
          * @member {number|null|undefined} y
@@ -1868,6 +1952,7 @@ $root.NT = (function () {
          * @instance
          */
         PlayerFrame.prototype.y = null;
+
         /**
          * PlayerFrame armR.
          * @member {number|null|undefined} armR
@@ -1875,6 +1960,7 @@ $root.NT = (function () {
          * @instance
          */
         PlayerFrame.prototype.armR = null;
+
         /**
          * PlayerFrame armScaleY.
          * @member {number|null|undefined} armScaleY
@@ -1882,6 +1968,7 @@ $root.NT = (function () {
          * @instance
          */
         PlayerFrame.prototype.armScaleY = null;
+
         /**
          * PlayerFrame scaleX.
          * @member {number|null|undefined} scaleX
@@ -1889,6 +1976,7 @@ $root.NT = (function () {
          * @instance
          */
         PlayerFrame.prototype.scaleX = null;
+
         /**
          * PlayerFrame anim.
          * @member {number|null|undefined} anim
@@ -1896,6 +1984,7 @@ $root.NT = (function () {
          * @instance
          */
         PlayerFrame.prototype.anim = null;
+
         /**
          * PlayerFrame held.
          * @member {number|null|undefined} held
@@ -1903,8 +1992,10 @@ $root.NT = (function () {
          * @instance
          */
         PlayerFrame.prototype.held = null;
+
         // OneOf field names bound to virtual getters and setters
         var $oneOfFields;
+
         /**
          * PlayerFrame _x.
          * @member {"x"|undefined} _x
@@ -1915,6 +2006,7 @@ $root.NT = (function () {
             get: $util.oneOfGetter($oneOfFields = ["x"]),
             set: $util.oneOfSetter($oneOfFields)
         });
+
         /**
          * PlayerFrame _y.
          * @member {"y"|undefined} _y
@@ -1925,6 +2017,7 @@ $root.NT = (function () {
             get: $util.oneOfGetter($oneOfFields = ["y"]),
             set: $util.oneOfSetter($oneOfFields)
         });
+
         /**
          * PlayerFrame _armR.
          * @member {"armR"|undefined} _armR
@@ -1935,6 +2028,7 @@ $root.NT = (function () {
             get: $util.oneOfGetter($oneOfFields = ["armR"]),
             set: $util.oneOfSetter($oneOfFields)
         });
+
         /**
          * PlayerFrame _armScaleY.
          * @member {"armScaleY"|undefined} _armScaleY
@@ -1945,6 +2039,7 @@ $root.NT = (function () {
             get: $util.oneOfGetter($oneOfFields = ["armScaleY"]),
             set: $util.oneOfSetter($oneOfFields)
         });
+
         /**
          * PlayerFrame _scaleX.
          * @member {"scaleX"|undefined} _scaleX
@@ -1955,6 +2050,7 @@ $root.NT = (function () {
             get: $util.oneOfGetter($oneOfFields = ["scaleX"]),
             set: $util.oneOfSetter($oneOfFields)
         });
+
         /**
          * PlayerFrame _anim.
          * @member {"anim"|undefined} _anim
@@ -1965,6 +2061,7 @@ $root.NT = (function () {
             get: $util.oneOfGetter($oneOfFields = ["anim"]),
             set: $util.oneOfSetter($oneOfFields)
         });
+
         /**
          * PlayerFrame _held.
          * @member {"held"|undefined} _held
@@ -1975,6 +2072,7 @@ $root.NT = (function () {
             get: $util.oneOfGetter($oneOfFields = ["held"]),
             set: $util.oneOfSetter($oneOfFields)
         });
+
         /**
          * Creates a new PlayerFrame instance using the specified properties.
          * @function create
@@ -1986,6 +2084,7 @@ $root.NT = (function () {
         PlayerFrame.create = function create(properties) {
             return new PlayerFrame(properties);
         };
+
         /**
          * Encodes the specified PlayerFrame message. Does not implicitly {@link NT.PlayerFrame.verify|verify} messages.
          * @function encode
@@ -1999,21 +2098,22 @@ $root.NT = (function () {
             if (!writer)
                 writer = $Writer.create();
             if (message.x != null && Object.hasOwnProperty.call(message, "x"))
-                writer.uint32(/* id 1, wireType 5 =*/ 13).float(message.x);
+                writer.uint32(/* id 1, wireType 5 =*/13).float(message.x);
             if (message.y != null && Object.hasOwnProperty.call(message, "y"))
-                writer.uint32(/* id 2, wireType 5 =*/ 21).float(message.y);
+                writer.uint32(/* id 2, wireType 5 =*/21).float(message.y);
             if (message.armR != null && Object.hasOwnProperty.call(message, "armR"))
-                writer.uint32(/* id 3, wireType 5 =*/ 29).float(message.armR);
+                writer.uint32(/* id 3, wireType 5 =*/29).float(message.armR);
             if (message.armScaleY != null && Object.hasOwnProperty.call(message, "armScaleY"))
-                writer.uint32(/* id 4, wireType 5 =*/ 37).float(message.armScaleY);
+                writer.uint32(/* id 4, wireType 5 =*/37).float(message.armScaleY);
             if (message.scaleX != null && Object.hasOwnProperty.call(message, "scaleX"))
-                writer.uint32(/* id 5, wireType 5 =*/ 45).float(message.scaleX);
+                writer.uint32(/* id 5, wireType 5 =*/45).float(message.scaleX);
             if (message.anim != null && Object.hasOwnProperty.call(message, "anim"))
-                writer.uint32(/* id 6, wireType 0 =*/ 48).int32(message.anim);
+                writer.uint32(/* id 6, wireType 0 =*/48).int32(message.anim);
             if (message.held != null && Object.hasOwnProperty.call(message, "held"))
-                writer.uint32(/* id 7, wireType 0 =*/ 56).int32(message.held);
+                writer.uint32(/* id 7, wireType 0 =*/56).int32(message.held);
             return writer;
         };
+
         /**
          * Encodes the specified PlayerFrame message, length delimited. Does not implicitly {@link NT.PlayerFrame.verify|verify} messages.
          * @function encodeDelimited
@@ -2026,6 +2126,7 @@ $root.NT = (function () {
         PlayerFrame.encodeDelimited = function encodeDelimited(message, writer) {
             return this.encode(message, writer).ldelim();
         };
+
         /**
          * Decodes a PlayerFrame message from the specified reader or buffer.
          * @function decode
@@ -2044,41 +2145,42 @@ $root.NT = (function () {
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                    case 1: {
+                case 1: {
                         message.x = reader.float();
                         break;
                     }
-                    case 2: {
+                case 2: {
                         message.y = reader.float();
                         break;
                     }
-                    case 3: {
+                case 3: {
                         message.armR = reader.float();
                         break;
                     }
-                    case 4: {
+                case 4: {
                         message.armScaleY = reader.float();
                         break;
                     }
-                    case 5: {
+                case 5: {
                         message.scaleX = reader.float();
                         break;
                     }
-                    case 6: {
+                case 6: {
                         message.anim = reader.int32();
                         break;
                     }
-                    case 7: {
+                case 7: {
                         message.held = reader.int32();
                         break;
                     }
-                    default:
-                        reader.skipType(tag & 7);
-                        break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
                 }
             }
             return message;
         };
+
         /**
          * Decodes a PlayerFrame message from the specified reader or buffer, length delimited.
          * @function decodeDelimited
@@ -2094,6 +2196,7 @@ $root.NT = (function () {
                 reader = new $Reader(reader);
             return this.decode(reader, reader.uint32());
         };
+
         /**
          * Verifies a PlayerFrame message.
          * @function verify
@@ -2143,6 +2246,7 @@ $root.NT = (function () {
             }
             return null;
         };
+
         /**
          * Creates a PlayerFrame message from a plain object. Also converts values to their respective internal types.
          * @function fromObject
@@ -2171,6 +2275,7 @@ $root.NT = (function () {
                 message.held = object.held | 0;
             return message;
         };
+
         /**
          * Creates a plain object from a PlayerFrame message. Also converts values to other types if specified.
          * @function toObject
@@ -2221,6 +2326,7 @@ $root.NT = (function () {
             }
             return object;
         };
+
         /**
          * Converts this PlayerFrame to JSON.
          * @function toJSON
@@ -2231,6 +2337,7 @@ $root.NT = (function () {
         PlayerFrame.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
+
         /**
          * Gets the default type url for PlayerFrame
          * @function getTypeUrl
@@ -2245,15 +2352,19 @@ $root.NT = (function () {
             }
             return typeUrlPrefix + "/NT.PlayerFrame";
         };
+
         return PlayerFrame;
     })();
-    NT.OldClientPlayerMove = (function () {
+
+    NT.OldClientPlayerMove = (function() {
+
         /**
          * Properties of an OldClientPlayerMove.
          * @memberof NT
          * @interface IOldClientPlayerMove
          * @property {Array.<NT.IPlayerFrame>|null} [frames] OldClientPlayerMove frames
          */
+
         /**
          * Constructs a new OldClientPlayerMove.
          * @memberof NT
@@ -2269,6 +2380,7 @@ $root.NT = (function () {
                     if (properties[keys[i]] != null)
                         this[keys[i]] = properties[keys[i]];
         }
+
         /**
          * OldClientPlayerMove frames.
          * @member {Array.<NT.IPlayerFrame>} frames
@@ -2276,6 +2388,7 @@ $root.NT = (function () {
          * @instance
          */
         OldClientPlayerMove.prototype.frames = $util.emptyArray;
+
         /**
          * Creates a new OldClientPlayerMove instance using the specified properties.
          * @function create
@@ -2287,6 +2400,7 @@ $root.NT = (function () {
         OldClientPlayerMove.create = function create(properties) {
             return new OldClientPlayerMove(properties);
         };
+
         /**
          * Encodes the specified OldClientPlayerMove message. Does not implicitly {@link NT.OldClientPlayerMove.verify|verify} messages.
          * @function encode
@@ -2301,9 +2415,10 @@ $root.NT = (function () {
                 writer = $Writer.create();
             if (message.frames != null && message.frames.length)
                 for (var i = 0; i < message.frames.length; ++i)
-                    $root.NT.PlayerFrame.encode(message.frames[i], writer.uint32(/* id 1, wireType 2 =*/ 10).fork()).ldelim();
+                    $root.NT.PlayerFrame.encode(message.frames[i], writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
             return writer;
         };
+
         /**
          * Encodes the specified OldClientPlayerMove message, length delimited. Does not implicitly {@link NT.OldClientPlayerMove.verify|verify} messages.
          * @function encodeDelimited
@@ -2316,6 +2431,7 @@ $root.NT = (function () {
         OldClientPlayerMove.encodeDelimited = function encodeDelimited(message, writer) {
             return this.encode(message, writer).ldelim();
         };
+
         /**
          * Decodes an OldClientPlayerMove message from the specified reader or buffer.
          * @function decode
@@ -2334,19 +2450,20 @@ $root.NT = (function () {
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                    case 1: {
+                case 1: {
                         if (!(message.frames && message.frames.length))
                             message.frames = [];
                         message.frames.push($root.NT.PlayerFrame.decode(reader, reader.uint32()));
                         break;
                     }
-                    default:
-                        reader.skipType(tag & 7);
-                        break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
                 }
             }
             return message;
         };
+
         /**
          * Decodes an OldClientPlayerMove message from the specified reader or buffer, length delimited.
          * @function decodeDelimited
@@ -2362,6 +2479,7 @@ $root.NT = (function () {
                 reader = new $Reader(reader);
             return this.decode(reader, reader.uint32());
         };
+
         /**
          * Verifies an OldClientPlayerMove message.
          * @function verify
@@ -2384,6 +2502,7 @@ $root.NT = (function () {
             }
             return null;
         };
+
         /**
          * Creates an OldClientPlayerMove message from a plain object. Also converts values to their respective internal types.
          * @function fromObject
@@ -2408,6 +2527,7 @@ $root.NT = (function () {
             }
             return message;
         };
+
         /**
          * Creates a plain object from an OldClientPlayerMove message. Also converts values to other types if specified.
          * @function toObject
@@ -2430,6 +2550,7 @@ $root.NT = (function () {
             }
             return object;
         };
+
         /**
          * Converts this OldClientPlayerMove to JSON.
          * @function toJSON
@@ -2440,6 +2561,7 @@ $root.NT = (function () {
         OldClientPlayerMove.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
+
         /**
          * Gets the default type url for OldClientPlayerMove
          * @function getTypeUrl
@@ -2454,9 +2576,12 @@ $root.NT = (function () {
             }
             return typeUrlPrefix + "/NT.OldClientPlayerMove";
         };
+
         return OldClientPlayerMove;
     })();
-    NT.OldServerPlayerMove = (function () {
+
+    NT.OldServerPlayerMove = (function() {
+
         /**
          * Properties of an OldServerPlayerMove.
          * @memberof NT
@@ -2464,6 +2589,7 @@ $root.NT = (function () {
          * @property {string|null} [userId] OldServerPlayerMove userId
          * @property {Array.<NT.IPlayerFrame>|null} [frames] OldServerPlayerMove frames
          */
+
         /**
          * Constructs a new OldServerPlayerMove.
          * @memberof NT
@@ -2479,6 +2605,7 @@ $root.NT = (function () {
                     if (properties[keys[i]] != null)
                         this[keys[i]] = properties[keys[i]];
         }
+
         /**
          * OldServerPlayerMove userId.
          * @member {string} userId
@@ -2486,6 +2613,7 @@ $root.NT = (function () {
          * @instance
          */
         OldServerPlayerMove.prototype.userId = "";
+
         /**
          * OldServerPlayerMove frames.
          * @member {Array.<NT.IPlayerFrame>} frames
@@ -2493,6 +2621,7 @@ $root.NT = (function () {
          * @instance
          */
         OldServerPlayerMove.prototype.frames = $util.emptyArray;
+
         /**
          * Creates a new OldServerPlayerMove instance using the specified properties.
          * @function create
@@ -2504,6 +2633,7 @@ $root.NT = (function () {
         OldServerPlayerMove.create = function create(properties) {
             return new OldServerPlayerMove(properties);
         };
+
         /**
          * Encodes the specified OldServerPlayerMove message. Does not implicitly {@link NT.OldServerPlayerMove.verify|verify} messages.
          * @function encode
@@ -2517,12 +2647,13 @@ $root.NT = (function () {
             if (!writer)
                 writer = $Writer.create();
             if (message.userId != null && Object.hasOwnProperty.call(message, "userId"))
-                writer.uint32(/* id 1, wireType 2 =*/ 10).string(message.userId);
+                writer.uint32(/* id 1, wireType 2 =*/10).string(message.userId);
             if (message.frames != null && message.frames.length)
                 for (var i = 0; i < message.frames.length; ++i)
-                    $root.NT.PlayerFrame.encode(message.frames[i], writer.uint32(/* id 2, wireType 2 =*/ 18).fork()).ldelim();
+                    $root.NT.PlayerFrame.encode(message.frames[i], writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
             return writer;
         };
+
         /**
          * Encodes the specified OldServerPlayerMove message, length delimited. Does not implicitly {@link NT.OldServerPlayerMove.verify|verify} messages.
          * @function encodeDelimited
@@ -2535,6 +2666,7 @@ $root.NT = (function () {
         OldServerPlayerMove.encodeDelimited = function encodeDelimited(message, writer) {
             return this.encode(message, writer).ldelim();
         };
+
         /**
          * Decodes an OldServerPlayerMove message from the specified reader or buffer.
          * @function decode
@@ -2553,23 +2685,24 @@ $root.NT = (function () {
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                    case 1: {
+                case 1: {
                         message.userId = reader.string();
                         break;
                     }
-                    case 2: {
+                case 2: {
                         if (!(message.frames && message.frames.length))
                             message.frames = [];
                         message.frames.push($root.NT.PlayerFrame.decode(reader, reader.uint32()));
                         break;
                     }
-                    default:
-                        reader.skipType(tag & 7);
-                        break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
                 }
             }
             return message;
         };
+
         /**
          * Decodes an OldServerPlayerMove message from the specified reader or buffer, length delimited.
          * @function decodeDelimited
@@ -2585,6 +2718,7 @@ $root.NT = (function () {
                 reader = new $Reader(reader);
             return this.decode(reader, reader.uint32());
         };
+
         /**
          * Verifies an OldServerPlayerMove message.
          * @function verify
@@ -2610,6 +2744,7 @@ $root.NT = (function () {
             }
             return null;
         };
+
         /**
          * Creates an OldServerPlayerMove message from a plain object. Also converts values to their respective internal types.
          * @function fromObject
@@ -2636,6 +2771,7 @@ $root.NT = (function () {
             }
             return message;
         };
+
         /**
          * Creates a plain object from an OldServerPlayerMove message. Also converts values to other types if specified.
          * @function toObject
@@ -2662,6 +2798,7 @@ $root.NT = (function () {
             }
             return object;
         };
+
         /**
          * Converts this OldServerPlayerMove to JSON.
          * @function toJSON
@@ -2672,6 +2809,7 @@ $root.NT = (function () {
         OldServerPlayerMove.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
+
         /**
          * Gets the default type url for OldServerPlayerMove
          * @function getTypeUrl
@@ -2686,9 +2824,12 @@ $root.NT = (function () {
             }
             return typeUrlPrefix + "/NT.OldServerPlayerMove";
         };
+
         return OldServerPlayerMove;
     })();
-    NT.CompactPlayerFrames = (function () {
+
+    NT.CompactPlayerFrames = (function() {
+
         /**
          * Properties of a CompactPlayerFrames.
          * @memberof NT
@@ -2706,6 +2847,7 @@ $root.NT = (function () {
          * @property {Array.<number>|null} [heldVal] CompactPlayerFrames heldVal
          * @property {string|null} [userId] CompactPlayerFrames userId
          */
+
         /**
          * Constructs a new CompactPlayerFrames.
          * @memberof NT
@@ -2727,6 +2869,7 @@ $root.NT = (function () {
                     if (properties[keys[i]] != null)
                         this[keys[i]] = properties[keys[i]];
         }
+
         /**
          * CompactPlayerFrames xInit.
          * @member {number} xInit
@@ -2734,6 +2877,7 @@ $root.NT = (function () {
          * @instance
          */
         CompactPlayerFrames.prototype.xInit = 0;
+
         /**
          * CompactPlayerFrames yInit.
          * @member {number} yInit
@@ -2741,6 +2885,7 @@ $root.NT = (function () {
          * @instance
          */
         CompactPlayerFrames.prototype.yInit = 0;
+
         /**
          * CompactPlayerFrames xDeltas.
          * @member {Array.<number>} xDeltas
@@ -2748,6 +2893,7 @@ $root.NT = (function () {
          * @instance
          */
         CompactPlayerFrames.prototype.xDeltas = $util.emptyArray;
+
         /**
          * CompactPlayerFrames yDeltas.
          * @member {Array.<number>} yDeltas
@@ -2755,6 +2901,7 @@ $root.NT = (function () {
          * @instance
          */
         CompactPlayerFrames.prototype.yDeltas = $util.emptyArray;
+
         /**
          * CompactPlayerFrames armR.
          * @member {Array.<number>} armR
@@ -2762,6 +2909,7 @@ $root.NT = (function () {
          * @instance
          */
         CompactPlayerFrames.prototype.armR = $util.emptyArray;
+
         /**
          * CompactPlayerFrames armScaleY.
          * @member {number} armScaleY
@@ -2769,6 +2917,7 @@ $root.NT = (function () {
          * @instance
          */
         CompactPlayerFrames.prototype.armScaleY = 0;
+
         /**
          * CompactPlayerFrames scaleX.
          * @member {number} scaleX
@@ -2776,6 +2925,7 @@ $root.NT = (function () {
          * @instance
          */
         CompactPlayerFrames.prototype.scaleX = 0;
+
         /**
          * CompactPlayerFrames animIdx.
          * @member {Array.<number>} animIdx
@@ -2783,6 +2933,7 @@ $root.NT = (function () {
          * @instance
          */
         CompactPlayerFrames.prototype.animIdx = $util.emptyArray;
+
         /**
          * CompactPlayerFrames animVal.
          * @member {Array.<number>} animVal
@@ -2790,6 +2941,7 @@ $root.NT = (function () {
          * @instance
          */
         CompactPlayerFrames.prototype.animVal = $util.emptyArray;
+
         /**
          * CompactPlayerFrames heldIdx.
          * @member {Array.<number>} heldIdx
@@ -2797,6 +2949,7 @@ $root.NT = (function () {
          * @instance
          */
         CompactPlayerFrames.prototype.heldIdx = $util.emptyArray;
+
         /**
          * CompactPlayerFrames heldVal.
          * @member {Array.<number>} heldVal
@@ -2804,6 +2957,7 @@ $root.NT = (function () {
          * @instance
          */
         CompactPlayerFrames.prototype.heldVal = $util.emptyArray;
+
         /**
          * CompactPlayerFrames userId.
          * @member {string} userId
@@ -2811,6 +2965,7 @@ $root.NT = (function () {
          * @instance
          */
         CompactPlayerFrames.prototype.userId = "";
+
         /**
          * Creates a new CompactPlayerFrames instance using the specified properties.
          * @function create
@@ -2822,6 +2977,7 @@ $root.NT = (function () {
         CompactPlayerFrames.create = function create(properties) {
             return new CompactPlayerFrames(properties);
         };
+
         /**
          * Encodes the specified CompactPlayerFrames message. Does not implicitly {@link NT.CompactPlayerFrames.verify|verify} messages.
          * @function encode
@@ -2835,59 +2991,60 @@ $root.NT = (function () {
             if (!writer)
                 writer = $Writer.create();
             if (message.xInit != null && Object.hasOwnProperty.call(message, "xInit"))
-                writer.uint32(/* id 1, wireType 5 =*/ 13).float(message.xInit);
+                writer.uint32(/* id 1, wireType 5 =*/13).float(message.xInit);
             if (message.yInit != null && Object.hasOwnProperty.call(message, "yInit"))
-                writer.uint32(/* id 2, wireType 5 =*/ 21).float(message.yInit);
+                writer.uint32(/* id 2, wireType 5 =*/21).float(message.yInit);
             if (message.xDeltas != null && message.xDeltas.length) {
-                writer.uint32(/* id 3, wireType 2 =*/ 26).fork();
+                writer.uint32(/* id 3, wireType 2 =*/26).fork();
                 for (var i = 0; i < message.xDeltas.length; ++i)
                     writer.sint32(message.xDeltas[i]);
                 writer.ldelim();
             }
             if (message.yDeltas != null && message.yDeltas.length) {
-                writer.uint32(/* id 4, wireType 2 =*/ 34).fork();
+                writer.uint32(/* id 4, wireType 2 =*/34).fork();
                 for (var i = 0; i < message.yDeltas.length; ++i)
                     writer.sint32(message.yDeltas[i]);
                 writer.ldelim();
             }
             if (message.armR != null && message.armR.length) {
-                writer.uint32(/* id 5, wireType 2 =*/ 42).fork();
+                writer.uint32(/* id 5, wireType 2 =*/42).fork();
                 for (var i = 0; i < message.armR.length; ++i)
                     writer.int32(message.armR[i]);
                 writer.ldelim();
             }
             if (message.armScaleY != null && Object.hasOwnProperty.call(message, "armScaleY"))
-                writer.uint32(/* id 6, wireType 0 =*/ 48).int32(message.armScaleY);
+                writer.uint32(/* id 6, wireType 0 =*/48).int32(message.armScaleY);
             if (message.scaleX != null && Object.hasOwnProperty.call(message, "scaleX"))
-                writer.uint32(/* id 7, wireType 0 =*/ 56).int32(message.scaleX);
+                writer.uint32(/* id 7, wireType 0 =*/56).int32(message.scaleX);
             if (message.animIdx != null && message.animIdx.length) {
-                writer.uint32(/* id 8, wireType 2 =*/ 66).fork();
+                writer.uint32(/* id 8, wireType 2 =*/66).fork();
                 for (var i = 0; i < message.animIdx.length; ++i)
                     writer.int32(message.animIdx[i]);
                 writer.ldelim();
             }
             if (message.animVal != null && message.animVal.length) {
-                writer.uint32(/* id 9, wireType 2 =*/ 74).fork();
+                writer.uint32(/* id 9, wireType 2 =*/74).fork();
                 for (var i = 0; i < message.animVal.length; ++i)
                     writer.int32(message.animVal[i]);
                 writer.ldelim();
             }
             if (message.heldIdx != null && message.heldIdx.length) {
-                writer.uint32(/* id 10, wireType 2 =*/ 82).fork();
+                writer.uint32(/* id 10, wireType 2 =*/82).fork();
                 for (var i = 0; i < message.heldIdx.length; ++i)
                     writer.int32(message.heldIdx[i]);
                 writer.ldelim();
             }
             if (message.heldVal != null && message.heldVal.length) {
-                writer.uint32(/* id 11, wireType 2 =*/ 90).fork();
+                writer.uint32(/* id 11, wireType 2 =*/90).fork();
                 for (var i = 0; i < message.heldVal.length; ++i)
                     writer.int32(message.heldVal[i]);
                 writer.ldelim();
             }
             if (message.userId != null && Object.hasOwnProperty.call(message, "userId"))
-                writer.uint32(/* id 15, wireType 2 =*/ 122).string(message.userId);
+                writer.uint32(/* id 15, wireType 2 =*/122).string(message.userId);
             return writer;
         };
+
         /**
          * Encodes the specified CompactPlayerFrames message, length delimited. Does not implicitly {@link NT.CompactPlayerFrames.verify|verify} messages.
          * @function encodeDelimited
@@ -2900,6 +3057,7 @@ $root.NT = (function () {
         CompactPlayerFrames.encodeDelimited = function encodeDelimited(message, writer) {
             return this.encode(message, writer).ldelim();
         };
+
         /**
          * Decodes a CompactPlayerFrames message from the specified reader or buffer.
          * @function decode
@@ -2918,117 +3076,111 @@ $root.NT = (function () {
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                    case 1: {
+                case 1: {
                         message.xInit = reader.float();
                         break;
                     }
-                    case 2: {
+                case 2: {
                         message.yInit = reader.float();
                         break;
                     }
-                    case 3: {
+                case 3: {
                         if (!(message.xDeltas && message.xDeltas.length))
                             message.xDeltas = [];
                         if ((tag & 7) === 2) {
                             var end2 = reader.uint32() + reader.pos;
                             while (reader.pos < end2)
                                 message.xDeltas.push(reader.sint32());
-                        }
-                        else
+                        } else
                             message.xDeltas.push(reader.sint32());
                         break;
                     }
-                    case 4: {
+                case 4: {
                         if (!(message.yDeltas && message.yDeltas.length))
                             message.yDeltas = [];
                         if ((tag & 7) === 2) {
                             var end2 = reader.uint32() + reader.pos;
                             while (reader.pos < end2)
                                 message.yDeltas.push(reader.sint32());
-                        }
-                        else
+                        } else
                             message.yDeltas.push(reader.sint32());
                         break;
                     }
-                    case 5: {
+                case 5: {
                         if (!(message.armR && message.armR.length))
                             message.armR = [];
                         if ((tag & 7) === 2) {
                             var end2 = reader.uint32() + reader.pos;
                             while (reader.pos < end2)
                                 message.armR.push(reader.int32());
-                        }
-                        else
+                        } else
                             message.armR.push(reader.int32());
                         break;
                     }
-                    case 6: {
+                case 6: {
                         message.armScaleY = reader.int32();
                         break;
                     }
-                    case 7: {
+                case 7: {
                         message.scaleX = reader.int32();
                         break;
                     }
-                    case 8: {
+                case 8: {
                         if (!(message.animIdx && message.animIdx.length))
                             message.animIdx = [];
                         if ((tag & 7) === 2) {
                             var end2 = reader.uint32() + reader.pos;
                             while (reader.pos < end2)
                                 message.animIdx.push(reader.int32());
-                        }
-                        else
+                        } else
                             message.animIdx.push(reader.int32());
                         break;
                     }
-                    case 9: {
+                case 9: {
                         if (!(message.animVal && message.animVal.length))
                             message.animVal = [];
                         if ((tag & 7) === 2) {
                             var end2 = reader.uint32() + reader.pos;
                             while (reader.pos < end2)
                                 message.animVal.push(reader.int32());
-                        }
-                        else
+                        } else
                             message.animVal.push(reader.int32());
                         break;
                     }
-                    case 10: {
+                case 10: {
                         if (!(message.heldIdx && message.heldIdx.length))
                             message.heldIdx = [];
                         if ((tag & 7) === 2) {
                             var end2 = reader.uint32() + reader.pos;
                             while (reader.pos < end2)
                                 message.heldIdx.push(reader.int32());
-                        }
-                        else
+                        } else
                             message.heldIdx.push(reader.int32());
                         break;
                     }
-                    case 11: {
+                case 11: {
                         if (!(message.heldVal && message.heldVal.length))
                             message.heldVal = [];
                         if ((tag & 7) === 2) {
                             var end2 = reader.uint32() + reader.pos;
                             while (reader.pos < end2)
                                 message.heldVal.push(reader.int32());
-                        }
-                        else
+                        } else
                             message.heldVal.push(reader.int32());
                         break;
                     }
-                    case 15: {
+                case 15: {
                         message.userId = reader.string();
                         break;
                     }
-                    default:
-                        reader.skipType(tag & 7);
-                        break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
                 }
             }
             return message;
         };
+
         /**
          * Decodes a CompactPlayerFrames message from the specified reader or buffer, length delimited.
          * @function decodeDelimited
@@ -3044,6 +3196,7 @@ $root.NT = (function () {
                 reader = new $Reader(reader);
             return this.decode(reader, reader.uint32());
         };
+
         /**
          * Verifies a CompactPlayerFrames message.
          * @function verify
@@ -3121,6 +3274,7 @@ $root.NT = (function () {
                     return "userId: string expected";
             return null;
         };
+
         /**
          * Creates a CompactPlayerFrames message from a plain object. Also converts values to their respective internal types.
          * @function fromObject
@@ -3194,6 +3348,7 @@ $root.NT = (function () {
                 message.userId = String(object.userId);
             return message;
         };
+
         /**
          * Creates a plain object from a CompactPlayerFrames message. Also converts values to other types if specified.
          * @function toObject
@@ -3270,6 +3425,7 @@ $root.NT = (function () {
                 object.userId = message.userId;
             return object;
         };
+
         /**
          * Converts this CompactPlayerFrames to JSON.
          * @function toJSON
@@ -3280,6 +3436,7 @@ $root.NT = (function () {
         CompactPlayerFrames.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
+
         /**
          * Gets the default type url for CompactPlayerFrames
          * @function getTypeUrl
@@ -3294,15 +3451,19 @@ $root.NT = (function () {
             }
             return typeUrlPrefix + "/NT.CompactPlayerFrames";
         };
+
         return CompactPlayerFrames;
     })();
-    NT.ServerPlayerMoves = (function () {
+
+    NT.ServerPlayerMoves = (function() {
+
         /**
          * Properties of a ServerPlayerMoves.
          * @memberof NT
          * @interface IServerPlayerMoves
          * @property {Array.<NT.ICompactPlayerFrames>|null} [userFrames] ServerPlayerMoves userFrames
          */
+
         /**
          * Constructs a new ServerPlayerMoves.
          * @memberof NT
@@ -3318,6 +3479,7 @@ $root.NT = (function () {
                     if (properties[keys[i]] != null)
                         this[keys[i]] = properties[keys[i]];
         }
+
         /**
          * ServerPlayerMoves userFrames.
          * @member {Array.<NT.ICompactPlayerFrames>} userFrames
@@ -3325,6 +3487,7 @@ $root.NT = (function () {
          * @instance
          */
         ServerPlayerMoves.prototype.userFrames = $util.emptyArray;
+
         /**
          * Creates a new ServerPlayerMoves instance using the specified properties.
          * @function create
@@ -3336,6 +3499,7 @@ $root.NT = (function () {
         ServerPlayerMoves.create = function create(properties) {
             return new ServerPlayerMoves(properties);
         };
+
         /**
          * Encodes the specified ServerPlayerMoves message. Does not implicitly {@link NT.ServerPlayerMoves.verify|verify} messages.
          * @function encode
@@ -3350,9 +3514,10 @@ $root.NT = (function () {
                 writer = $Writer.create();
             if (message.userFrames != null && message.userFrames.length)
                 for (var i = 0; i < message.userFrames.length; ++i)
-                    $root.NT.CompactPlayerFrames.encode(message.userFrames[i], writer.uint32(/* id 1, wireType 2 =*/ 10).fork()).ldelim();
+                    $root.NT.CompactPlayerFrames.encode(message.userFrames[i], writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
             return writer;
         };
+
         /**
          * Encodes the specified ServerPlayerMoves message, length delimited. Does not implicitly {@link NT.ServerPlayerMoves.verify|verify} messages.
          * @function encodeDelimited
@@ -3365,6 +3530,7 @@ $root.NT = (function () {
         ServerPlayerMoves.encodeDelimited = function encodeDelimited(message, writer) {
             return this.encode(message, writer).ldelim();
         };
+
         /**
          * Decodes a ServerPlayerMoves message from the specified reader or buffer.
          * @function decode
@@ -3383,19 +3549,20 @@ $root.NT = (function () {
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                    case 1: {
+                case 1: {
                         if (!(message.userFrames && message.userFrames.length))
                             message.userFrames = [];
                         message.userFrames.push($root.NT.CompactPlayerFrames.decode(reader, reader.uint32()));
                         break;
                     }
-                    default:
-                        reader.skipType(tag & 7);
-                        break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
                 }
             }
             return message;
         };
+
         /**
          * Decodes a ServerPlayerMoves message from the specified reader or buffer, length delimited.
          * @function decodeDelimited
@@ -3411,6 +3578,7 @@ $root.NT = (function () {
                 reader = new $Reader(reader);
             return this.decode(reader, reader.uint32());
         };
+
         /**
          * Verifies a ServerPlayerMoves message.
          * @function verify
@@ -3433,6 +3601,7 @@ $root.NT = (function () {
             }
             return null;
         };
+
         /**
          * Creates a ServerPlayerMoves message from a plain object. Also converts values to their respective internal types.
          * @function fromObject
@@ -3457,6 +3626,7 @@ $root.NT = (function () {
             }
             return message;
         };
+
         /**
          * Creates a plain object from a ServerPlayerMoves message. Also converts values to other types if specified.
          * @function toObject
@@ -3479,6 +3649,7 @@ $root.NT = (function () {
             }
             return object;
         };
+
         /**
          * Converts this ServerPlayerMoves to JSON.
          * @function toJSON
@@ -3489,6 +3660,7 @@ $root.NT = (function () {
         ServerPlayerMoves.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
+
         /**
          * Gets the default type url for ServerPlayerMoves
          * @function getTypeUrl
@@ -3503,9 +3675,12 @@ $root.NT = (function () {
             }
             return typeUrlPrefix + "/NT.ServerPlayerMoves";
         };
+
         return ServerPlayerMoves;
     })();
-    NT.ClientPlayerUpdate = (function () {
+
+    NT.ClientPlayerUpdate = (function() {
+
         /**
          * Properties of a ClientPlayerUpdate.
          * @memberof NT
@@ -3515,6 +3690,7 @@ $root.NT = (function () {
          * @property {string|null} [location] ClientPlayerUpdate location
          * @property {boolean|null} [sampo] ClientPlayerUpdate sampo
          */
+
         /**
          * Constructs a new ClientPlayerUpdate.
          * @memberof NT
@@ -3529,6 +3705,7 @@ $root.NT = (function () {
                     if (properties[keys[i]] != null)
                         this[keys[i]] = properties[keys[i]];
         }
+
         /**
          * ClientPlayerUpdate curHp.
          * @member {number|null|undefined} curHp
@@ -3536,6 +3713,7 @@ $root.NT = (function () {
          * @instance
          */
         ClientPlayerUpdate.prototype.curHp = null;
+
         /**
          * ClientPlayerUpdate maxHp.
          * @member {number|null|undefined} maxHp
@@ -3543,6 +3721,7 @@ $root.NT = (function () {
          * @instance
          */
         ClientPlayerUpdate.prototype.maxHp = null;
+
         /**
          * ClientPlayerUpdate location.
          * @member {string|null|undefined} location
@@ -3550,6 +3729,7 @@ $root.NT = (function () {
          * @instance
          */
         ClientPlayerUpdate.prototype.location = null;
+
         /**
          * ClientPlayerUpdate sampo.
          * @member {boolean|null|undefined} sampo
@@ -3557,8 +3737,10 @@ $root.NT = (function () {
          * @instance
          */
         ClientPlayerUpdate.prototype.sampo = null;
+
         // OneOf field names bound to virtual getters and setters
         var $oneOfFields;
+
         /**
          * ClientPlayerUpdate _curHp.
          * @member {"curHp"|undefined} _curHp
@@ -3569,6 +3751,7 @@ $root.NT = (function () {
             get: $util.oneOfGetter($oneOfFields = ["curHp"]),
             set: $util.oneOfSetter($oneOfFields)
         });
+
         /**
          * ClientPlayerUpdate _maxHp.
          * @member {"maxHp"|undefined} _maxHp
@@ -3579,6 +3762,7 @@ $root.NT = (function () {
             get: $util.oneOfGetter($oneOfFields = ["maxHp"]),
             set: $util.oneOfSetter($oneOfFields)
         });
+
         /**
          * ClientPlayerUpdate _location.
          * @member {"location"|undefined} _location
@@ -3589,6 +3773,7 @@ $root.NT = (function () {
             get: $util.oneOfGetter($oneOfFields = ["location"]),
             set: $util.oneOfSetter($oneOfFields)
         });
+
         /**
          * ClientPlayerUpdate _sampo.
          * @member {"sampo"|undefined} _sampo
@@ -3599,6 +3784,7 @@ $root.NT = (function () {
             get: $util.oneOfGetter($oneOfFields = ["sampo"]),
             set: $util.oneOfSetter($oneOfFields)
         });
+
         /**
          * Creates a new ClientPlayerUpdate instance using the specified properties.
          * @function create
@@ -3610,6 +3796,7 @@ $root.NT = (function () {
         ClientPlayerUpdate.create = function create(properties) {
             return new ClientPlayerUpdate(properties);
         };
+
         /**
          * Encodes the specified ClientPlayerUpdate message. Does not implicitly {@link NT.ClientPlayerUpdate.verify|verify} messages.
          * @function encode
@@ -3623,15 +3810,16 @@ $root.NT = (function () {
             if (!writer)
                 writer = $Writer.create();
             if (message.curHp != null && Object.hasOwnProperty.call(message, "curHp"))
-                writer.uint32(/* id 1, wireType 5 =*/ 13).float(message.curHp);
+                writer.uint32(/* id 1, wireType 5 =*/13).float(message.curHp);
             if (message.maxHp != null && Object.hasOwnProperty.call(message, "maxHp"))
-                writer.uint32(/* id 2, wireType 5 =*/ 21).float(message.maxHp);
+                writer.uint32(/* id 2, wireType 5 =*/21).float(message.maxHp);
             if (message.location != null && Object.hasOwnProperty.call(message, "location"))
-                writer.uint32(/* id 3, wireType 2 =*/ 26).string(message.location);
+                writer.uint32(/* id 3, wireType 2 =*/26).string(message.location);
             if (message.sampo != null && Object.hasOwnProperty.call(message, "sampo"))
-                writer.uint32(/* id 4, wireType 0 =*/ 32).bool(message.sampo);
+                writer.uint32(/* id 4, wireType 0 =*/32).bool(message.sampo);
             return writer;
         };
+
         /**
          * Encodes the specified ClientPlayerUpdate message, length delimited. Does not implicitly {@link NT.ClientPlayerUpdate.verify|verify} messages.
          * @function encodeDelimited
@@ -3644,6 +3832,7 @@ $root.NT = (function () {
         ClientPlayerUpdate.encodeDelimited = function encodeDelimited(message, writer) {
             return this.encode(message, writer).ldelim();
         };
+
         /**
          * Decodes a ClientPlayerUpdate message from the specified reader or buffer.
          * @function decode
@@ -3662,29 +3851,30 @@ $root.NT = (function () {
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                    case 1: {
+                case 1: {
                         message.curHp = reader.float();
                         break;
                     }
-                    case 2: {
+                case 2: {
                         message.maxHp = reader.float();
                         break;
                     }
-                    case 3: {
+                case 3: {
                         message.location = reader.string();
                         break;
                     }
-                    case 4: {
+                case 4: {
                         message.sampo = reader.bool();
                         break;
                     }
-                    default:
-                        reader.skipType(tag & 7);
-                        break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
                 }
             }
             return message;
         };
+
         /**
          * Decodes a ClientPlayerUpdate message from the specified reader or buffer, length delimited.
          * @function decodeDelimited
@@ -3700,6 +3890,7 @@ $root.NT = (function () {
                 reader = new $Reader(reader);
             return this.decode(reader, reader.uint32());
         };
+
         /**
          * Verifies a ClientPlayerUpdate message.
          * @function verify
@@ -3734,6 +3925,7 @@ $root.NT = (function () {
             }
             return null;
         };
+
         /**
          * Creates a ClientPlayerUpdate message from a plain object. Also converts values to their respective internal types.
          * @function fromObject
@@ -3756,6 +3948,7 @@ $root.NT = (function () {
                 message.sampo = Boolean(object.sampo);
             return message;
         };
+
         /**
          * Creates a plain object from a ClientPlayerUpdate message. Also converts values to other types if specified.
          * @function toObject
@@ -3791,6 +3984,7 @@ $root.NT = (function () {
             }
             return object;
         };
+
         /**
          * Converts this ClientPlayerUpdate to JSON.
          * @function toJSON
@@ -3801,6 +3995,7 @@ $root.NT = (function () {
         ClientPlayerUpdate.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
+
         /**
          * Gets the default type url for ClientPlayerUpdate
          * @function getTypeUrl
@@ -3815,9 +4010,12 @@ $root.NT = (function () {
             }
             return typeUrlPrefix + "/NT.ClientPlayerUpdate";
         };
+
         return ClientPlayerUpdate;
     })();
-    NT.ServerPlayerUpdate = (function () {
+
+    NT.ServerPlayerUpdate = (function() {
+
         /**
          * Properties of a ServerPlayerUpdate.
          * @memberof NT
@@ -3828,6 +4026,7 @@ $root.NT = (function () {
          * @property {string|null} [location] ServerPlayerUpdate location
          * @property {boolean|null} [sampo] ServerPlayerUpdate sampo
          */
+
         /**
          * Constructs a new ServerPlayerUpdate.
          * @memberof NT
@@ -3842,6 +4041,7 @@ $root.NT = (function () {
                     if (properties[keys[i]] != null)
                         this[keys[i]] = properties[keys[i]];
         }
+
         /**
          * ServerPlayerUpdate userId.
          * @member {string} userId
@@ -3849,6 +4049,7 @@ $root.NT = (function () {
          * @instance
          */
         ServerPlayerUpdate.prototype.userId = "";
+
         /**
          * ServerPlayerUpdate curHp.
          * @member {number|null|undefined} curHp
@@ -3856,6 +4057,7 @@ $root.NT = (function () {
          * @instance
          */
         ServerPlayerUpdate.prototype.curHp = null;
+
         /**
          * ServerPlayerUpdate maxHp.
          * @member {number|null|undefined} maxHp
@@ -3863,6 +4065,7 @@ $root.NT = (function () {
          * @instance
          */
         ServerPlayerUpdate.prototype.maxHp = null;
+
         /**
          * ServerPlayerUpdate location.
          * @member {string|null|undefined} location
@@ -3870,6 +4073,7 @@ $root.NT = (function () {
          * @instance
          */
         ServerPlayerUpdate.prototype.location = null;
+
         /**
          * ServerPlayerUpdate sampo.
          * @member {boolean|null|undefined} sampo
@@ -3877,8 +4081,10 @@ $root.NT = (function () {
          * @instance
          */
         ServerPlayerUpdate.prototype.sampo = null;
+
         // OneOf field names bound to virtual getters and setters
         var $oneOfFields;
+
         /**
          * ServerPlayerUpdate _curHp.
          * @member {"curHp"|undefined} _curHp
@@ -3889,6 +4095,7 @@ $root.NT = (function () {
             get: $util.oneOfGetter($oneOfFields = ["curHp"]),
             set: $util.oneOfSetter($oneOfFields)
         });
+
         /**
          * ServerPlayerUpdate _maxHp.
          * @member {"maxHp"|undefined} _maxHp
@@ -3899,6 +4106,7 @@ $root.NT = (function () {
             get: $util.oneOfGetter($oneOfFields = ["maxHp"]),
             set: $util.oneOfSetter($oneOfFields)
         });
+
         /**
          * ServerPlayerUpdate _location.
          * @member {"location"|undefined} _location
@@ -3909,6 +4117,7 @@ $root.NT = (function () {
             get: $util.oneOfGetter($oneOfFields = ["location"]),
             set: $util.oneOfSetter($oneOfFields)
         });
+
         /**
          * ServerPlayerUpdate _sampo.
          * @member {"sampo"|undefined} _sampo
@@ -3919,6 +4128,7 @@ $root.NT = (function () {
             get: $util.oneOfGetter($oneOfFields = ["sampo"]),
             set: $util.oneOfSetter($oneOfFields)
         });
+
         /**
          * Creates a new ServerPlayerUpdate instance using the specified properties.
          * @function create
@@ -3930,6 +4140,7 @@ $root.NT = (function () {
         ServerPlayerUpdate.create = function create(properties) {
             return new ServerPlayerUpdate(properties);
         };
+
         /**
          * Encodes the specified ServerPlayerUpdate message. Does not implicitly {@link NT.ServerPlayerUpdate.verify|verify} messages.
          * @function encode
@@ -3943,17 +4154,18 @@ $root.NT = (function () {
             if (!writer)
                 writer = $Writer.create();
             if (message.userId != null && Object.hasOwnProperty.call(message, "userId"))
-                writer.uint32(/* id 1, wireType 2 =*/ 10).string(message.userId);
+                writer.uint32(/* id 1, wireType 2 =*/10).string(message.userId);
             if (message.curHp != null && Object.hasOwnProperty.call(message, "curHp"))
-                writer.uint32(/* id 2, wireType 5 =*/ 21).float(message.curHp);
+                writer.uint32(/* id 2, wireType 5 =*/21).float(message.curHp);
             if (message.maxHp != null && Object.hasOwnProperty.call(message, "maxHp"))
-                writer.uint32(/* id 3, wireType 5 =*/ 29).float(message.maxHp);
+                writer.uint32(/* id 3, wireType 5 =*/29).float(message.maxHp);
             if (message.location != null && Object.hasOwnProperty.call(message, "location"))
-                writer.uint32(/* id 4, wireType 2 =*/ 34).string(message.location);
+                writer.uint32(/* id 4, wireType 2 =*/34).string(message.location);
             if (message.sampo != null && Object.hasOwnProperty.call(message, "sampo"))
-                writer.uint32(/* id 5, wireType 0 =*/ 40).bool(message.sampo);
+                writer.uint32(/* id 5, wireType 0 =*/40).bool(message.sampo);
             return writer;
         };
+
         /**
          * Encodes the specified ServerPlayerUpdate message, length delimited. Does not implicitly {@link NT.ServerPlayerUpdate.verify|verify} messages.
          * @function encodeDelimited
@@ -3966,6 +4178,7 @@ $root.NT = (function () {
         ServerPlayerUpdate.encodeDelimited = function encodeDelimited(message, writer) {
             return this.encode(message, writer).ldelim();
         };
+
         /**
          * Decodes a ServerPlayerUpdate message from the specified reader or buffer.
          * @function decode
@@ -3984,33 +4197,34 @@ $root.NT = (function () {
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                    case 1: {
+                case 1: {
                         message.userId = reader.string();
                         break;
                     }
-                    case 2: {
+                case 2: {
                         message.curHp = reader.float();
                         break;
                     }
-                    case 3: {
+                case 3: {
                         message.maxHp = reader.float();
                         break;
                     }
-                    case 4: {
+                case 4: {
                         message.location = reader.string();
                         break;
                     }
-                    case 5: {
+                case 5: {
                         message.sampo = reader.bool();
                         break;
                     }
-                    default:
-                        reader.skipType(tag & 7);
-                        break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
                 }
             }
             return message;
         };
+
         /**
          * Decodes a ServerPlayerUpdate message from the specified reader or buffer, length delimited.
          * @function decodeDelimited
@@ -4026,6 +4240,7 @@ $root.NT = (function () {
                 reader = new $Reader(reader);
             return this.decode(reader, reader.uint32());
         };
+
         /**
          * Verifies a ServerPlayerUpdate message.
          * @function verify
@@ -4063,6 +4278,7 @@ $root.NT = (function () {
             }
             return null;
         };
+
         /**
          * Creates a ServerPlayerUpdate message from a plain object. Also converts values to their respective internal types.
          * @function fromObject
@@ -4087,6 +4303,7 @@ $root.NT = (function () {
                 message.sampo = Boolean(object.sampo);
             return message;
         };
+
         /**
          * Creates a plain object from a ServerPlayerUpdate message. Also converts values to other types if specified.
          * @function toObject
@@ -4126,6 +4343,7 @@ $root.NT = (function () {
             }
             return object;
         };
+
         /**
          * Converts this ServerPlayerUpdate to JSON.
          * @function toJSON
@@ -4136,6 +4354,7 @@ $root.NT = (function () {
         ServerPlayerUpdate.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
+
         /**
          * Gets the default type url for ServerPlayerUpdate
          * @function getTypeUrl
@@ -4150,9 +4369,12 @@ $root.NT = (function () {
             }
             return typeUrlPrefix + "/NT.ServerPlayerUpdate";
         };
+
         return ServerPlayerUpdate;
     })();
-    NT.ClientPlayerUpdateInventory = (function () {
+
+    NT.ClientPlayerUpdateInventory = (function() {
+
         /**
          * Properties of a ClientPlayerUpdateInventory.
          * @memberof NT
@@ -4161,6 +4383,7 @@ $root.NT = (function () {
          * @property {Array.<NT.ClientPlayerUpdateInventory.IInventoryItem>|null} [items] ClientPlayerUpdateInventory items
          * @property {Array.<NT.ClientPlayerUpdateInventory.IInventorySpell>|null} [spells] ClientPlayerUpdateInventory spells
          */
+
         /**
          * Constructs a new ClientPlayerUpdateInventory.
          * @memberof NT
@@ -4178,6 +4401,7 @@ $root.NT = (function () {
                     if (properties[keys[i]] != null)
                         this[keys[i]] = properties[keys[i]];
         }
+
         /**
          * ClientPlayerUpdateInventory wands.
          * @member {Array.<NT.ClientPlayerUpdateInventory.IInventoryWand>} wands
@@ -4185,6 +4409,7 @@ $root.NT = (function () {
          * @instance
          */
         ClientPlayerUpdateInventory.prototype.wands = $util.emptyArray;
+
         /**
          * ClientPlayerUpdateInventory items.
          * @member {Array.<NT.ClientPlayerUpdateInventory.IInventoryItem>} items
@@ -4192,6 +4417,7 @@ $root.NT = (function () {
          * @instance
          */
         ClientPlayerUpdateInventory.prototype.items = $util.emptyArray;
+
         /**
          * ClientPlayerUpdateInventory spells.
          * @member {Array.<NT.ClientPlayerUpdateInventory.IInventorySpell>} spells
@@ -4199,6 +4425,7 @@ $root.NT = (function () {
          * @instance
          */
         ClientPlayerUpdateInventory.prototype.spells = $util.emptyArray;
+
         /**
          * Creates a new ClientPlayerUpdateInventory instance using the specified properties.
          * @function create
@@ -4210,6 +4437,7 @@ $root.NT = (function () {
         ClientPlayerUpdateInventory.create = function create(properties) {
             return new ClientPlayerUpdateInventory(properties);
         };
+
         /**
          * Encodes the specified ClientPlayerUpdateInventory message. Does not implicitly {@link NT.ClientPlayerUpdateInventory.verify|verify} messages.
          * @function encode
@@ -4224,15 +4452,16 @@ $root.NT = (function () {
                 writer = $Writer.create();
             if (message.wands != null && message.wands.length)
                 for (var i = 0; i < message.wands.length; ++i)
-                    $root.NT.ClientPlayerUpdateInventory.InventoryWand.encode(message.wands[i], writer.uint32(/* id 1, wireType 2 =*/ 10).fork()).ldelim();
+                    $root.NT.ClientPlayerUpdateInventory.InventoryWand.encode(message.wands[i], writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
             if (message.items != null && message.items.length)
                 for (var i = 0; i < message.items.length; ++i)
-                    $root.NT.ClientPlayerUpdateInventory.InventoryItem.encode(message.items[i], writer.uint32(/* id 2, wireType 2 =*/ 18).fork()).ldelim();
+                    $root.NT.ClientPlayerUpdateInventory.InventoryItem.encode(message.items[i], writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
             if (message.spells != null && message.spells.length)
                 for (var i = 0; i < message.spells.length; ++i)
-                    $root.NT.ClientPlayerUpdateInventory.InventorySpell.encode(message.spells[i], writer.uint32(/* id 3, wireType 2 =*/ 26).fork()).ldelim();
+                    $root.NT.ClientPlayerUpdateInventory.InventorySpell.encode(message.spells[i], writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
             return writer;
         };
+
         /**
          * Encodes the specified ClientPlayerUpdateInventory message, length delimited. Does not implicitly {@link NT.ClientPlayerUpdateInventory.verify|verify} messages.
          * @function encodeDelimited
@@ -4245,6 +4474,7 @@ $root.NT = (function () {
         ClientPlayerUpdateInventory.encodeDelimited = function encodeDelimited(message, writer) {
             return this.encode(message, writer).ldelim();
         };
+
         /**
          * Decodes a ClientPlayerUpdateInventory message from the specified reader or buffer.
          * @function decode
@@ -4263,31 +4493,32 @@ $root.NT = (function () {
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                    case 1: {
+                case 1: {
                         if (!(message.wands && message.wands.length))
                             message.wands = [];
                         message.wands.push($root.NT.ClientPlayerUpdateInventory.InventoryWand.decode(reader, reader.uint32()));
                         break;
                     }
-                    case 2: {
+                case 2: {
                         if (!(message.items && message.items.length))
                             message.items = [];
                         message.items.push($root.NT.ClientPlayerUpdateInventory.InventoryItem.decode(reader, reader.uint32()));
                         break;
                     }
-                    case 3: {
+                case 3: {
                         if (!(message.spells && message.spells.length))
                             message.spells = [];
                         message.spells.push($root.NT.ClientPlayerUpdateInventory.InventorySpell.decode(reader, reader.uint32()));
                         break;
                     }
-                    default:
-                        reader.skipType(tag & 7);
-                        break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
                 }
             }
             return message;
         };
+
         /**
          * Decodes a ClientPlayerUpdateInventory message from the specified reader or buffer, length delimited.
          * @function decodeDelimited
@@ -4303,6 +4534,7 @@ $root.NT = (function () {
                 reader = new $Reader(reader);
             return this.decode(reader, reader.uint32());
         };
+
         /**
          * Verifies a ClientPlayerUpdateInventory message.
          * @function verify
@@ -4343,6 +4575,7 @@ $root.NT = (function () {
             }
             return null;
         };
+
         /**
          * Creates a ClientPlayerUpdateInventory message from a plain object. Also converts values to their respective internal types.
          * @function fromObject
@@ -4387,6 +4620,7 @@ $root.NT = (function () {
             }
             return message;
         };
+
         /**
          * Creates a plain object from a ClientPlayerUpdateInventory message. Also converts values to other types if specified.
          * @function toObject
@@ -4422,6 +4656,7 @@ $root.NT = (function () {
             }
             return object;
         };
+
         /**
          * Converts this ClientPlayerUpdateInventory to JSON.
          * @function toJSON
@@ -4432,6 +4667,7 @@ $root.NT = (function () {
         ClientPlayerUpdateInventory.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
+
         /**
          * Gets the default type url for ClientPlayerUpdateInventory
          * @function getTypeUrl
@@ -4446,7 +4682,9 @@ $root.NT = (function () {
             }
             return typeUrlPrefix + "/NT.ClientPlayerUpdateInventory";
         };
-        ClientPlayerUpdateInventory.InventoryWand = (function () {
+
+        ClientPlayerUpdateInventory.InventoryWand = (function() {
+
             /**
              * Properties of an InventoryWand.
              * @memberof NT.ClientPlayerUpdateInventory
@@ -4454,6 +4692,7 @@ $root.NT = (function () {
              * @property {number|null} [index] InventoryWand index
              * @property {NT.IWand|null} [wand] InventoryWand wand
              */
+
             /**
              * Constructs a new InventoryWand.
              * @memberof NT.ClientPlayerUpdateInventory
@@ -4468,6 +4707,7 @@ $root.NT = (function () {
                         if (properties[keys[i]] != null)
                             this[keys[i]] = properties[keys[i]];
             }
+
             /**
              * InventoryWand index.
              * @member {number} index
@@ -4475,6 +4715,7 @@ $root.NT = (function () {
              * @instance
              */
             InventoryWand.prototype.index = 0;
+
             /**
              * InventoryWand wand.
              * @member {NT.IWand|null|undefined} wand
@@ -4482,6 +4723,7 @@ $root.NT = (function () {
              * @instance
              */
             InventoryWand.prototype.wand = null;
+
             /**
              * Creates a new InventoryWand instance using the specified properties.
              * @function create
@@ -4493,6 +4735,7 @@ $root.NT = (function () {
             InventoryWand.create = function create(properties) {
                 return new InventoryWand(properties);
             };
+
             /**
              * Encodes the specified InventoryWand message. Does not implicitly {@link NT.ClientPlayerUpdateInventory.InventoryWand.verify|verify} messages.
              * @function encode
@@ -4506,11 +4749,12 @@ $root.NT = (function () {
                 if (!writer)
                     writer = $Writer.create();
                 if (message.index != null && Object.hasOwnProperty.call(message, "index"))
-                    writer.uint32(/* id 1, wireType 0 =*/ 8).uint32(message.index);
+                    writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.index);
                 if (message.wand != null && Object.hasOwnProperty.call(message, "wand"))
-                    $root.NT.Wand.encode(message.wand, writer.uint32(/* id 2, wireType 2 =*/ 18).fork()).ldelim();
+                    $root.NT.Wand.encode(message.wand, writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
                 return writer;
             };
+
             /**
              * Encodes the specified InventoryWand message, length delimited. Does not implicitly {@link NT.ClientPlayerUpdateInventory.InventoryWand.verify|verify} messages.
              * @function encodeDelimited
@@ -4523,6 +4767,7 @@ $root.NT = (function () {
             InventoryWand.encodeDelimited = function encodeDelimited(message, writer) {
                 return this.encode(message, writer).ldelim();
             };
+
             /**
              * Decodes an InventoryWand message from the specified reader or buffer.
              * @function decode
@@ -4541,21 +4786,22 @@ $root.NT = (function () {
                 while (reader.pos < end) {
                     var tag = reader.uint32();
                     switch (tag >>> 3) {
-                        case 1: {
+                    case 1: {
                             message.index = reader.uint32();
                             break;
                         }
-                        case 2: {
+                    case 2: {
                             message.wand = $root.NT.Wand.decode(reader, reader.uint32());
                             break;
                         }
-                        default:
-                            reader.skipType(tag & 7);
-                            break;
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
                     }
                 }
                 return message;
             };
+
             /**
              * Decodes an InventoryWand message from the specified reader or buffer, length delimited.
              * @function decodeDelimited
@@ -4571,6 +4817,7 @@ $root.NT = (function () {
                     reader = new $Reader(reader);
                 return this.decode(reader, reader.uint32());
             };
+
             /**
              * Verifies an InventoryWand message.
              * @function verify
@@ -4592,6 +4839,7 @@ $root.NT = (function () {
                 }
                 return null;
             };
+
             /**
              * Creates an InventoryWand message from a plain object. Also converts values to their respective internal types.
              * @function fromObject
@@ -4613,6 +4861,7 @@ $root.NT = (function () {
                 }
                 return message;
             };
+
             /**
              * Creates a plain object from an InventoryWand message. Also converts values to other types if specified.
              * @function toObject
@@ -4636,6 +4885,7 @@ $root.NT = (function () {
                     object.wand = $root.NT.Wand.toObject(message.wand, options);
                 return object;
             };
+
             /**
              * Converts this InventoryWand to JSON.
              * @function toJSON
@@ -4646,6 +4896,7 @@ $root.NT = (function () {
             InventoryWand.prototype.toJSON = function toJSON() {
                 return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
             };
+
             /**
              * Gets the default type url for InventoryWand
              * @function getTypeUrl
@@ -4660,9 +4911,12 @@ $root.NT = (function () {
                 }
                 return typeUrlPrefix + "/NT.ClientPlayerUpdateInventory.InventoryWand";
             };
+
             return InventoryWand;
         })();
-        ClientPlayerUpdateInventory.InventoryItem = (function () {
+
+        ClientPlayerUpdateInventory.InventoryItem = (function() {
+
             /**
              * Properties of an InventoryItem.
              * @memberof NT.ClientPlayerUpdateInventory
@@ -4670,6 +4924,7 @@ $root.NT = (function () {
              * @property {number|null} [index] InventoryItem index
              * @property {NT.IItem|null} [item] InventoryItem item
              */
+
             /**
              * Constructs a new InventoryItem.
              * @memberof NT.ClientPlayerUpdateInventory
@@ -4684,6 +4939,7 @@ $root.NT = (function () {
                         if (properties[keys[i]] != null)
                             this[keys[i]] = properties[keys[i]];
             }
+
             /**
              * InventoryItem index.
              * @member {number} index
@@ -4691,6 +4947,7 @@ $root.NT = (function () {
              * @instance
              */
             InventoryItem.prototype.index = 0;
+
             /**
              * InventoryItem item.
              * @member {NT.IItem|null|undefined} item
@@ -4698,6 +4955,7 @@ $root.NT = (function () {
              * @instance
              */
             InventoryItem.prototype.item = null;
+
             /**
              * Creates a new InventoryItem instance using the specified properties.
              * @function create
@@ -4709,6 +4967,7 @@ $root.NT = (function () {
             InventoryItem.create = function create(properties) {
                 return new InventoryItem(properties);
             };
+
             /**
              * Encodes the specified InventoryItem message. Does not implicitly {@link NT.ClientPlayerUpdateInventory.InventoryItem.verify|verify} messages.
              * @function encode
@@ -4722,11 +4981,12 @@ $root.NT = (function () {
                 if (!writer)
                     writer = $Writer.create();
                 if (message.index != null && Object.hasOwnProperty.call(message, "index"))
-                    writer.uint32(/* id 3, wireType 0 =*/ 24).uint32(message.index);
+                    writer.uint32(/* id 3, wireType 0 =*/24).uint32(message.index);
                 if (message.item != null && Object.hasOwnProperty.call(message, "item"))
-                    $root.NT.Item.encode(message.item, writer.uint32(/* id 4, wireType 2 =*/ 34).fork()).ldelim();
+                    $root.NT.Item.encode(message.item, writer.uint32(/* id 4, wireType 2 =*/34).fork()).ldelim();
                 return writer;
             };
+
             /**
              * Encodes the specified InventoryItem message, length delimited. Does not implicitly {@link NT.ClientPlayerUpdateInventory.InventoryItem.verify|verify} messages.
              * @function encodeDelimited
@@ -4739,6 +4999,7 @@ $root.NT = (function () {
             InventoryItem.encodeDelimited = function encodeDelimited(message, writer) {
                 return this.encode(message, writer).ldelim();
             };
+
             /**
              * Decodes an InventoryItem message from the specified reader or buffer.
              * @function decode
@@ -4757,21 +5018,22 @@ $root.NT = (function () {
                 while (reader.pos < end) {
                     var tag = reader.uint32();
                     switch (tag >>> 3) {
-                        case 3: {
+                    case 3: {
                             message.index = reader.uint32();
                             break;
                         }
-                        case 4: {
+                    case 4: {
                             message.item = $root.NT.Item.decode(reader, reader.uint32());
                             break;
                         }
-                        default:
-                            reader.skipType(tag & 7);
-                            break;
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
                     }
                 }
                 return message;
             };
+
             /**
              * Decodes an InventoryItem message from the specified reader or buffer, length delimited.
              * @function decodeDelimited
@@ -4787,6 +5049,7 @@ $root.NT = (function () {
                     reader = new $Reader(reader);
                 return this.decode(reader, reader.uint32());
             };
+
             /**
              * Verifies an InventoryItem message.
              * @function verify
@@ -4808,6 +5071,7 @@ $root.NT = (function () {
                 }
                 return null;
             };
+
             /**
              * Creates an InventoryItem message from a plain object. Also converts values to their respective internal types.
              * @function fromObject
@@ -4829,6 +5093,7 @@ $root.NT = (function () {
                 }
                 return message;
             };
+
             /**
              * Creates a plain object from an InventoryItem message. Also converts values to other types if specified.
              * @function toObject
@@ -4852,6 +5117,7 @@ $root.NT = (function () {
                     object.item = $root.NT.Item.toObject(message.item, options);
                 return object;
             };
+
             /**
              * Converts this InventoryItem to JSON.
              * @function toJSON
@@ -4862,6 +5128,7 @@ $root.NT = (function () {
             InventoryItem.prototype.toJSON = function toJSON() {
                 return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
             };
+
             /**
              * Gets the default type url for InventoryItem
              * @function getTypeUrl
@@ -4876,9 +5143,12 @@ $root.NT = (function () {
                 }
                 return typeUrlPrefix + "/NT.ClientPlayerUpdateInventory.InventoryItem";
             };
+
             return InventoryItem;
         })();
-        ClientPlayerUpdateInventory.InventorySpell = (function () {
+
+        ClientPlayerUpdateInventory.InventorySpell = (function() {
+
             /**
              * Properties of an InventorySpell.
              * @memberof NT.ClientPlayerUpdateInventory
@@ -4886,6 +5156,7 @@ $root.NT = (function () {
              * @property {number|null} [index] InventorySpell index
              * @property {NT.ISpell|null} [spell] InventorySpell spell
              */
+
             /**
              * Constructs a new InventorySpell.
              * @memberof NT.ClientPlayerUpdateInventory
@@ -4900,6 +5171,7 @@ $root.NT = (function () {
                         if (properties[keys[i]] != null)
                             this[keys[i]] = properties[keys[i]];
             }
+
             /**
              * InventorySpell index.
              * @member {number} index
@@ -4907,6 +5179,7 @@ $root.NT = (function () {
              * @instance
              */
             InventorySpell.prototype.index = 0;
+
             /**
              * InventorySpell spell.
              * @member {NT.ISpell|null|undefined} spell
@@ -4914,6 +5187,7 @@ $root.NT = (function () {
              * @instance
              */
             InventorySpell.prototype.spell = null;
+
             /**
              * Creates a new InventorySpell instance using the specified properties.
              * @function create
@@ -4925,6 +5199,7 @@ $root.NT = (function () {
             InventorySpell.create = function create(properties) {
                 return new InventorySpell(properties);
             };
+
             /**
              * Encodes the specified InventorySpell message. Does not implicitly {@link NT.ClientPlayerUpdateInventory.InventorySpell.verify|verify} messages.
              * @function encode
@@ -4938,11 +5213,12 @@ $root.NT = (function () {
                 if (!writer)
                     writer = $Writer.create();
                 if (message.index != null && Object.hasOwnProperty.call(message, "index"))
-                    writer.uint32(/* id 1, wireType 0 =*/ 8).uint32(message.index);
+                    writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.index);
                 if (message.spell != null && Object.hasOwnProperty.call(message, "spell"))
-                    $root.NT.Spell.encode(message.spell, writer.uint32(/* id 2, wireType 2 =*/ 18).fork()).ldelim();
+                    $root.NT.Spell.encode(message.spell, writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
                 return writer;
             };
+
             /**
              * Encodes the specified InventorySpell message, length delimited. Does not implicitly {@link NT.ClientPlayerUpdateInventory.InventorySpell.verify|verify} messages.
              * @function encodeDelimited
@@ -4955,6 +5231,7 @@ $root.NT = (function () {
             InventorySpell.encodeDelimited = function encodeDelimited(message, writer) {
                 return this.encode(message, writer).ldelim();
             };
+
             /**
              * Decodes an InventorySpell message from the specified reader or buffer.
              * @function decode
@@ -4973,21 +5250,22 @@ $root.NT = (function () {
                 while (reader.pos < end) {
                     var tag = reader.uint32();
                     switch (tag >>> 3) {
-                        case 1: {
+                    case 1: {
                             message.index = reader.uint32();
                             break;
                         }
-                        case 2: {
+                    case 2: {
                             message.spell = $root.NT.Spell.decode(reader, reader.uint32());
                             break;
                         }
-                        default:
-                            reader.skipType(tag & 7);
-                            break;
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
                     }
                 }
                 return message;
             };
+
             /**
              * Decodes an InventorySpell message from the specified reader or buffer, length delimited.
              * @function decodeDelimited
@@ -5003,6 +5281,7 @@ $root.NT = (function () {
                     reader = new $Reader(reader);
                 return this.decode(reader, reader.uint32());
             };
+
             /**
              * Verifies an InventorySpell message.
              * @function verify
@@ -5024,6 +5303,7 @@ $root.NT = (function () {
                 }
                 return null;
             };
+
             /**
              * Creates an InventorySpell message from a plain object. Also converts values to their respective internal types.
              * @function fromObject
@@ -5045,6 +5325,7 @@ $root.NT = (function () {
                 }
                 return message;
             };
+
             /**
              * Creates a plain object from an InventorySpell message. Also converts values to other types if specified.
              * @function toObject
@@ -5068,6 +5349,7 @@ $root.NT = (function () {
                     object.spell = $root.NT.Spell.toObject(message.spell, options);
                 return object;
             };
+
             /**
              * Converts this InventorySpell to JSON.
              * @function toJSON
@@ -5078,6 +5360,7 @@ $root.NT = (function () {
             InventorySpell.prototype.toJSON = function toJSON() {
                 return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
             };
+
             /**
              * Gets the default type url for InventorySpell
              * @function getTypeUrl
@@ -5092,11 +5375,15 @@ $root.NT = (function () {
                 }
                 return typeUrlPrefix + "/NT.ClientPlayerUpdateInventory.InventorySpell";
             };
+
             return InventorySpell;
         })();
+
         return ClientPlayerUpdateInventory;
     })();
-    NT.ServerPlayerUpdateInventory = (function () {
+
+    NT.ServerPlayerUpdateInventory = (function() {
+
         /**
          * Properties of a ServerPlayerUpdateInventory.
          * @memberof NT
@@ -5106,6 +5393,7 @@ $root.NT = (function () {
          * @property {Array.<NT.ServerPlayerUpdateInventory.IInventoryItem>|null} [items] ServerPlayerUpdateInventory items
          * @property {Array.<NT.ServerPlayerUpdateInventory.IInventorySpell>|null} [spells] ServerPlayerUpdateInventory spells
          */
+
         /**
          * Constructs a new ServerPlayerUpdateInventory.
          * @memberof NT
@@ -5123,6 +5411,7 @@ $root.NT = (function () {
                     if (properties[keys[i]] != null)
                         this[keys[i]] = properties[keys[i]];
         }
+
         /**
          * ServerPlayerUpdateInventory userId.
          * @member {string} userId
@@ -5130,6 +5419,7 @@ $root.NT = (function () {
          * @instance
          */
         ServerPlayerUpdateInventory.prototype.userId = "";
+
         /**
          * ServerPlayerUpdateInventory wands.
          * @member {Array.<NT.ServerPlayerUpdateInventory.IInventoryWand>} wands
@@ -5137,6 +5427,7 @@ $root.NT = (function () {
          * @instance
          */
         ServerPlayerUpdateInventory.prototype.wands = $util.emptyArray;
+
         /**
          * ServerPlayerUpdateInventory items.
          * @member {Array.<NT.ServerPlayerUpdateInventory.IInventoryItem>} items
@@ -5144,6 +5435,7 @@ $root.NT = (function () {
          * @instance
          */
         ServerPlayerUpdateInventory.prototype.items = $util.emptyArray;
+
         /**
          * ServerPlayerUpdateInventory spells.
          * @member {Array.<NT.ServerPlayerUpdateInventory.IInventorySpell>} spells
@@ -5151,6 +5443,7 @@ $root.NT = (function () {
          * @instance
          */
         ServerPlayerUpdateInventory.prototype.spells = $util.emptyArray;
+
         /**
          * Creates a new ServerPlayerUpdateInventory instance using the specified properties.
          * @function create
@@ -5162,6 +5455,7 @@ $root.NT = (function () {
         ServerPlayerUpdateInventory.create = function create(properties) {
             return new ServerPlayerUpdateInventory(properties);
         };
+
         /**
          * Encodes the specified ServerPlayerUpdateInventory message. Does not implicitly {@link NT.ServerPlayerUpdateInventory.verify|verify} messages.
          * @function encode
@@ -5175,18 +5469,19 @@ $root.NT = (function () {
             if (!writer)
                 writer = $Writer.create();
             if (message.userId != null && Object.hasOwnProperty.call(message, "userId"))
-                writer.uint32(/* id 1, wireType 2 =*/ 10).string(message.userId);
+                writer.uint32(/* id 1, wireType 2 =*/10).string(message.userId);
             if (message.wands != null && message.wands.length)
                 for (var i = 0; i < message.wands.length; ++i)
-                    $root.NT.ServerPlayerUpdateInventory.InventoryWand.encode(message.wands[i], writer.uint32(/* id 2, wireType 2 =*/ 18).fork()).ldelim();
+                    $root.NT.ServerPlayerUpdateInventory.InventoryWand.encode(message.wands[i], writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
             if (message.items != null && message.items.length)
                 for (var i = 0; i < message.items.length; ++i)
-                    $root.NT.ServerPlayerUpdateInventory.InventoryItem.encode(message.items[i], writer.uint32(/* id 3, wireType 2 =*/ 26).fork()).ldelim();
+                    $root.NT.ServerPlayerUpdateInventory.InventoryItem.encode(message.items[i], writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
             if (message.spells != null && message.spells.length)
                 for (var i = 0; i < message.spells.length; ++i)
-                    $root.NT.ServerPlayerUpdateInventory.InventorySpell.encode(message.spells[i], writer.uint32(/* id 4, wireType 2 =*/ 34).fork()).ldelim();
+                    $root.NT.ServerPlayerUpdateInventory.InventorySpell.encode(message.spells[i], writer.uint32(/* id 4, wireType 2 =*/34).fork()).ldelim();
             return writer;
         };
+
         /**
          * Encodes the specified ServerPlayerUpdateInventory message, length delimited. Does not implicitly {@link NT.ServerPlayerUpdateInventory.verify|verify} messages.
          * @function encodeDelimited
@@ -5199,6 +5494,7 @@ $root.NT = (function () {
         ServerPlayerUpdateInventory.encodeDelimited = function encodeDelimited(message, writer) {
             return this.encode(message, writer).ldelim();
         };
+
         /**
          * Decodes a ServerPlayerUpdateInventory message from the specified reader or buffer.
          * @function decode
@@ -5217,35 +5513,36 @@ $root.NT = (function () {
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                    case 1: {
+                case 1: {
                         message.userId = reader.string();
                         break;
                     }
-                    case 2: {
+                case 2: {
                         if (!(message.wands && message.wands.length))
                             message.wands = [];
                         message.wands.push($root.NT.ServerPlayerUpdateInventory.InventoryWand.decode(reader, reader.uint32()));
                         break;
                     }
-                    case 3: {
+                case 3: {
                         if (!(message.items && message.items.length))
                             message.items = [];
                         message.items.push($root.NT.ServerPlayerUpdateInventory.InventoryItem.decode(reader, reader.uint32()));
                         break;
                     }
-                    case 4: {
+                case 4: {
                         if (!(message.spells && message.spells.length))
                             message.spells = [];
                         message.spells.push($root.NT.ServerPlayerUpdateInventory.InventorySpell.decode(reader, reader.uint32()));
                         break;
                     }
-                    default:
-                        reader.skipType(tag & 7);
-                        break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
                 }
             }
             return message;
         };
+
         /**
          * Decodes a ServerPlayerUpdateInventory message from the specified reader or buffer, length delimited.
          * @function decodeDelimited
@@ -5261,6 +5558,7 @@ $root.NT = (function () {
                 reader = new $Reader(reader);
             return this.decode(reader, reader.uint32());
         };
+
         /**
          * Verifies a ServerPlayerUpdateInventory message.
          * @function verify
@@ -5304,6 +5602,7 @@ $root.NT = (function () {
             }
             return null;
         };
+
         /**
          * Creates a ServerPlayerUpdateInventory message from a plain object. Also converts values to their respective internal types.
          * @function fromObject
@@ -5350,6 +5649,7 @@ $root.NT = (function () {
             }
             return message;
         };
+
         /**
          * Creates a plain object from a ServerPlayerUpdateInventory message. Also converts values to other types if specified.
          * @function toObject
@@ -5389,6 +5689,7 @@ $root.NT = (function () {
             }
             return object;
         };
+
         /**
          * Converts this ServerPlayerUpdateInventory to JSON.
          * @function toJSON
@@ -5399,6 +5700,7 @@ $root.NT = (function () {
         ServerPlayerUpdateInventory.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
+
         /**
          * Gets the default type url for ServerPlayerUpdateInventory
          * @function getTypeUrl
@@ -5413,7 +5715,9 @@ $root.NT = (function () {
             }
             return typeUrlPrefix + "/NT.ServerPlayerUpdateInventory";
         };
-        ServerPlayerUpdateInventory.InventoryWand = (function () {
+
+        ServerPlayerUpdateInventory.InventoryWand = (function() {
+
             /**
              * Properties of an InventoryWand.
              * @memberof NT.ServerPlayerUpdateInventory
@@ -5421,6 +5725,7 @@ $root.NT = (function () {
              * @property {number|null} [index] InventoryWand index
              * @property {NT.IWand|null} [wand] InventoryWand wand
              */
+
             /**
              * Constructs a new InventoryWand.
              * @memberof NT.ServerPlayerUpdateInventory
@@ -5435,6 +5740,7 @@ $root.NT = (function () {
                         if (properties[keys[i]] != null)
                             this[keys[i]] = properties[keys[i]];
             }
+
             /**
              * InventoryWand index.
              * @member {number} index
@@ -5442,6 +5748,7 @@ $root.NT = (function () {
              * @instance
              */
             InventoryWand.prototype.index = 0;
+
             /**
              * InventoryWand wand.
              * @member {NT.IWand|null|undefined} wand
@@ -5449,6 +5756,7 @@ $root.NT = (function () {
              * @instance
              */
             InventoryWand.prototype.wand = null;
+
             /**
              * Creates a new InventoryWand instance using the specified properties.
              * @function create
@@ -5460,6 +5768,7 @@ $root.NT = (function () {
             InventoryWand.create = function create(properties) {
                 return new InventoryWand(properties);
             };
+
             /**
              * Encodes the specified InventoryWand message. Does not implicitly {@link NT.ServerPlayerUpdateInventory.InventoryWand.verify|verify} messages.
              * @function encode
@@ -5473,11 +5782,12 @@ $root.NT = (function () {
                 if (!writer)
                     writer = $Writer.create();
                 if (message.index != null && Object.hasOwnProperty.call(message, "index"))
-                    writer.uint32(/* id 1, wireType 0 =*/ 8).uint32(message.index);
+                    writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.index);
                 if (message.wand != null && Object.hasOwnProperty.call(message, "wand"))
-                    $root.NT.Wand.encode(message.wand, writer.uint32(/* id 2, wireType 2 =*/ 18).fork()).ldelim();
+                    $root.NT.Wand.encode(message.wand, writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
                 return writer;
             };
+
             /**
              * Encodes the specified InventoryWand message, length delimited. Does not implicitly {@link NT.ServerPlayerUpdateInventory.InventoryWand.verify|verify} messages.
              * @function encodeDelimited
@@ -5490,6 +5800,7 @@ $root.NT = (function () {
             InventoryWand.encodeDelimited = function encodeDelimited(message, writer) {
                 return this.encode(message, writer).ldelim();
             };
+
             /**
              * Decodes an InventoryWand message from the specified reader or buffer.
              * @function decode
@@ -5508,21 +5819,22 @@ $root.NT = (function () {
                 while (reader.pos < end) {
                     var tag = reader.uint32();
                     switch (tag >>> 3) {
-                        case 1: {
+                    case 1: {
                             message.index = reader.uint32();
                             break;
                         }
-                        case 2: {
+                    case 2: {
                             message.wand = $root.NT.Wand.decode(reader, reader.uint32());
                             break;
                         }
-                        default:
-                            reader.skipType(tag & 7);
-                            break;
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
                     }
                 }
                 return message;
             };
+
             /**
              * Decodes an InventoryWand message from the specified reader or buffer, length delimited.
              * @function decodeDelimited
@@ -5538,6 +5850,7 @@ $root.NT = (function () {
                     reader = new $Reader(reader);
                 return this.decode(reader, reader.uint32());
             };
+
             /**
              * Verifies an InventoryWand message.
              * @function verify
@@ -5559,6 +5872,7 @@ $root.NT = (function () {
                 }
                 return null;
             };
+
             /**
              * Creates an InventoryWand message from a plain object. Also converts values to their respective internal types.
              * @function fromObject
@@ -5580,6 +5894,7 @@ $root.NT = (function () {
                 }
                 return message;
             };
+
             /**
              * Creates a plain object from an InventoryWand message. Also converts values to other types if specified.
              * @function toObject
@@ -5603,6 +5918,7 @@ $root.NT = (function () {
                     object.wand = $root.NT.Wand.toObject(message.wand, options);
                 return object;
             };
+
             /**
              * Converts this InventoryWand to JSON.
              * @function toJSON
@@ -5613,6 +5929,7 @@ $root.NT = (function () {
             InventoryWand.prototype.toJSON = function toJSON() {
                 return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
             };
+
             /**
              * Gets the default type url for InventoryWand
              * @function getTypeUrl
@@ -5627,9 +5944,12 @@ $root.NT = (function () {
                 }
                 return typeUrlPrefix + "/NT.ServerPlayerUpdateInventory.InventoryWand";
             };
+
             return InventoryWand;
         })();
-        ServerPlayerUpdateInventory.InventoryItem = (function () {
+
+        ServerPlayerUpdateInventory.InventoryItem = (function() {
+
             /**
              * Properties of an InventoryItem.
              * @memberof NT.ServerPlayerUpdateInventory
@@ -5637,6 +5957,7 @@ $root.NT = (function () {
              * @property {number|null} [index] InventoryItem index
              * @property {NT.IItem|null} [item] InventoryItem item
              */
+
             /**
              * Constructs a new InventoryItem.
              * @memberof NT.ServerPlayerUpdateInventory
@@ -5651,6 +5972,7 @@ $root.NT = (function () {
                         if (properties[keys[i]] != null)
                             this[keys[i]] = properties[keys[i]];
             }
+
             /**
              * InventoryItem index.
              * @member {number} index
@@ -5658,6 +5980,7 @@ $root.NT = (function () {
              * @instance
              */
             InventoryItem.prototype.index = 0;
+
             /**
              * InventoryItem item.
              * @member {NT.IItem|null|undefined} item
@@ -5665,6 +5988,7 @@ $root.NT = (function () {
              * @instance
              */
             InventoryItem.prototype.item = null;
+
             /**
              * Creates a new InventoryItem instance using the specified properties.
              * @function create
@@ -5676,6 +6000,7 @@ $root.NT = (function () {
             InventoryItem.create = function create(properties) {
                 return new InventoryItem(properties);
             };
+
             /**
              * Encodes the specified InventoryItem message. Does not implicitly {@link NT.ServerPlayerUpdateInventory.InventoryItem.verify|verify} messages.
              * @function encode
@@ -5689,11 +6014,12 @@ $root.NT = (function () {
                 if (!writer)
                     writer = $Writer.create();
                 if (message.index != null && Object.hasOwnProperty.call(message, "index"))
-                    writer.uint32(/* id 1, wireType 0 =*/ 8).uint32(message.index);
+                    writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.index);
                 if (message.item != null && Object.hasOwnProperty.call(message, "item"))
-                    $root.NT.Item.encode(message.item, writer.uint32(/* id 2, wireType 2 =*/ 18).fork()).ldelim();
+                    $root.NT.Item.encode(message.item, writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
                 return writer;
             };
+
             /**
              * Encodes the specified InventoryItem message, length delimited. Does not implicitly {@link NT.ServerPlayerUpdateInventory.InventoryItem.verify|verify} messages.
              * @function encodeDelimited
@@ -5706,6 +6032,7 @@ $root.NT = (function () {
             InventoryItem.encodeDelimited = function encodeDelimited(message, writer) {
                 return this.encode(message, writer).ldelim();
             };
+
             /**
              * Decodes an InventoryItem message from the specified reader or buffer.
              * @function decode
@@ -5724,21 +6051,22 @@ $root.NT = (function () {
                 while (reader.pos < end) {
                     var tag = reader.uint32();
                     switch (tag >>> 3) {
-                        case 1: {
+                    case 1: {
                             message.index = reader.uint32();
                             break;
                         }
-                        case 2: {
+                    case 2: {
                             message.item = $root.NT.Item.decode(reader, reader.uint32());
                             break;
                         }
-                        default:
-                            reader.skipType(tag & 7);
-                            break;
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
                     }
                 }
                 return message;
             };
+
             /**
              * Decodes an InventoryItem message from the specified reader or buffer, length delimited.
              * @function decodeDelimited
@@ -5754,6 +6082,7 @@ $root.NT = (function () {
                     reader = new $Reader(reader);
                 return this.decode(reader, reader.uint32());
             };
+
             /**
              * Verifies an InventoryItem message.
              * @function verify
@@ -5775,6 +6104,7 @@ $root.NT = (function () {
                 }
                 return null;
             };
+
             /**
              * Creates an InventoryItem message from a plain object. Also converts values to their respective internal types.
              * @function fromObject
@@ -5796,6 +6126,7 @@ $root.NT = (function () {
                 }
                 return message;
             };
+
             /**
              * Creates a plain object from an InventoryItem message. Also converts values to other types if specified.
              * @function toObject
@@ -5819,6 +6150,7 @@ $root.NT = (function () {
                     object.item = $root.NT.Item.toObject(message.item, options);
                 return object;
             };
+
             /**
              * Converts this InventoryItem to JSON.
              * @function toJSON
@@ -5829,6 +6161,7 @@ $root.NT = (function () {
             InventoryItem.prototype.toJSON = function toJSON() {
                 return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
             };
+
             /**
              * Gets the default type url for InventoryItem
              * @function getTypeUrl
@@ -5843,9 +6176,12 @@ $root.NT = (function () {
                 }
                 return typeUrlPrefix + "/NT.ServerPlayerUpdateInventory.InventoryItem";
             };
+
             return InventoryItem;
         })();
-        ServerPlayerUpdateInventory.InventorySpell = (function () {
+
+        ServerPlayerUpdateInventory.InventorySpell = (function() {
+
             /**
              * Properties of an InventorySpell.
              * @memberof NT.ServerPlayerUpdateInventory
@@ -5853,6 +6189,7 @@ $root.NT = (function () {
              * @property {number|null} [index] InventorySpell index
              * @property {NT.ISpell|null} [spell] InventorySpell spell
              */
+
             /**
              * Constructs a new InventorySpell.
              * @memberof NT.ServerPlayerUpdateInventory
@@ -5867,6 +6204,7 @@ $root.NT = (function () {
                         if (properties[keys[i]] != null)
                             this[keys[i]] = properties[keys[i]];
             }
+
             /**
              * InventorySpell index.
              * @member {number} index
@@ -5874,6 +6212,7 @@ $root.NT = (function () {
              * @instance
              */
             InventorySpell.prototype.index = 0;
+
             /**
              * InventorySpell spell.
              * @member {NT.ISpell|null|undefined} spell
@@ -5881,6 +6220,7 @@ $root.NT = (function () {
              * @instance
              */
             InventorySpell.prototype.spell = null;
+
             /**
              * Creates a new InventorySpell instance using the specified properties.
              * @function create
@@ -5892,6 +6232,7 @@ $root.NT = (function () {
             InventorySpell.create = function create(properties) {
                 return new InventorySpell(properties);
             };
+
             /**
              * Encodes the specified InventorySpell message. Does not implicitly {@link NT.ServerPlayerUpdateInventory.InventorySpell.verify|verify} messages.
              * @function encode
@@ -5905,11 +6246,12 @@ $root.NT = (function () {
                 if (!writer)
                     writer = $Writer.create();
                 if (message.index != null && Object.hasOwnProperty.call(message, "index"))
-                    writer.uint32(/* id 1, wireType 0 =*/ 8).uint32(message.index);
+                    writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.index);
                 if (message.spell != null && Object.hasOwnProperty.call(message, "spell"))
-                    $root.NT.Spell.encode(message.spell, writer.uint32(/* id 2, wireType 2 =*/ 18).fork()).ldelim();
+                    $root.NT.Spell.encode(message.spell, writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
                 return writer;
             };
+
             /**
              * Encodes the specified InventorySpell message, length delimited. Does not implicitly {@link NT.ServerPlayerUpdateInventory.InventorySpell.verify|verify} messages.
              * @function encodeDelimited
@@ -5922,6 +6264,7 @@ $root.NT = (function () {
             InventorySpell.encodeDelimited = function encodeDelimited(message, writer) {
                 return this.encode(message, writer).ldelim();
             };
+
             /**
              * Decodes an InventorySpell message from the specified reader or buffer.
              * @function decode
@@ -5940,21 +6283,22 @@ $root.NT = (function () {
                 while (reader.pos < end) {
                     var tag = reader.uint32();
                     switch (tag >>> 3) {
-                        case 1: {
+                    case 1: {
                             message.index = reader.uint32();
                             break;
                         }
-                        case 2: {
+                    case 2: {
                             message.spell = $root.NT.Spell.decode(reader, reader.uint32());
                             break;
                         }
-                        default:
-                            reader.skipType(tag & 7);
-                            break;
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
                     }
                 }
                 return message;
             };
+
             /**
              * Decodes an InventorySpell message from the specified reader or buffer, length delimited.
              * @function decodeDelimited
@@ -5970,6 +6314,7 @@ $root.NT = (function () {
                     reader = new $Reader(reader);
                 return this.decode(reader, reader.uint32());
             };
+
             /**
              * Verifies an InventorySpell message.
              * @function verify
@@ -5991,6 +6336,7 @@ $root.NT = (function () {
                 }
                 return null;
             };
+
             /**
              * Creates an InventorySpell message from a plain object. Also converts values to their respective internal types.
              * @function fromObject
@@ -6012,6 +6358,7 @@ $root.NT = (function () {
                 }
                 return message;
             };
+
             /**
              * Creates a plain object from an InventorySpell message. Also converts values to other types if specified.
              * @function toObject
@@ -6035,6 +6382,7 @@ $root.NT = (function () {
                     object.spell = $root.NT.Spell.toObject(message.spell, options);
                 return object;
             };
+
             /**
              * Converts this InventorySpell to JSON.
              * @function toJSON
@@ -6045,6 +6393,7 @@ $root.NT = (function () {
             InventorySpell.prototype.toJSON = function toJSON() {
                 return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
             };
+
             /**
              * Gets the default type url for InventorySpell
              * @function getTypeUrl
@@ -6059,11 +6408,15 @@ $root.NT = (function () {
                 }
                 return typeUrlPrefix + "/NT.ServerPlayerUpdateInventory.InventorySpell";
             };
+
             return InventorySpell;
         })();
+
         return ServerPlayerUpdateInventory;
     })();
-    NT.ClientHostItemBank = (function () {
+
+    NT.ClientHostItemBank = (function() {
+
         /**
          * Properties of a ClientHostItemBank.
          * @memberof NT
@@ -6074,6 +6427,7 @@ $root.NT = (function () {
          * @property {number|null} [gold] ClientHostItemBank gold
          * @property {Array.<NT.IEntityItem>|null} [objects] ClientHostItemBank objects
          */
+
         /**
          * Constructs a new ClientHostItemBank.
          * @memberof NT
@@ -6092,6 +6446,7 @@ $root.NT = (function () {
                     if (properties[keys[i]] != null)
                         this[keys[i]] = properties[keys[i]];
         }
+
         /**
          * ClientHostItemBank wands.
          * @member {Array.<NT.IWand>} wands
@@ -6099,6 +6454,7 @@ $root.NT = (function () {
          * @instance
          */
         ClientHostItemBank.prototype.wands = $util.emptyArray;
+
         /**
          * ClientHostItemBank spells.
          * @member {Array.<NT.ISpell>} spells
@@ -6106,6 +6462,7 @@ $root.NT = (function () {
          * @instance
          */
         ClientHostItemBank.prototype.spells = $util.emptyArray;
+
         /**
          * ClientHostItemBank items.
          * @member {Array.<NT.IItem>} items
@@ -6113,6 +6470,7 @@ $root.NT = (function () {
          * @instance
          */
         ClientHostItemBank.prototype.items = $util.emptyArray;
+
         /**
          * ClientHostItemBank gold.
          * @member {number} gold
@@ -6120,6 +6478,7 @@ $root.NT = (function () {
          * @instance
          */
         ClientHostItemBank.prototype.gold = 0;
+
         /**
          * ClientHostItemBank objects.
          * @member {Array.<NT.IEntityItem>} objects
@@ -6127,6 +6486,7 @@ $root.NT = (function () {
          * @instance
          */
         ClientHostItemBank.prototype.objects = $util.emptyArray;
+
         /**
          * Creates a new ClientHostItemBank instance using the specified properties.
          * @function create
@@ -6138,6 +6498,7 @@ $root.NT = (function () {
         ClientHostItemBank.create = function create(properties) {
             return new ClientHostItemBank(properties);
         };
+
         /**
          * Encodes the specified ClientHostItemBank message. Does not implicitly {@link NT.ClientHostItemBank.verify|verify} messages.
          * @function encode
@@ -6152,20 +6513,21 @@ $root.NT = (function () {
                 writer = $Writer.create();
             if (message.wands != null && message.wands.length)
                 for (var i = 0; i < message.wands.length; ++i)
-                    $root.NT.Wand.encode(message.wands[i], writer.uint32(/* id 1, wireType 2 =*/ 10).fork()).ldelim();
+                    $root.NT.Wand.encode(message.wands[i], writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
             if (message.spells != null && message.spells.length)
                 for (var i = 0; i < message.spells.length; ++i)
-                    $root.NT.Spell.encode(message.spells[i], writer.uint32(/* id 2, wireType 2 =*/ 18).fork()).ldelim();
+                    $root.NT.Spell.encode(message.spells[i], writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
             if (message.items != null && message.items.length)
                 for (var i = 0; i < message.items.length; ++i)
-                    $root.NT.Item.encode(message.items[i], writer.uint32(/* id 3, wireType 2 =*/ 26).fork()).ldelim();
+                    $root.NT.Item.encode(message.items[i], writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
             if (message.gold != null && Object.hasOwnProperty.call(message, "gold"))
-                writer.uint32(/* id 4, wireType 0 =*/ 32).uint32(message.gold);
+                writer.uint32(/* id 4, wireType 0 =*/32).uint32(message.gold);
             if (message.objects != null && message.objects.length)
                 for (var i = 0; i < message.objects.length; ++i)
-                    $root.NT.EntityItem.encode(message.objects[i], writer.uint32(/* id 5, wireType 2 =*/ 42).fork()).ldelim();
+                    $root.NT.EntityItem.encode(message.objects[i], writer.uint32(/* id 5, wireType 2 =*/42).fork()).ldelim();
             return writer;
         };
+
         /**
          * Encodes the specified ClientHostItemBank message, length delimited. Does not implicitly {@link NT.ClientHostItemBank.verify|verify} messages.
          * @function encodeDelimited
@@ -6178,6 +6540,7 @@ $root.NT = (function () {
         ClientHostItemBank.encodeDelimited = function encodeDelimited(message, writer) {
             return this.encode(message, writer).ldelim();
         };
+
         /**
          * Decodes a ClientHostItemBank message from the specified reader or buffer.
          * @function decode
@@ -6196,41 +6559,42 @@ $root.NT = (function () {
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                    case 1: {
+                case 1: {
                         if (!(message.wands && message.wands.length))
                             message.wands = [];
                         message.wands.push($root.NT.Wand.decode(reader, reader.uint32()));
                         break;
                     }
-                    case 2: {
+                case 2: {
                         if (!(message.spells && message.spells.length))
                             message.spells = [];
                         message.spells.push($root.NT.Spell.decode(reader, reader.uint32()));
                         break;
                     }
-                    case 3: {
+                case 3: {
                         if (!(message.items && message.items.length))
                             message.items = [];
                         message.items.push($root.NT.Item.decode(reader, reader.uint32()));
                         break;
                     }
-                    case 4: {
+                case 4: {
                         message.gold = reader.uint32();
                         break;
                     }
-                    case 5: {
+                case 5: {
                         if (!(message.objects && message.objects.length))
                             message.objects = [];
                         message.objects.push($root.NT.EntityItem.decode(reader, reader.uint32()));
                         break;
                     }
-                    default:
-                        reader.skipType(tag & 7);
-                        break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
                 }
             }
             return message;
         };
+
         /**
          * Decodes a ClientHostItemBank message from the specified reader or buffer, length delimited.
          * @function decodeDelimited
@@ -6246,6 +6610,7 @@ $root.NT = (function () {
                 reader = new $Reader(reader);
             return this.decode(reader, reader.uint32());
         };
+
         /**
          * Verifies a ClientHostItemBank message.
          * @function verify
@@ -6298,6 +6663,7 @@ $root.NT = (function () {
             }
             return null;
         };
+
         /**
          * Creates a ClientHostItemBank message from a plain object. Also converts values to their respective internal types.
          * @function fromObject
@@ -6354,6 +6720,7 @@ $root.NT = (function () {
             }
             return message;
         };
+
         /**
          * Creates a plain object from a ClientHostItemBank message. Also converts values to other types if specified.
          * @function toObject
@@ -6399,6 +6766,7 @@ $root.NT = (function () {
             }
             return object;
         };
+
         /**
          * Converts this ClientHostItemBank to JSON.
          * @function toJSON
@@ -6409,6 +6777,7 @@ $root.NT = (function () {
         ClientHostItemBank.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
+
         /**
          * Gets the default type url for ClientHostItemBank
          * @function getTypeUrl
@@ -6423,9 +6792,12 @@ $root.NT = (function () {
             }
             return typeUrlPrefix + "/NT.ClientHostItemBank";
         };
+
         return ClientHostItemBank;
     })();
-    NT.ServerHostItemBank = (function () {
+
+    NT.ServerHostItemBank = (function() {
+
         /**
          * Properties of a ServerHostItemBank.
          * @memberof NT
@@ -6436,6 +6808,7 @@ $root.NT = (function () {
          * @property {number|null} [gold] ServerHostItemBank gold
          * @property {Array.<NT.IEntityItem>|null} [objects] ServerHostItemBank objects
          */
+
         /**
          * Constructs a new ServerHostItemBank.
          * @memberof NT
@@ -6454,6 +6827,7 @@ $root.NT = (function () {
                     if (properties[keys[i]] != null)
                         this[keys[i]] = properties[keys[i]];
         }
+
         /**
          * ServerHostItemBank wands.
          * @member {Array.<NT.IWand>} wands
@@ -6461,6 +6835,7 @@ $root.NT = (function () {
          * @instance
          */
         ServerHostItemBank.prototype.wands = $util.emptyArray;
+
         /**
          * ServerHostItemBank spells.
          * @member {Array.<NT.ISpell>} spells
@@ -6468,6 +6843,7 @@ $root.NT = (function () {
          * @instance
          */
         ServerHostItemBank.prototype.spells = $util.emptyArray;
+
         /**
          * ServerHostItemBank items.
          * @member {Array.<NT.IItem>} items
@@ -6475,6 +6851,7 @@ $root.NT = (function () {
          * @instance
          */
         ServerHostItemBank.prototype.items = $util.emptyArray;
+
         /**
          * ServerHostItemBank gold.
          * @member {number} gold
@@ -6482,6 +6859,7 @@ $root.NT = (function () {
          * @instance
          */
         ServerHostItemBank.prototype.gold = 0;
+
         /**
          * ServerHostItemBank objects.
          * @member {Array.<NT.IEntityItem>} objects
@@ -6489,6 +6867,7 @@ $root.NT = (function () {
          * @instance
          */
         ServerHostItemBank.prototype.objects = $util.emptyArray;
+
         /**
          * Creates a new ServerHostItemBank instance using the specified properties.
          * @function create
@@ -6500,6 +6879,7 @@ $root.NT = (function () {
         ServerHostItemBank.create = function create(properties) {
             return new ServerHostItemBank(properties);
         };
+
         /**
          * Encodes the specified ServerHostItemBank message. Does not implicitly {@link NT.ServerHostItemBank.verify|verify} messages.
          * @function encode
@@ -6514,20 +6894,21 @@ $root.NT = (function () {
                 writer = $Writer.create();
             if (message.wands != null && message.wands.length)
                 for (var i = 0; i < message.wands.length; ++i)
-                    $root.NT.Wand.encode(message.wands[i], writer.uint32(/* id 1, wireType 2 =*/ 10).fork()).ldelim();
+                    $root.NT.Wand.encode(message.wands[i], writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
             if (message.spells != null && message.spells.length)
                 for (var i = 0; i < message.spells.length; ++i)
-                    $root.NT.Spell.encode(message.spells[i], writer.uint32(/* id 2, wireType 2 =*/ 18).fork()).ldelim();
+                    $root.NT.Spell.encode(message.spells[i], writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
             if (message.items != null && message.items.length)
                 for (var i = 0; i < message.items.length; ++i)
-                    $root.NT.Item.encode(message.items[i], writer.uint32(/* id 3, wireType 2 =*/ 26).fork()).ldelim();
+                    $root.NT.Item.encode(message.items[i], writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
             if (message.gold != null && Object.hasOwnProperty.call(message, "gold"))
-                writer.uint32(/* id 4, wireType 0 =*/ 32).uint32(message.gold);
+                writer.uint32(/* id 4, wireType 0 =*/32).uint32(message.gold);
             if (message.objects != null && message.objects.length)
                 for (var i = 0; i < message.objects.length; ++i)
-                    $root.NT.EntityItem.encode(message.objects[i], writer.uint32(/* id 5, wireType 2 =*/ 42).fork()).ldelim();
+                    $root.NT.EntityItem.encode(message.objects[i], writer.uint32(/* id 5, wireType 2 =*/42).fork()).ldelim();
             return writer;
         };
+
         /**
          * Encodes the specified ServerHostItemBank message, length delimited. Does not implicitly {@link NT.ServerHostItemBank.verify|verify} messages.
          * @function encodeDelimited
@@ -6540,6 +6921,7 @@ $root.NT = (function () {
         ServerHostItemBank.encodeDelimited = function encodeDelimited(message, writer) {
             return this.encode(message, writer).ldelim();
         };
+
         /**
          * Decodes a ServerHostItemBank message from the specified reader or buffer.
          * @function decode
@@ -6558,41 +6940,42 @@ $root.NT = (function () {
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                    case 1: {
+                case 1: {
                         if (!(message.wands && message.wands.length))
                             message.wands = [];
                         message.wands.push($root.NT.Wand.decode(reader, reader.uint32()));
                         break;
                     }
-                    case 2: {
+                case 2: {
                         if (!(message.spells && message.spells.length))
                             message.spells = [];
                         message.spells.push($root.NT.Spell.decode(reader, reader.uint32()));
                         break;
                     }
-                    case 3: {
+                case 3: {
                         if (!(message.items && message.items.length))
                             message.items = [];
                         message.items.push($root.NT.Item.decode(reader, reader.uint32()));
                         break;
                     }
-                    case 4: {
+                case 4: {
                         message.gold = reader.uint32();
                         break;
                     }
-                    case 5: {
+                case 5: {
                         if (!(message.objects && message.objects.length))
                             message.objects = [];
                         message.objects.push($root.NT.EntityItem.decode(reader, reader.uint32()));
                         break;
                     }
-                    default:
-                        reader.skipType(tag & 7);
-                        break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
                 }
             }
             return message;
         };
+
         /**
          * Decodes a ServerHostItemBank message from the specified reader or buffer, length delimited.
          * @function decodeDelimited
@@ -6608,6 +6991,7 @@ $root.NT = (function () {
                 reader = new $Reader(reader);
             return this.decode(reader, reader.uint32());
         };
+
         /**
          * Verifies a ServerHostItemBank message.
          * @function verify
@@ -6660,6 +7044,7 @@ $root.NT = (function () {
             }
             return null;
         };
+
         /**
          * Creates a ServerHostItemBank message from a plain object. Also converts values to their respective internal types.
          * @function fromObject
@@ -6716,6 +7101,7 @@ $root.NT = (function () {
             }
             return message;
         };
+
         /**
          * Creates a plain object from a ServerHostItemBank message. Also converts values to other types if specified.
          * @function toObject
@@ -6761,6 +7147,7 @@ $root.NT = (function () {
             }
             return object;
         };
+
         /**
          * Converts this ServerHostItemBank to JSON.
          * @function toJSON
@@ -6771,6 +7158,7 @@ $root.NT = (function () {
         ServerHostItemBank.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
+
         /**
          * Gets the default type url for ServerHostItemBank
          * @function getTypeUrl
@@ -6785,9 +7173,12 @@ $root.NT = (function () {
             }
             return typeUrlPrefix + "/NT.ServerHostItemBank";
         };
+
         return ServerHostItemBank;
     })();
-    NT.ClientHostUserTake = (function () {
+
+    NT.ClientHostUserTake = (function() {
+
         /**
          * Properties of a ClientHostUserTake.
          * @memberof NT
@@ -6796,6 +7187,7 @@ $root.NT = (function () {
          * @property {string|null} [id] ClientHostUserTake id
          * @property {boolean|null} [success] ClientHostUserTake success
          */
+
         /**
          * Constructs a new ClientHostUserTake.
          * @memberof NT
@@ -6810,6 +7202,7 @@ $root.NT = (function () {
                     if (properties[keys[i]] != null)
                         this[keys[i]] = properties[keys[i]];
         }
+
         /**
          * ClientHostUserTake userId.
          * @member {string} userId
@@ -6817,6 +7210,7 @@ $root.NT = (function () {
          * @instance
          */
         ClientHostUserTake.prototype.userId = "";
+
         /**
          * ClientHostUserTake id.
          * @member {string} id
@@ -6824,6 +7218,7 @@ $root.NT = (function () {
          * @instance
          */
         ClientHostUserTake.prototype.id = "";
+
         /**
          * ClientHostUserTake success.
          * @member {boolean} success
@@ -6831,6 +7226,7 @@ $root.NT = (function () {
          * @instance
          */
         ClientHostUserTake.prototype.success = false;
+
         /**
          * Creates a new ClientHostUserTake instance using the specified properties.
          * @function create
@@ -6842,6 +7238,7 @@ $root.NT = (function () {
         ClientHostUserTake.create = function create(properties) {
             return new ClientHostUserTake(properties);
         };
+
         /**
          * Encodes the specified ClientHostUserTake message. Does not implicitly {@link NT.ClientHostUserTake.verify|verify} messages.
          * @function encode
@@ -6855,13 +7252,14 @@ $root.NT = (function () {
             if (!writer)
                 writer = $Writer.create();
             if (message.userId != null && Object.hasOwnProperty.call(message, "userId"))
-                writer.uint32(/* id 1, wireType 2 =*/ 10).string(message.userId);
+                writer.uint32(/* id 1, wireType 2 =*/10).string(message.userId);
             if (message.id != null && Object.hasOwnProperty.call(message, "id"))
-                writer.uint32(/* id 2, wireType 2 =*/ 18).string(message.id);
+                writer.uint32(/* id 2, wireType 2 =*/18).string(message.id);
             if (message.success != null && Object.hasOwnProperty.call(message, "success"))
-                writer.uint32(/* id 3, wireType 0 =*/ 24).bool(message.success);
+                writer.uint32(/* id 3, wireType 0 =*/24).bool(message.success);
             return writer;
         };
+
         /**
          * Encodes the specified ClientHostUserTake message, length delimited. Does not implicitly {@link NT.ClientHostUserTake.verify|verify} messages.
          * @function encodeDelimited
@@ -6874,6 +7272,7 @@ $root.NT = (function () {
         ClientHostUserTake.encodeDelimited = function encodeDelimited(message, writer) {
             return this.encode(message, writer).ldelim();
         };
+
         /**
          * Decodes a ClientHostUserTake message from the specified reader or buffer.
          * @function decode
@@ -6892,25 +7291,26 @@ $root.NT = (function () {
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                    case 1: {
+                case 1: {
                         message.userId = reader.string();
                         break;
                     }
-                    case 2: {
+                case 2: {
                         message.id = reader.string();
                         break;
                     }
-                    case 3: {
+                case 3: {
                         message.success = reader.bool();
                         break;
                     }
-                    default:
-                        reader.skipType(tag & 7);
-                        break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
                 }
             }
             return message;
         };
+
         /**
          * Decodes a ClientHostUserTake message from the specified reader or buffer, length delimited.
          * @function decodeDelimited
@@ -6926,6 +7326,7 @@ $root.NT = (function () {
                 reader = new $Reader(reader);
             return this.decode(reader, reader.uint32());
         };
+
         /**
          * Verifies a ClientHostUserTake message.
          * @function verify
@@ -6948,6 +7349,7 @@ $root.NT = (function () {
                     return "success: boolean expected";
             return null;
         };
+
         /**
          * Creates a ClientHostUserTake message from a plain object. Also converts values to their respective internal types.
          * @function fromObject
@@ -6968,6 +7370,7 @@ $root.NT = (function () {
                 message.success = Boolean(object.success);
             return message;
         };
+
         /**
          * Creates a plain object from a ClientHostUserTake message. Also converts values to other types if specified.
          * @function toObject
@@ -6994,6 +7397,7 @@ $root.NT = (function () {
                 object.success = message.success;
             return object;
         };
+
         /**
          * Converts this ClientHostUserTake to JSON.
          * @function toJSON
@@ -7004,6 +7408,7 @@ $root.NT = (function () {
         ClientHostUserTake.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
+
         /**
          * Gets the default type url for ClientHostUserTake
          * @function getTypeUrl
@@ -7018,9 +7423,12 @@ $root.NT = (function () {
             }
             return typeUrlPrefix + "/NT.ClientHostUserTake";
         };
+
         return ClientHostUserTake;
     })();
-    NT.ServerHostUserTake = (function () {
+
+    NT.ServerHostUserTake = (function() {
+
         /**
          * Properties of a ServerHostUserTake.
          * @memberof NT
@@ -7029,6 +7437,7 @@ $root.NT = (function () {
          * @property {string|null} [id] ServerHostUserTake id
          * @property {boolean|null} [success] ServerHostUserTake success
          */
+
         /**
          * Constructs a new ServerHostUserTake.
          * @memberof NT
@@ -7043,6 +7452,7 @@ $root.NT = (function () {
                     if (properties[keys[i]] != null)
                         this[keys[i]] = properties[keys[i]];
         }
+
         /**
          * ServerHostUserTake userId.
          * @member {string} userId
@@ -7050,6 +7460,7 @@ $root.NT = (function () {
          * @instance
          */
         ServerHostUserTake.prototype.userId = "";
+
         /**
          * ServerHostUserTake id.
          * @member {string} id
@@ -7057,6 +7468,7 @@ $root.NT = (function () {
          * @instance
          */
         ServerHostUserTake.prototype.id = "";
+
         /**
          * ServerHostUserTake success.
          * @member {boolean} success
@@ -7064,6 +7476,7 @@ $root.NT = (function () {
          * @instance
          */
         ServerHostUserTake.prototype.success = false;
+
         /**
          * Creates a new ServerHostUserTake instance using the specified properties.
          * @function create
@@ -7075,6 +7488,7 @@ $root.NT = (function () {
         ServerHostUserTake.create = function create(properties) {
             return new ServerHostUserTake(properties);
         };
+
         /**
          * Encodes the specified ServerHostUserTake message. Does not implicitly {@link NT.ServerHostUserTake.verify|verify} messages.
          * @function encode
@@ -7088,13 +7502,14 @@ $root.NT = (function () {
             if (!writer)
                 writer = $Writer.create();
             if (message.userId != null && Object.hasOwnProperty.call(message, "userId"))
-                writer.uint32(/* id 1, wireType 2 =*/ 10).string(message.userId);
+                writer.uint32(/* id 1, wireType 2 =*/10).string(message.userId);
             if (message.id != null && Object.hasOwnProperty.call(message, "id"))
-                writer.uint32(/* id 2, wireType 2 =*/ 18).string(message.id);
+                writer.uint32(/* id 2, wireType 2 =*/18).string(message.id);
             if (message.success != null && Object.hasOwnProperty.call(message, "success"))
-                writer.uint32(/* id 3, wireType 0 =*/ 24).bool(message.success);
+                writer.uint32(/* id 3, wireType 0 =*/24).bool(message.success);
             return writer;
         };
+
         /**
          * Encodes the specified ServerHostUserTake message, length delimited. Does not implicitly {@link NT.ServerHostUserTake.verify|verify} messages.
          * @function encodeDelimited
@@ -7107,6 +7522,7 @@ $root.NT = (function () {
         ServerHostUserTake.encodeDelimited = function encodeDelimited(message, writer) {
             return this.encode(message, writer).ldelim();
         };
+
         /**
          * Decodes a ServerHostUserTake message from the specified reader or buffer.
          * @function decode
@@ -7125,25 +7541,26 @@ $root.NT = (function () {
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                    case 1: {
+                case 1: {
                         message.userId = reader.string();
                         break;
                     }
-                    case 2: {
+                case 2: {
                         message.id = reader.string();
                         break;
                     }
-                    case 3: {
+                case 3: {
                         message.success = reader.bool();
                         break;
                     }
-                    default:
-                        reader.skipType(tag & 7);
-                        break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
                 }
             }
             return message;
         };
+
         /**
          * Decodes a ServerHostUserTake message from the specified reader or buffer, length delimited.
          * @function decodeDelimited
@@ -7159,6 +7576,7 @@ $root.NT = (function () {
                 reader = new $Reader(reader);
             return this.decode(reader, reader.uint32());
         };
+
         /**
          * Verifies a ServerHostUserTake message.
          * @function verify
@@ -7181,6 +7599,7 @@ $root.NT = (function () {
                     return "success: boolean expected";
             return null;
         };
+
         /**
          * Creates a ServerHostUserTake message from a plain object. Also converts values to their respective internal types.
          * @function fromObject
@@ -7201,6 +7620,7 @@ $root.NT = (function () {
                 message.success = Boolean(object.success);
             return message;
         };
+
         /**
          * Creates a plain object from a ServerHostUserTake message. Also converts values to other types if specified.
          * @function toObject
@@ -7227,6 +7647,7 @@ $root.NT = (function () {
                 object.success = message.success;
             return object;
         };
+
         /**
          * Converts this ServerHostUserTake to JSON.
          * @function toJSON
@@ -7237,6 +7658,7 @@ $root.NT = (function () {
         ServerHostUserTake.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
+
         /**
          * Gets the default type url for ServerHostUserTake
          * @function getTypeUrl
@@ -7251,9 +7673,12 @@ $root.NT = (function () {
             }
             return typeUrlPrefix + "/NT.ServerHostUserTake";
         };
+
         return ServerHostUserTake;
     })();
-    NT.ClientHostUserTakeGold = (function () {
+
+    NT.ClientHostUserTakeGold = (function() {
+
         /**
          * Properties of a ClientHostUserTakeGold.
          * @memberof NT
@@ -7262,6 +7687,7 @@ $root.NT = (function () {
          * @property {number|null} [amount] ClientHostUserTakeGold amount
          * @property {boolean|null} [success] ClientHostUserTakeGold success
          */
+
         /**
          * Constructs a new ClientHostUserTakeGold.
          * @memberof NT
@@ -7276,6 +7702,7 @@ $root.NT = (function () {
                     if (properties[keys[i]] != null)
                         this[keys[i]] = properties[keys[i]];
         }
+
         /**
          * ClientHostUserTakeGold userId.
          * @member {string} userId
@@ -7283,6 +7710,7 @@ $root.NT = (function () {
          * @instance
          */
         ClientHostUserTakeGold.prototype.userId = "";
+
         /**
          * ClientHostUserTakeGold amount.
          * @member {number} amount
@@ -7290,6 +7718,7 @@ $root.NT = (function () {
          * @instance
          */
         ClientHostUserTakeGold.prototype.amount = 0;
+
         /**
          * ClientHostUserTakeGold success.
          * @member {boolean} success
@@ -7297,6 +7726,7 @@ $root.NT = (function () {
          * @instance
          */
         ClientHostUserTakeGold.prototype.success = false;
+
         /**
          * Creates a new ClientHostUserTakeGold instance using the specified properties.
          * @function create
@@ -7308,6 +7738,7 @@ $root.NT = (function () {
         ClientHostUserTakeGold.create = function create(properties) {
             return new ClientHostUserTakeGold(properties);
         };
+
         /**
          * Encodes the specified ClientHostUserTakeGold message. Does not implicitly {@link NT.ClientHostUserTakeGold.verify|verify} messages.
          * @function encode
@@ -7321,13 +7752,14 @@ $root.NT = (function () {
             if (!writer)
                 writer = $Writer.create();
             if (message.userId != null && Object.hasOwnProperty.call(message, "userId"))
-                writer.uint32(/* id 1, wireType 2 =*/ 10).string(message.userId);
+                writer.uint32(/* id 1, wireType 2 =*/10).string(message.userId);
             if (message.amount != null && Object.hasOwnProperty.call(message, "amount"))
-                writer.uint32(/* id 2, wireType 0 =*/ 16).uint32(message.amount);
+                writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.amount);
             if (message.success != null && Object.hasOwnProperty.call(message, "success"))
-                writer.uint32(/* id 3, wireType 0 =*/ 24).bool(message.success);
+                writer.uint32(/* id 3, wireType 0 =*/24).bool(message.success);
             return writer;
         };
+
         /**
          * Encodes the specified ClientHostUserTakeGold message, length delimited. Does not implicitly {@link NT.ClientHostUserTakeGold.verify|verify} messages.
          * @function encodeDelimited
@@ -7340,6 +7772,7 @@ $root.NT = (function () {
         ClientHostUserTakeGold.encodeDelimited = function encodeDelimited(message, writer) {
             return this.encode(message, writer).ldelim();
         };
+
         /**
          * Decodes a ClientHostUserTakeGold message from the specified reader or buffer.
          * @function decode
@@ -7358,25 +7791,26 @@ $root.NT = (function () {
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                    case 1: {
+                case 1: {
                         message.userId = reader.string();
                         break;
                     }
-                    case 2: {
+                case 2: {
                         message.amount = reader.uint32();
                         break;
                     }
-                    case 3: {
+                case 3: {
                         message.success = reader.bool();
                         break;
                     }
-                    default:
-                        reader.skipType(tag & 7);
-                        break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
                 }
             }
             return message;
         };
+
         /**
          * Decodes a ClientHostUserTakeGold message from the specified reader or buffer, length delimited.
          * @function decodeDelimited
@@ -7392,6 +7826,7 @@ $root.NT = (function () {
                 reader = new $Reader(reader);
             return this.decode(reader, reader.uint32());
         };
+
         /**
          * Verifies a ClientHostUserTakeGold message.
          * @function verify
@@ -7414,6 +7849,7 @@ $root.NT = (function () {
                     return "success: boolean expected";
             return null;
         };
+
         /**
          * Creates a ClientHostUserTakeGold message from a plain object. Also converts values to their respective internal types.
          * @function fromObject
@@ -7434,6 +7870,7 @@ $root.NT = (function () {
                 message.success = Boolean(object.success);
             return message;
         };
+
         /**
          * Creates a plain object from a ClientHostUserTakeGold message. Also converts values to other types if specified.
          * @function toObject
@@ -7460,6 +7897,7 @@ $root.NT = (function () {
                 object.success = message.success;
             return object;
         };
+
         /**
          * Converts this ClientHostUserTakeGold to JSON.
          * @function toJSON
@@ -7470,6 +7908,7 @@ $root.NT = (function () {
         ClientHostUserTakeGold.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
+
         /**
          * Gets the default type url for ClientHostUserTakeGold
          * @function getTypeUrl
@@ -7484,9 +7923,12 @@ $root.NT = (function () {
             }
             return typeUrlPrefix + "/NT.ClientHostUserTakeGold";
         };
+
         return ClientHostUserTakeGold;
     })();
-    NT.ServerHostUserTakeGold = (function () {
+
+    NT.ServerHostUserTakeGold = (function() {
+
         /**
          * Properties of a ServerHostUserTakeGold.
          * @memberof NT
@@ -7495,6 +7937,7 @@ $root.NT = (function () {
          * @property {number|null} [amount] ServerHostUserTakeGold amount
          * @property {boolean|null} [success] ServerHostUserTakeGold success
          */
+
         /**
          * Constructs a new ServerHostUserTakeGold.
          * @memberof NT
@@ -7509,6 +7952,7 @@ $root.NT = (function () {
                     if (properties[keys[i]] != null)
                         this[keys[i]] = properties[keys[i]];
         }
+
         /**
          * ServerHostUserTakeGold userId.
          * @member {string} userId
@@ -7516,6 +7960,7 @@ $root.NT = (function () {
          * @instance
          */
         ServerHostUserTakeGold.prototype.userId = "";
+
         /**
          * ServerHostUserTakeGold amount.
          * @member {number} amount
@@ -7523,6 +7968,7 @@ $root.NT = (function () {
          * @instance
          */
         ServerHostUserTakeGold.prototype.amount = 0;
+
         /**
          * ServerHostUserTakeGold success.
          * @member {boolean} success
@@ -7530,6 +7976,7 @@ $root.NT = (function () {
          * @instance
          */
         ServerHostUserTakeGold.prototype.success = false;
+
         /**
          * Creates a new ServerHostUserTakeGold instance using the specified properties.
          * @function create
@@ -7541,6 +7988,7 @@ $root.NT = (function () {
         ServerHostUserTakeGold.create = function create(properties) {
             return new ServerHostUserTakeGold(properties);
         };
+
         /**
          * Encodes the specified ServerHostUserTakeGold message. Does not implicitly {@link NT.ServerHostUserTakeGold.verify|verify} messages.
          * @function encode
@@ -7554,13 +8002,14 @@ $root.NT = (function () {
             if (!writer)
                 writer = $Writer.create();
             if (message.userId != null && Object.hasOwnProperty.call(message, "userId"))
-                writer.uint32(/* id 1, wireType 2 =*/ 10).string(message.userId);
+                writer.uint32(/* id 1, wireType 2 =*/10).string(message.userId);
             if (message.amount != null && Object.hasOwnProperty.call(message, "amount"))
-                writer.uint32(/* id 2, wireType 0 =*/ 16).uint32(message.amount);
+                writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.amount);
             if (message.success != null && Object.hasOwnProperty.call(message, "success"))
-                writer.uint32(/* id 3, wireType 0 =*/ 24).bool(message.success);
+                writer.uint32(/* id 3, wireType 0 =*/24).bool(message.success);
             return writer;
         };
+
         /**
          * Encodes the specified ServerHostUserTakeGold message, length delimited. Does not implicitly {@link NT.ServerHostUserTakeGold.verify|verify} messages.
          * @function encodeDelimited
@@ -7573,6 +8022,7 @@ $root.NT = (function () {
         ServerHostUserTakeGold.encodeDelimited = function encodeDelimited(message, writer) {
             return this.encode(message, writer).ldelim();
         };
+
         /**
          * Decodes a ServerHostUserTakeGold message from the specified reader or buffer.
          * @function decode
@@ -7591,25 +8041,26 @@ $root.NT = (function () {
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                    case 1: {
+                case 1: {
                         message.userId = reader.string();
                         break;
                     }
-                    case 2: {
+                case 2: {
                         message.amount = reader.uint32();
                         break;
                     }
-                    case 3: {
+                case 3: {
                         message.success = reader.bool();
                         break;
                     }
-                    default:
-                        reader.skipType(tag & 7);
-                        break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
                 }
             }
             return message;
         };
+
         /**
          * Decodes a ServerHostUserTakeGold message from the specified reader or buffer, length delimited.
          * @function decodeDelimited
@@ -7625,6 +8076,7 @@ $root.NT = (function () {
                 reader = new $Reader(reader);
             return this.decode(reader, reader.uint32());
         };
+
         /**
          * Verifies a ServerHostUserTakeGold message.
          * @function verify
@@ -7647,6 +8099,7 @@ $root.NT = (function () {
                     return "success: boolean expected";
             return null;
         };
+
         /**
          * Creates a ServerHostUserTakeGold message from a plain object. Also converts values to their respective internal types.
          * @function fromObject
@@ -7667,6 +8120,7 @@ $root.NT = (function () {
                 message.success = Boolean(object.success);
             return message;
         };
+
         /**
          * Creates a plain object from a ServerHostUserTakeGold message. Also converts values to other types if specified.
          * @function toObject
@@ -7693,6 +8147,7 @@ $root.NT = (function () {
                 object.success = message.success;
             return object;
         };
+
         /**
          * Converts this ServerHostUserTakeGold to JSON.
          * @function toJSON
@@ -7703,6 +8158,7 @@ $root.NT = (function () {
         ServerHostUserTakeGold.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
+
         /**
          * Gets the default type url for ServerHostUserTakeGold
          * @function getTypeUrl
@@ -7717,15 +8173,19 @@ $root.NT = (function () {
             }
             return typeUrlPrefix + "/NT.ServerHostUserTakeGold";
         };
+
         return ServerHostUserTakeGold;
     })();
-    NT.ClientPlayerAddGold = (function () {
+
+    NT.ClientPlayerAddGold = (function() {
+
         /**
          * Properties of a ClientPlayerAddGold.
          * @memberof NT
          * @interface IClientPlayerAddGold
          * @property {number|null} [amount] ClientPlayerAddGold amount
          */
+
         /**
          * Constructs a new ClientPlayerAddGold.
          * @memberof NT
@@ -7740,6 +8200,7 @@ $root.NT = (function () {
                     if (properties[keys[i]] != null)
                         this[keys[i]] = properties[keys[i]];
         }
+
         /**
          * ClientPlayerAddGold amount.
          * @member {number} amount
@@ -7747,6 +8208,7 @@ $root.NT = (function () {
          * @instance
          */
         ClientPlayerAddGold.prototype.amount = 0;
+
         /**
          * Creates a new ClientPlayerAddGold instance using the specified properties.
          * @function create
@@ -7758,6 +8220,7 @@ $root.NT = (function () {
         ClientPlayerAddGold.create = function create(properties) {
             return new ClientPlayerAddGold(properties);
         };
+
         /**
          * Encodes the specified ClientPlayerAddGold message. Does not implicitly {@link NT.ClientPlayerAddGold.verify|verify} messages.
          * @function encode
@@ -7771,9 +8234,10 @@ $root.NT = (function () {
             if (!writer)
                 writer = $Writer.create();
             if (message.amount != null && Object.hasOwnProperty.call(message, "amount"))
-                writer.uint32(/* id 1, wireType 0 =*/ 8).uint32(message.amount);
+                writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.amount);
             return writer;
         };
+
         /**
          * Encodes the specified ClientPlayerAddGold message, length delimited. Does not implicitly {@link NT.ClientPlayerAddGold.verify|verify} messages.
          * @function encodeDelimited
@@ -7786,6 +8250,7 @@ $root.NT = (function () {
         ClientPlayerAddGold.encodeDelimited = function encodeDelimited(message, writer) {
             return this.encode(message, writer).ldelim();
         };
+
         /**
          * Decodes a ClientPlayerAddGold message from the specified reader or buffer.
          * @function decode
@@ -7804,17 +8269,18 @@ $root.NT = (function () {
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                    case 1: {
+                case 1: {
                         message.amount = reader.uint32();
                         break;
                     }
-                    default:
-                        reader.skipType(tag & 7);
-                        break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
                 }
             }
             return message;
         };
+
         /**
          * Decodes a ClientPlayerAddGold message from the specified reader or buffer, length delimited.
          * @function decodeDelimited
@@ -7830,6 +8296,7 @@ $root.NT = (function () {
                 reader = new $Reader(reader);
             return this.decode(reader, reader.uint32());
         };
+
         /**
          * Verifies a ClientPlayerAddGold message.
          * @function verify
@@ -7846,6 +8313,7 @@ $root.NT = (function () {
                     return "amount: integer expected";
             return null;
         };
+
         /**
          * Creates a ClientPlayerAddGold message from a plain object. Also converts values to their respective internal types.
          * @function fromObject
@@ -7862,6 +8330,7 @@ $root.NT = (function () {
                 message.amount = object.amount >>> 0;
             return message;
         };
+
         /**
          * Creates a plain object from a ClientPlayerAddGold message. Also converts values to other types if specified.
          * @function toObject
@@ -7881,6 +8350,7 @@ $root.NT = (function () {
                 object.amount = message.amount;
             return object;
         };
+
         /**
          * Converts this ClientPlayerAddGold to JSON.
          * @function toJSON
@@ -7891,6 +8361,7 @@ $root.NT = (function () {
         ClientPlayerAddGold.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
+
         /**
          * Gets the default type url for ClientPlayerAddGold
          * @function getTypeUrl
@@ -7905,9 +8376,12 @@ $root.NT = (function () {
             }
             return typeUrlPrefix + "/NT.ClientPlayerAddGold";
         };
+
         return ClientPlayerAddGold;
     })();
-    NT.ServerPlayerAddGold = (function () {
+
+    NT.ServerPlayerAddGold = (function() {
+
         /**
          * Properties of a ServerPlayerAddGold.
          * @memberof NT
@@ -7915,6 +8389,7 @@ $root.NT = (function () {
          * @property {string|null} [userId] ServerPlayerAddGold userId
          * @property {number|null} [amount] ServerPlayerAddGold amount
          */
+
         /**
          * Constructs a new ServerPlayerAddGold.
          * @memberof NT
@@ -7929,6 +8404,7 @@ $root.NT = (function () {
                     if (properties[keys[i]] != null)
                         this[keys[i]] = properties[keys[i]];
         }
+
         /**
          * ServerPlayerAddGold userId.
          * @member {string} userId
@@ -7936,6 +8412,7 @@ $root.NT = (function () {
          * @instance
          */
         ServerPlayerAddGold.prototype.userId = "";
+
         /**
          * ServerPlayerAddGold amount.
          * @member {number} amount
@@ -7943,6 +8420,7 @@ $root.NT = (function () {
          * @instance
          */
         ServerPlayerAddGold.prototype.amount = 0;
+
         /**
          * Creates a new ServerPlayerAddGold instance using the specified properties.
          * @function create
@@ -7954,6 +8432,7 @@ $root.NT = (function () {
         ServerPlayerAddGold.create = function create(properties) {
             return new ServerPlayerAddGold(properties);
         };
+
         /**
          * Encodes the specified ServerPlayerAddGold message. Does not implicitly {@link NT.ServerPlayerAddGold.verify|verify} messages.
          * @function encode
@@ -7967,11 +8446,12 @@ $root.NT = (function () {
             if (!writer)
                 writer = $Writer.create();
             if (message.userId != null && Object.hasOwnProperty.call(message, "userId"))
-                writer.uint32(/* id 1, wireType 2 =*/ 10).string(message.userId);
+                writer.uint32(/* id 1, wireType 2 =*/10).string(message.userId);
             if (message.amount != null && Object.hasOwnProperty.call(message, "amount"))
-                writer.uint32(/* id 2, wireType 0 =*/ 16).uint32(message.amount);
+                writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.amount);
             return writer;
         };
+
         /**
          * Encodes the specified ServerPlayerAddGold message, length delimited. Does not implicitly {@link NT.ServerPlayerAddGold.verify|verify} messages.
          * @function encodeDelimited
@@ -7984,6 +8464,7 @@ $root.NT = (function () {
         ServerPlayerAddGold.encodeDelimited = function encodeDelimited(message, writer) {
             return this.encode(message, writer).ldelim();
         };
+
         /**
          * Decodes a ServerPlayerAddGold message from the specified reader or buffer.
          * @function decode
@@ -8002,21 +8483,22 @@ $root.NT = (function () {
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                    case 1: {
+                case 1: {
                         message.userId = reader.string();
                         break;
                     }
-                    case 2: {
+                case 2: {
                         message.amount = reader.uint32();
                         break;
                     }
-                    default:
-                        reader.skipType(tag & 7);
-                        break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
                 }
             }
             return message;
         };
+
         /**
          * Decodes a ServerPlayerAddGold message from the specified reader or buffer, length delimited.
          * @function decodeDelimited
@@ -8032,6 +8514,7 @@ $root.NT = (function () {
                 reader = new $Reader(reader);
             return this.decode(reader, reader.uint32());
         };
+
         /**
          * Verifies a ServerPlayerAddGold message.
          * @function verify
@@ -8051,6 +8534,7 @@ $root.NT = (function () {
                     return "amount: integer expected";
             return null;
         };
+
         /**
          * Creates a ServerPlayerAddGold message from a plain object. Also converts values to their respective internal types.
          * @function fromObject
@@ -8069,6 +8553,7 @@ $root.NT = (function () {
                 message.amount = object.amount >>> 0;
             return message;
         };
+
         /**
          * Creates a plain object from a ServerPlayerAddGold message. Also converts values to other types if specified.
          * @function toObject
@@ -8092,6 +8577,7 @@ $root.NT = (function () {
                 object.amount = message.amount;
             return object;
         };
+
         /**
          * Converts this ServerPlayerAddGold to JSON.
          * @function toJSON
@@ -8102,6 +8588,7 @@ $root.NT = (function () {
         ServerPlayerAddGold.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
+
         /**
          * Gets the default type url for ServerPlayerAddGold
          * @function getTypeUrl
@@ -8116,15 +8603,19 @@ $root.NT = (function () {
             }
             return typeUrlPrefix + "/NT.ServerPlayerAddGold";
         };
+
         return ServerPlayerAddGold;
     })();
-    NT.ClientPlayerTakeGold = (function () {
+
+    NT.ClientPlayerTakeGold = (function() {
+
         /**
          * Properties of a ClientPlayerTakeGold.
          * @memberof NT
          * @interface IClientPlayerTakeGold
          * @property {number|null} [amount] ClientPlayerTakeGold amount
          */
+
         /**
          * Constructs a new ClientPlayerTakeGold.
          * @memberof NT
@@ -8139,6 +8630,7 @@ $root.NT = (function () {
                     if (properties[keys[i]] != null)
                         this[keys[i]] = properties[keys[i]];
         }
+
         /**
          * ClientPlayerTakeGold amount.
          * @member {number} amount
@@ -8146,6 +8638,7 @@ $root.NT = (function () {
          * @instance
          */
         ClientPlayerTakeGold.prototype.amount = 0;
+
         /**
          * Creates a new ClientPlayerTakeGold instance using the specified properties.
          * @function create
@@ -8157,6 +8650,7 @@ $root.NT = (function () {
         ClientPlayerTakeGold.create = function create(properties) {
             return new ClientPlayerTakeGold(properties);
         };
+
         /**
          * Encodes the specified ClientPlayerTakeGold message. Does not implicitly {@link NT.ClientPlayerTakeGold.verify|verify} messages.
          * @function encode
@@ -8170,9 +8664,10 @@ $root.NT = (function () {
             if (!writer)
                 writer = $Writer.create();
             if (message.amount != null && Object.hasOwnProperty.call(message, "amount"))
-                writer.uint32(/* id 1, wireType 0 =*/ 8).uint32(message.amount);
+                writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.amount);
             return writer;
         };
+
         /**
          * Encodes the specified ClientPlayerTakeGold message, length delimited. Does not implicitly {@link NT.ClientPlayerTakeGold.verify|verify} messages.
          * @function encodeDelimited
@@ -8185,6 +8680,7 @@ $root.NT = (function () {
         ClientPlayerTakeGold.encodeDelimited = function encodeDelimited(message, writer) {
             return this.encode(message, writer).ldelim();
         };
+
         /**
          * Decodes a ClientPlayerTakeGold message from the specified reader or buffer.
          * @function decode
@@ -8203,17 +8699,18 @@ $root.NT = (function () {
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                    case 1: {
+                case 1: {
                         message.amount = reader.uint32();
                         break;
                     }
-                    default:
-                        reader.skipType(tag & 7);
-                        break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
                 }
             }
             return message;
         };
+
         /**
          * Decodes a ClientPlayerTakeGold message from the specified reader or buffer, length delimited.
          * @function decodeDelimited
@@ -8229,6 +8726,7 @@ $root.NT = (function () {
                 reader = new $Reader(reader);
             return this.decode(reader, reader.uint32());
         };
+
         /**
          * Verifies a ClientPlayerTakeGold message.
          * @function verify
@@ -8245,6 +8743,7 @@ $root.NT = (function () {
                     return "amount: integer expected";
             return null;
         };
+
         /**
          * Creates a ClientPlayerTakeGold message from a plain object. Also converts values to their respective internal types.
          * @function fromObject
@@ -8261,6 +8760,7 @@ $root.NT = (function () {
                 message.amount = object.amount >>> 0;
             return message;
         };
+
         /**
          * Creates a plain object from a ClientPlayerTakeGold message. Also converts values to other types if specified.
          * @function toObject
@@ -8280,6 +8780,7 @@ $root.NT = (function () {
                 object.amount = message.amount;
             return object;
         };
+
         /**
          * Converts this ClientPlayerTakeGold to JSON.
          * @function toJSON
@@ -8290,6 +8791,7 @@ $root.NT = (function () {
         ClientPlayerTakeGold.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
+
         /**
          * Gets the default type url for ClientPlayerTakeGold
          * @function getTypeUrl
@@ -8304,9 +8806,12 @@ $root.NT = (function () {
             }
             return typeUrlPrefix + "/NT.ClientPlayerTakeGold";
         };
+
         return ClientPlayerTakeGold;
     })();
-    NT.ServerPlayerTakeGold = (function () {
+
+    NT.ServerPlayerTakeGold = (function() {
+
         /**
          * Properties of a ServerPlayerTakeGold.
          * @memberof NT
@@ -8314,6 +8819,7 @@ $root.NT = (function () {
          * @property {string|null} [userId] ServerPlayerTakeGold userId
          * @property {number|null} [amount] ServerPlayerTakeGold amount
          */
+
         /**
          * Constructs a new ServerPlayerTakeGold.
          * @memberof NT
@@ -8328,6 +8834,7 @@ $root.NT = (function () {
                     if (properties[keys[i]] != null)
                         this[keys[i]] = properties[keys[i]];
         }
+
         /**
          * ServerPlayerTakeGold userId.
          * @member {string} userId
@@ -8335,6 +8842,7 @@ $root.NT = (function () {
          * @instance
          */
         ServerPlayerTakeGold.prototype.userId = "";
+
         /**
          * ServerPlayerTakeGold amount.
          * @member {number} amount
@@ -8342,6 +8850,7 @@ $root.NT = (function () {
          * @instance
          */
         ServerPlayerTakeGold.prototype.amount = 0;
+
         /**
          * Creates a new ServerPlayerTakeGold instance using the specified properties.
          * @function create
@@ -8353,6 +8862,7 @@ $root.NT = (function () {
         ServerPlayerTakeGold.create = function create(properties) {
             return new ServerPlayerTakeGold(properties);
         };
+
         /**
          * Encodes the specified ServerPlayerTakeGold message. Does not implicitly {@link NT.ServerPlayerTakeGold.verify|verify} messages.
          * @function encode
@@ -8366,11 +8876,12 @@ $root.NT = (function () {
             if (!writer)
                 writer = $Writer.create();
             if (message.userId != null && Object.hasOwnProperty.call(message, "userId"))
-                writer.uint32(/* id 1, wireType 2 =*/ 10).string(message.userId);
+                writer.uint32(/* id 1, wireType 2 =*/10).string(message.userId);
             if (message.amount != null && Object.hasOwnProperty.call(message, "amount"))
-                writer.uint32(/* id 2, wireType 0 =*/ 16).uint32(message.amount);
+                writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.amount);
             return writer;
         };
+
         /**
          * Encodes the specified ServerPlayerTakeGold message, length delimited. Does not implicitly {@link NT.ServerPlayerTakeGold.verify|verify} messages.
          * @function encodeDelimited
@@ -8383,6 +8894,7 @@ $root.NT = (function () {
         ServerPlayerTakeGold.encodeDelimited = function encodeDelimited(message, writer) {
             return this.encode(message, writer).ldelim();
         };
+
         /**
          * Decodes a ServerPlayerTakeGold message from the specified reader or buffer.
          * @function decode
@@ -8401,21 +8913,22 @@ $root.NT = (function () {
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                    case 1: {
+                case 1: {
                         message.userId = reader.string();
                         break;
                     }
-                    case 2: {
+                case 2: {
                         message.amount = reader.uint32();
                         break;
                     }
-                    default:
-                        reader.skipType(tag & 7);
-                        break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
                 }
             }
             return message;
         };
+
         /**
          * Decodes a ServerPlayerTakeGold message from the specified reader or buffer, length delimited.
          * @function decodeDelimited
@@ -8431,6 +8944,7 @@ $root.NT = (function () {
                 reader = new $Reader(reader);
             return this.decode(reader, reader.uint32());
         };
+
         /**
          * Verifies a ServerPlayerTakeGold message.
          * @function verify
@@ -8450,6 +8964,7 @@ $root.NT = (function () {
                     return "amount: integer expected";
             return null;
         };
+
         /**
          * Creates a ServerPlayerTakeGold message from a plain object. Also converts values to their respective internal types.
          * @function fromObject
@@ -8468,6 +8983,7 @@ $root.NT = (function () {
                 message.amount = object.amount >>> 0;
             return message;
         };
+
         /**
          * Creates a plain object from a ServerPlayerTakeGold message. Also converts values to other types if specified.
          * @function toObject
@@ -8491,6 +9007,7 @@ $root.NT = (function () {
                 object.amount = message.amount;
             return object;
         };
+
         /**
          * Converts this ServerPlayerTakeGold to JSON.
          * @function toJSON
@@ -8501,6 +9018,7 @@ $root.NT = (function () {
         ServerPlayerTakeGold.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
+
         /**
          * Gets the default type url for ServerPlayerTakeGold
          * @function getTypeUrl
@@ -8515,9 +9033,12 @@ $root.NT = (function () {
             }
             return typeUrlPrefix + "/NT.ServerPlayerTakeGold";
         };
+
         return ServerPlayerTakeGold;
     })();
-    NT.ClientPlayerAddItem = (function () {
+
+    NT.ClientPlayerAddItem = (function() {
+
         /**
          * Properties of a ClientPlayerAddItem.
          * @memberof NT
@@ -8527,6 +9048,7 @@ $root.NT = (function () {
          * @property {NT.ClientPlayerAddItem.IItems|null} [flasks] ClientPlayerAddItem flasks
          * @property {NT.ClientPlayerAddItem.IEntities|null} [objects] ClientPlayerAddItem objects
          */
+
         /**
          * Constructs a new ClientPlayerAddItem.
          * @memberof NT
@@ -8541,6 +9063,7 @@ $root.NT = (function () {
                     if (properties[keys[i]] != null)
                         this[keys[i]] = properties[keys[i]];
         }
+
         /**
          * ClientPlayerAddItem spells.
          * @member {NT.ClientPlayerAddItem.ISpells|null|undefined} spells
@@ -8548,6 +9071,7 @@ $root.NT = (function () {
          * @instance
          */
         ClientPlayerAddItem.prototype.spells = null;
+
         /**
          * ClientPlayerAddItem wands.
          * @member {NT.ClientPlayerAddItem.IWands|null|undefined} wands
@@ -8555,6 +9079,7 @@ $root.NT = (function () {
          * @instance
          */
         ClientPlayerAddItem.prototype.wands = null;
+
         /**
          * ClientPlayerAddItem flasks.
          * @member {NT.ClientPlayerAddItem.IItems|null|undefined} flasks
@@ -8562,6 +9087,7 @@ $root.NT = (function () {
          * @instance
          */
         ClientPlayerAddItem.prototype.flasks = null;
+
         /**
          * ClientPlayerAddItem objects.
          * @member {NT.ClientPlayerAddItem.IEntities|null|undefined} objects
@@ -8569,8 +9095,10 @@ $root.NT = (function () {
          * @instance
          */
         ClientPlayerAddItem.prototype.objects = null;
+
         // OneOf field names bound to virtual getters and setters
         var $oneOfFields;
+
         /**
          * ClientPlayerAddItem item.
          * @member {"spells"|"wands"|"flasks"|"objects"|undefined} item
@@ -8581,6 +9109,7 @@ $root.NT = (function () {
             get: $util.oneOfGetter($oneOfFields = ["spells", "wands", "flasks", "objects"]),
             set: $util.oneOfSetter($oneOfFields)
         });
+
         /**
          * Creates a new ClientPlayerAddItem instance using the specified properties.
          * @function create
@@ -8592,6 +9121,7 @@ $root.NT = (function () {
         ClientPlayerAddItem.create = function create(properties) {
             return new ClientPlayerAddItem(properties);
         };
+
         /**
          * Encodes the specified ClientPlayerAddItem message. Does not implicitly {@link NT.ClientPlayerAddItem.verify|verify} messages.
          * @function encode
@@ -8605,15 +9135,16 @@ $root.NT = (function () {
             if (!writer)
                 writer = $Writer.create();
             if (message.spells != null && Object.hasOwnProperty.call(message, "spells"))
-                $root.NT.ClientPlayerAddItem.Spells.encode(message.spells, writer.uint32(/* id 1, wireType 2 =*/ 10).fork()).ldelim();
+                $root.NT.ClientPlayerAddItem.Spells.encode(message.spells, writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
             if (message.wands != null && Object.hasOwnProperty.call(message, "wands"))
-                $root.NT.ClientPlayerAddItem.Wands.encode(message.wands, writer.uint32(/* id 2, wireType 2 =*/ 18).fork()).ldelim();
+                $root.NT.ClientPlayerAddItem.Wands.encode(message.wands, writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
             if (message.flasks != null && Object.hasOwnProperty.call(message, "flasks"))
-                $root.NT.ClientPlayerAddItem.Items.encode(message.flasks, writer.uint32(/* id 3, wireType 2 =*/ 26).fork()).ldelim();
+                $root.NT.ClientPlayerAddItem.Items.encode(message.flasks, writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
             if (message.objects != null && Object.hasOwnProperty.call(message, "objects"))
-                $root.NT.ClientPlayerAddItem.Entities.encode(message.objects, writer.uint32(/* id 4, wireType 2 =*/ 34).fork()).ldelim();
+                $root.NT.ClientPlayerAddItem.Entities.encode(message.objects, writer.uint32(/* id 4, wireType 2 =*/34).fork()).ldelim();
             return writer;
         };
+
         /**
          * Encodes the specified ClientPlayerAddItem message, length delimited. Does not implicitly {@link NT.ClientPlayerAddItem.verify|verify} messages.
          * @function encodeDelimited
@@ -8626,6 +9157,7 @@ $root.NT = (function () {
         ClientPlayerAddItem.encodeDelimited = function encodeDelimited(message, writer) {
             return this.encode(message, writer).ldelim();
         };
+
         /**
          * Decodes a ClientPlayerAddItem message from the specified reader or buffer.
          * @function decode
@@ -8644,29 +9176,30 @@ $root.NT = (function () {
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                    case 1: {
+                case 1: {
                         message.spells = $root.NT.ClientPlayerAddItem.Spells.decode(reader, reader.uint32());
                         break;
                     }
-                    case 2: {
+                case 2: {
                         message.wands = $root.NT.ClientPlayerAddItem.Wands.decode(reader, reader.uint32());
                         break;
                     }
-                    case 3: {
+                case 3: {
                         message.flasks = $root.NT.ClientPlayerAddItem.Items.decode(reader, reader.uint32());
                         break;
                     }
-                    case 4: {
+                case 4: {
                         message.objects = $root.NT.ClientPlayerAddItem.Entities.decode(reader, reader.uint32());
                         break;
                     }
-                    default:
-                        reader.skipType(tag & 7);
-                        break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
                 }
             }
             return message;
         };
+
         /**
          * Decodes a ClientPlayerAddItem message from the specified reader or buffer, length delimited.
          * @function decodeDelimited
@@ -8682,6 +9215,7 @@ $root.NT = (function () {
                 reader = new $Reader(reader);
             return this.decode(reader, reader.uint32());
         };
+
         /**
          * Verifies a ClientPlayerAddItem message.
          * @function verify
@@ -8734,6 +9268,7 @@ $root.NT = (function () {
             }
             return null;
         };
+
         /**
          * Creates a ClientPlayerAddItem message from a plain object. Also converts values to their respective internal types.
          * @function fromObject
@@ -8768,6 +9303,7 @@ $root.NT = (function () {
             }
             return message;
         };
+
         /**
          * Creates a plain object from a ClientPlayerAddItem message. Also converts values to other types if specified.
          * @function toObject
@@ -8803,6 +9339,7 @@ $root.NT = (function () {
             }
             return object;
         };
+
         /**
          * Converts this ClientPlayerAddItem to JSON.
          * @function toJSON
@@ -8813,6 +9350,7 @@ $root.NT = (function () {
         ClientPlayerAddItem.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
+
         /**
          * Gets the default type url for ClientPlayerAddItem
          * @function getTypeUrl
@@ -8827,13 +9365,16 @@ $root.NT = (function () {
             }
             return typeUrlPrefix + "/NT.ClientPlayerAddItem";
         };
-        ClientPlayerAddItem.Spells = (function () {
+
+        ClientPlayerAddItem.Spells = (function() {
+
             /**
              * Properties of a Spells.
              * @memberof NT.ClientPlayerAddItem
              * @interface ISpells
              * @property {Array.<NT.ISpell>|null} [list] Spells list
              */
+
             /**
              * Constructs a new Spells.
              * @memberof NT.ClientPlayerAddItem
@@ -8849,6 +9390,7 @@ $root.NT = (function () {
                         if (properties[keys[i]] != null)
                             this[keys[i]] = properties[keys[i]];
             }
+
             /**
              * Spells list.
              * @member {Array.<NT.ISpell>} list
@@ -8856,6 +9398,7 @@ $root.NT = (function () {
              * @instance
              */
             Spells.prototype.list = $util.emptyArray;
+
             /**
              * Creates a new Spells instance using the specified properties.
              * @function create
@@ -8867,6 +9410,7 @@ $root.NT = (function () {
             Spells.create = function create(properties) {
                 return new Spells(properties);
             };
+
             /**
              * Encodes the specified Spells message. Does not implicitly {@link NT.ClientPlayerAddItem.Spells.verify|verify} messages.
              * @function encode
@@ -8881,9 +9425,10 @@ $root.NT = (function () {
                     writer = $Writer.create();
                 if (message.list != null && message.list.length)
                     for (var i = 0; i < message.list.length; ++i)
-                        $root.NT.Spell.encode(message.list[i], writer.uint32(/* id 1, wireType 2 =*/ 10).fork()).ldelim();
+                        $root.NT.Spell.encode(message.list[i], writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
                 return writer;
             };
+
             /**
              * Encodes the specified Spells message, length delimited. Does not implicitly {@link NT.ClientPlayerAddItem.Spells.verify|verify} messages.
              * @function encodeDelimited
@@ -8896,6 +9441,7 @@ $root.NT = (function () {
             Spells.encodeDelimited = function encodeDelimited(message, writer) {
                 return this.encode(message, writer).ldelim();
             };
+
             /**
              * Decodes a Spells message from the specified reader or buffer.
              * @function decode
@@ -8914,19 +9460,20 @@ $root.NT = (function () {
                 while (reader.pos < end) {
                     var tag = reader.uint32();
                     switch (tag >>> 3) {
-                        case 1: {
+                    case 1: {
                             if (!(message.list && message.list.length))
                                 message.list = [];
                             message.list.push($root.NT.Spell.decode(reader, reader.uint32()));
                             break;
                         }
-                        default:
-                            reader.skipType(tag & 7);
-                            break;
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
                     }
                 }
                 return message;
             };
+
             /**
              * Decodes a Spells message from the specified reader or buffer, length delimited.
              * @function decodeDelimited
@@ -8942,6 +9489,7 @@ $root.NT = (function () {
                     reader = new $Reader(reader);
                 return this.decode(reader, reader.uint32());
             };
+
             /**
              * Verifies a Spells message.
              * @function verify
@@ -8964,6 +9512,7 @@ $root.NT = (function () {
                 }
                 return null;
             };
+
             /**
              * Creates a Spells message from a plain object. Also converts values to their respective internal types.
              * @function fromObject
@@ -8988,6 +9537,7 @@ $root.NT = (function () {
                 }
                 return message;
             };
+
             /**
              * Creates a plain object from a Spells message. Also converts values to other types if specified.
              * @function toObject
@@ -9010,6 +9560,7 @@ $root.NT = (function () {
                 }
                 return object;
             };
+
             /**
              * Converts this Spells to JSON.
              * @function toJSON
@@ -9020,6 +9571,7 @@ $root.NT = (function () {
             Spells.prototype.toJSON = function toJSON() {
                 return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
             };
+
             /**
              * Gets the default type url for Spells
              * @function getTypeUrl
@@ -9034,15 +9586,19 @@ $root.NT = (function () {
                 }
                 return typeUrlPrefix + "/NT.ClientPlayerAddItem.Spells";
             };
+
             return Spells;
         })();
-        ClientPlayerAddItem.Wands = (function () {
+
+        ClientPlayerAddItem.Wands = (function() {
+
             /**
              * Properties of a Wands.
              * @memberof NT.ClientPlayerAddItem
              * @interface IWands
              * @property {Array.<NT.IWand>|null} [list] Wands list
              */
+
             /**
              * Constructs a new Wands.
              * @memberof NT.ClientPlayerAddItem
@@ -9058,6 +9614,7 @@ $root.NT = (function () {
                         if (properties[keys[i]] != null)
                             this[keys[i]] = properties[keys[i]];
             }
+
             /**
              * Wands list.
              * @member {Array.<NT.IWand>} list
@@ -9065,6 +9622,7 @@ $root.NT = (function () {
              * @instance
              */
             Wands.prototype.list = $util.emptyArray;
+
             /**
              * Creates a new Wands instance using the specified properties.
              * @function create
@@ -9076,6 +9634,7 @@ $root.NT = (function () {
             Wands.create = function create(properties) {
                 return new Wands(properties);
             };
+
             /**
              * Encodes the specified Wands message. Does not implicitly {@link NT.ClientPlayerAddItem.Wands.verify|verify} messages.
              * @function encode
@@ -9090,9 +9649,10 @@ $root.NT = (function () {
                     writer = $Writer.create();
                 if (message.list != null && message.list.length)
                     for (var i = 0; i < message.list.length; ++i)
-                        $root.NT.Wand.encode(message.list[i], writer.uint32(/* id 1, wireType 2 =*/ 10).fork()).ldelim();
+                        $root.NT.Wand.encode(message.list[i], writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
                 return writer;
             };
+
             /**
              * Encodes the specified Wands message, length delimited. Does not implicitly {@link NT.ClientPlayerAddItem.Wands.verify|verify} messages.
              * @function encodeDelimited
@@ -9105,6 +9665,7 @@ $root.NT = (function () {
             Wands.encodeDelimited = function encodeDelimited(message, writer) {
                 return this.encode(message, writer).ldelim();
             };
+
             /**
              * Decodes a Wands message from the specified reader or buffer.
              * @function decode
@@ -9123,19 +9684,20 @@ $root.NT = (function () {
                 while (reader.pos < end) {
                     var tag = reader.uint32();
                     switch (tag >>> 3) {
-                        case 1: {
+                    case 1: {
                             if (!(message.list && message.list.length))
                                 message.list = [];
                             message.list.push($root.NT.Wand.decode(reader, reader.uint32()));
                             break;
                         }
-                        default:
-                            reader.skipType(tag & 7);
-                            break;
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
                     }
                 }
                 return message;
             };
+
             /**
              * Decodes a Wands message from the specified reader or buffer, length delimited.
              * @function decodeDelimited
@@ -9151,6 +9713,7 @@ $root.NT = (function () {
                     reader = new $Reader(reader);
                 return this.decode(reader, reader.uint32());
             };
+
             /**
              * Verifies a Wands message.
              * @function verify
@@ -9173,6 +9736,7 @@ $root.NT = (function () {
                 }
                 return null;
             };
+
             /**
              * Creates a Wands message from a plain object. Also converts values to their respective internal types.
              * @function fromObject
@@ -9197,6 +9761,7 @@ $root.NT = (function () {
                 }
                 return message;
             };
+
             /**
              * Creates a plain object from a Wands message. Also converts values to other types if specified.
              * @function toObject
@@ -9219,6 +9784,7 @@ $root.NT = (function () {
                 }
                 return object;
             };
+
             /**
              * Converts this Wands to JSON.
              * @function toJSON
@@ -9229,6 +9795,7 @@ $root.NT = (function () {
             Wands.prototype.toJSON = function toJSON() {
                 return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
             };
+
             /**
              * Gets the default type url for Wands
              * @function getTypeUrl
@@ -9243,15 +9810,19 @@ $root.NT = (function () {
                 }
                 return typeUrlPrefix + "/NT.ClientPlayerAddItem.Wands";
             };
+
             return Wands;
         })();
-        ClientPlayerAddItem.Items = (function () {
+
+        ClientPlayerAddItem.Items = (function() {
+
             /**
              * Properties of an Items.
              * @memberof NT.ClientPlayerAddItem
              * @interface IItems
              * @property {Array.<NT.IItem>|null} [list] Items list
              */
+
             /**
              * Constructs a new Items.
              * @memberof NT.ClientPlayerAddItem
@@ -9267,6 +9838,7 @@ $root.NT = (function () {
                         if (properties[keys[i]] != null)
                             this[keys[i]] = properties[keys[i]];
             }
+
             /**
              * Items list.
              * @member {Array.<NT.IItem>} list
@@ -9274,6 +9846,7 @@ $root.NT = (function () {
              * @instance
              */
             Items.prototype.list = $util.emptyArray;
+
             /**
              * Creates a new Items instance using the specified properties.
              * @function create
@@ -9285,6 +9858,7 @@ $root.NT = (function () {
             Items.create = function create(properties) {
                 return new Items(properties);
             };
+
             /**
              * Encodes the specified Items message. Does not implicitly {@link NT.ClientPlayerAddItem.Items.verify|verify} messages.
              * @function encode
@@ -9299,9 +9873,10 @@ $root.NT = (function () {
                     writer = $Writer.create();
                 if (message.list != null && message.list.length)
                     for (var i = 0; i < message.list.length; ++i)
-                        $root.NT.Item.encode(message.list[i], writer.uint32(/* id 1, wireType 2 =*/ 10).fork()).ldelim();
+                        $root.NT.Item.encode(message.list[i], writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
                 return writer;
             };
+
             /**
              * Encodes the specified Items message, length delimited. Does not implicitly {@link NT.ClientPlayerAddItem.Items.verify|verify} messages.
              * @function encodeDelimited
@@ -9314,6 +9889,7 @@ $root.NT = (function () {
             Items.encodeDelimited = function encodeDelimited(message, writer) {
                 return this.encode(message, writer).ldelim();
             };
+
             /**
              * Decodes an Items message from the specified reader or buffer.
              * @function decode
@@ -9332,19 +9908,20 @@ $root.NT = (function () {
                 while (reader.pos < end) {
                     var tag = reader.uint32();
                     switch (tag >>> 3) {
-                        case 1: {
+                    case 1: {
                             if (!(message.list && message.list.length))
                                 message.list = [];
                             message.list.push($root.NT.Item.decode(reader, reader.uint32()));
                             break;
                         }
-                        default:
-                            reader.skipType(tag & 7);
-                            break;
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
                     }
                 }
                 return message;
             };
+
             /**
              * Decodes an Items message from the specified reader or buffer, length delimited.
              * @function decodeDelimited
@@ -9360,6 +9937,7 @@ $root.NT = (function () {
                     reader = new $Reader(reader);
                 return this.decode(reader, reader.uint32());
             };
+
             /**
              * Verifies an Items message.
              * @function verify
@@ -9382,6 +9960,7 @@ $root.NT = (function () {
                 }
                 return null;
             };
+
             /**
              * Creates an Items message from a plain object. Also converts values to their respective internal types.
              * @function fromObject
@@ -9406,6 +9985,7 @@ $root.NT = (function () {
                 }
                 return message;
             };
+
             /**
              * Creates a plain object from an Items message. Also converts values to other types if specified.
              * @function toObject
@@ -9428,6 +10008,7 @@ $root.NT = (function () {
                 }
                 return object;
             };
+
             /**
              * Converts this Items to JSON.
              * @function toJSON
@@ -9438,6 +10019,7 @@ $root.NT = (function () {
             Items.prototype.toJSON = function toJSON() {
                 return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
             };
+
             /**
              * Gets the default type url for Items
              * @function getTypeUrl
@@ -9452,15 +10034,19 @@ $root.NT = (function () {
                 }
                 return typeUrlPrefix + "/NT.ClientPlayerAddItem.Items";
             };
+
             return Items;
         })();
-        ClientPlayerAddItem.Entities = (function () {
+
+        ClientPlayerAddItem.Entities = (function() {
+
             /**
              * Properties of an Entities.
              * @memberof NT.ClientPlayerAddItem
              * @interface IEntities
              * @property {Array.<NT.IEntityItem>|null} [list] Entities list
              */
+
             /**
              * Constructs a new Entities.
              * @memberof NT.ClientPlayerAddItem
@@ -9476,6 +10062,7 @@ $root.NT = (function () {
                         if (properties[keys[i]] != null)
                             this[keys[i]] = properties[keys[i]];
             }
+
             /**
              * Entities list.
              * @member {Array.<NT.IEntityItem>} list
@@ -9483,6 +10070,7 @@ $root.NT = (function () {
              * @instance
              */
             Entities.prototype.list = $util.emptyArray;
+
             /**
              * Creates a new Entities instance using the specified properties.
              * @function create
@@ -9494,6 +10082,7 @@ $root.NT = (function () {
             Entities.create = function create(properties) {
                 return new Entities(properties);
             };
+
             /**
              * Encodes the specified Entities message. Does not implicitly {@link NT.ClientPlayerAddItem.Entities.verify|verify} messages.
              * @function encode
@@ -9508,9 +10097,10 @@ $root.NT = (function () {
                     writer = $Writer.create();
                 if (message.list != null && message.list.length)
                     for (var i = 0; i < message.list.length; ++i)
-                        $root.NT.EntityItem.encode(message.list[i], writer.uint32(/* id 1, wireType 2 =*/ 10).fork()).ldelim();
+                        $root.NT.EntityItem.encode(message.list[i], writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
                 return writer;
             };
+
             /**
              * Encodes the specified Entities message, length delimited. Does not implicitly {@link NT.ClientPlayerAddItem.Entities.verify|verify} messages.
              * @function encodeDelimited
@@ -9523,6 +10113,7 @@ $root.NT = (function () {
             Entities.encodeDelimited = function encodeDelimited(message, writer) {
                 return this.encode(message, writer).ldelim();
             };
+
             /**
              * Decodes an Entities message from the specified reader or buffer.
              * @function decode
@@ -9541,19 +10132,20 @@ $root.NT = (function () {
                 while (reader.pos < end) {
                     var tag = reader.uint32();
                     switch (tag >>> 3) {
-                        case 1: {
+                    case 1: {
                             if (!(message.list && message.list.length))
                                 message.list = [];
                             message.list.push($root.NT.EntityItem.decode(reader, reader.uint32()));
                             break;
                         }
-                        default:
-                            reader.skipType(tag & 7);
-                            break;
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
                     }
                 }
                 return message;
             };
+
             /**
              * Decodes an Entities message from the specified reader or buffer, length delimited.
              * @function decodeDelimited
@@ -9569,6 +10161,7 @@ $root.NT = (function () {
                     reader = new $Reader(reader);
                 return this.decode(reader, reader.uint32());
             };
+
             /**
              * Verifies an Entities message.
              * @function verify
@@ -9591,6 +10184,7 @@ $root.NT = (function () {
                 }
                 return null;
             };
+
             /**
              * Creates an Entities message from a plain object. Also converts values to their respective internal types.
              * @function fromObject
@@ -9615,6 +10209,7 @@ $root.NT = (function () {
                 }
                 return message;
             };
+
             /**
              * Creates a plain object from an Entities message. Also converts values to other types if specified.
              * @function toObject
@@ -9637,6 +10232,7 @@ $root.NT = (function () {
                 }
                 return object;
             };
+
             /**
              * Converts this Entities to JSON.
              * @function toJSON
@@ -9647,6 +10243,7 @@ $root.NT = (function () {
             Entities.prototype.toJSON = function toJSON() {
                 return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
             };
+
             /**
              * Gets the default type url for Entities
              * @function getTypeUrl
@@ -9661,11 +10258,15 @@ $root.NT = (function () {
                 }
                 return typeUrlPrefix + "/NT.ClientPlayerAddItem.Entities";
             };
+
             return Entities;
         })();
+
         return ClientPlayerAddItem;
     })();
-    NT.ServerPlayerAddItem = (function () {
+
+    NT.ServerPlayerAddItem = (function() {
+
         /**
          * Properties of a ServerPlayerAddItem.
          * @memberof NT
@@ -9676,6 +10277,7 @@ $root.NT = (function () {
          * @property {NT.ServerPlayerAddItem.IItems|null} [flasks] ServerPlayerAddItem flasks
          * @property {NT.ServerPlayerAddItem.IEntities|null} [objects] ServerPlayerAddItem objects
          */
+
         /**
          * Constructs a new ServerPlayerAddItem.
          * @memberof NT
@@ -9690,6 +10292,7 @@ $root.NT = (function () {
                     if (properties[keys[i]] != null)
                         this[keys[i]] = properties[keys[i]];
         }
+
         /**
          * ServerPlayerAddItem userId.
          * @member {string} userId
@@ -9697,6 +10300,7 @@ $root.NT = (function () {
          * @instance
          */
         ServerPlayerAddItem.prototype.userId = "";
+
         /**
          * ServerPlayerAddItem spells.
          * @member {NT.ServerPlayerAddItem.ISpells|null|undefined} spells
@@ -9704,6 +10308,7 @@ $root.NT = (function () {
          * @instance
          */
         ServerPlayerAddItem.prototype.spells = null;
+
         /**
          * ServerPlayerAddItem wands.
          * @member {NT.ServerPlayerAddItem.IWands|null|undefined} wands
@@ -9711,6 +10316,7 @@ $root.NT = (function () {
          * @instance
          */
         ServerPlayerAddItem.prototype.wands = null;
+
         /**
          * ServerPlayerAddItem flasks.
          * @member {NT.ServerPlayerAddItem.IItems|null|undefined} flasks
@@ -9718,6 +10324,7 @@ $root.NT = (function () {
          * @instance
          */
         ServerPlayerAddItem.prototype.flasks = null;
+
         /**
          * ServerPlayerAddItem objects.
          * @member {NT.ServerPlayerAddItem.IEntities|null|undefined} objects
@@ -9725,8 +10332,10 @@ $root.NT = (function () {
          * @instance
          */
         ServerPlayerAddItem.prototype.objects = null;
+
         // OneOf field names bound to virtual getters and setters
         var $oneOfFields;
+
         /**
          * ServerPlayerAddItem item.
          * @member {"spells"|"wands"|"flasks"|"objects"|undefined} item
@@ -9737,6 +10346,7 @@ $root.NT = (function () {
             get: $util.oneOfGetter($oneOfFields = ["spells", "wands", "flasks", "objects"]),
             set: $util.oneOfSetter($oneOfFields)
         });
+
         /**
          * Creates a new ServerPlayerAddItem instance using the specified properties.
          * @function create
@@ -9748,6 +10358,7 @@ $root.NT = (function () {
         ServerPlayerAddItem.create = function create(properties) {
             return new ServerPlayerAddItem(properties);
         };
+
         /**
          * Encodes the specified ServerPlayerAddItem message. Does not implicitly {@link NT.ServerPlayerAddItem.verify|verify} messages.
          * @function encode
@@ -9761,17 +10372,18 @@ $root.NT = (function () {
             if (!writer)
                 writer = $Writer.create();
             if (message.userId != null && Object.hasOwnProperty.call(message, "userId"))
-                writer.uint32(/* id 1, wireType 2 =*/ 10).string(message.userId);
+                writer.uint32(/* id 1, wireType 2 =*/10).string(message.userId);
             if (message.spells != null && Object.hasOwnProperty.call(message, "spells"))
-                $root.NT.ServerPlayerAddItem.Spells.encode(message.spells, writer.uint32(/* id 2, wireType 2 =*/ 18).fork()).ldelim();
+                $root.NT.ServerPlayerAddItem.Spells.encode(message.spells, writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
             if (message.wands != null && Object.hasOwnProperty.call(message, "wands"))
-                $root.NT.ServerPlayerAddItem.Wands.encode(message.wands, writer.uint32(/* id 3, wireType 2 =*/ 26).fork()).ldelim();
+                $root.NT.ServerPlayerAddItem.Wands.encode(message.wands, writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
             if (message.flasks != null && Object.hasOwnProperty.call(message, "flasks"))
-                $root.NT.ServerPlayerAddItem.Items.encode(message.flasks, writer.uint32(/* id 4, wireType 2 =*/ 34).fork()).ldelim();
+                $root.NT.ServerPlayerAddItem.Items.encode(message.flasks, writer.uint32(/* id 4, wireType 2 =*/34).fork()).ldelim();
             if (message.objects != null && Object.hasOwnProperty.call(message, "objects"))
-                $root.NT.ServerPlayerAddItem.Entities.encode(message.objects, writer.uint32(/* id 5, wireType 2 =*/ 42).fork()).ldelim();
+                $root.NT.ServerPlayerAddItem.Entities.encode(message.objects, writer.uint32(/* id 5, wireType 2 =*/42).fork()).ldelim();
             return writer;
         };
+
         /**
          * Encodes the specified ServerPlayerAddItem message, length delimited. Does not implicitly {@link NT.ServerPlayerAddItem.verify|verify} messages.
          * @function encodeDelimited
@@ -9784,6 +10396,7 @@ $root.NT = (function () {
         ServerPlayerAddItem.encodeDelimited = function encodeDelimited(message, writer) {
             return this.encode(message, writer).ldelim();
         };
+
         /**
          * Decodes a ServerPlayerAddItem message from the specified reader or buffer.
          * @function decode
@@ -9802,33 +10415,34 @@ $root.NT = (function () {
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                    case 1: {
+                case 1: {
                         message.userId = reader.string();
                         break;
                     }
-                    case 2: {
+                case 2: {
                         message.spells = $root.NT.ServerPlayerAddItem.Spells.decode(reader, reader.uint32());
                         break;
                     }
-                    case 3: {
+                case 3: {
                         message.wands = $root.NT.ServerPlayerAddItem.Wands.decode(reader, reader.uint32());
                         break;
                     }
-                    case 4: {
+                case 4: {
                         message.flasks = $root.NT.ServerPlayerAddItem.Items.decode(reader, reader.uint32());
                         break;
                     }
-                    case 5: {
+                case 5: {
                         message.objects = $root.NT.ServerPlayerAddItem.Entities.decode(reader, reader.uint32());
                         break;
                     }
-                    default:
-                        reader.skipType(tag & 7);
-                        break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
                 }
             }
             return message;
         };
+
         /**
          * Decodes a ServerPlayerAddItem message from the specified reader or buffer, length delimited.
          * @function decodeDelimited
@@ -9844,6 +10458,7 @@ $root.NT = (function () {
                 reader = new $Reader(reader);
             return this.decode(reader, reader.uint32());
         };
+
         /**
          * Verifies a ServerPlayerAddItem message.
          * @function verify
@@ -9899,6 +10514,7 @@ $root.NT = (function () {
             }
             return null;
         };
+
         /**
          * Creates a ServerPlayerAddItem message from a plain object. Also converts values to their respective internal types.
          * @function fromObject
@@ -9935,6 +10551,7 @@ $root.NT = (function () {
             }
             return message;
         };
+
         /**
          * Creates a plain object from a ServerPlayerAddItem message. Also converts values to other types if specified.
          * @function toObject
@@ -9974,6 +10591,7 @@ $root.NT = (function () {
             }
             return object;
         };
+
         /**
          * Converts this ServerPlayerAddItem to JSON.
          * @function toJSON
@@ -9984,6 +10602,7 @@ $root.NT = (function () {
         ServerPlayerAddItem.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
+
         /**
          * Gets the default type url for ServerPlayerAddItem
          * @function getTypeUrl
@@ -9998,13 +10617,16 @@ $root.NT = (function () {
             }
             return typeUrlPrefix + "/NT.ServerPlayerAddItem";
         };
-        ServerPlayerAddItem.Spells = (function () {
+
+        ServerPlayerAddItem.Spells = (function() {
+
             /**
              * Properties of a Spells.
              * @memberof NT.ServerPlayerAddItem
              * @interface ISpells
              * @property {Array.<NT.ISpell>|null} [list] Spells list
              */
+
             /**
              * Constructs a new Spells.
              * @memberof NT.ServerPlayerAddItem
@@ -10020,6 +10642,7 @@ $root.NT = (function () {
                         if (properties[keys[i]] != null)
                             this[keys[i]] = properties[keys[i]];
             }
+
             /**
              * Spells list.
              * @member {Array.<NT.ISpell>} list
@@ -10027,6 +10650,7 @@ $root.NT = (function () {
              * @instance
              */
             Spells.prototype.list = $util.emptyArray;
+
             /**
              * Creates a new Spells instance using the specified properties.
              * @function create
@@ -10038,6 +10662,7 @@ $root.NT = (function () {
             Spells.create = function create(properties) {
                 return new Spells(properties);
             };
+
             /**
              * Encodes the specified Spells message. Does not implicitly {@link NT.ServerPlayerAddItem.Spells.verify|verify} messages.
              * @function encode
@@ -10052,9 +10677,10 @@ $root.NT = (function () {
                     writer = $Writer.create();
                 if (message.list != null && message.list.length)
                     for (var i = 0; i < message.list.length; ++i)
-                        $root.NT.Spell.encode(message.list[i], writer.uint32(/* id 1, wireType 2 =*/ 10).fork()).ldelim();
+                        $root.NT.Spell.encode(message.list[i], writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
                 return writer;
             };
+
             /**
              * Encodes the specified Spells message, length delimited. Does not implicitly {@link NT.ServerPlayerAddItem.Spells.verify|verify} messages.
              * @function encodeDelimited
@@ -10067,6 +10693,7 @@ $root.NT = (function () {
             Spells.encodeDelimited = function encodeDelimited(message, writer) {
                 return this.encode(message, writer).ldelim();
             };
+
             /**
              * Decodes a Spells message from the specified reader or buffer.
              * @function decode
@@ -10085,19 +10712,20 @@ $root.NT = (function () {
                 while (reader.pos < end) {
                     var tag = reader.uint32();
                     switch (tag >>> 3) {
-                        case 1: {
+                    case 1: {
                             if (!(message.list && message.list.length))
                                 message.list = [];
                             message.list.push($root.NT.Spell.decode(reader, reader.uint32()));
                             break;
                         }
-                        default:
-                            reader.skipType(tag & 7);
-                            break;
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
                     }
                 }
                 return message;
             };
+
             /**
              * Decodes a Spells message from the specified reader or buffer, length delimited.
              * @function decodeDelimited
@@ -10113,6 +10741,7 @@ $root.NT = (function () {
                     reader = new $Reader(reader);
                 return this.decode(reader, reader.uint32());
             };
+
             /**
              * Verifies a Spells message.
              * @function verify
@@ -10135,6 +10764,7 @@ $root.NT = (function () {
                 }
                 return null;
             };
+
             /**
              * Creates a Spells message from a plain object. Also converts values to their respective internal types.
              * @function fromObject
@@ -10159,6 +10789,7 @@ $root.NT = (function () {
                 }
                 return message;
             };
+
             /**
              * Creates a plain object from a Spells message. Also converts values to other types if specified.
              * @function toObject
@@ -10181,6 +10812,7 @@ $root.NT = (function () {
                 }
                 return object;
             };
+
             /**
              * Converts this Spells to JSON.
              * @function toJSON
@@ -10191,6 +10823,7 @@ $root.NT = (function () {
             Spells.prototype.toJSON = function toJSON() {
                 return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
             };
+
             /**
              * Gets the default type url for Spells
              * @function getTypeUrl
@@ -10205,15 +10838,19 @@ $root.NT = (function () {
                 }
                 return typeUrlPrefix + "/NT.ServerPlayerAddItem.Spells";
             };
+
             return Spells;
         })();
-        ServerPlayerAddItem.Wands = (function () {
+
+        ServerPlayerAddItem.Wands = (function() {
+
             /**
              * Properties of a Wands.
              * @memberof NT.ServerPlayerAddItem
              * @interface IWands
              * @property {Array.<NT.IWand>|null} [list] Wands list
              */
+
             /**
              * Constructs a new Wands.
              * @memberof NT.ServerPlayerAddItem
@@ -10229,6 +10866,7 @@ $root.NT = (function () {
                         if (properties[keys[i]] != null)
                             this[keys[i]] = properties[keys[i]];
             }
+
             /**
              * Wands list.
              * @member {Array.<NT.IWand>} list
@@ -10236,6 +10874,7 @@ $root.NT = (function () {
              * @instance
              */
             Wands.prototype.list = $util.emptyArray;
+
             /**
              * Creates a new Wands instance using the specified properties.
              * @function create
@@ -10247,6 +10886,7 @@ $root.NT = (function () {
             Wands.create = function create(properties) {
                 return new Wands(properties);
             };
+
             /**
              * Encodes the specified Wands message. Does not implicitly {@link NT.ServerPlayerAddItem.Wands.verify|verify} messages.
              * @function encode
@@ -10261,9 +10901,10 @@ $root.NT = (function () {
                     writer = $Writer.create();
                 if (message.list != null && message.list.length)
                     for (var i = 0; i < message.list.length; ++i)
-                        $root.NT.Wand.encode(message.list[i], writer.uint32(/* id 2, wireType 2 =*/ 18).fork()).ldelim();
+                        $root.NT.Wand.encode(message.list[i], writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
                 return writer;
             };
+
             /**
              * Encodes the specified Wands message, length delimited. Does not implicitly {@link NT.ServerPlayerAddItem.Wands.verify|verify} messages.
              * @function encodeDelimited
@@ -10276,6 +10917,7 @@ $root.NT = (function () {
             Wands.encodeDelimited = function encodeDelimited(message, writer) {
                 return this.encode(message, writer).ldelim();
             };
+
             /**
              * Decodes a Wands message from the specified reader or buffer.
              * @function decode
@@ -10294,19 +10936,20 @@ $root.NT = (function () {
                 while (reader.pos < end) {
                     var tag = reader.uint32();
                     switch (tag >>> 3) {
-                        case 2: {
+                    case 2: {
                             if (!(message.list && message.list.length))
                                 message.list = [];
                             message.list.push($root.NT.Wand.decode(reader, reader.uint32()));
                             break;
                         }
-                        default:
-                            reader.skipType(tag & 7);
-                            break;
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
                     }
                 }
                 return message;
             };
+
             /**
              * Decodes a Wands message from the specified reader or buffer, length delimited.
              * @function decodeDelimited
@@ -10322,6 +10965,7 @@ $root.NT = (function () {
                     reader = new $Reader(reader);
                 return this.decode(reader, reader.uint32());
             };
+
             /**
              * Verifies a Wands message.
              * @function verify
@@ -10344,6 +10988,7 @@ $root.NT = (function () {
                 }
                 return null;
             };
+
             /**
              * Creates a Wands message from a plain object. Also converts values to their respective internal types.
              * @function fromObject
@@ -10368,6 +11013,7 @@ $root.NT = (function () {
                 }
                 return message;
             };
+
             /**
              * Creates a plain object from a Wands message. Also converts values to other types if specified.
              * @function toObject
@@ -10390,6 +11036,7 @@ $root.NT = (function () {
                 }
                 return object;
             };
+
             /**
              * Converts this Wands to JSON.
              * @function toJSON
@@ -10400,6 +11047,7 @@ $root.NT = (function () {
             Wands.prototype.toJSON = function toJSON() {
                 return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
             };
+
             /**
              * Gets the default type url for Wands
              * @function getTypeUrl
@@ -10414,15 +11062,19 @@ $root.NT = (function () {
                 }
                 return typeUrlPrefix + "/NT.ServerPlayerAddItem.Wands";
             };
+
             return Wands;
         })();
-        ServerPlayerAddItem.Items = (function () {
+
+        ServerPlayerAddItem.Items = (function() {
+
             /**
              * Properties of an Items.
              * @memberof NT.ServerPlayerAddItem
              * @interface IItems
              * @property {Array.<NT.IItem>|null} [list] Items list
              */
+
             /**
              * Constructs a new Items.
              * @memberof NT.ServerPlayerAddItem
@@ -10438,6 +11090,7 @@ $root.NT = (function () {
                         if (properties[keys[i]] != null)
                             this[keys[i]] = properties[keys[i]];
             }
+
             /**
              * Items list.
              * @member {Array.<NT.IItem>} list
@@ -10445,6 +11098,7 @@ $root.NT = (function () {
              * @instance
              */
             Items.prototype.list = $util.emptyArray;
+
             /**
              * Creates a new Items instance using the specified properties.
              * @function create
@@ -10456,6 +11110,7 @@ $root.NT = (function () {
             Items.create = function create(properties) {
                 return new Items(properties);
             };
+
             /**
              * Encodes the specified Items message. Does not implicitly {@link NT.ServerPlayerAddItem.Items.verify|verify} messages.
              * @function encode
@@ -10470,9 +11125,10 @@ $root.NT = (function () {
                     writer = $Writer.create();
                 if (message.list != null && message.list.length)
                     for (var i = 0; i < message.list.length; ++i)
-                        $root.NT.Item.encode(message.list[i], writer.uint32(/* id 3, wireType 2 =*/ 26).fork()).ldelim();
+                        $root.NT.Item.encode(message.list[i], writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
                 return writer;
             };
+
             /**
              * Encodes the specified Items message, length delimited. Does not implicitly {@link NT.ServerPlayerAddItem.Items.verify|verify} messages.
              * @function encodeDelimited
@@ -10485,6 +11141,7 @@ $root.NT = (function () {
             Items.encodeDelimited = function encodeDelimited(message, writer) {
                 return this.encode(message, writer).ldelim();
             };
+
             /**
              * Decodes an Items message from the specified reader or buffer.
              * @function decode
@@ -10503,19 +11160,20 @@ $root.NT = (function () {
                 while (reader.pos < end) {
                     var tag = reader.uint32();
                     switch (tag >>> 3) {
-                        case 3: {
+                    case 3: {
                             if (!(message.list && message.list.length))
                                 message.list = [];
                             message.list.push($root.NT.Item.decode(reader, reader.uint32()));
                             break;
                         }
-                        default:
-                            reader.skipType(tag & 7);
-                            break;
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
                     }
                 }
                 return message;
             };
+
             /**
              * Decodes an Items message from the specified reader or buffer, length delimited.
              * @function decodeDelimited
@@ -10531,6 +11189,7 @@ $root.NT = (function () {
                     reader = new $Reader(reader);
                 return this.decode(reader, reader.uint32());
             };
+
             /**
              * Verifies an Items message.
              * @function verify
@@ -10553,6 +11212,7 @@ $root.NT = (function () {
                 }
                 return null;
             };
+
             /**
              * Creates an Items message from a plain object. Also converts values to their respective internal types.
              * @function fromObject
@@ -10577,6 +11237,7 @@ $root.NT = (function () {
                 }
                 return message;
             };
+
             /**
              * Creates a plain object from an Items message. Also converts values to other types if specified.
              * @function toObject
@@ -10599,6 +11260,7 @@ $root.NT = (function () {
                 }
                 return object;
             };
+
             /**
              * Converts this Items to JSON.
              * @function toJSON
@@ -10609,6 +11271,7 @@ $root.NT = (function () {
             Items.prototype.toJSON = function toJSON() {
                 return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
             };
+
             /**
              * Gets the default type url for Items
              * @function getTypeUrl
@@ -10623,15 +11286,19 @@ $root.NT = (function () {
                 }
                 return typeUrlPrefix + "/NT.ServerPlayerAddItem.Items";
             };
+
             return Items;
         })();
-        ServerPlayerAddItem.Entities = (function () {
+
+        ServerPlayerAddItem.Entities = (function() {
+
             /**
              * Properties of an Entities.
              * @memberof NT.ServerPlayerAddItem
              * @interface IEntities
              * @property {Array.<NT.IEntityItem>|null} [list] Entities list
              */
+
             /**
              * Constructs a new Entities.
              * @memberof NT.ServerPlayerAddItem
@@ -10647,6 +11314,7 @@ $root.NT = (function () {
                         if (properties[keys[i]] != null)
                             this[keys[i]] = properties[keys[i]];
             }
+
             /**
              * Entities list.
              * @member {Array.<NT.IEntityItem>} list
@@ -10654,6 +11322,7 @@ $root.NT = (function () {
              * @instance
              */
             Entities.prototype.list = $util.emptyArray;
+
             /**
              * Creates a new Entities instance using the specified properties.
              * @function create
@@ -10665,6 +11334,7 @@ $root.NT = (function () {
             Entities.create = function create(properties) {
                 return new Entities(properties);
             };
+
             /**
              * Encodes the specified Entities message. Does not implicitly {@link NT.ServerPlayerAddItem.Entities.verify|verify} messages.
              * @function encode
@@ -10679,9 +11349,10 @@ $root.NT = (function () {
                     writer = $Writer.create();
                 if (message.list != null && message.list.length)
                     for (var i = 0; i < message.list.length; ++i)
-                        $root.NT.EntityItem.encode(message.list[i], writer.uint32(/* id 4, wireType 2 =*/ 34).fork()).ldelim();
+                        $root.NT.EntityItem.encode(message.list[i], writer.uint32(/* id 4, wireType 2 =*/34).fork()).ldelim();
                 return writer;
             };
+
             /**
              * Encodes the specified Entities message, length delimited. Does not implicitly {@link NT.ServerPlayerAddItem.Entities.verify|verify} messages.
              * @function encodeDelimited
@@ -10694,6 +11365,7 @@ $root.NT = (function () {
             Entities.encodeDelimited = function encodeDelimited(message, writer) {
                 return this.encode(message, writer).ldelim();
             };
+
             /**
              * Decodes an Entities message from the specified reader or buffer.
              * @function decode
@@ -10712,19 +11384,20 @@ $root.NT = (function () {
                 while (reader.pos < end) {
                     var tag = reader.uint32();
                     switch (tag >>> 3) {
-                        case 4: {
+                    case 4: {
                             if (!(message.list && message.list.length))
                                 message.list = [];
                             message.list.push($root.NT.EntityItem.decode(reader, reader.uint32()));
                             break;
                         }
-                        default:
-                            reader.skipType(tag & 7);
-                            break;
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
                     }
                 }
                 return message;
             };
+
             /**
              * Decodes an Entities message from the specified reader or buffer, length delimited.
              * @function decodeDelimited
@@ -10740,6 +11413,7 @@ $root.NT = (function () {
                     reader = new $Reader(reader);
                 return this.decode(reader, reader.uint32());
             };
+
             /**
              * Verifies an Entities message.
              * @function verify
@@ -10762,6 +11436,7 @@ $root.NT = (function () {
                 }
                 return null;
             };
+
             /**
              * Creates an Entities message from a plain object. Also converts values to their respective internal types.
              * @function fromObject
@@ -10786,6 +11461,7 @@ $root.NT = (function () {
                 }
                 return message;
             };
+
             /**
              * Creates a plain object from an Entities message. Also converts values to other types if specified.
              * @function toObject
@@ -10808,6 +11484,7 @@ $root.NT = (function () {
                 }
                 return object;
             };
+
             /**
              * Converts this Entities to JSON.
              * @function toJSON
@@ -10818,6 +11495,7 @@ $root.NT = (function () {
             Entities.prototype.toJSON = function toJSON() {
                 return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
             };
+
             /**
              * Gets the default type url for Entities
              * @function getTypeUrl
@@ -10832,17 +11510,22 @@ $root.NT = (function () {
                 }
                 return typeUrlPrefix + "/NT.ServerPlayerAddItem.Entities";
             };
+
             return Entities;
         })();
+
         return ServerPlayerAddItem;
     })();
-    NT.ClientPlayerTakeItem = (function () {
+
+    NT.ClientPlayerTakeItem = (function() {
+
         /**
          * Properties of a ClientPlayerTakeItem.
          * @memberof NT
          * @interface IClientPlayerTakeItem
          * @property {string|null} [id] ClientPlayerTakeItem id
          */
+
         /**
          * Constructs a new ClientPlayerTakeItem.
          * @memberof NT
@@ -10857,6 +11540,7 @@ $root.NT = (function () {
                     if (properties[keys[i]] != null)
                         this[keys[i]] = properties[keys[i]];
         }
+
         /**
          * ClientPlayerTakeItem id.
          * @member {string} id
@@ -10864,6 +11548,7 @@ $root.NT = (function () {
          * @instance
          */
         ClientPlayerTakeItem.prototype.id = "";
+
         /**
          * Creates a new ClientPlayerTakeItem instance using the specified properties.
          * @function create
@@ -10875,6 +11560,7 @@ $root.NT = (function () {
         ClientPlayerTakeItem.create = function create(properties) {
             return new ClientPlayerTakeItem(properties);
         };
+
         /**
          * Encodes the specified ClientPlayerTakeItem message. Does not implicitly {@link NT.ClientPlayerTakeItem.verify|verify} messages.
          * @function encode
@@ -10888,9 +11574,10 @@ $root.NT = (function () {
             if (!writer)
                 writer = $Writer.create();
             if (message.id != null && Object.hasOwnProperty.call(message, "id"))
-                writer.uint32(/* id 1, wireType 2 =*/ 10).string(message.id);
+                writer.uint32(/* id 1, wireType 2 =*/10).string(message.id);
             return writer;
         };
+
         /**
          * Encodes the specified ClientPlayerTakeItem message, length delimited. Does not implicitly {@link NT.ClientPlayerTakeItem.verify|verify} messages.
          * @function encodeDelimited
@@ -10903,6 +11590,7 @@ $root.NT = (function () {
         ClientPlayerTakeItem.encodeDelimited = function encodeDelimited(message, writer) {
             return this.encode(message, writer).ldelim();
         };
+
         /**
          * Decodes a ClientPlayerTakeItem message from the specified reader or buffer.
          * @function decode
@@ -10921,17 +11609,18 @@ $root.NT = (function () {
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                    case 1: {
+                case 1: {
                         message.id = reader.string();
                         break;
                     }
-                    default:
-                        reader.skipType(tag & 7);
-                        break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
                 }
             }
             return message;
         };
+
         /**
          * Decodes a ClientPlayerTakeItem message from the specified reader or buffer, length delimited.
          * @function decodeDelimited
@@ -10947,6 +11636,7 @@ $root.NT = (function () {
                 reader = new $Reader(reader);
             return this.decode(reader, reader.uint32());
         };
+
         /**
          * Verifies a ClientPlayerTakeItem message.
          * @function verify
@@ -10963,6 +11653,7 @@ $root.NT = (function () {
                     return "id: string expected";
             return null;
         };
+
         /**
          * Creates a ClientPlayerTakeItem message from a plain object. Also converts values to their respective internal types.
          * @function fromObject
@@ -10979,6 +11670,7 @@ $root.NT = (function () {
                 message.id = String(object.id);
             return message;
         };
+
         /**
          * Creates a plain object from a ClientPlayerTakeItem message. Also converts values to other types if specified.
          * @function toObject
@@ -10998,6 +11690,7 @@ $root.NT = (function () {
                 object.id = message.id;
             return object;
         };
+
         /**
          * Converts this ClientPlayerTakeItem to JSON.
          * @function toJSON
@@ -11008,6 +11701,7 @@ $root.NT = (function () {
         ClientPlayerTakeItem.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
+
         /**
          * Gets the default type url for ClientPlayerTakeItem
          * @function getTypeUrl
@@ -11022,9 +11716,12 @@ $root.NT = (function () {
             }
             return typeUrlPrefix + "/NT.ClientPlayerTakeItem";
         };
+
         return ClientPlayerTakeItem;
     })();
-    NT.ServerPlayerTakeItem = (function () {
+
+    NT.ServerPlayerTakeItem = (function() {
+
         /**
          * Properties of a ServerPlayerTakeItem.
          * @memberof NT
@@ -11032,6 +11729,7 @@ $root.NT = (function () {
          * @property {string|null} [userId] ServerPlayerTakeItem userId
          * @property {string|null} [id] ServerPlayerTakeItem id
          */
+
         /**
          * Constructs a new ServerPlayerTakeItem.
          * @memberof NT
@@ -11046,6 +11744,7 @@ $root.NT = (function () {
                     if (properties[keys[i]] != null)
                         this[keys[i]] = properties[keys[i]];
         }
+
         /**
          * ServerPlayerTakeItem userId.
          * @member {string} userId
@@ -11053,6 +11752,7 @@ $root.NT = (function () {
          * @instance
          */
         ServerPlayerTakeItem.prototype.userId = "";
+
         /**
          * ServerPlayerTakeItem id.
          * @member {string} id
@@ -11060,6 +11760,7 @@ $root.NT = (function () {
          * @instance
          */
         ServerPlayerTakeItem.prototype.id = "";
+
         /**
          * Creates a new ServerPlayerTakeItem instance using the specified properties.
          * @function create
@@ -11071,6 +11772,7 @@ $root.NT = (function () {
         ServerPlayerTakeItem.create = function create(properties) {
             return new ServerPlayerTakeItem(properties);
         };
+
         /**
          * Encodes the specified ServerPlayerTakeItem message. Does not implicitly {@link NT.ServerPlayerTakeItem.verify|verify} messages.
          * @function encode
@@ -11084,11 +11786,12 @@ $root.NT = (function () {
             if (!writer)
                 writer = $Writer.create();
             if (message.userId != null && Object.hasOwnProperty.call(message, "userId"))
-                writer.uint32(/* id 1, wireType 2 =*/ 10).string(message.userId);
+                writer.uint32(/* id 1, wireType 2 =*/10).string(message.userId);
             if (message.id != null && Object.hasOwnProperty.call(message, "id"))
-                writer.uint32(/* id 2, wireType 2 =*/ 18).string(message.id);
+                writer.uint32(/* id 2, wireType 2 =*/18).string(message.id);
             return writer;
         };
+
         /**
          * Encodes the specified ServerPlayerTakeItem message, length delimited. Does not implicitly {@link NT.ServerPlayerTakeItem.verify|verify} messages.
          * @function encodeDelimited
@@ -11101,6 +11804,7 @@ $root.NT = (function () {
         ServerPlayerTakeItem.encodeDelimited = function encodeDelimited(message, writer) {
             return this.encode(message, writer).ldelim();
         };
+
         /**
          * Decodes a ServerPlayerTakeItem message from the specified reader or buffer.
          * @function decode
@@ -11119,21 +11823,22 @@ $root.NT = (function () {
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                    case 1: {
+                case 1: {
                         message.userId = reader.string();
                         break;
                     }
-                    case 2: {
+                case 2: {
                         message.id = reader.string();
                         break;
                     }
-                    default:
-                        reader.skipType(tag & 7);
-                        break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
                 }
             }
             return message;
         };
+
         /**
          * Decodes a ServerPlayerTakeItem message from the specified reader or buffer, length delimited.
          * @function decodeDelimited
@@ -11149,6 +11854,7 @@ $root.NT = (function () {
                 reader = new $Reader(reader);
             return this.decode(reader, reader.uint32());
         };
+
         /**
          * Verifies a ServerPlayerTakeItem message.
          * @function verify
@@ -11168,6 +11874,7 @@ $root.NT = (function () {
                     return "id: string expected";
             return null;
         };
+
         /**
          * Creates a ServerPlayerTakeItem message from a plain object. Also converts values to their respective internal types.
          * @function fromObject
@@ -11186,6 +11893,7 @@ $root.NT = (function () {
                 message.id = String(object.id);
             return message;
         };
+
         /**
          * Creates a plain object from a ServerPlayerTakeItem message. Also converts values to other types if specified.
          * @function toObject
@@ -11209,6 +11917,7 @@ $root.NT = (function () {
                 object.id = message.id;
             return object;
         };
+
         /**
          * Converts this ServerPlayerTakeItem to JSON.
          * @function toJSON
@@ -11219,6 +11928,7 @@ $root.NT = (function () {
         ServerPlayerTakeItem.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
+
         /**
          * Gets the default type url for ServerPlayerTakeItem
          * @function getTypeUrl
@@ -11233,15 +11943,19 @@ $root.NT = (function () {
             }
             return typeUrlPrefix + "/NT.ServerPlayerTakeItem";
         };
+
         return ServerPlayerTakeItem;
     })();
-    NT.ClientChat = (function () {
+
+    NT.ClientChat = (function() {
+
         /**
          * Properties of a ClientChat.
          * @memberof NT
          * @interface IClientChat
          * @property {string|null} [message] ClientChat message
          */
+
         /**
          * Constructs a new ClientChat.
          * @memberof NT
@@ -11256,6 +11970,7 @@ $root.NT = (function () {
                     if (properties[keys[i]] != null)
                         this[keys[i]] = properties[keys[i]];
         }
+
         /**
          * ClientChat message.
          * @member {string} message
@@ -11263,6 +11978,7 @@ $root.NT = (function () {
          * @instance
          */
         ClientChat.prototype.message = "";
+
         /**
          * Creates a new ClientChat instance using the specified properties.
          * @function create
@@ -11274,6 +11990,7 @@ $root.NT = (function () {
         ClientChat.create = function create(properties) {
             return new ClientChat(properties);
         };
+
         /**
          * Encodes the specified ClientChat message. Does not implicitly {@link NT.ClientChat.verify|verify} messages.
          * @function encode
@@ -11287,9 +12004,10 @@ $root.NT = (function () {
             if (!writer)
                 writer = $Writer.create();
             if (message.message != null && Object.hasOwnProperty.call(message, "message"))
-                writer.uint32(/* id 1, wireType 2 =*/ 10).string(message.message);
+                writer.uint32(/* id 1, wireType 2 =*/10).string(message.message);
             return writer;
         };
+
         /**
          * Encodes the specified ClientChat message, length delimited. Does not implicitly {@link NT.ClientChat.verify|verify} messages.
          * @function encodeDelimited
@@ -11302,6 +12020,7 @@ $root.NT = (function () {
         ClientChat.encodeDelimited = function encodeDelimited(message, writer) {
             return this.encode(message, writer).ldelim();
         };
+
         /**
          * Decodes a ClientChat message from the specified reader or buffer.
          * @function decode
@@ -11320,17 +12039,18 @@ $root.NT = (function () {
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                    case 1: {
+                case 1: {
                         message.message = reader.string();
                         break;
                     }
-                    default:
-                        reader.skipType(tag & 7);
-                        break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
                 }
             }
             return message;
         };
+
         /**
          * Decodes a ClientChat message from the specified reader or buffer, length delimited.
          * @function decodeDelimited
@@ -11346,6 +12066,7 @@ $root.NT = (function () {
                 reader = new $Reader(reader);
             return this.decode(reader, reader.uint32());
         };
+
         /**
          * Verifies a ClientChat message.
          * @function verify
@@ -11362,6 +12083,7 @@ $root.NT = (function () {
                     return "message: string expected";
             return null;
         };
+
         /**
          * Creates a ClientChat message from a plain object. Also converts values to their respective internal types.
          * @function fromObject
@@ -11378,6 +12100,7 @@ $root.NT = (function () {
                 message.message = String(object.message);
             return message;
         };
+
         /**
          * Creates a plain object from a ClientChat message. Also converts values to other types if specified.
          * @function toObject
@@ -11397,6 +12120,7 @@ $root.NT = (function () {
                 object.message = message.message;
             return object;
         };
+
         /**
          * Converts this ClientChat to JSON.
          * @function toJSON
@@ -11407,6 +12131,7 @@ $root.NT = (function () {
         ClientChat.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
+
         /**
          * Gets the default type url for ClientChat
          * @function getTypeUrl
@@ -11421,9 +12146,12 @@ $root.NT = (function () {
             }
             return typeUrlPrefix + "/NT.ClientChat";
         };
+
         return ClientChat;
     })();
-    NT.ServerChat = (function () {
+
+    NT.ServerChat = (function() {
+
         /**
          * Properties of a ServerChat.
          * @memberof NT
@@ -11433,6 +12161,7 @@ $root.NT = (function () {
          * @property {string|null} [name] ServerChat name
          * @property {string|null} [message] ServerChat message
          */
+
         /**
          * Constructs a new ServerChat.
          * @memberof NT
@@ -11447,6 +12176,7 @@ $root.NT = (function () {
                     if (properties[keys[i]] != null)
                         this[keys[i]] = properties[keys[i]];
         }
+
         /**
          * ServerChat id.
          * @member {string} id
@@ -11454,6 +12184,7 @@ $root.NT = (function () {
          * @instance
          */
         ServerChat.prototype.id = "";
+
         /**
          * ServerChat userId.
          * @member {string} userId
@@ -11461,6 +12192,7 @@ $root.NT = (function () {
          * @instance
          */
         ServerChat.prototype.userId = "";
+
         /**
          * ServerChat name.
          * @member {string} name
@@ -11468,6 +12200,7 @@ $root.NT = (function () {
          * @instance
          */
         ServerChat.prototype.name = "";
+
         /**
          * ServerChat message.
          * @member {string} message
@@ -11475,6 +12208,7 @@ $root.NT = (function () {
          * @instance
          */
         ServerChat.prototype.message = "";
+
         /**
          * Creates a new ServerChat instance using the specified properties.
          * @function create
@@ -11486,6 +12220,7 @@ $root.NT = (function () {
         ServerChat.create = function create(properties) {
             return new ServerChat(properties);
         };
+
         /**
          * Encodes the specified ServerChat message. Does not implicitly {@link NT.ServerChat.verify|verify} messages.
          * @function encode
@@ -11499,15 +12234,16 @@ $root.NT = (function () {
             if (!writer)
                 writer = $Writer.create();
             if (message.id != null && Object.hasOwnProperty.call(message, "id"))
-                writer.uint32(/* id 1, wireType 2 =*/ 10).string(message.id);
+                writer.uint32(/* id 1, wireType 2 =*/10).string(message.id);
             if (message.userId != null && Object.hasOwnProperty.call(message, "userId"))
-                writer.uint32(/* id 2, wireType 2 =*/ 18).string(message.userId);
+                writer.uint32(/* id 2, wireType 2 =*/18).string(message.userId);
             if (message.name != null && Object.hasOwnProperty.call(message, "name"))
-                writer.uint32(/* id 3, wireType 2 =*/ 26).string(message.name);
+                writer.uint32(/* id 3, wireType 2 =*/26).string(message.name);
             if (message.message != null && Object.hasOwnProperty.call(message, "message"))
-                writer.uint32(/* id 4, wireType 2 =*/ 34).string(message.message);
+                writer.uint32(/* id 4, wireType 2 =*/34).string(message.message);
             return writer;
         };
+
         /**
          * Encodes the specified ServerChat message, length delimited. Does not implicitly {@link NT.ServerChat.verify|verify} messages.
          * @function encodeDelimited
@@ -11520,6 +12256,7 @@ $root.NT = (function () {
         ServerChat.encodeDelimited = function encodeDelimited(message, writer) {
             return this.encode(message, writer).ldelim();
         };
+
         /**
          * Decodes a ServerChat message from the specified reader or buffer.
          * @function decode
@@ -11538,29 +12275,30 @@ $root.NT = (function () {
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                    case 1: {
+                case 1: {
                         message.id = reader.string();
                         break;
                     }
-                    case 2: {
+                case 2: {
                         message.userId = reader.string();
                         break;
                     }
-                    case 3: {
+                case 3: {
                         message.name = reader.string();
                         break;
                     }
-                    case 4: {
+                case 4: {
                         message.message = reader.string();
                         break;
                     }
-                    default:
-                        reader.skipType(tag & 7);
-                        break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
                 }
             }
             return message;
         };
+
         /**
          * Decodes a ServerChat message from the specified reader or buffer, length delimited.
          * @function decodeDelimited
@@ -11576,6 +12314,7 @@ $root.NT = (function () {
                 reader = new $Reader(reader);
             return this.decode(reader, reader.uint32());
         };
+
         /**
          * Verifies a ServerChat message.
          * @function verify
@@ -11601,6 +12340,7 @@ $root.NT = (function () {
                     return "message: string expected";
             return null;
         };
+
         /**
          * Creates a ServerChat message from a plain object. Also converts values to their respective internal types.
          * @function fromObject
@@ -11623,6 +12363,7 @@ $root.NT = (function () {
                 message.message = String(object.message);
             return message;
         };
+
         /**
          * Creates a plain object from a ServerChat message. Also converts values to other types if specified.
          * @function toObject
@@ -11652,6 +12393,7 @@ $root.NT = (function () {
                 object.message = message.message;
             return object;
         };
+
         /**
          * Converts this ServerChat to JSON.
          * @function toJSON
@@ -11662,6 +12404,7 @@ $root.NT = (function () {
         ServerChat.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
+
         /**
          * Gets the default type url for ServerChat
          * @function getTypeUrl
@@ -11676,15 +12419,19 @@ $root.NT = (function () {
             }
             return typeUrlPrefix + "/NT.ServerChat";
         };
+
         return ServerChat;
     })();
-    NT.ServerStatsUpdate = (function () {
+
+    NT.ServerStatsUpdate = (function() {
+
         /**
          * Properties of a ServerStatsUpdate.
          * @memberof NT
          * @interface IServerStatsUpdate
          * @property {string|null} [data] ServerStatsUpdate data
          */
+
         /**
          * Constructs a new ServerStatsUpdate.
          * @memberof NT
@@ -11699,6 +12446,7 @@ $root.NT = (function () {
                     if (properties[keys[i]] != null)
                         this[keys[i]] = properties[keys[i]];
         }
+
         /**
          * ServerStatsUpdate data.
          * @member {string} data
@@ -11706,6 +12454,7 @@ $root.NT = (function () {
          * @instance
          */
         ServerStatsUpdate.prototype.data = "";
+
         /**
          * Creates a new ServerStatsUpdate instance using the specified properties.
          * @function create
@@ -11717,6 +12466,7 @@ $root.NT = (function () {
         ServerStatsUpdate.create = function create(properties) {
             return new ServerStatsUpdate(properties);
         };
+
         /**
          * Encodes the specified ServerStatsUpdate message. Does not implicitly {@link NT.ServerStatsUpdate.verify|verify} messages.
          * @function encode
@@ -11730,9 +12480,10 @@ $root.NT = (function () {
             if (!writer)
                 writer = $Writer.create();
             if (message.data != null && Object.hasOwnProperty.call(message, "data"))
-                writer.uint32(/* id 1, wireType 2 =*/ 10).string(message.data);
+                writer.uint32(/* id 1, wireType 2 =*/10).string(message.data);
             return writer;
         };
+
         /**
          * Encodes the specified ServerStatsUpdate message, length delimited. Does not implicitly {@link NT.ServerStatsUpdate.verify|verify} messages.
          * @function encodeDelimited
@@ -11745,6 +12496,7 @@ $root.NT = (function () {
         ServerStatsUpdate.encodeDelimited = function encodeDelimited(message, writer) {
             return this.encode(message, writer).ldelim();
         };
+
         /**
          * Decodes a ServerStatsUpdate message from the specified reader or buffer.
          * @function decode
@@ -11763,17 +12515,18 @@ $root.NT = (function () {
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                    case 1: {
+                case 1: {
                         message.data = reader.string();
                         break;
                     }
-                    default:
-                        reader.skipType(tag & 7);
-                        break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
                 }
             }
             return message;
         };
+
         /**
          * Decodes a ServerStatsUpdate message from the specified reader or buffer, length delimited.
          * @function decodeDelimited
@@ -11789,6 +12542,7 @@ $root.NT = (function () {
                 reader = new $Reader(reader);
             return this.decode(reader, reader.uint32());
         };
+
         /**
          * Verifies a ServerStatsUpdate message.
          * @function verify
@@ -11805,6 +12559,7 @@ $root.NT = (function () {
                     return "data: string expected";
             return null;
         };
+
         /**
          * Creates a ServerStatsUpdate message from a plain object. Also converts values to their respective internal types.
          * @function fromObject
@@ -11821,6 +12576,7 @@ $root.NT = (function () {
                 message.data = String(object.data);
             return message;
         };
+
         /**
          * Creates a plain object from a ServerStatsUpdate message. Also converts values to other types if specified.
          * @function toObject
@@ -11840,6 +12596,7 @@ $root.NT = (function () {
                 object.data = message.data;
             return object;
         };
+
         /**
          * Converts this ServerStatsUpdate to JSON.
          * @function toJSON
@@ -11850,6 +12607,7 @@ $root.NT = (function () {
         ServerStatsUpdate.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
+
         /**
          * Gets the default type url for ServerStatsUpdate
          * @function getTypeUrl
@@ -11864,9 +12622,12 @@ $root.NT = (function () {
             }
             return typeUrlPrefix + "/NT.ServerStatsUpdate";
         };
+
         return ServerStatsUpdate;
     })();
-    NT.ClientPlayerPickup = (function () {
+
+    NT.ClientPlayerPickup = (function() {
+
         /**
          * Properties of a ClientPlayerPickup.
          * @memberof NT
@@ -11874,6 +12635,7 @@ $root.NT = (function () {
          * @property {NT.ClientPlayerPickup.IHeartPickup|null} [heart] ClientPlayerPickup heart
          * @property {NT.ClientPlayerPickup.IOrbPickup|null} [orb] ClientPlayerPickup orb
          */
+
         /**
          * Constructs a new ClientPlayerPickup.
          * @memberof NT
@@ -11888,6 +12650,7 @@ $root.NT = (function () {
                     if (properties[keys[i]] != null)
                         this[keys[i]] = properties[keys[i]];
         }
+
         /**
          * ClientPlayerPickup heart.
          * @member {NT.ClientPlayerPickup.IHeartPickup|null|undefined} heart
@@ -11895,6 +12658,7 @@ $root.NT = (function () {
          * @instance
          */
         ClientPlayerPickup.prototype.heart = null;
+
         /**
          * ClientPlayerPickup orb.
          * @member {NT.ClientPlayerPickup.IOrbPickup|null|undefined} orb
@@ -11902,8 +12666,10 @@ $root.NT = (function () {
          * @instance
          */
         ClientPlayerPickup.prototype.orb = null;
+
         // OneOf field names bound to virtual getters and setters
         var $oneOfFields;
+
         /**
          * ClientPlayerPickup kind.
          * @member {"heart"|"orb"|undefined} kind
@@ -11914,6 +12680,7 @@ $root.NT = (function () {
             get: $util.oneOfGetter($oneOfFields = ["heart", "orb"]),
             set: $util.oneOfSetter($oneOfFields)
         });
+
         /**
          * Creates a new ClientPlayerPickup instance using the specified properties.
          * @function create
@@ -11925,6 +12692,7 @@ $root.NT = (function () {
         ClientPlayerPickup.create = function create(properties) {
             return new ClientPlayerPickup(properties);
         };
+
         /**
          * Encodes the specified ClientPlayerPickup message. Does not implicitly {@link NT.ClientPlayerPickup.verify|verify} messages.
          * @function encode
@@ -11938,11 +12706,12 @@ $root.NT = (function () {
             if (!writer)
                 writer = $Writer.create();
             if (message.heart != null && Object.hasOwnProperty.call(message, "heart"))
-                $root.NT.ClientPlayerPickup.HeartPickup.encode(message.heart, writer.uint32(/* id 1, wireType 2 =*/ 10).fork()).ldelim();
+                $root.NT.ClientPlayerPickup.HeartPickup.encode(message.heart, writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
             if (message.orb != null && Object.hasOwnProperty.call(message, "orb"))
-                $root.NT.ClientPlayerPickup.OrbPickup.encode(message.orb, writer.uint32(/* id 2, wireType 2 =*/ 18).fork()).ldelim();
+                $root.NT.ClientPlayerPickup.OrbPickup.encode(message.orb, writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
             return writer;
         };
+
         /**
          * Encodes the specified ClientPlayerPickup message, length delimited. Does not implicitly {@link NT.ClientPlayerPickup.verify|verify} messages.
          * @function encodeDelimited
@@ -11955,6 +12724,7 @@ $root.NT = (function () {
         ClientPlayerPickup.encodeDelimited = function encodeDelimited(message, writer) {
             return this.encode(message, writer).ldelim();
         };
+
         /**
          * Decodes a ClientPlayerPickup message from the specified reader or buffer.
          * @function decode
@@ -11973,21 +12743,22 @@ $root.NT = (function () {
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                    case 1: {
+                case 1: {
                         message.heart = $root.NT.ClientPlayerPickup.HeartPickup.decode(reader, reader.uint32());
                         break;
                     }
-                    case 2: {
+                case 2: {
                         message.orb = $root.NT.ClientPlayerPickup.OrbPickup.decode(reader, reader.uint32());
                         break;
                     }
-                    default:
-                        reader.skipType(tag & 7);
-                        break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
                 }
             }
             return message;
         };
+
         /**
          * Decodes a ClientPlayerPickup message from the specified reader or buffer, length delimited.
          * @function decodeDelimited
@@ -12003,6 +12774,7 @@ $root.NT = (function () {
                 reader = new $Reader(reader);
             return this.decode(reader, reader.uint32());
         };
+
         /**
          * Verifies a ClientPlayerPickup message.
          * @function verify
@@ -12035,6 +12807,7 @@ $root.NT = (function () {
             }
             return null;
         };
+
         /**
          * Creates a ClientPlayerPickup message from a plain object. Also converts values to their respective internal types.
          * @function fromObject
@@ -12059,6 +12832,7 @@ $root.NT = (function () {
             }
             return message;
         };
+
         /**
          * Creates a plain object from a ClientPlayerPickup message. Also converts values to other types if specified.
          * @function toObject
@@ -12084,6 +12858,7 @@ $root.NT = (function () {
             }
             return object;
         };
+
         /**
          * Converts this ClientPlayerPickup to JSON.
          * @function toJSON
@@ -12094,6 +12869,7 @@ $root.NT = (function () {
         ClientPlayerPickup.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
+
         /**
          * Gets the default type url for ClientPlayerPickup
          * @function getTypeUrl
@@ -12108,13 +12884,16 @@ $root.NT = (function () {
             }
             return typeUrlPrefix + "/NT.ClientPlayerPickup";
         };
-        ClientPlayerPickup.HeartPickup = (function () {
+
+        ClientPlayerPickup.HeartPickup = (function() {
+
             /**
              * Properties of a HeartPickup.
              * @memberof NT.ClientPlayerPickup
              * @interface IHeartPickup
              * @property {boolean|null} [hpPerk] HeartPickup hpPerk
              */
+
             /**
              * Constructs a new HeartPickup.
              * @memberof NT.ClientPlayerPickup
@@ -12129,6 +12908,7 @@ $root.NT = (function () {
                         if (properties[keys[i]] != null)
                             this[keys[i]] = properties[keys[i]];
             }
+
             /**
              * HeartPickup hpPerk.
              * @member {boolean} hpPerk
@@ -12136,6 +12916,7 @@ $root.NT = (function () {
              * @instance
              */
             HeartPickup.prototype.hpPerk = false;
+
             /**
              * Creates a new HeartPickup instance using the specified properties.
              * @function create
@@ -12147,6 +12928,7 @@ $root.NT = (function () {
             HeartPickup.create = function create(properties) {
                 return new HeartPickup(properties);
             };
+
             /**
              * Encodes the specified HeartPickup message. Does not implicitly {@link NT.ClientPlayerPickup.HeartPickup.verify|verify} messages.
              * @function encode
@@ -12160,9 +12942,10 @@ $root.NT = (function () {
                 if (!writer)
                     writer = $Writer.create();
                 if (message.hpPerk != null && Object.hasOwnProperty.call(message, "hpPerk"))
-                    writer.uint32(/* id 1, wireType 0 =*/ 8).bool(message.hpPerk);
+                    writer.uint32(/* id 1, wireType 0 =*/8).bool(message.hpPerk);
                 return writer;
             };
+
             /**
              * Encodes the specified HeartPickup message, length delimited. Does not implicitly {@link NT.ClientPlayerPickup.HeartPickup.verify|verify} messages.
              * @function encodeDelimited
@@ -12175,6 +12958,7 @@ $root.NT = (function () {
             HeartPickup.encodeDelimited = function encodeDelimited(message, writer) {
                 return this.encode(message, writer).ldelim();
             };
+
             /**
              * Decodes a HeartPickup message from the specified reader or buffer.
              * @function decode
@@ -12193,17 +12977,18 @@ $root.NT = (function () {
                 while (reader.pos < end) {
                     var tag = reader.uint32();
                     switch (tag >>> 3) {
-                        case 1: {
+                    case 1: {
                             message.hpPerk = reader.bool();
                             break;
                         }
-                        default:
-                            reader.skipType(tag & 7);
-                            break;
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
                     }
                 }
                 return message;
             };
+
             /**
              * Decodes a HeartPickup message from the specified reader or buffer, length delimited.
              * @function decodeDelimited
@@ -12219,6 +13004,7 @@ $root.NT = (function () {
                     reader = new $Reader(reader);
                 return this.decode(reader, reader.uint32());
             };
+
             /**
              * Verifies a HeartPickup message.
              * @function verify
@@ -12235,6 +13021,7 @@ $root.NT = (function () {
                         return "hpPerk: boolean expected";
                 return null;
             };
+
             /**
              * Creates a HeartPickup message from a plain object. Also converts values to their respective internal types.
              * @function fromObject
@@ -12251,6 +13038,7 @@ $root.NT = (function () {
                     message.hpPerk = Boolean(object.hpPerk);
                 return message;
             };
+
             /**
              * Creates a plain object from a HeartPickup message. Also converts values to other types if specified.
              * @function toObject
@@ -12270,6 +13058,7 @@ $root.NT = (function () {
                     object.hpPerk = message.hpPerk;
                 return object;
             };
+
             /**
              * Converts this HeartPickup to JSON.
              * @function toJSON
@@ -12280,6 +13069,7 @@ $root.NT = (function () {
             HeartPickup.prototype.toJSON = function toJSON() {
                 return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
             };
+
             /**
              * Gets the default type url for HeartPickup
              * @function getTypeUrl
@@ -12294,15 +13084,19 @@ $root.NT = (function () {
                 }
                 return typeUrlPrefix + "/NT.ClientPlayerPickup.HeartPickup";
             };
+
             return HeartPickup;
         })();
-        ClientPlayerPickup.OrbPickup = (function () {
+
+        ClientPlayerPickup.OrbPickup = (function() {
+
             /**
              * Properties of an OrbPickup.
              * @memberof NT.ClientPlayerPickup
              * @interface IOrbPickup
              * @property {number|null} [id] OrbPickup id
              */
+
             /**
              * Constructs a new OrbPickup.
              * @memberof NT.ClientPlayerPickup
@@ -12317,6 +13111,7 @@ $root.NT = (function () {
                         if (properties[keys[i]] != null)
                             this[keys[i]] = properties[keys[i]];
             }
+
             /**
              * OrbPickup id.
              * @member {number} id
@@ -12324,6 +13119,7 @@ $root.NT = (function () {
              * @instance
              */
             OrbPickup.prototype.id = 0;
+
             /**
              * Creates a new OrbPickup instance using the specified properties.
              * @function create
@@ -12335,6 +13131,7 @@ $root.NT = (function () {
             OrbPickup.create = function create(properties) {
                 return new OrbPickup(properties);
             };
+
             /**
              * Encodes the specified OrbPickup message. Does not implicitly {@link NT.ClientPlayerPickup.OrbPickup.verify|verify} messages.
              * @function encode
@@ -12348,9 +13145,10 @@ $root.NT = (function () {
                 if (!writer)
                     writer = $Writer.create();
                 if (message.id != null && Object.hasOwnProperty.call(message, "id"))
-                    writer.uint32(/* id 1, wireType 0 =*/ 8).uint32(message.id);
+                    writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.id);
                 return writer;
             };
+
             /**
              * Encodes the specified OrbPickup message, length delimited. Does not implicitly {@link NT.ClientPlayerPickup.OrbPickup.verify|verify} messages.
              * @function encodeDelimited
@@ -12363,6 +13161,7 @@ $root.NT = (function () {
             OrbPickup.encodeDelimited = function encodeDelimited(message, writer) {
                 return this.encode(message, writer).ldelim();
             };
+
             /**
              * Decodes an OrbPickup message from the specified reader or buffer.
              * @function decode
@@ -12381,17 +13180,18 @@ $root.NT = (function () {
                 while (reader.pos < end) {
                     var tag = reader.uint32();
                     switch (tag >>> 3) {
-                        case 1: {
+                    case 1: {
                             message.id = reader.uint32();
                             break;
                         }
-                        default:
-                            reader.skipType(tag & 7);
-                            break;
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
                     }
                 }
                 return message;
             };
+
             /**
              * Decodes an OrbPickup message from the specified reader or buffer, length delimited.
              * @function decodeDelimited
@@ -12407,6 +13207,7 @@ $root.NT = (function () {
                     reader = new $Reader(reader);
                 return this.decode(reader, reader.uint32());
             };
+
             /**
              * Verifies an OrbPickup message.
              * @function verify
@@ -12423,6 +13224,7 @@ $root.NT = (function () {
                         return "id: integer expected";
                 return null;
             };
+
             /**
              * Creates an OrbPickup message from a plain object. Also converts values to their respective internal types.
              * @function fromObject
@@ -12439,6 +13241,7 @@ $root.NT = (function () {
                     message.id = object.id >>> 0;
                 return message;
             };
+
             /**
              * Creates a plain object from an OrbPickup message. Also converts values to other types if specified.
              * @function toObject
@@ -12458,6 +13261,7 @@ $root.NT = (function () {
                     object.id = message.id;
                 return object;
             };
+
             /**
              * Converts this OrbPickup to JSON.
              * @function toJSON
@@ -12468,6 +13272,7 @@ $root.NT = (function () {
             OrbPickup.prototype.toJSON = function toJSON() {
                 return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
             };
+
             /**
              * Gets the default type url for OrbPickup
              * @function getTypeUrl
@@ -12482,11 +13287,15 @@ $root.NT = (function () {
                 }
                 return typeUrlPrefix + "/NT.ClientPlayerPickup.OrbPickup";
             };
+
             return OrbPickup;
         })();
+
         return ClientPlayerPickup;
     })();
-    NT.ServerPlayerPickup = (function () {
+
+    NT.ServerPlayerPickup = (function() {
+
         /**
          * Properties of a ServerPlayerPickup.
          * @memberof NT
@@ -12495,6 +13304,7 @@ $root.NT = (function () {
          * @property {NT.ServerPlayerPickup.IHeartPickup|null} [heart] ServerPlayerPickup heart
          * @property {NT.ServerPlayerPickup.IOrbPickup|null} [orb] ServerPlayerPickup orb
          */
+
         /**
          * Constructs a new ServerPlayerPickup.
          * @memberof NT
@@ -12509,6 +13319,7 @@ $root.NT = (function () {
                     if (properties[keys[i]] != null)
                         this[keys[i]] = properties[keys[i]];
         }
+
         /**
          * ServerPlayerPickup userId.
          * @member {string} userId
@@ -12516,6 +13327,7 @@ $root.NT = (function () {
          * @instance
          */
         ServerPlayerPickup.prototype.userId = "";
+
         /**
          * ServerPlayerPickup heart.
          * @member {NT.ServerPlayerPickup.IHeartPickup|null|undefined} heart
@@ -12523,6 +13335,7 @@ $root.NT = (function () {
          * @instance
          */
         ServerPlayerPickup.prototype.heart = null;
+
         /**
          * ServerPlayerPickup orb.
          * @member {NT.ServerPlayerPickup.IOrbPickup|null|undefined} orb
@@ -12530,8 +13343,10 @@ $root.NT = (function () {
          * @instance
          */
         ServerPlayerPickup.prototype.orb = null;
+
         // OneOf field names bound to virtual getters and setters
         var $oneOfFields;
+
         /**
          * ServerPlayerPickup kind.
          * @member {"heart"|"orb"|undefined} kind
@@ -12542,6 +13357,7 @@ $root.NT = (function () {
             get: $util.oneOfGetter($oneOfFields = ["heart", "orb"]),
             set: $util.oneOfSetter($oneOfFields)
         });
+
         /**
          * Creates a new ServerPlayerPickup instance using the specified properties.
          * @function create
@@ -12553,6 +13369,7 @@ $root.NT = (function () {
         ServerPlayerPickup.create = function create(properties) {
             return new ServerPlayerPickup(properties);
         };
+
         /**
          * Encodes the specified ServerPlayerPickup message. Does not implicitly {@link NT.ServerPlayerPickup.verify|verify} messages.
          * @function encode
@@ -12566,13 +13383,14 @@ $root.NT = (function () {
             if (!writer)
                 writer = $Writer.create();
             if (message.userId != null && Object.hasOwnProperty.call(message, "userId"))
-                writer.uint32(/* id 1, wireType 2 =*/ 10).string(message.userId);
+                writer.uint32(/* id 1, wireType 2 =*/10).string(message.userId);
             if (message.heart != null && Object.hasOwnProperty.call(message, "heart"))
-                $root.NT.ServerPlayerPickup.HeartPickup.encode(message.heart, writer.uint32(/* id 2, wireType 2 =*/ 18).fork()).ldelim();
+                $root.NT.ServerPlayerPickup.HeartPickup.encode(message.heart, writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
             if (message.orb != null && Object.hasOwnProperty.call(message, "orb"))
-                $root.NT.ServerPlayerPickup.OrbPickup.encode(message.orb, writer.uint32(/* id 3, wireType 2 =*/ 26).fork()).ldelim();
+                $root.NT.ServerPlayerPickup.OrbPickup.encode(message.orb, writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
             return writer;
         };
+
         /**
          * Encodes the specified ServerPlayerPickup message, length delimited. Does not implicitly {@link NT.ServerPlayerPickup.verify|verify} messages.
          * @function encodeDelimited
@@ -12585,6 +13403,7 @@ $root.NT = (function () {
         ServerPlayerPickup.encodeDelimited = function encodeDelimited(message, writer) {
             return this.encode(message, writer).ldelim();
         };
+
         /**
          * Decodes a ServerPlayerPickup message from the specified reader or buffer.
          * @function decode
@@ -12603,25 +13422,26 @@ $root.NT = (function () {
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                    case 1: {
+                case 1: {
                         message.userId = reader.string();
                         break;
                     }
-                    case 2: {
+                case 2: {
                         message.heart = $root.NT.ServerPlayerPickup.HeartPickup.decode(reader, reader.uint32());
                         break;
                     }
-                    case 3: {
+                case 3: {
                         message.orb = $root.NT.ServerPlayerPickup.OrbPickup.decode(reader, reader.uint32());
                         break;
                     }
-                    default:
-                        reader.skipType(tag & 7);
-                        break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
                 }
             }
             return message;
         };
+
         /**
          * Decodes a ServerPlayerPickup message from the specified reader or buffer, length delimited.
          * @function decodeDelimited
@@ -12637,6 +13457,7 @@ $root.NT = (function () {
                 reader = new $Reader(reader);
             return this.decode(reader, reader.uint32());
         };
+
         /**
          * Verifies a ServerPlayerPickup message.
          * @function verify
@@ -12672,6 +13493,7 @@ $root.NT = (function () {
             }
             return null;
         };
+
         /**
          * Creates a ServerPlayerPickup message from a plain object. Also converts values to their respective internal types.
          * @function fromObject
@@ -12698,6 +13520,7 @@ $root.NT = (function () {
             }
             return message;
         };
+
         /**
          * Creates a plain object from a ServerPlayerPickup message. Also converts values to other types if specified.
          * @function toObject
@@ -12727,6 +13550,7 @@ $root.NT = (function () {
             }
             return object;
         };
+
         /**
          * Converts this ServerPlayerPickup to JSON.
          * @function toJSON
@@ -12737,6 +13561,7 @@ $root.NT = (function () {
         ServerPlayerPickup.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
+
         /**
          * Gets the default type url for ServerPlayerPickup
          * @function getTypeUrl
@@ -12751,13 +13576,16 @@ $root.NT = (function () {
             }
             return typeUrlPrefix + "/NT.ServerPlayerPickup";
         };
-        ServerPlayerPickup.HeartPickup = (function () {
+
+        ServerPlayerPickup.HeartPickup = (function() {
+
             /**
              * Properties of a HeartPickup.
              * @memberof NT.ServerPlayerPickup
              * @interface IHeartPickup
              * @property {boolean|null} [hpPerk] HeartPickup hpPerk
              */
+
             /**
              * Constructs a new HeartPickup.
              * @memberof NT.ServerPlayerPickup
@@ -12772,6 +13600,7 @@ $root.NT = (function () {
                         if (properties[keys[i]] != null)
                             this[keys[i]] = properties[keys[i]];
             }
+
             /**
              * HeartPickup hpPerk.
              * @member {boolean} hpPerk
@@ -12779,6 +13608,7 @@ $root.NT = (function () {
              * @instance
              */
             HeartPickup.prototype.hpPerk = false;
+
             /**
              * Creates a new HeartPickup instance using the specified properties.
              * @function create
@@ -12790,6 +13620,7 @@ $root.NT = (function () {
             HeartPickup.create = function create(properties) {
                 return new HeartPickup(properties);
             };
+
             /**
              * Encodes the specified HeartPickup message. Does not implicitly {@link NT.ServerPlayerPickup.HeartPickup.verify|verify} messages.
              * @function encode
@@ -12803,9 +13634,10 @@ $root.NT = (function () {
                 if (!writer)
                     writer = $Writer.create();
                 if (message.hpPerk != null && Object.hasOwnProperty.call(message, "hpPerk"))
-                    writer.uint32(/* id 1, wireType 0 =*/ 8).bool(message.hpPerk);
+                    writer.uint32(/* id 1, wireType 0 =*/8).bool(message.hpPerk);
                 return writer;
             };
+
             /**
              * Encodes the specified HeartPickup message, length delimited. Does not implicitly {@link NT.ServerPlayerPickup.HeartPickup.verify|verify} messages.
              * @function encodeDelimited
@@ -12818,6 +13650,7 @@ $root.NT = (function () {
             HeartPickup.encodeDelimited = function encodeDelimited(message, writer) {
                 return this.encode(message, writer).ldelim();
             };
+
             /**
              * Decodes a HeartPickup message from the specified reader or buffer.
              * @function decode
@@ -12836,17 +13669,18 @@ $root.NT = (function () {
                 while (reader.pos < end) {
                     var tag = reader.uint32();
                     switch (tag >>> 3) {
-                        case 1: {
+                    case 1: {
                             message.hpPerk = reader.bool();
                             break;
                         }
-                        default:
-                            reader.skipType(tag & 7);
-                            break;
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
                     }
                 }
                 return message;
             };
+
             /**
              * Decodes a HeartPickup message from the specified reader or buffer, length delimited.
              * @function decodeDelimited
@@ -12862,6 +13696,7 @@ $root.NT = (function () {
                     reader = new $Reader(reader);
                 return this.decode(reader, reader.uint32());
             };
+
             /**
              * Verifies a HeartPickup message.
              * @function verify
@@ -12878,6 +13713,7 @@ $root.NT = (function () {
                         return "hpPerk: boolean expected";
                 return null;
             };
+
             /**
              * Creates a HeartPickup message from a plain object. Also converts values to their respective internal types.
              * @function fromObject
@@ -12894,6 +13730,7 @@ $root.NT = (function () {
                     message.hpPerk = Boolean(object.hpPerk);
                 return message;
             };
+
             /**
              * Creates a plain object from a HeartPickup message. Also converts values to other types if specified.
              * @function toObject
@@ -12913,6 +13750,7 @@ $root.NT = (function () {
                     object.hpPerk = message.hpPerk;
                 return object;
             };
+
             /**
              * Converts this HeartPickup to JSON.
              * @function toJSON
@@ -12923,6 +13761,7 @@ $root.NT = (function () {
             HeartPickup.prototype.toJSON = function toJSON() {
                 return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
             };
+
             /**
              * Gets the default type url for HeartPickup
              * @function getTypeUrl
@@ -12937,15 +13776,19 @@ $root.NT = (function () {
                 }
                 return typeUrlPrefix + "/NT.ServerPlayerPickup.HeartPickup";
             };
+
             return HeartPickup;
         })();
-        ServerPlayerPickup.OrbPickup = (function () {
+
+        ServerPlayerPickup.OrbPickup = (function() {
+
             /**
              * Properties of an OrbPickup.
              * @memberof NT.ServerPlayerPickup
              * @interface IOrbPickup
              * @property {number|null} [id] OrbPickup id
              */
+
             /**
              * Constructs a new OrbPickup.
              * @memberof NT.ServerPlayerPickup
@@ -12960,6 +13803,7 @@ $root.NT = (function () {
                         if (properties[keys[i]] != null)
                             this[keys[i]] = properties[keys[i]];
             }
+
             /**
              * OrbPickup id.
              * @member {number} id
@@ -12967,6 +13811,7 @@ $root.NT = (function () {
              * @instance
              */
             OrbPickup.prototype.id = 0;
+
             /**
              * Creates a new OrbPickup instance using the specified properties.
              * @function create
@@ -12978,6 +13823,7 @@ $root.NT = (function () {
             OrbPickup.create = function create(properties) {
                 return new OrbPickup(properties);
             };
+
             /**
              * Encodes the specified OrbPickup message. Does not implicitly {@link NT.ServerPlayerPickup.OrbPickup.verify|verify} messages.
              * @function encode
@@ -12991,9 +13837,10 @@ $root.NT = (function () {
                 if (!writer)
                     writer = $Writer.create();
                 if (message.id != null && Object.hasOwnProperty.call(message, "id"))
-                    writer.uint32(/* id 1, wireType 0 =*/ 8).uint32(message.id);
+                    writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.id);
                 return writer;
             };
+
             /**
              * Encodes the specified OrbPickup message, length delimited. Does not implicitly {@link NT.ServerPlayerPickup.OrbPickup.verify|verify} messages.
              * @function encodeDelimited
@@ -13006,6 +13853,7 @@ $root.NT = (function () {
             OrbPickup.encodeDelimited = function encodeDelimited(message, writer) {
                 return this.encode(message, writer).ldelim();
             };
+
             /**
              * Decodes an OrbPickup message from the specified reader or buffer.
              * @function decode
@@ -13024,17 +13872,18 @@ $root.NT = (function () {
                 while (reader.pos < end) {
                     var tag = reader.uint32();
                     switch (tag >>> 3) {
-                        case 1: {
+                    case 1: {
                             message.id = reader.uint32();
                             break;
                         }
-                        default:
-                            reader.skipType(tag & 7);
-                            break;
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
                     }
                 }
                 return message;
             };
+
             /**
              * Decodes an OrbPickup message from the specified reader or buffer, length delimited.
              * @function decodeDelimited
@@ -13050,6 +13899,7 @@ $root.NT = (function () {
                     reader = new $Reader(reader);
                 return this.decode(reader, reader.uint32());
             };
+
             /**
              * Verifies an OrbPickup message.
              * @function verify
@@ -13066,6 +13916,7 @@ $root.NT = (function () {
                         return "id: integer expected";
                 return null;
             };
+
             /**
              * Creates an OrbPickup message from a plain object. Also converts values to their respective internal types.
              * @function fromObject
@@ -13082,6 +13933,7 @@ $root.NT = (function () {
                     message.id = object.id >>> 0;
                 return message;
             };
+
             /**
              * Creates a plain object from an OrbPickup message. Also converts values to other types if specified.
              * @function toObject
@@ -13101,6 +13953,7 @@ $root.NT = (function () {
                     object.id = message.id;
                 return object;
             };
+
             /**
              * Converts this OrbPickup to JSON.
              * @function toJSON
@@ -13111,6 +13964,7 @@ $root.NT = (function () {
             OrbPickup.prototype.toJSON = function toJSON() {
                 return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
             };
+
             /**
              * Gets the default type url for OrbPickup
              * @function getTypeUrl
@@ -13125,17 +13979,22 @@ $root.NT = (function () {
                 }
                 return typeUrlPrefix + "/NT.ServerPlayerPickup.OrbPickup";
             };
+
             return OrbPickup;
         })();
+
         return ServerPlayerPickup;
     })();
-    NT.ClientNemesisPickupItem = (function () {
+
+    NT.ClientNemesisPickupItem = (function() {
+
         /**
          * Properties of a ClientNemesisPickupItem.
          * @memberof NT
          * @interface IClientNemesisPickupItem
          * @property {string|null} [gameId] ClientNemesisPickupItem gameId
          */
+
         /**
          * Constructs a new ClientNemesisPickupItem.
          * @memberof NT
@@ -13150,6 +14009,7 @@ $root.NT = (function () {
                     if (properties[keys[i]] != null)
                         this[keys[i]] = properties[keys[i]];
         }
+
         /**
          * ClientNemesisPickupItem gameId.
          * @member {string} gameId
@@ -13157,6 +14017,7 @@ $root.NT = (function () {
          * @instance
          */
         ClientNemesisPickupItem.prototype.gameId = "";
+
         /**
          * Creates a new ClientNemesisPickupItem instance using the specified properties.
          * @function create
@@ -13168,6 +14029,7 @@ $root.NT = (function () {
         ClientNemesisPickupItem.create = function create(properties) {
             return new ClientNemesisPickupItem(properties);
         };
+
         /**
          * Encodes the specified ClientNemesisPickupItem message. Does not implicitly {@link NT.ClientNemesisPickupItem.verify|verify} messages.
          * @function encode
@@ -13181,9 +14043,10 @@ $root.NT = (function () {
             if (!writer)
                 writer = $Writer.create();
             if (message.gameId != null && Object.hasOwnProperty.call(message, "gameId"))
-                writer.uint32(/* id 1, wireType 2 =*/ 10).string(message.gameId);
+                writer.uint32(/* id 1, wireType 2 =*/10).string(message.gameId);
             return writer;
         };
+
         /**
          * Encodes the specified ClientNemesisPickupItem message, length delimited. Does not implicitly {@link NT.ClientNemesisPickupItem.verify|verify} messages.
          * @function encodeDelimited
@@ -13196,6 +14059,7 @@ $root.NT = (function () {
         ClientNemesisPickupItem.encodeDelimited = function encodeDelimited(message, writer) {
             return this.encode(message, writer).ldelim();
         };
+
         /**
          * Decodes a ClientNemesisPickupItem message from the specified reader or buffer.
          * @function decode
@@ -13214,17 +14078,18 @@ $root.NT = (function () {
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                    case 1: {
+                case 1: {
                         message.gameId = reader.string();
                         break;
                     }
-                    default:
-                        reader.skipType(tag & 7);
-                        break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
                 }
             }
             return message;
         };
+
         /**
          * Decodes a ClientNemesisPickupItem message from the specified reader or buffer, length delimited.
          * @function decodeDelimited
@@ -13240,6 +14105,7 @@ $root.NT = (function () {
                 reader = new $Reader(reader);
             return this.decode(reader, reader.uint32());
         };
+
         /**
          * Verifies a ClientNemesisPickupItem message.
          * @function verify
@@ -13256,6 +14122,7 @@ $root.NT = (function () {
                     return "gameId: string expected";
             return null;
         };
+
         /**
          * Creates a ClientNemesisPickupItem message from a plain object. Also converts values to their respective internal types.
          * @function fromObject
@@ -13272,6 +14139,7 @@ $root.NT = (function () {
                 message.gameId = String(object.gameId);
             return message;
         };
+
         /**
          * Creates a plain object from a ClientNemesisPickupItem message. Also converts values to other types if specified.
          * @function toObject
@@ -13291,6 +14159,7 @@ $root.NT = (function () {
                 object.gameId = message.gameId;
             return object;
         };
+
         /**
          * Converts this ClientNemesisPickupItem to JSON.
          * @function toJSON
@@ -13301,6 +14170,7 @@ $root.NT = (function () {
         ClientNemesisPickupItem.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
+
         /**
          * Gets the default type url for ClientNemesisPickupItem
          * @function getTypeUrl
@@ -13315,9 +14185,12 @@ $root.NT = (function () {
             }
             return typeUrlPrefix + "/NT.ClientNemesisPickupItem";
         };
+
         return ClientNemesisPickupItem;
     })();
-    NT.ServerNemesisPickupItem = (function () {
+
+    NT.ServerNemesisPickupItem = (function() {
+
         /**
          * Properties of a ServerNemesisPickupItem.
          * @memberof NT
@@ -13325,6 +14198,7 @@ $root.NT = (function () {
          * @property {string|null} [userId] ServerNemesisPickupItem userId
          * @property {string|null} [gameId] ServerNemesisPickupItem gameId
          */
+
         /**
          * Constructs a new ServerNemesisPickupItem.
          * @memberof NT
@@ -13339,6 +14213,7 @@ $root.NT = (function () {
                     if (properties[keys[i]] != null)
                         this[keys[i]] = properties[keys[i]];
         }
+
         /**
          * ServerNemesisPickupItem userId.
          * @member {string} userId
@@ -13346,6 +14221,7 @@ $root.NT = (function () {
          * @instance
          */
         ServerNemesisPickupItem.prototype.userId = "";
+
         /**
          * ServerNemesisPickupItem gameId.
          * @member {string} gameId
@@ -13353,6 +14229,7 @@ $root.NT = (function () {
          * @instance
          */
         ServerNemesisPickupItem.prototype.gameId = "";
+
         /**
          * Creates a new ServerNemesisPickupItem instance using the specified properties.
          * @function create
@@ -13364,6 +14241,7 @@ $root.NT = (function () {
         ServerNemesisPickupItem.create = function create(properties) {
             return new ServerNemesisPickupItem(properties);
         };
+
         /**
          * Encodes the specified ServerNemesisPickupItem message. Does not implicitly {@link NT.ServerNemesisPickupItem.verify|verify} messages.
          * @function encode
@@ -13377,11 +14255,12 @@ $root.NT = (function () {
             if (!writer)
                 writer = $Writer.create();
             if (message.userId != null && Object.hasOwnProperty.call(message, "userId"))
-                writer.uint32(/* id 1, wireType 2 =*/ 10).string(message.userId);
+                writer.uint32(/* id 1, wireType 2 =*/10).string(message.userId);
             if (message.gameId != null && Object.hasOwnProperty.call(message, "gameId"))
-                writer.uint32(/* id 2, wireType 2 =*/ 18).string(message.gameId);
+                writer.uint32(/* id 2, wireType 2 =*/18).string(message.gameId);
             return writer;
         };
+
         /**
          * Encodes the specified ServerNemesisPickupItem message, length delimited. Does not implicitly {@link NT.ServerNemesisPickupItem.verify|verify} messages.
          * @function encodeDelimited
@@ -13394,6 +14273,7 @@ $root.NT = (function () {
         ServerNemesisPickupItem.encodeDelimited = function encodeDelimited(message, writer) {
             return this.encode(message, writer).ldelim();
         };
+
         /**
          * Decodes a ServerNemesisPickupItem message from the specified reader or buffer.
          * @function decode
@@ -13412,21 +14292,22 @@ $root.NT = (function () {
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                    case 1: {
+                case 1: {
                         message.userId = reader.string();
                         break;
                     }
-                    case 2: {
+                case 2: {
                         message.gameId = reader.string();
                         break;
                     }
-                    default:
-                        reader.skipType(tag & 7);
-                        break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
                 }
             }
             return message;
         };
+
         /**
          * Decodes a ServerNemesisPickupItem message from the specified reader or buffer, length delimited.
          * @function decodeDelimited
@@ -13442,6 +14323,7 @@ $root.NT = (function () {
                 reader = new $Reader(reader);
             return this.decode(reader, reader.uint32());
         };
+
         /**
          * Verifies a ServerNemesisPickupItem message.
          * @function verify
@@ -13461,6 +14343,7 @@ $root.NT = (function () {
                     return "gameId: string expected";
             return null;
         };
+
         /**
          * Creates a ServerNemesisPickupItem message from a plain object. Also converts values to their respective internal types.
          * @function fromObject
@@ -13479,6 +14362,7 @@ $root.NT = (function () {
                 message.gameId = String(object.gameId);
             return message;
         };
+
         /**
          * Creates a plain object from a ServerNemesisPickupItem message. Also converts values to other types if specified.
          * @function toObject
@@ -13502,6 +14386,7 @@ $root.NT = (function () {
                 object.gameId = message.gameId;
             return object;
         };
+
         /**
          * Converts this ServerNemesisPickupItem to JSON.
          * @function toJSON
@@ -13512,6 +14397,7 @@ $root.NT = (function () {
         ServerNemesisPickupItem.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
+
         /**
          * Gets the default type url for ServerNemesisPickupItem
          * @function getTypeUrl
@@ -13526,15 +14412,19 @@ $root.NT = (function () {
             }
             return typeUrlPrefix + "/NT.ServerNemesisPickupItem";
         };
+
         return ServerNemesisPickupItem;
     })();
-    NT.ClientNemesisAbility = (function () {
+
+    NT.ClientNemesisAbility = (function() {
+
         /**
          * Properties of a ClientNemesisAbility.
          * @memberof NT
          * @interface IClientNemesisAbility
          * @property {string|null} [gameId] ClientNemesisAbility gameId
          */
+
         /**
          * Constructs a new ClientNemesisAbility.
          * @memberof NT
@@ -13549,6 +14439,7 @@ $root.NT = (function () {
                     if (properties[keys[i]] != null)
                         this[keys[i]] = properties[keys[i]];
         }
+
         /**
          * ClientNemesisAbility gameId.
          * @member {string} gameId
@@ -13556,6 +14447,7 @@ $root.NT = (function () {
          * @instance
          */
         ClientNemesisAbility.prototype.gameId = "";
+
         /**
          * Creates a new ClientNemesisAbility instance using the specified properties.
          * @function create
@@ -13567,6 +14459,7 @@ $root.NT = (function () {
         ClientNemesisAbility.create = function create(properties) {
             return new ClientNemesisAbility(properties);
         };
+
         /**
          * Encodes the specified ClientNemesisAbility message. Does not implicitly {@link NT.ClientNemesisAbility.verify|verify} messages.
          * @function encode
@@ -13580,9 +14473,10 @@ $root.NT = (function () {
             if (!writer)
                 writer = $Writer.create();
             if (message.gameId != null && Object.hasOwnProperty.call(message, "gameId"))
-                writer.uint32(/* id 1, wireType 2 =*/ 10).string(message.gameId);
+                writer.uint32(/* id 1, wireType 2 =*/10).string(message.gameId);
             return writer;
         };
+
         /**
          * Encodes the specified ClientNemesisAbility message, length delimited. Does not implicitly {@link NT.ClientNemesisAbility.verify|verify} messages.
          * @function encodeDelimited
@@ -13595,6 +14489,7 @@ $root.NT = (function () {
         ClientNemesisAbility.encodeDelimited = function encodeDelimited(message, writer) {
             return this.encode(message, writer).ldelim();
         };
+
         /**
          * Decodes a ClientNemesisAbility message from the specified reader or buffer.
          * @function decode
@@ -13613,17 +14508,18 @@ $root.NT = (function () {
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                    case 1: {
+                case 1: {
                         message.gameId = reader.string();
                         break;
                     }
-                    default:
-                        reader.skipType(tag & 7);
-                        break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
                 }
             }
             return message;
         };
+
         /**
          * Decodes a ClientNemesisAbility message from the specified reader or buffer, length delimited.
          * @function decodeDelimited
@@ -13639,6 +14535,7 @@ $root.NT = (function () {
                 reader = new $Reader(reader);
             return this.decode(reader, reader.uint32());
         };
+
         /**
          * Verifies a ClientNemesisAbility message.
          * @function verify
@@ -13655,6 +14552,7 @@ $root.NT = (function () {
                     return "gameId: string expected";
             return null;
         };
+
         /**
          * Creates a ClientNemesisAbility message from a plain object. Also converts values to their respective internal types.
          * @function fromObject
@@ -13671,6 +14569,7 @@ $root.NT = (function () {
                 message.gameId = String(object.gameId);
             return message;
         };
+
         /**
          * Creates a plain object from a ClientNemesisAbility message. Also converts values to other types if specified.
          * @function toObject
@@ -13690,6 +14589,7 @@ $root.NT = (function () {
                 object.gameId = message.gameId;
             return object;
         };
+
         /**
          * Converts this ClientNemesisAbility to JSON.
          * @function toJSON
@@ -13700,6 +14600,7 @@ $root.NT = (function () {
         ClientNemesisAbility.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
+
         /**
          * Gets the default type url for ClientNemesisAbility
          * @function getTypeUrl
@@ -13714,9 +14615,12 @@ $root.NT = (function () {
             }
             return typeUrlPrefix + "/NT.ClientNemesisAbility";
         };
+
         return ClientNemesisAbility;
     })();
-    NT.ServerNemesisAbility = (function () {
+
+    NT.ServerNemesisAbility = (function() {
+
         /**
          * Properties of a ServerNemesisAbility.
          * @memberof NT
@@ -13724,6 +14628,7 @@ $root.NT = (function () {
          * @property {string|null} [userId] ServerNemesisAbility userId
          * @property {string|null} [gameId] ServerNemesisAbility gameId
          */
+
         /**
          * Constructs a new ServerNemesisAbility.
          * @memberof NT
@@ -13738,6 +14643,7 @@ $root.NT = (function () {
                     if (properties[keys[i]] != null)
                         this[keys[i]] = properties[keys[i]];
         }
+
         /**
          * ServerNemesisAbility userId.
          * @member {string} userId
@@ -13745,6 +14651,7 @@ $root.NT = (function () {
          * @instance
          */
         ServerNemesisAbility.prototype.userId = "";
+
         /**
          * ServerNemesisAbility gameId.
          * @member {string} gameId
@@ -13752,6 +14659,7 @@ $root.NT = (function () {
          * @instance
          */
         ServerNemesisAbility.prototype.gameId = "";
+
         /**
          * Creates a new ServerNemesisAbility instance using the specified properties.
          * @function create
@@ -13763,6 +14671,7 @@ $root.NT = (function () {
         ServerNemesisAbility.create = function create(properties) {
             return new ServerNemesisAbility(properties);
         };
+
         /**
          * Encodes the specified ServerNemesisAbility message. Does not implicitly {@link NT.ServerNemesisAbility.verify|verify} messages.
          * @function encode
@@ -13776,11 +14685,12 @@ $root.NT = (function () {
             if (!writer)
                 writer = $Writer.create();
             if (message.userId != null && Object.hasOwnProperty.call(message, "userId"))
-                writer.uint32(/* id 1, wireType 2 =*/ 10).string(message.userId);
+                writer.uint32(/* id 1, wireType 2 =*/10).string(message.userId);
             if (message.gameId != null && Object.hasOwnProperty.call(message, "gameId"))
-                writer.uint32(/* id 2, wireType 2 =*/ 18).string(message.gameId);
+                writer.uint32(/* id 2, wireType 2 =*/18).string(message.gameId);
             return writer;
         };
+
         /**
          * Encodes the specified ServerNemesisAbility message, length delimited. Does not implicitly {@link NT.ServerNemesisAbility.verify|verify} messages.
          * @function encodeDelimited
@@ -13793,6 +14703,7 @@ $root.NT = (function () {
         ServerNemesisAbility.encodeDelimited = function encodeDelimited(message, writer) {
             return this.encode(message, writer).ldelim();
         };
+
         /**
          * Decodes a ServerNemesisAbility message from the specified reader or buffer.
          * @function decode
@@ -13811,21 +14722,22 @@ $root.NT = (function () {
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                    case 1: {
+                case 1: {
                         message.userId = reader.string();
                         break;
                     }
-                    case 2: {
+                case 2: {
                         message.gameId = reader.string();
                         break;
                     }
-                    default:
-                        reader.skipType(tag & 7);
-                        break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
                 }
             }
             return message;
         };
+
         /**
          * Decodes a ServerNemesisAbility message from the specified reader or buffer, length delimited.
          * @function decodeDelimited
@@ -13841,6 +14753,7 @@ $root.NT = (function () {
                 reader = new $Reader(reader);
             return this.decode(reader, reader.uint32());
         };
+
         /**
          * Verifies a ServerNemesisAbility message.
          * @function verify
@@ -13860,6 +14773,7 @@ $root.NT = (function () {
                     return "gameId: string expected";
             return null;
         };
+
         /**
          * Creates a ServerNemesisAbility message from a plain object. Also converts values to their respective internal types.
          * @function fromObject
@@ -13878,6 +14792,7 @@ $root.NT = (function () {
                 message.gameId = String(object.gameId);
             return message;
         };
+
         /**
          * Creates a plain object from a ServerNemesisAbility message. Also converts values to other types if specified.
          * @function toObject
@@ -13901,6 +14816,7 @@ $root.NT = (function () {
                 object.gameId = message.gameId;
             return object;
         };
+
         /**
          * Converts this ServerNemesisAbility to JSON.
          * @function toJSON
@@ -13911,6 +14827,7 @@ $root.NT = (function () {
         ServerNemesisAbility.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
+
         /**
          * Gets the default type url for ServerNemesisAbility
          * @function getTypeUrl
@@ -13925,9 +14842,12 @@ $root.NT = (function () {
             }
             return typeUrlPrefix + "/NT.ServerNemesisAbility";
         };
+
         return ServerNemesisAbility;
     })();
-    NT.ClientPlayerDeath = (function () {
+
+    NT.ClientPlayerDeath = (function() {
+
         /**
          * Properties of a ClientPlayerDeath.
          * @memberof NT
@@ -13935,6 +14855,7 @@ $root.NT = (function () {
          * @property {boolean|null} [isWin] ClientPlayerDeath isWin
          * @property {number|null} [gameTime] ClientPlayerDeath gameTime
          */
+
         /**
          * Constructs a new ClientPlayerDeath.
          * @memberof NT
@@ -13949,6 +14870,7 @@ $root.NT = (function () {
                     if (properties[keys[i]] != null)
                         this[keys[i]] = properties[keys[i]];
         }
+
         /**
          * ClientPlayerDeath isWin.
          * @member {boolean} isWin
@@ -13956,6 +14878,7 @@ $root.NT = (function () {
          * @instance
          */
         ClientPlayerDeath.prototype.isWin = false;
+
         /**
          * ClientPlayerDeath gameTime.
          * @member {number|null|undefined} gameTime
@@ -13963,8 +14886,10 @@ $root.NT = (function () {
          * @instance
          */
         ClientPlayerDeath.prototype.gameTime = null;
+
         // OneOf field names bound to virtual getters and setters
         var $oneOfFields;
+
         /**
          * ClientPlayerDeath _gameTime.
          * @member {"gameTime"|undefined} _gameTime
@@ -13975,6 +14900,7 @@ $root.NT = (function () {
             get: $util.oneOfGetter($oneOfFields = ["gameTime"]),
             set: $util.oneOfSetter($oneOfFields)
         });
+
         /**
          * Creates a new ClientPlayerDeath instance using the specified properties.
          * @function create
@@ -13986,6 +14912,7 @@ $root.NT = (function () {
         ClientPlayerDeath.create = function create(properties) {
             return new ClientPlayerDeath(properties);
         };
+
         /**
          * Encodes the specified ClientPlayerDeath message. Does not implicitly {@link NT.ClientPlayerDeath.verify|verify} messages.
          * @function encode
@@ -13999,11 +14926,12 @@ $root.NT = (function () {
             if (!writer)
                 writer = $Writer.create();
             if (message.isWin != null && Object.hasOwnProperty.call(message, "isWin"))
-                writer.uint32(/* id 1, wireType 0 =*/ 8).bool(message.isWin);
+                writer.uint32(/* id 1, wireType 0 =*/8).bool(message.isWin);
             if (message.gameTime != null && Object.hasOwnProperty.call(message, "gameTime"))
-                writer.uint32(/* id 2, wireType 0 =*/ 16).uint32(message.gameTime);
+                writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.gameTime);
             return writer;
         };
+
         /**
          * Encodes the specified ClientPlayerDeath message, length delimited. Does not implicitly {@link NT.ClientPlayerDeath.verify|verify} messages.
          * @function encodeDelimited
@@ -14016,6 +14944,7 @@ $root.NT = (function () {
         ClientPlayerDeath.encodeDelimited = function encodeDelimited(message, writer) {
             return this.encode(message, writer).ldelim();
         };
+
         /**
          * Decodes a ClientPlayerDeath message from the specified reader or buffer.
          * @function decode
@@ -14034,21 +14963,22 @@ $root.NT = (function () {
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                    case 1: {
+                case 1: {
                         message.isWin = reader.bool();
                         break;
                     }
-                    case 2: {
+                case 2: {
                         message.gameTime = reader.uint32();
                         break;
                     }
-                    default:
-                        reader.skipType(tag & 7);
-                        break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
                 }
             }
             return message;
         };
+
         /**
          * Decodes a ClientPlayerDeath message from the specified reader or buffer, length delimited.
          * @function decodeDelimited
@@ -14064,6 +14994,7 @@ $root.NT = (function () {
                 reader = new $Reader(reader);
             return this.decode(reader, reader.uint32());
         };
+
         /**
          * Verifies a ClientPlayerDeath message.
          * @function verify
@@ -14086,6 +15017,7 @@ $root.NT = (function () {
             }
             return null;
         };
+
         /**
          * Creates a ClientPlayerDeath message from a plain object. Also converts values to their respective internal types.
          * @function fromObject
@@ -14104,6 +15036,7 @@ $root.NT = (function () {
                 message.gameTime = object.gameTime >>> 0;
             return message;
         };
+
         /**
          * Creates a plain object from a ClientPlayerDeath message. Also converts values to other types if specified.
          * @function toObject
@@ -14128,6 +15061,7 @@ $root.NT = (function () {
             }
             return object;
         };
+
         /**
          * Converts this ClientPlayerDeath to JSON.
          * @function toJSON
@@ -14138,6 +15072,7 @@ $root.NT = (function () {
         ClientPlayerDeath.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
+
         /**
          * Gets the default type url for ClientPlayerDeath
          * @function getTypeUrl
@@ -14152,9 +15087,12 @@ $root.NT = (function () {
             }
             return typeUrlPrefix + "/NT.ClientPlayerDeath";
         };
+
         return ClientPlayerDeath;
     })();
-    NT.ServerPlayerDeath = (function () {
+
+    NT.ServerPlayerDeath = (function() {
+
         /**
          * Properties of a ServerPlayerDeath.
          * @memberof NT
@@ -14163,6 +15101,7 @@ $root.NT = (function () {
          * @property {boolean|null} [isWin] ServerPlayerDeath isWin
          * @property {number|null} [gameTime] ServerPlayerDeath gameTime
          */
+
         /**
          * Constructs a new ServerPlayerDeath.
          * @memberof NT
@@ -14177,6 +15116,7 @@ $root.NT = (function () {
                     if (properties[keys[i]] != null)
                         this[keys[i]] = properties[keys[i]];
         }
+
         /**
          * ServerPlayerDeath userId.
          * @member {string} userId
@@ -14184,6 +15124,7 @@ $root.NT = (function () {
          * @instance
          */
         ServerPlayerDeath.prototype.userId = "";
+
         /**
          * ServerPlayerDeath isWin.
          * @member {boolean} isWin
@@ -14191,6 +15132,7 @@ $root.NT = (function () {
          * @instance
          */
         ServerPlayerDeath.prototype.isWin = false;
+
         /**
          * ServerPlayerDeath gameTime.
          * @member {number|null|undefined} gameTime
@@ -14198,8 +15140,10 @@ $root.NT = (function () {
          * @instance
          */
         ServerPlayerDeath.prototype.gameTime = null;
+
         // OneOf field names bound to virtual getters and setters
         var $oneOfFields;
+
         /**
          * ServerPlayerDeath _gameTime.
          * @member {"gameTime"|undefined} _gameTime
@@ -14210,6 +15154,7 @@ $root.NT = (function () {
             get: $util.oneOfGetter($oneOfFields = ["gameTime"]),
             set: $util.oneOfSetter($oneOfFields)
         });
+
         /**
          * Creates a new ServerPlayerDeath instance using the specified properties.
          * @function create
@@ -14221,6 +15166,7 @@ $root.NT = (function () {
         ServerPlayerDeath.create = function create(properties) {
             return new ServerPlayerDeath(properties);
         };
+
         /**
          * Encodes the specified ServerPlayerDeath message. Does not implicitly {@link NT.ServerPlayerDeath.verify|verify} messages.
          * @function encode
@@ -14234,13 +15180,14 @@ $root.NT = (function () {
             if (!writer)
                 writer = $Writer.create();
             if (message.userId != null && Object.hasOwnProperty.call(message, "userId"))
-                writer.uint32(/* id 1, wireType 2 =*/ 10).string(message.userId);
+                writer.uint32(/* id 1, wireType 2 =*/10).string(message.userId);
             if (message.isWin != null && Object.hasOwnProperty.call(message, "isWin"))
-                writer.uint32(/* id 2, wireType 0 =*/ 16).bool(message.isWin);
+                writer.uint32(/* id 2, wireType 0 =*/16).bool(message.isWin);
             if (message.gameTime != null && Object.hasOwnProperty.call(message, "gameTime"))
-                writer.uint32(/* id 3, wireType 0 =*/ 24).uint32(message.gameTime);
+                writer.uint32(/* id 3, wireType 0 =*/24).uint32(message.gameTime);
             return writer;
         };
+
         /**
          * Encodes the specified ServerPlayerDeath message, length delimited. Does not implicitly {@link NT.ServerPlayerDeath.verify|verify} messages.
          * @function encodeDelimited
@@ -14253,6 +15200,7 @@ $root.NT = (function () {
         ServerPlayerDeath.encodeDelimited = function encodeDelimited(message, writer) {
             return this.encode(message, writer).ldelim();
         };
+
         /**
          * Decodes a ServerPlayerDeath message from the specified reader or buffer.
          * @function decode
@@ -14271,25 +15219,26 @@ $root.NT = (function () {
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                    case 1: {
+                case 1: {
                         message.userId = reader.string();
                         break;
                     }
-                    case 2: {
+                case 2: {
                         message.isWin = reader.bool();
                         break;
                     }
-                    case 3: {
+                case 3: {
                         message.gameTime = reader.uint32();
                         break;
                     }
-                    default:
-                        reader.skipType(tag & 7);
-                        break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
                 }
             }
             return message;
         };
+
         /**
          * Decodes a ServerPlayerDeath message from the specified reader or buffer, length delimited.
          * @function decodeDelimited
@@ -14305,6 +15254,7 @@ $root.NT = (function () {
                 reader = new $Reader(reader);
             return this.decode(reader, reader.uint32());
         };
+
         /**
          * Verifies a ServerPlayerDeath message.
          * @function verify
@@ -14330,6 +15280,7 @@ $root.NT = (function () {
             }
             return null;
         };
+
         /**
          * Creates a ServerPlayerDeath message from a plain object. Also converts values to their respective internal types.
          * @function fromObject
@@ -14350,6 +15301,7 @@ $root.NT = (function () {
                 message.gameTime = object.gameTime >>> 0;
             return message;
         };
+
         /**
          * Creates a plain object from a ServerPlayerDeath message. Also converts values to other types if specified.
          * @function toObject
@@ -14378,6 +15330,7 @@ $root.NT = (function () {
             }
             return object;
         };
+
         /**
          * Converts this ServerPlayerDeath to JSON.
          * @function toJSON
@@ -14388,6 +15341,7 @@ $root.NT = (function () {
         ServerPlayerDeath.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
+
         /**
          * Gets the default type url for ServerPlayerDeath
          * @function getTypeUrl
@@ -14402,15 +15356,19 @@ $root.NT = (function () {
             }
             return typeUrlPrefix + "/NT.ServerPlayerDeath";
         };
+
         return ServerPlayerDeath;
     })();
-    NT.ClientPlayerNewGamePlus = (function () {
+
+    NT.ClientPlayerNewGamePlus = (function() {
+
         /**
          * Properties of a ClientPlayerNewGamePlus.
          * @memberof NT
          * @interface IClientPlayerNewGamePlus
          * @property {number|null} [amount] ClientPlayerNewGamePlus amount
          */
+
         /**
          * Constructs a new ClientPlayerNewGamePlus.
          * @memberof NT
@@ -14425,6 +15383,7 @@ $root.NT = (function () {
                     if (properties[keys[i]] != null)
                         this[keys[i]] = properties[keys[i]];
         }
+
         /**
          * ClientPlayerNewGamePlus amount.
          * @member {number} amount
@@ -14432,6 +15391,7 @@ $root.NT = (function () {
          * @instance
          */
         ClientPlayerNewGamePlus.prototype.amount = 0;
+
         /**
          * Creates a new ClientPlayerNewGamePlus instance using the specified properties.
          * @function create
@@ -14443,6 +15403,7 @@ $root.NT = (function () {
         ClientPlayerNewGamePlus.create = function create(properties) {
             return new ClientPlayerNewGamePlus(properties);
         };
+
         /**
          * Encodes the specified ClientPlayerNewGamePlus message. Does not implicitly {@link NT.ClientPlayerNewGamePlus.verify|verify} messages.
          * @function encode
@@ -14456,9 +15417,10 @@ $root.NT = (function () {
             if (!writer)
                 writer = $Writer.create();
             if (message.amount != null && Object.hasOwnProperty.call(message, "amount"))
-                writer.uint32(/* id 1, wireType 0 =*/ 8).uint32(message.amount);
+                writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.amount);
             return writer;
         };
+
         /**
          * Encodes the specified ClientPlayerNewGamePlus message, length delimited. Does not implicitly {@link NT.ClientPlayerNewGamePlus.verify|verify} messages.
          * @function encodeDelimited
@@ -14471,6 +15433,7 @@ $root.NT = (function () {
         ClientPlayerNewGamePlus.encodeDelimited = function encodeDelimited(message, writer) {
             return this.encode(message, writer).ldelim();
         };
+
         /**
          * Decodes a ClientPlayerNewGamePlus message from the specified reader or buffer.
          * @function decode
@@ -14489,17 +15452,18 @@ $root.NT = (function () {
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                    case 1: {
+                case 1: {
                         message.amount = reader.uint32();
                         break;
                     }
-                    default:
-                        reader.skipType(tag & 7);
-                        break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
                 }
             }
             return message;
         };
+
         /**
          * Decodes a ClientPlayerNewGamePlus message from the specified reader or buffer, length delimited.
          * @function decodeDelimited
@@ -14515,6 +15479,7 @@ $root.NT = (function () {
                 reader = new $Reader(reader);
             return this.decode(reader, reader.uint32());
         };
+
         /**
          * Verifies a ClientPlayerNewGamePlus message.
          * @function verify
@@ -14531,6 +15496,7 @@ $root.NT = (function () {
                     return "amount: integer expected";
             return null;
         };
+
         /**
          * Creates a ClientPlayerNewGamePlus message from a plain object. Also converts values to their respective internal types.
          * @function fromObject
@@ -14547,6 +15513,7 @@ $root.NT = (function () {
                 message.amount = object.amount >>> 0;
             return message;
         };
+
         /**
          * Creates a plain object from a ClientPlayerNewGamePlus message. Also converts values to other types if specified.
          * @function toObject
@@ -14566,6 +15533,7 @@ $root.NT = (function () {
                 object.amount = message.amount;
             return object;
         };
+
         /**
          * Converts this ClientPlayerNewGamePlus to JSON.
          * @function toJSON
@@ -14576,6 +15544,7 @@ $root.NT = (function () {
         ClientPlayerNewGamePlus.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
+
         /**
          * Gets the default type url for ClientPlayerNewGamePlus
          * @function getTypeUrl
@@ -14590,9 +15559,12 @@ $root.NT = (function () {
             }
             return typeUrlPrefix + "/NT.ClientPlayerNewGamePlus";
         };
+
         return ClientPlayerNewGamePlus;
     })();
-    NT.ServerPlayerNewGamePlus = (function () {
+
+    NT.ServerPlayerNewGamePlus = (function() {
+
         /**
          * Properties of a ServerPlayerNewGamePlus.
          * @memberof NT
@@ -14600,6 +15572,7 @@ $root.NT = (function () {
          * @property {string|null} [userId] ServerPlayerNewGamePlus userId
          * @property {number|null} [amount] ServerPlayerNewGamePlus amount
          */
+
         /**
          * Constructs a new ServerPlayerNewGamePlus.
          * @memberof NT
@@ -14614,6 +15587,7 @@ $root.NT = (function () {
                     if (properties[keys[i]] != null)
                         this[keys[i]] = properties[keys[i]];
         }
+
         /**
          * ServerPlayerNewGamePlus userId.
          * @member {string} userId
@@ -14621,6 +15595,7 @@ $root.NT = (function () {
          * @instance
          */
         ServerPlayerNewGamePlus.prototype.userId = "";
+
         /**
          * ServerPlayerNewGamePlus amount.
          * @member {number} amount
@@ -14628,6 +15603,7 @@ $root.NT = (function () {
          * @instance
          */
         ServerPlayerNewGamePlus.prototype.amount = 0;
+
         /**
          * Creates a new ServerPlayerNewGamePlus instance using the specified properties.
          * @function create
@@ -14639,6 +15615,7 @@ $root.NT = (function () {
         ServerPlayerNewGamePlus.create = function create(properties) {
             return new ServerPlayerNewGamePlus(properties);
         };
+
         /**
          * Encodes the specified ServerPlayerNewGamePlus message. Does not implicitly {@link NT.ServerPlayerNewGamePlus.verify|verify} messages.
          * @function encode
@@ -14652,11 +15629,12 @@ $root.NT = (function () {
             if (!writer)
                 writer = $Writer.create();
             if (message.userId != null && Object.hasOwnProperty.call(message, "userId"))
-                writer.uint32(/* id 1, wireType 2 =*/ 10).string(message.userId);
+                writer.uint32(/* id 1, wireType 2 =*/10).string(message.userId);
             if (message.amount != null && Object.hasOwnProperty.call(message, "amount"))
-                writer.uint32(/* id 2, wireType 0 =*/ 16).uint32(message.amount);
+                writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.amount);
             return writer;
         };
+
         /**
          * Encodes the specified ServerPlayerNewGamePlus message, length delimited. Does not implicitly {@link NT.ServerPlayerNewGamePlus.verify|verify} messages.
          * @function encodeDelimited
@@ -14669,6 +15647,7 @@ $root.NT = (function () {
         ServerPlayerNewGamePlus.encodeDelimited = function encodeDelimited(message, writer) {
             return this.encode(message, writer).ldelim();
         };
+
         /**
          * Decodes a ServerPlayerNewGamePlus message from the specified reader or buffer.
          * @function decode
@@ -14687,21 +15666,22 @@ $root.NT = (function () {
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                    case 1: {
+                case 1: {
                         message.userId = reader.string();
                         break;
                     }
-                    case 2: {
+                case 2: {
                         message.amount = reader.uint32();
                         break;
                     }
-                    default:
-                        reader.skipType(tag & 7);
-                        break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
                 }
             }
             return message;
         };
+
         /**
          * Decodes a ServerPlayerNewGamePlus message from the specified reader or buffer, length delimited.
          * @function decodeDelimited
@@ -14717,6 +15697,7 @@ $root.NT = (function () {
                 reader = new $Reader(reader);
             return this.decode(reader, reader.uint32());
         };
+
         /**
          * Verifies a ServerPlayerNewGamePlus message.
          * @function verify
@@ -14736,6 +15717,7 @@ $root.NT = (function () {
                     return "amount: integer expected";
             return null;
         };
+
         /**
          * Creates a ServerPlayerNewGamePlus message from a plain object. Also converts values to their respective internal types.
          * @function fromObject
@@ -14754,6 +15736,7 @@ $root.NT = (function () {
                 message.amount = object.amount >>> 0;
             return message;
         };
+
         /**
          * Creates a plain object from a ServerPlayerNewGamePlus message. Also converts values to other types if specified.
          * @function toObject
@@ -14777,6 +15760,7 @@ $root.NT = (function () {
                 object.amount = message.amount;
             return object;
         };
+
         /**
          * Converts this ServerPlayerNewGamePlus to JSON.
          * @function toJSON
@@ -14787,6 +15771,7 @@ $root.NT = (function () {
         ServerPlayerNewGamePlus.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
+
         /**
          * Gets the default type url for ServerPlayerNewGamePlus
          * @function getTypeUrl
@@ -14801,15 +15786,19 @@ $root.NT = (function () {
             }
             return typeUrlPrefix + "/NT.ServerPlayerNewGamePlus";
         };
+
         return ServerPlayerNewGamePlus;
     })();
-    NT.ClientPlayerSecretHourglass = (function () {
+
+    NT.ClientPlayerSecretHourglass = (function() {
+
         /**
          * Properties of a ClientPlayerSecretHourglass.
          * @memberof NT
          * @interface IClientPlayerSecretHourglass
          * @property {string|null} [material] ClientPlayerSecretHourglass material
          */
+
         /**
          * Constructs a new ClientPlayerSecretHourglass.
          * @memberof NT
@@ -14824,6 +15813,7 @@ $root.NT = (function () {
                     if (properties[keys[i]] != null)
                         this[keys[i]] = properties[keys[i]];
         }
+
         /**
          * ClientPlayerSecretHourglass material.
          * @member {string} material
@@ -14831,6 +15821,7 @@ $root.NT = (function () {
          * @instance
          */
         ClientPlayerSecretHourglass.prototype.material = "";
+
         /**
          * Creates a new ClientPlayerSecretHourglass instance using the specified properties.
          * @function create
@@ -14842,6 +15833,7 @@ $root.NT = (function () {
         ClientPlayerSecretHourglass.create = function create(properties) {
             return new ClientPlayerSecretHourglass(properties);
         };
+
         /**
          * Encodes the specified ClientPlayerSecretHourglass message. Does not implicitly {@link NT.ClientPlayerSecretHourglass.verify|verify} messages.
          * @function encode
@@ -14855,9 +15847,10 @@ $root.NT = (function () {
             if (!writer)
                 writer = $Writer.create();
             if (message.material != null && Object.hasOwnProperty.call(message, "material"))
-                writer.uint32(/* id 1, wireType 2 =*/ 10).string(message.material);
+                writer.uint32(/* id 1, wireType 2 =*/10).string(message.material);
             return writer;
         };
+
         /**
          * Encodes the specified ClientPlayerSecretHourglass message, length delimited. Does not implicitly {@link NT.ClientPlayerSecretHourglass.verify|verify} messages.
          * @function encodeDelimited
@@ -14870,6 +15863,7 @@ $root.NT = (function () {
         ClientPlayerSecretHourglass.encodeDelimited = function encodeDelimited(message, writer) {
             return this.encode(message, writer).ldelim();
         };
+
         /**
          * Decodes a ClientPlayerSecretHourglass message from the specified reader or buffer.
          * @function decode
@@ -14888,17 +15882,18 @@ $root.NT = (function () {
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                    case 1: {
+                case 1: {
                         message.material = reader.string();
                         break;
                     }
-                    default:
-                        reader.skipType(tag & 7);
-                        break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
                 }
             }
             return message;
         };
+
         /**
          * Decodes a ClientPlayerSecretHourglass message from the specified reader or buffer, length delimited.
          * @function decodeDelimited
@@ -14914,6 +15909,7 @@ $root.NT = (function () {
                 reader = new $Reader(reader);
             return this.decode(reader, reader.uint32());
         };
+
         /**
          * Verifies a ClientPlayerSecretHourglass message.
          * @function verify
@@ -14930,6 +15926,7 @@ $root.NT = (function () {
                     return "material: string expected";
             return null;
         };
+
         /**
          * Creates a ClientPlayerSecretHourglass message from a plain object. Also converts values to their respective internal types.
          * @function fromObject
@@ -14946,6 +15943,7 @@ $root.NT = (function () {
                 message.material = String(object.material);
             return message;
         };
+
         /**
          * Creates a plain object from a ClientPlayerSecretHourglass message. Also converts values to other types if specified.
          * @function toObject
@@ -14965,6 +15963,7 @@ $root.NT = (function () {
                 object.material = message.material;
             return object;
         };
+
         /**
          * Converts this ClientPlayerSecretHourglass to JSON.
          * @function toJSON
@@ -14975,6 +15974,7 @@ $root.NT = (function () {
         ClientPlayerSecretHourglass.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
+
         /**
          * Gets the default type url for ClientPlayerSecretHourglass
          * @function getTypeUrl
@@ -14989,9 +15989,12 @@ $root.NT = (function () {
             }
             return typeUrlPrefix + "/NT.ClientPlayerSecretHourglass";
         };
+
         return ClientPlayerSecretHourglass;
     })();
-    NT.ServerPlayerSecretHourglass = (function () {
+
+    NT.ServerPlayerSecretHourglass = (function() {
+
         /**
          * Properties of a ServerPlayerSecretHourglass.
          * @memberof NT
@@ -14999,6 +16002,7 @@ $root.NT = (function () {
          * @property {string|null} [userId] ServerPlayerSecretHourglass userId
          * @property {string|null} [material] ServerPlayerSecretHourglass material
          */
+
         /**
          * Constructs a new ServerPlayerSecretHourglass.
          * @memberof NT
@@ -15013,6 +16017,7 @@ $root.NT = (function () {
                     if (properties[keys[i]] != null)
                         this[keys[i]] = properties[keys[i]];
         }
+
         /**
          * ServerPlayerSecretHourglass userId.
          * @member {string} userId
@@ -15020,6 +16025,7 @@ $root.NT = (function () {
          * @instance
          */
         ServerPlayerSecretHourglass.prototype.userId = "";
+
         /**
          * ServerPlayerSecretHourglass material.
          * @member {string} material
@@ -15027,6 +16033,7 @@ $root.NT = (function () {
          * @instance
          */
         ServerPlayerSecretHourglass.prototype.material = "";
+
         /**
          * Creates a new ServerPlayerSecretHourglass instance using the specified properties.
          * @function create
@@ -15038,6 +16045,7 @@ $root.NT = (function () {
         ServerPlayerSecretHourglass.create = function create(properties) {
             return new ServerPlayerSecretHourglass(properties);
         };
+
         /**
          * Encodes the specified ServerPlayerSecretHourglass message. Does not implicitly {@link NT.ServerPlayerSecretHourglass.verify|verify} messages.
          * @function encode
@@ -15051,11 +16059,12 @@ $root.NT = (function () {
             if (!writer)
                 writer = $Writer.create();
             if (message.userId != null && Object.hasOwnProperty.call(message, "userId"))
-                writer.uint32(/* id 1, wireType 2 =*/ 10).string(message.userId);
+                writer.uint32(/* id 1, wireType 2 =*/10).string(message.userId);
             if (message.material != null && Object.hasOwnProperty.call(message, "material"))
-                writer.uint32(/* id 2, wireType 2 =*/ 18).string(message.material);
+                writer.uint32(/* id 2, wireType 2 =*/18).string(message.material);
             return writer;
         };
+
         /**
          * Encodes the specified ServerPlayerSecretHourglass message, length delimited. Does not implicitly {@link NT.ServerPlayerSecretHourglass.verify|verify} messages.
          * @function encodeDelimited
@@ -15068,6 +16077,7 @@ $root.NT = (function () {
         ServerPlayerSecretHourglass.encodeDelimited = function encodeDelimited(message, writer) {
             return this.encode(message, writer).ldelim();
         };
+
         /**
          * Decodes a ServerPlayerSecretHourglass message from the specified reader or buffer.
          * @function decode
@@ -15086,21 +16096,22 @@ $root.NT = (function () {
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                    case 1: {
+                case 1: {
                         message.userId = reader.string();
                         break;
                     }
-                    case 2: {
+                case 2: {
                         message.material = reader.string();
                         break;
                     }
-                    default:
-                        reader.skipType(tag & 7);
-                        break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
                 }
             }
             return message;
         };
+
         /**
          * Decodes a ServerPlayerSecretHourglass message from the specified reader or buffer, length delimited.
          * @function decodeDelimited
@@ -15116,6 +16127,7 @@ $root.NT = (function () {
                 reader = new $Reader(reader);
             return this.decode(reader, reader.uint32());
         };
+
         /**
          * Verifies a ServerPlayerSecretHourglass message.
          * @function verify
@@ -15135,6 +16147,7 @@ $root.NT = (function () {
                     return "material: string expected";
             return null;
         };
+
         /**
          * Creates a ServerPlayerSecretHourglass message from a plain object. Also converts values to their respective internal types.
          * @function fromObject
@@ -15153,6 +16166,7 @@ $root.NT = (function () {
                 message.material = String(object.material);
             return message;
         };
+
         /**
          * Creates a plain object from a ServerPlayerSecretHourglass message. Also converts values to other types if specified.
          * @function toObject
@@ -15176,6 +16190,7 @@ $root.NT = (function () {
                 object.material = message.material;
             return object;
         };
+
         /**
          * Converts this ServerPlayerSecretHourglass to JSON.
          * @function toJSON
@@ -15186,6 +16201,7 @@ $root.NT = (function () {
         ServerPlayerSecretHourglass.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
+
         /**
          * Gets the default type url for ServerPlayerSecretHourglass
          * @function getTypeUrl
@@ -15200,15 +16216,19 @@ $root.NT = (function () {
             }
             return typeUrlPrefix + "/NT.ServerPlayerSecretHourglass";
         };
+
         return ServerPlayerSecretHourglass;
     })();
-    NT.ClientCustomModEvent = (function () {
+
+    NT.ClientCustomModEvent = (function() {
+
         /**
          * Properties of a ClientCustomModEvent.
          * @memberof NT
          * @interface IClientCustomModEvent
          * @property {string|null} [payload] ClientCustomModEvent payload
          */
+
         /**
          * Constructs a new ClientCustomModEvent.
          * @memberof NT
@@ -15223,6 +16243,7 @@ $root.NT = (function () {
                     if (properties[keys[i]] != null)
                         this[keys[i]] = properties[keys[i]];
         }
+
         /**
          * ClientCustomModEvent payload.
          * @member {string} payload
@@ -15230,6 +16251,7 @@ $root.NT = (function () {
          * @instance
          */
         ClientCustomModEvent.prototype.payload = "";
+
         /**
          * Creates a new ClientCustomModEvent instance using the specified properties.
          * @function create
@@ -15241,6 +16263,7 @@ $root.NT = (function () {
         ClientCustomModEvent.create = function create(properties) {
             return new ClientCustomModEvent(properties);
         };
+
         /**
          * Encodes the specified ClientCustomModEvent message. Does not implicitly {@link NT.ClientCustomModEvent.verify|verify} messages.
          * @function encode
@@ -15254,9 +16277,10 @@ $root.NT = (function () {
             if (!writer)
                 writer = $Writer.create();
             if (message.payload != null && Object.hasOwnProperty.call(message, "payload"))
-                writer.uint32(/* id 1, wireType 2 =*/ 10).string(message.payload);
+                writer.uint32(/* id 1, wireType 2 =*/10).string(message.payload);
             return writer;
         };
+
         /**
          * Encodes the specified ClientCustomModEvent message, length delimited. Does not implicitly {@link NT.ClientCustomModEvent.verify|verify} messages.
          * @function encodeDelimited
@@ -15269,6 +16293,7 @@ $root.NT = (function () {
         ClientCustomModEvent.encodeDelimited = function encodeDelimited(message, writer) {
             return this.encode(message, writer).ldelim();
         };
+
         /**
          * Decodes a ClientCustomModEvent message from the specified reader or buffer.
          * @function decode
@@ -15287,17 +16312,18 @@ $root.NT = (function () {
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                    case 1: {
+                case 1: {
                         message.payload = reader.string();
                         break;
                     }
-                    default:
-                        reader.skipType(tag & 7);
-                        break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
                 }
             }
             return message;
         };
+
         /**
          * Decodes a ClientCustomModEvent message from the specified reader or buffer, length delimited.
          * @function decodeDelimited
@@ -15313,6 +16339,7 @@ $root.NT = (function () {
                 reader = new $Reader(reader);
             return this.decode(reader, reader.uint32());
         };
+
         /**
          * Verifies a ClientCustomModEvent message.
          * @function verify
@@ -15329,6 +16356,7 @@ $root.NT = (function () {
                     return "payload: string expected";
             return null;
         };
+
         /**
          * Creates a ClientCustomModEvent message from a plain object. Also converts values to their respective internal types.
          * @function fromObject
@@ -15345,6 +16373,7 @@ $root.NT = (function () {
                 message.payload = String(object.payload);
             return message;
         };
+
         /**
          * Creates a plain object from a ClientCustomModEvent message. Also converts values to other types if specified.
          * @function toObject
@@ -15364,6 +16393,7 @@ $root.NT = (function () {
                 object.payload = message.payload;
             return object;
         };
+
         /**
          * Converts this ClientCustomModEvent to JSON.
          * @function toJSON
@@ -15374,6 +16404,7 @@ $root.NT = (function () {
         ClientCustomModEvent.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
+
         /**
          * Gets the default type url for ClientCustomModEvent
          * @function getTypeUrl
@@ -15388,9 +16419,12 @@ $root.NT = (function () {
             }
             return typeUrlPrefix + "/NT.ClientCustomModEvent";
         };
+
         return ClientCustomModEvent;
     })();
-    NT.ServerCustomModEvent = (function () {
+
+    NT.ServerCustomModEvent = (function() {
+
         /**
          * Properties of a ServerCustomModEvent.
          * @memberof NT
@@ -15398,6 +16432,7 @@ $root.NT = (function () {
          * @property {string|null} [userId] ServerCustomModEvent userId
          * @property {string|null} [payload] ServerCustomModEvent payload
          */
+
         /**
          * Constructs a new ServerCustomModEvent.
          * @memberof NT
@@ -15412,6 +16447,7 @@ $root.NT = (function () {
                     if (properties[keys[i]] != null)
                         this[keys[i]] = properties[keys[i]];
         }
+
         /**
          * ServerCustomModEvent userId.
          * @member {string} userId
@@ -15419,6 +16455,7 @@ $root.NT = (function () {
          * @instance
          */
         ServerCustomModEvent.prototype.userId = "";
+
         /**
          * ServerCustomModEvent payload.
          * @member {string} payload
@@ -15426,6 +16463,7 @@ $root.NT = (function () {
          * @instance
          */
         ServerCustomModEvent.prototype.payload = "";
+
         /**
          * Creates a new ServerCustomModEvent instance using the specified properties.
          * @function create
@@ -15437,6 +16475,7 @@ $root.NT = (function () {
         ServerCustomModEvent.create = function create(properties) {
             return new ServerCustomModEvent(properties);
         };
+
         /**
          * Encodes the specified ServerCustomModEvent message. Does not implicitly {@link NT.ServerCustomModEvent.verify|verify} messages.
          * @function encode
@@ -15450,11 +16489,12 @@ $root.NT = (function () {
             if (!writer)
                 writer = $Writer.create();
             if (message.userId != null && Object.hasOwnProperty.call(message, "userId"))
-                writer.uint32(/* id 1, wireType 2 =*/ 10).string(message.userId);
+                writer.uint32(/* id 1, wireType 2 =*/10).string(message.userId);
             if (message.payload != null && Object.hasOwnProperty.call(message, "payload"))
-                writer.uint32(/* id 2, wireType 2 =*/ 18).string(message.payload);
+                writer.uint32(/* id 2, wireType 2 =*/18).string(message.payload);
             return writer;
         };
+
         /**
          * Encodes the specified ServerCustomModEvent message, length delimited. Does not implicitly {@link NT.ServerCustomModEvent.verify|verify} messages.
          * @function encodeDelimited
@@ -15467,6 +16507,7 @@ $root.NT = (function () {
         ServerCustomModEvent.encodeDelimited = function encodeDelimited(message, writer) {
             return this.encode(message, writer).ldelim();
         };
+
         /**
          * Decodes a ServerCustomModEvent message from the specified reader or buffer.
          * @function decode
@@ -15485,21 +16526,22 @@ $root.NT = (function () {
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                    case 1: {
+                case 1: {
                         message.userId = reader.string();
                         break;
                     }
-                    case 2: {
+                case 2: {
                         message.payload = reader.string();
                         break;
                     }
-                    default:
-                        reader.skipType(tag & 7);
-                        break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
                 }
             }
             return message;
         };
+
         /**
          * Decodes a ServerCustomModEvent message from the specified reader or buffer, length delimited.
          * @function decodeDelimited
@@ -15515,6 +16557,7 @@ $root.NT = (function () {
                 reader = new $Reader(reader);
             return this.decode(reader, reader.uint32());
         };
+
         /**
          * Verifies a ServerCustomModEvent message.
          * @function verify
@@ -15534,6 +16577,7 @@ $root.NT = (function () {
                     return "payload: string expected";
             return null;
         };
+
         /**
          * Creates a ServerCustomModEvent message from a plain object. Also converts values to their respective internal types.
          * @function fromObject
@@ -15552,6 +16596,7 @@ $root.NT = (function () {
                 message.payload = String(object.payload);
             return message;
         };
+
         /**
          * Creates a plain object from a ServerCustomModEvent message. Also converts values to other types if specified.
          * @function toObject
@@ -15575,6 +16620,7 @@ $root.NT = (function () {
                 object.payload = message.payload;
             return object;
         };
+
         /**
          * Converts this ServerCustomModEvent to JSON.
          * @function toJSON
@@ -15585,6 +16631,7 @@ $root.NT = (function () {
         ServerCustomModEvent.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
+
         /**
          * Gets the default type url for ServerCustomModEvent
          * @function getTypeUrl
@@ -15599,15 +16646,19 @@ $root.NT = (function () {
             }
             return typeUrlPrefix + "/NT.ServerCustomModEvent";
         };
+
         return ServerCustomModEvent;
     })();
-    NT.ClientRespawnPenalty = (function () {
+
+    NT.ClientRespawnPenalty = (function() {
+
         /**
          * Properties of a ClientRespawnPenalty.
          * @memberof NT
          * @interface IClientRespawnPenalty
          * @property {number|null} [deaths] ClientRespawnPenalty deaths
          */
+
         /**
          * Constructs a new ClientRespawnPenalty.
          * @memberof NT
@@ -15622,6 +16673,7 @@ $root.NT = (function () {
                     if (properties[keys[i]] != null)
                         this[keys[i]] = properties[keys[i]];
         }
+
         /**
          * ClientRespawnPenalty deaths.
          * @member {number} deaths
@@ -15629,6 +16681,7 @@ $root.NT = (function () {
          * @instance
          */
         ClientRespawnPenalty.prototype.deaths = 0;
+
         /**
          * Creates a new ClientRespawnPenalty instance using the specified properties.
          * @function create
@@ -15640,6 +16693,7 @@ $root.NT = (function () {
         ClientRespawnPenalty.create = function create(properties) {
             return new ClientRespawnPenalty(properties);
         };
+
         /**
          * Encodes the specified ClientRespawnPenalty message. Does not implicitly {@link NT.ClientRespawnPenalty.verify|verify} messages.
          * @function encode
@@ -15653,9 +16707,10 @@ $root.NT = (function () {
             if (!writer)
                 writer = $Writer.create();
             if (message.deaths != null && Object.hasOwnProperty.call(message, "deaths"))
-                writer.uint32(/* id 1, wireType 0 =*/ 8).uint32(message.deaths);
+                writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.deaths);
             return writer;
         };
+
         /**
          * Encodes the specified ClientRespawnPenalty message, length delimited. Does not implicitly {@link NT.ClientRespawnPenalty.verify|verify} messages.
          * @function encodeDelimited
@@ -15668,6 +16723,7 @@ $root.NT = (function () {
         ClientRespawnPenalty.encodeDelimited = function encodeDelimited(message, writer) {
             return this.encode(message, writer).ldelim();
         };
+
         /**
          * Decodes a ClientRespawnPenalty message from the specified reader or buffer.
          * @function decode
@@ -15686,17 +16742,18 @@ $root.NT = (function () {
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                    case 1: {
+                case 1: {
                         message.deaths = reader.uint32();
                         break;
                     }
-                    default:
-                        reader.skipType(tag & 7);
-                        break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
                 }
             }
             return message;
         };
+
         /**
          * Decodes a ClientRespawnPenalty message from the specified reader or buffer, length delimited.
          * @function decodeDelimited
@@ -15712,6 +16769,7 @@ $root.NT = (function () {
                 reader = new $Reader(reader);
             return this.decode(reader, reader.uint32());
         };
+
         /**
          * Verifies a ClientRespawnPenalty message.
          * @function verify
@@ -15728,6 +16786,7 @@ $root.NT = (function () {
                     return "deaths: integer expected";
             return null;
         };
+
         /**
          * Creates a ClientRespawnPenalty message from a plain object. Also converts values to their respective internal types.
          * @function fromObject
@@ -15744,6 +16803,7 @@ $root.NT = (function () {
                 message.deaths = object.deaths >>> 0;
             return message;
         };
+
         /**
          * Creates a plain object from a ClientRespawnPenalty message. Also converts values to other types if specified.
          * @function toObject
@@ -15763,6 +16823,7 @@ $root.NT = (function () {
                 object.deaths = message.deaths;
             return object;
         };
+
         /**
          * Converts this ClientRespawnPenalty to JSON.
          * @function toJSON
@@ -15773,6 +16834,7 @@ $root.NT = (function () {
         ClientRespawnPenalty.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
+
         /**
          * Gets the default type url for ClientRespawnPenalty
          * @function getTypeUrl
@@ -15787,9 +16849,12 @@ $root.NT = (function () {
             }
             return typeUrlPrefix + "/NT.ClientRespawnPenalty";
         };
+
         return ClientRespawnPenalty;
     })();
-    NT.ServerRespawnPenalty = (function () {
+
+    NT.ServerRespawnPenalty = (function() {
+
         /**
          * Properties of a ServerRespawnPenalty.
          * @memberof NT
@@ -15797,6 +16862,7 @@ $root.NT = (function () {
          * @property {string|null} [userId] ServerRespawnPenalty userId
          * @property {number|null} [deaths] ServerRespawnPenalty deaths
          */
+
         /**
          * Constructs a new ServerRespawnPenalty.
          * @memberof NT
@@ -15811,6 +16877,7 @@ $root.NT = (function () {
                     if (properties[keys[i]] != null)
                         this[keys[i]] = properties[keys[i]];
         }
+
         /**
          * ServerRespawnPenalty userId.
          * @member {string} userId
@@ -15818,6 +16885,7 @@ $root.NT = (function () {
          * @instance
          */
         ServerRespawnPenalty.prototype.userId = "";
+
         /**
          * ServerRespawnPenalty deaths.
          * @member {number} deaths
@@ -15825,6 +16893,7 @@ $root.NT = (function () {
          * @instance
          */
         ServerRespawnPenalty.prototype.deaths = 0;
+
         /**
          * Creates a new ServerRespawnPenalty instance using the specified properties.
          * @function create
@@ -15836,6 +16905,7 @@ $root.NT = (function () {
         ServerRespawnPenalty.create = function create(properties) {
             return new ServerRespawnPenalty(properties);
         };
+
         /**
          * Encodes the specified ServerRespawnPenalty message. Does not implicitly {@link NT.ServerRespawnPenalty.verify|verify} messages.
          * @function encode
@@ -15849,11 +16919,12 @@ $root.NT = (function () {
             if (!writer)
                 writer = $Writer.create();
             if (message.userId != null && Object.hasOwnProperty.call(message, "userId"))
-                writer.uint32(/* id 1, wireType 2 =*/ 10).string(message.userId);
+                writer.uint32(/* id 1, wireType 2 =*/10).string(message.userId);
             if (message.deaths != null && Object.hasOwnProperty.call(message, "deaths"))
-                writer.uint32(/* id 2, wireType 0 =*/ 16).uint32(message.deaths);
+                writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.deaths);
             return writer;
         };
+
         /**
          * Encodes the specified ServerRespawnPenalty message, length delimited. Does not implicitly {@link NT.ServerRespawnPenalty.verify|verify} messages.
          * @function encodeDelimited
@@ -15866,6 +16937,7 @@ $root.NT = (function () {
         ServerRespawnPenalty.encodeDelimited = function encodeDelimited(message, writer) {
             return this.encode(message, writer).ldelim();
         };
+
         /**
          * Decodes a ServerRespawnPenalty message from the specified reader or buffer.
          * @function decode
@@ -15884,21 +16956,22 @@ $root.NT = (function () {
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                    case 1: {
+                case 1: {
                         message.userId = reader.string();
                         break;
                     }
-                    case 2: {
+                case 2: {
                         message.deaths = reader.uint32();
                         break;
                     }
-                    default:
-                        reader.skipType(tag & 7);
-                        break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
                 }
             }
             return message;
         };
+
         /**
          * Decodes a ServerRespawnPenalty message from the specified reader or buffer, length delimited.
          * @function decodeDelimited
@@ -15914,6 +16987,7 @@ $root.NT = (function () {
                 reader = new $Reader(reader);
             return this.decode(reader, reader.uint32());
         };
+
         /**
          * Verifies a ServerRespawnPenalty message.
          * @function verify
@@ -15933,6 +17007,7 @@ $root.NT = (function () {
                     return "deaths: integer expected";
             return null;
         };
+
         /**
          * Creates a ServerRespawnPenalty message from a plain object. Also converts values to their respective internal types.
          * @function fromObject
@@ -15951,6 +17026,7 @@ $root.NT = (function () {
                 message.deaths = object.deaths >>> 0;
             return message;
         };
+
         /**
          * Creates a plain object from a ServerRespawnPenalty message. Also converts values to other types if specified.
          * @function toObject
@@ -15974,6 +17050,7 @@ $root.NT = (function () {
                 object.deaths = message.deaths;
             return object;
         };
+
         /**
          * Converts this ServerRespawnPenalty to JSON.
          * @function toJSON
@@ -15984,6 +17061,7 @@ $root.NT = (function () {
         ServerRespawnPenalty.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
+
         /**
          * Gets the default type url for ServerRespawnPenalty
          * @function getTypeUrl
@@ -15998,15 +17076,19 @@ $root.NT = (function () {
             }
             return typeUrlPrefix + "/NT.ServerRespawnPenalty";
         };
+
         return ServerRespawnPenalty;
     })();
-    NT.ClientAngerySteve = (function () {
+
+    NT.ClientAngerySteve = (function() {
+
         /**
          * Properties of a ClientAngerySteve.
          * @memberof NT
          * @interface IClientAngerySteve
          * @property {boolean|null} [idk] ClientAngerySteve idk
          */
+
         /**
          * Constructs a new ClientAngerySteve.
          * @memberof NT
@@ -16021,6 +17103,7 @@ $root.NT = (function () {
                     if (properties[keys[i]] != null)
                         this[keys[i]] = properties[keys[i]];
         }
+
         /**
          * ClientAngerySteve idk.
          * @member {boolean} idk
@@ -16028,6 +17111,7 @@ $root.NT = (function () {
          * @instance
          */
         ClientAngerySteve.prototype.idk = false;
+
         /**
          * Creates a new ClientAngerySteve instance using the specified properties.
          * @function create
@@ -16039,6 +17123,7 @@ $root.NT = (function () {
         ClientAngerySteve.create = function create(properties) {
             return new ClientAngerySteve(properties);
         };
+
         /**
          * Encodes the specified ClientAngerySteve message. Does not implicitly {@link NT.ClientAngerySteve.verify|verify} messages.
          * @function encode
@@ -16052,9 +17137,10 @@ $root.NT = (function () {
             if (!writer)
                 writer = $Writer.create();
             if (message.idk != null && Object.hasOwnProperty.call(message, "idk"))
-                writer.uint32(/* id 1, wireType 0 =*/ 8).bool(message.idk);
+                writer.uint32(/* id 1, wireType 0 =*/8).bool(message.idk);
             return writer;
         };
+
         /**
          * Encodes the specified ClientAngerySteve message, length delimited. Does not implicitly {@link NT.ClientAngerySteve.verify|verify} messages.
          * @function encodeDelimited
@@ -16067,6 +17153,7 @@ $root.NT = (function () {
         ClientAngerySteve.encodeDelimited = function encodeDelimited(message, writer) {
             return this.encode(message, writer).ldelim();
         };
+
         /**
          * Decodes a ClientAngerySteve message from the specified reader or buffer.
          * @function decode
@@ -16085,17 +17172,18 @@ $root.NT = (function () {
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                    case 1: {
+                case 1: {
                         message.idk = reader.bool();
                         break;
                     }
-                    default:
-                        reader.skipType(tag & 7);
-                        break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
                 }
             }
             return message;
         };
+
         /**
          * Decodes a ClientAngerySteve message from the specified reader or buffer, length delimited.
          * @function decodeDelimited
@@ -16111,6 +17199,7 @@ $root.NT = (function () {
                 reader = new $Reader(reader);
             return this.decode(reader, reader.uint32());
         };
+
         /**
          * Verifies a ClientAngerySteve message.
          * @function verify
@@ -16127,6 +17216,7 @@ $root.NT = (function () {
                     return "idk: boolean expected";
             return null;
         };
+
         /**
          * Creates a ClientAngerySteve message from a plain object. Also converts values to their respective internal types.
          * @function fromObject
@@ -16143,6 +17233,7 @@ $root.NT = (function () {
                 message.idk = Boolean(object.idk);
             return message;
         };
+
         /**
          * Creates a plain object from a ClientAngerySteve message. Also converts values to other types if specified.
          * @function toObject
@@ -16162,6 +17253,7 @@ $root.NT = (function () {
                 object.idk = message.idk;
             return object;
         };
+
         /**
          * Converts this ClientAngerySteve to JSON.
          * @function toJSON
@@ -16172,6 +17264,7 @@ $root.NT = (function () {
         ClientAngerySteve.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
+
         /**
          * Gets the default type url for ClientAngerySteve
          * @function getTypeUrl
@@ -16186,15 +17279,19 @@ $root.NT = (function () {
             }
             return typeUrlPrefix + "/NT.ClientAngerySteve";
         };
+
         return ClientAngerySteve;
     })();
-    NT.ServerAngerySteve = (function () {
+
+    NT.ServerAngerySteve = (function() {
+
         /**
          * Properties of a ServerAngerySteve.
          * @memberof NT
          * @interface IServerAngerySteve
          * @property {string|null} [userId] ServerAngerySteve userId
          */
+
         /**
          * Constructs a new ServerAngerySteve.
          * @memberof NT
@@ -16209,6 +17306,7 @@ $root.NT = (function () {
                     if (properties[keys[i]] != null)
                         this[keys[i]] = properties[keys[i]];
         }
+
         /**
          * ServerAngerySteve userId.
          * @member {string} userId
@@ -16216,6 +17314,7 @@ $root.NT = (function () {
          * @instance
          */
         ServerAngerySteve.prototype.userId = "";
+
         /**
          * Creates a new ServerAngerySteve instance using the specified properties.
          * @function create
@@ -16227,6 +17326,7 @@ $root.NT = (function () {
         ServerAngerySteve.create = function create(properties) {
             return new ServerAngerySteve(properties);
         };
+
         /**
          * Encodes the specified ServerAngerySteve message. Does not implicitly {@link NT.ServerAngerySteve.verify|verify} messages.
          * @function encode
@@ -16240,9 +17340,10 @@ $root.NT = (function () {
             if (!writer)
                 writer = $Writer.create();
             if (message.userId != null && Object.hasOwnProperty.call(message, "userId"))
-                writer.uint32(/* id 1, wireType 2 =*/ 10).string(message.userId);
+                writer.uint32(/* id 1, wireType 2 =*/10).string(message.userId);
             return writer;
         };
+
         /**
          * Encodes the specified ServerAngerySteve message, length delimited. Does not implicitly {@link NT.ServerAngerySteve.verify|verify} messages.
          * @function encodeDelimited
@@ -16255,6 +17356,7 @@ $root.NT = (function () {
         ServerAngerySteve.encodeDelimited = function encodeDelimited(message, writer) {
             return this.encode(message, writer).ldelim();
         };
+
         /**
          * Decodes a ServerAngerySteve message from the specified reader or buffer.
          * @function decode
@@ -16273,17 +17375,18 @@ $root.NT = (function () {
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                    case 1: {
+                case 1: {
                         message.userId = reader.string();
                         break;
                     }
-                    default:
-                        reader.skipType(tag & 7);
-                        break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
                 }
             }
             return message;
         };
+
         /**
          * Decodes a ServerAngerySteve message from the specified reader or buffer, length delimited.
          * @function decodeDelimited
@@ -16299,6 +17402,7 @@ $root.NT = (function () {
                 reader = new $Reader(reader);
             return this.decode(reader, reader.uint32());
         };
+
         /**
          * Verifies a ServerAngerySteve message.
          * @function verify
@@ -16315,6 +17419,7 @@ $root.NT = (function () {
                     return "userId: string expected";
             return null;
         };
+
         /**
          * Creates a ServerAngerySteve message from a plain object. Also converts values to their respective internal types.
          * @function fromObject
@@ -16331,6 +17436,7 @@ $root.NT = (function () {
                 message.userId = String(object.userId);
             return message;
         };
+
         /**
          * Creates a plain object from a ServerAngerySteve message. Also converts values to other types if specified.
          * @function toObject
@@ -16350,6 +17456,7 @@ $root.NT = (function () {
                 object.userId = message.userId;
             return object;
         };
+
         /**
          * Converts this ServerAngerySteve to JSON.
          * @function toJSON
@@ -16360,6 +17467,7 @@ $root.NT = (function () {
         ServerAngerySteve.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
+
         /**
          * Gets the default type url for ServerAngerySteve
          * @function getTypeUrl
@@ -16374,9 +17482,12 @@ $root.NT = (function () {
             }
             return typeUrlPrefix + "/NT.ServerAngerySteve";
         };
+
         return ServerAngerySteve;
     })();
-    NT.Wand = (function () {
+
+    NT.Wand = (function() {
+
         /**
          * Properties of a Wand.
          * @memberof NT
@@ -16388,6 +17499,7 @@ $root.NT = (function () {
          * @property {string|null} [sentBy] Wand sentBy
          * @property {string|null} [contributedBy] Wand contributedBy
          */
+
         /**
          * Constructs a new Wand.
          * @memberof NT
@@ -16404,6 +17516,7 @@ $root.NT = (function () {
                     if (properties[keys[i]] != null)
                         this[keys[i]] = properties[keys[i]];
         }
+
         /**
          * Wand id.
          * @member {string} id
@@ -16411,6 +17524,7 @@ $root.NT = (function () {
          * @instance
          */
         Wand.prototype.id = "";
+
         /**
          * Wand stats.
          * @member {NT.Wand.IWandStats|null|undefined} stats
@@ -16418,6 +17532,7 @@ $root.NT = (function () {
          * @instance
          */
         Wand.prototype.stats = null;
+
         /**
          * Wand alwaysCast.
          * @member {Array.<NT.ISpell>} alwaysCast
@@ -16425,6 +17540,7 @@ $root.NT = (function () {
          * @instance
          */
         Wand.prototype.alwaysCast = $util.emptyArray;
+
         /**
          * Wand deck.
          * @member {Array.<NT.ISpell>} deck
@@ -16432,6 +17548,7 @@ $root.NT = (function () {
          * @instance
          */
         Wand.prototype.deck = $util.emptyArray;
+
         /**
          * Wand sentBy.
          * @member {string|null|undefined} sentBy
@@ -16439,6 +17556,7 @@ $root.NT = (function () {
          * @instance
          */
         Wand.prototype.sentBy = null;
+
         /**
          * Wand contributedBy.
          * @member {string|null|undefined} contributedBy
@@ -16446,8 +17564,10 @@ $root.NT = (function () {
          * @instance
          */
         Wand.prototype.contributedBy = null;
+
         // OneOf field names bound to virtual getters and setters
         var $oneOfFields;
+
         /**
          * Wand _sentBy.
          * @member {"sentBy"|undefined} _sentBy
@@ -16458,6 +17578,7 @@ $root.NT = (function () {
             get: $util.oneOfGetter($oneOfFields = ["sentBy"]),
             set: $util.oneOfSetter($oneOfFields)
         });
+
         /**
          * Wand _contributedBy.
          * @member {"contributedBy"|undefined} _contributedBy
@@ -16468,6 +17589,7 @@ $root.NT = (function () {
             get: $util.oneOfGetter($oneOfFields = ["contributedBy"]),
             set: $util.oneOfSetter($oneOfFields)
         });
+
         /**
          * Creates a new Wand instance using the specified properties.
          * @function create
@@ -16479,6 +17601,7 @@ $root.NT = (function () {
         Wand.create = function create(properties) {
             return new Wand(properties);
         };
+
         /**
          * Encodes the specified Wand message. Does not implicitly {@link NT.Wand.verify|verify} messages.
          * @function encode
@@ -16492,21 +17615,22 @@ $root.NT = (function () {
             if (!writer)
                 writer = $Writer.create();
             if (message.id != null && Object.hasOwnProperty.call(message, "id"))
-                writer.uint32(/* id 1, wireType 2 =*/ 10).string(message.id);
+                writer.uint32(/* id 1, wireType 2 =*/10).string(message.id);
             if (message.stats != null && Object.hasOwnProperty.call(message, "stats"))
-                $root.NT.Wand.WandStats.encode(message.stats, writer.uint32(/* id 2, wireType 2 =*/ 18).fork()).ldelim();
+                $root.NT.Wand.WandStats.encode(message.stats, writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
             if (message.alwaysCast != null && message.alwaysCast.length)
                 for (var i = 0; i < message.alwaysCast.length; ++i)
-                    $root.NT.Spell.encode(message.alwaysCast[i], writer.uint32(/* id 3, wireType 2 =*/ 26).fork()).ldelim();
+                    $root.NT.Spell.encode(message.alwaysCast[i], writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
             if (message.deck != null && message.deck.length)
                 for (var i = 0; i < message.deck.length; ++i)
-                    $root.NT.Spell.encode(message.deck[i], writer.uint32(/* id 4, wireType 2 =*/ 34).fork()).ldelim();
+                    $root.NT.Spell.encode(message.deck[i], writer.uint32(/* id 4, wireType 2 =*/34).fork()).ldelim();
             if (message.sentBy != null && Object.hasOwnProperty.call(message, "sentBy"))
-                writer.uint32(/* id 5, wireType 2 =*/ 42).string(message.sentBy);
+                writer.uint32(/* id 5, wireType 2 =*/42).string(message.sentBy);
             if (message.contributedBy != null && Object.hasOwnProperty.call(message, "contributedBy"))
-                writer.uint32(/* id 6, wireType 2 =*/ 50).string(message.contributedBy);
+                writer.uint32(/* id 6, wireType 2 =*/50).string(message.contributedBy);
             return writer;
         };
+
         /**
          * Encodes the specified Wand message, length delimited. Does not implicitly {@link NT.Wand.verify|verify} messages.
          * @function encodeDelimited
@@ -16519,6 +17643,7 @@ $root.NT = (function () {
         Wand.encodeDelimited = function encodeDelimited(message, writer) {
             return this.encode(message, writer).ldelim();
         };
+
         /**
          * Decodes a Wand message from the specified reader or buffer.
          * @function decode
@@ -16537,41 +17662,42 @@ $root.NT = (function () {
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                    case 1: {
+                case 1: {
                         message.id = reader.string();
                         break;
                     }
-                    case 2: {
+                case 2: {
                         message.stats = $root.NT.Wand.WandStats.decode(reader, reader.uint32());
                         break;
                     }
-                    case 3: {
+                case 3: {
                         if (!(message.alwaysCast && message.alwaysCast.length))
                             message.alwaysCast = [];
                         message.alwaysCast.push($root.NT.Spell.decode(reader, reader.uint32()));
                         break;
                     }
-                    case 4: {
+                case 4: {
                         if (!(message.deck && message.deck.length))
                             message.deck = [];
                         message.deck.push($root.NT.Spell.decode(reader, reader.uint32()));
                         break;
                     }
-                    case 5: {
+                case 5: {
                         message.sentBy = reader.string();
                         break;
                     }
-                    case 6: {
+                case 6: {
                         message.contributedBy = reader.string();
                         break;
                     }
-                    default:
-                        reader.skipType(tag & 7);
-                        break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
                 }
             }
             return message;
         };
+
         /**
          * Decodes a Wand message from the specified reader or buffer, length delimited.
          * @function decodeDelimited
@@ -16587,6 +17713,7 @@ $root.NT = (function () {
                 reader = new $Reader(reader);
             return this.decode(reader, reader.uint32());
         };
+
         /**
          * Verifies a Wand message.
          * @function verify
@@ -16637,6 +17764,7 @@ $root.NT = (function () {
             }
             return null;
         };
+
         /**
          * Creates a Wand message from a plain object. Also converts values to their respective internal types.
          * @function fromObject
@@ -16682,6 +17810,7 @@ $root.NT = (function () {
                 message.contributedBy = String(object.contributedBy);
             return message;
         };
+
         /**
          * Creates a plain object from a Wand message. Also converts values to other types if specified.
          * @function toObject
@@ -16729,6 +17858,7 @@ $root.NT = (function () {
             }
             return object;
         };
+
         /**
          * Converts this Wand to JSON.
          * @function toJSON
@@ -16739,6 +17869,7 @@ $root.NT = (function () {
         Wand.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
+
         /**
          * Gets the default type url for Wand
          * @function getTypeUrl
@@ -16753,7 +17884,9 @@ $root.NT = (function () {
             }
             return typeUrlPrefix + "/NT.Wand";
         };
-        Wand.WandStats = (function () {
+
+        Wand.WandStats = (function() {
+
             /**
              * Properties of a WandStats.
              * @memberof NT.Wand
@@ -16775,6 +17908,7 @@ $root.NT = (function () {
              * @property {number|null} [gripX] WandStats gripX
              * @property {number|null} [gripY] WandStats gripY
              */
+
             /**
              * Constructs a new WandStats.
              * @memberof NT.Wand
@@ -16789,6 +17923,7 @@ $root.NT = (function () {
                         if (properties[keys[i]] != null)
                             this[keys[i]] = properties[keys[i]];
             }
+
             /**
              * WandStats sprite.
              * @member {string} sprite
@@ -16796,6 +17931,7 @@ $root.NT = (function () {
              * @instance
              */
             WandStats.prototype.sprite = "";
+
             /**
              * WandStats named.
              * @member {boolean} named
@@ -16803,6 +17939,7 @@ $root.NT = (function () {
              * @instance
              */
             WandStats.prototype.named = false;
+
             /**
              * WandStats uiName.
              * @member {string} uiName
@@ -16810,6 +17947,7 @@ $root.NT = (function () {
              * @instance
              */
             WandStats.prototype.uiName = "";
+
             /**
              * WandStats manaMax.
              * @member {number} manaMax
@@ -16817,6 +17955,7 @@ $root.NT = (function () {
              * @instance
              */
             WandStats.prototype.manaMax = 0;
+
             /**
              * WandStats manaChargeSpeed.
              * @member {number} manaChargeSpeed
@@ -16824,6 +17963,7 @@ $root.NT = (function () {
              * @instance
              */
             WandStats.prototype.manaChargeSpeed = 0;
+
             /**
              * WandStats reloadTime.
              * @member {number} reloadTime
@@ -16831,6 +17971,7 @@ $root.NT = (function () {
              * @instance
              */
             WandStats.prototype.reloadTime = 0;
+
             /**
              * WandStats actionsPerRound.
              * @member {number} actionsPerRound
@@ -16838,6 +17979,7 @@ $root.NT = (function () {
              * @instance
              */
             WandStats.prototype.actionsPerRound = 0;
+
             /**
              * WandStats deckCapacity.
              * @member {number} deckCapacity
@@ -16845,6 +17987,7 @@ $root.NT = (function () {
              * @instance
              */
             WandStats.prototype.deckCapacity = 0;
+
             /**
              * WandStats shuffleDeckWhenEmpty.
              * @member {boolean} shuffleDeckWhenEmpty
@@ -16852,6 +17995,7 @@ $root.NT = (function () {
              * @instance
              */
             WandStats.prototype.shuffleDeckWhenEmpty = false;
+
             /**
              * WandStats spreadDegrees.
              * @member {number} spreadDegrees
@@ -16859,6 +18003,7 @@ $root.NT = (function () {
              * @instance
              */
             WandStats.prototype.spreadDegrees = 0;
+
             /**
              * WandStats speedMultiplier.
              * @member {number} speedMultiplier
@@ -16866,6 +18011,7 @@ $root.NT = (function () {
              * @instance
              */
             WandStats.prototype.speedMultiplier = 0;
+
             /**
              * WandStats fireRateWait.
              * @member {number} fireRateWait
@@ -16873,6 +18019,7 @@ $root.NT = (function () {
              * @instance
              */
             WandStats.prototype.fireRateWait = 0;
+
             /**
              * WandStats tipX.
              * @member {number} tipX
@@ -16880,6 +18027,7 @@ $root.NT = (function () {
              * @instance
              */
             WandStats.prototype.tipX = 0;
+
             /**
              * WandStats tipY.
              * @member {number} tipY
@@ -16887,6 +18035,7 @@ $root.NT = (function () {
              * @instance
              */
             WandStats.prototype.tipY = 0;
+
             /**
              * WandStats gripX.
              * @member {number} gripX
@@ -16894,6 +18043,7 @@ $root.NT = (function () {
              * @instance
              */
             WandStats.prototype.gripX = 0;
+
             /**
              * WandStats gripY.
              * @member {number} gripY
@@ -16901,6 +18051,7 @@ $root.NT = (function () {
              * @instance
              */
             WandStats.prototype.gripY = 0;
+
             /**
              * Creates a new WandStats instance using the specified properties.
              * @function create
@@ -16912,6 +18063,7 @@ $root.NT = (function () {
             WandStats.create = function create(properties) {
                 return new WandStats(properties);
             };
+
             /**
              * Encodes the specified WandStats message. Does not implicitly {@link NT.Wand.WandStats.verify|verify} messages.
              * @function encode
@@ -16925,39 +18077,40 @@ $root.NT = (function () {
                 if (!writer)
                     writer = $Writer.create();
                 if (message.sprite != null && Object.hasOwnProperty.call(message, "sprite"))
-                    writer.uint32(/* id 1, wireType 2 =*/ 10).string(message.sprite);
+                    writer.uint32(/* id 1, wireType 2 =*/10).string(message.sprite);
                 if (message.named != null && Object.hasOwnProperty.call(message, "named"))
-                    writer.uint32(/* id 2, wireType 0 =*/ 16).bool(message.named);
+                    writer.uint32(/* id 2, wireType 0 =*/16).bool(message.named);
                 if (message.uiName != null && Object.hasOwnProperty.call(message, "uiName"))
-                    writer.uint32(/* id 3, wireType 2 =*/ 26).string(message.uiName);
+                    writer.uint32(/* id 3, wireType 2 =*/26).string(message.uiName);
                 if (message.manaMax != null && Object.hasOwnProperty.call(message, "manaMax"))
-                    writer.uint32(/* id 4, wireType 5 =*/ 37).float(message.manaMax);
+                    writer.uint32(/* id 4, wireType 5 =*/37).float(message.manaMax);
                 if (message.manaChargeSpeed != null && Object.hasOwnProperty.call(message, "manaChargeSpeed"))
-                    writer.uint32(/* id 5, wireType 5 =*/ 45).float(message.manaChargeSpeed);
+                    writer.uint32(/* id 5, wireType 5 =*/45).float(message.manaChargeSpeed);
                 if (message.reloadTime != null && Object.hasOwnProperty.call(message, "reloadTime"))
-                    writer.uint32(/* id 6, wireType 0 =*/ 48).int32(message.reloadTime);
+                    writer.uint32(/* id 6, wireType 0 =*/48).int32(message.reloadTime);
                 if (message.actionsPerRound != null && Object.hasOwnProperty.call(message, "actionsPerRound"))
-                    writer.uint32(/* id 7, wireType 0 =*/ 56).uint32(message.actionsPerRound);
+                    writer.uint32(/* id 7, wireType 0 =*/56).uint32(message.actionsPerRound);
                 if (message.deckCapacity != null && Object.hasOwnProperty.call(message, "deckCapacity"))
-                    writer.uint32(/* id 8, wireType 0 =*/ 64).uint32(message.deckCapacity);
+                    writer.uint32(/* id 8, wireType 0 =*/64).uint32(message.deckCapacity);
                 if (message.shuffleDeckWhenEmpty != null && Object.hasOwnProperty.call(message, "shuffleDeckWhenEmpty"))
-                    writer.uint32(/* id 9, wireType 0 =*/ 72).bool(message.shuffleDeckWhenEmpty);
+                    writer.uint32(/* id 9, wireType 0 =*/72).bool(message.shuffleDeckWhenEmpty);
                 if (message.spreadDegrees != null && Object.hasOwnProperty.call(message, "spreadDegrees"))
-                    writer.uint32(/* id 10, wireType 5 =*/ 85).float(message.spreadDegrees);
+                    writer.uint32(/* id 10, wireType 5 =*/85).float(message.spreadDegrees);
                 if (message.speedMultiplier != null && Object.hasOwnProperty.call(message, "speedMultiplier"))
-                    writer.uint32(/* id 11, wireType 5 =*/ 93).float(message.speedMultiplier);
+                    writer.uint32(/* id 11, wireType 5 =*/93).float(message.speedMultiplier);
                 if (message.fireRateWait != null && Object.hasOwnProperty.call(message, "fireRateWait"))
-                    writer.uint32(/* id 12, wireType 0 =*/ 96).int32(message.fireRateWait);
+                    writer.uint32(/* id 12, wireType 0 =*/96).int32(message.fireRateWait);
                 if (message.tipX != null && Object.hasOwnProperty.call(message, "tipX"))
-                    writer.uint32(/* id 13, wireType 5 =*/ 109).float(message.tipX);
+                    writer.uint32(/* id 13, wireType 5 =*/109).float(message.tipX);
                 if (message.tipY != null && Object.hasOwnProperty.call(message, "tipY"))
-                    writer.uint32(/* id 14, wireType 5 =*/ 117).float(message.tipY);
+                    writer.uint32(/* id 14, wireType 5 =*/117).float(message.tipY);
                 if (message.gripX != null && Object.hasOwnProperty.call(message, "gripX"))
-                    writer.uint32(/* id 15, wireType 5 =*/ 125).float(message.gripX);
+                    writer.uint32(/* id 15, wireType 5 =*/125).float(message.gripX);
                 if (message.gripY != null && Object.hasOwnProperty.call(message, "gripY"))
-                    writer.uint32(/* id 16, wireType 5 =*/ 133).float(message.gripY);
+                    writer.uint32(/* id 16, wireType 5 =*/133).float(message.gripY);
                 return writer;
             };
+
             /**
              * Encodes the specified WandStats message, length delimited. Does not implicitly {@link NT.Wand.WandStats.verify|verify} messages.
              * @function encodeDelimited
@@ -16970,6 +18123,7 @@ $root.NT = (function () {
             WandStats.encodeDelimited = function encodeDelimited(message, writer) {
                 return this.encode(message, writer).ldelim();
             };
+
             /**
              * Decodes a WandStats message from the specified reader or buffer.
              * @function decode
@@ -16988,77 +18142,78 @@ $root.NT = (function () {
                 while (reader.pos < end) {
                     var tag = reader.uint32();
                     switch (tag >>> 3) {
-                        case 1: {
+                    case 1: {
                             message.sprite = reader.string();
                             break;
                         }
-                        case 2: {
+                    case 2: {
                             message.named = reader.bool();
                             break;
                         }
-                        case 3: {
+                    case 3: {
                             message.uiName = reader.string();
                             break;
                         }
-                        case 4: {
+                    case 4: {
                             message.manaMax = reader.float();
                             break;
                         }
-                        case 5: {
+                    case 5: {
                             message.manaChargeSpeed = reader.float();
                             break;
                         }
-                        case 6: {
+                    case 6: {
                             message.reloadTime = reader.int32();
                             break;
                         }
-                        case 7: {
+                    case 7: {
                             message.actionsPerRound = reader.uint32();
                             break;
                         }
-                        case 8: {
+                    case 8: {
                             message.deckCapacity = reader.uint32();
                             break;
                         }
-                        case 9: {
+                    case 9: {
                             message.shuffleDeckWhenEmpty = reader.bool();
                             break;
                         }
-                        case 10: {
+                    case 10: {
                             message.spreadDegrees = reader.float();
                             break;
                         }
-                        case 11: {
+                    case 11: {
                             message.speedMultiplier = reader.float();
                             break;
                         }
-                        case 12: {
+                    case 12: {
                             message.fireRateWait = reader.int32();
                             break;
                         }
-                        case 13: {
+                    case 13: {
                             message.tipX = reader.float();
                             break;
                         }
-                        case 14: {
+                    case 14: {
                             message.tipY = reader.float();
                             break;
                         }
-                        case 15: {
+                    case 15: {
                             message.gripX = reader.float();
                             break;
                         }
-                        case 16: {
+                    case 16: {
                             message.gripY = reader.float();
                             break;
                         }
-                        default:
-                            reader.skipType(tag & 7);
-                            break;
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
                     }
                 }
                 return message;
             };
+
             /**
              * Decodes a WandStats message from the specified reader or buffer, length delimited.
              * @function decodeDelimited
@@ -17074,6 +18229,7 @@ $root.NT = (function () {
                     reader = new $Reader(reader);
                 return this.decode(reader, reader.uint32());
             };
+
             /**
              * Verifies a WandStats message.
              * @function verify
@@ -17135,6 +18291,7 @@ $root.NT = (function () {
                         return "gripY: number expected";
                 return null;
             };
+
             /**
              * Creates a WandStats message from a plain object. Also converts values to their respective internal types.
              * @function fromObject
@@ -17181,6 +18338,7 @@ $root.NT = (function () {
                     message.gripY = Number(object.gripY);
                 return message;
             };
+
             /**
              * Creates a plain object from a WandStats message. Also converts values to other types if specified.
              * @function toObject
@@ -17246,6 +18404,7 @@ $root.NT = (function () {
                     object.gripY = options.json && !isFinite(message.gripY) ? String(message.gripY) : message.gripY;
                 return object;
             };
+
             /**
              * Converts this WandStats to JSON.
              * @function toJSON
@@ -17256,6 +18415,7 @@ $root.NT = (function () {
             WandStats.prototype.toJSON = function toJSON() {
                 return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
             };
+
             /**
              * Gets the default type url for WandStats
              * @function getTypeUrl
@@ -17270,11 +18430,15 @@ $root.NT = (function () {
                 }
                 return typeUrlPrefix + "/NT.Wand.WandStats";
             };
+
             return WandStats;
         })();
+
         return Wand;
     })();
-    NT.Spell = (function () {
+
+    NT.Spell = (function() {
+
         /**
          * Properties of a Spell.
          * @memberof NT
@@ -17285,6 +18449,7 @@ $root.NT = (function () {
          * @property {string|null} [contributedBy] Spell contributedBy
          * @property {number|null} [usesRemaining] Spell usesRemaining
          */
+
         /**
          * Constructs a new Spell.
          * @memberof NT
@@ -17299,6 +18464,7 @@ $root.NT = (function () {
                     if (properties[keys[i]] != null)
                         this[keys[i]] = properties[keys[i]];
         }
+
         /**
          * Spell id.
          * @member {string} id
@@ -17306,6 +18472,7 @@ $root.NT = (function () {
          * @instance
          */
         Spell.prototype.id = "";
+
         /**
          * Spell gameId.
          * @member {string} gameId
@@ -17313,6 +18480,7 @@ $root.NT = (function () {
          * @instance
          */
         Spell.prototype.gameId = "";
+
         /**
          * Spell sentBy.
          * @member {string|null|undefined} sentBy
@@ -17320,6 +18488,7 @@ $root.NT = (function () {
          * @instance
          */
         Spell.prototype.sentBy = null;
+
         /**
          * Spell contributedBy.
          * @member {string|null|undefined} contributedBy
@@ -17327,6 +18496,7 @@ $root.NT = (function () {
          * @instance
          */
         Spell.prototype.contributedBy = null;
+
         /**
          * Spell usesRemaining.
          * @member {number} usesRemaining
@@ -17334,8 +18504,10 @@ $root.NT = (function () {
          * @instance
          */
         Spell.prototype.usesRemaining = 0;
+
         // OneOf field names bound to virtual getters and setters
         var $oneOfFields;
+
         /**
          * Spell _sentBy.
          * @member {"sentBy"|undefined} _sentBy
@@ -17346,6 +18518,7 @@ $root.NT = (function () {
             get: $util.oneOfGetter($oneOfFields = ["sentBy"]),
             set: $util.oneOfSetter($oneOfFields)
         });
+
         /**
          * Spell _contributedBy.
          * @member {"contributedBy"|undefined} _contributedBy
@@ -17356,6 +18529,7 @@ $root.NT = (function () {
             get: $util.oneOfGetter($oneOfFields = ["contributedBy"]),
             set: $util.oneOfSetter($oneOfFields)
         });
+
         /**
          * Creates a new Spell instance using the specified properties.
          * @function create
@@ -17367,6 +18541,7 @@ $root.NT = (function () {
         Spell.create = function create(properties) {
             return new Spell(properties);
         };
+
         /**
          * Encodes the specified Spell message. Does not implicitly {@link NT.Spell.verify|verify} messages.
          * @function encode
@@ -17380,17 +18555,18 @@ $root.NT = (function () {
             if (!writer)
                 writer = $Writer.create();
             if (message.id != null && Object.hasOwnProperty.call(message, "id"))
-                writer.uint32(/* id 1, wireType 2 =*/ 10).string(message.id);
+                writer.uint32(/* id 1, wireType 2 =*/10).string(message.id);
             if (message.gameId != null && Object.hasOwnProperty.call(message, "gameId"))
-                writer.uint32(/* id 2, wireType 2 =*/ 18).string(message.gameId);
+                writer.uint32(/* id 2, wireType 2 =*/18).string(message.gameId);
             if (message.sentBy != null && Object.hasOwnProperty.call(message, "sentBy"))
-                writer.uint32(/* id 3, wireType 2 =*/ 26).string(message.sentBy);
+                writer.uint32(/* id 3, wireType 2 =*/26).string(message.sentBy);
             if (message.contributedBy != null && Object.hasOwnProperty.call(message, "contributedBy"))
-                writer.uint32(/* id 4, wireType 2 =*/ 34).string(message.contributedBy);
+                writer.uint32(/* id 4, wireType 2 =*/34).string(message.contributedBy);
             if (message.usesRemaining != null && Object.hasOwnProperty.call(message, "usesRemaining"))
-                writer.uint32(/* id 5, wireType 0 =*/ 40).int32(message.usesRemaining);
+                writer.uint32(/* id 5, wireType 0 =*/40).int32(message.usesRemaining);
             return writer;
         };
+
         /**
          * Encodes the specified Spell message, length delimited. Does not implicitly {@link NT.Spell.verify|verify} messages.
          * @function encodeDelimited
@@ -17403,6 +18579,7 @@ $root.NT = (function () {
         Spell.encodeDelimited = function encodeDelimited(message, writer) {
             return this.encode(message, writer).ldelim();
         };
+
         /**
          * Decodes a Spell message from the specified reader or buffer.
          * @function decode
@@ -17421,33 +18598,34 @@ $root.NT = (function () {
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                    case 1: {
+                case 1: {
                         message.id = reader.string();
                         break;
                     }
-                    case 2: {
+                case 2: {
                         message.gameId = reader.string();
                         break;
                     }
-                    case 3: {
+                case 3: {
                         message.sentBy = reader.string();
                         break;
                     }
-                    case 4: {
+                case 4: {
                         message.contributedBy = reader.string();
                         break;
                     }
-                    case 5: {
+                case 5: {
                         message.usesRemaining = reader.int32();
                         break;
                     }
-                    default:
-                        reader.skipType(tag & 7);
-                        break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
                 }
             }
             return message;
         };
+
         /**
          * Decodes a Spell message from the specified reader or buffer, length delimited.
          * @function decodeDelimited
@@ -17463,6 +18641,7 @@ $root.NT = (function () {
                 reader = new $Reader(reader);
             return this.decode(reader, reader.uint32());
         };
+
         /**
          * Verifies a Spell message.
          * @function verify
@@ -17496,6 +18675,7 @@ $root.NT = (function () {
                     return "usesRemaining: integer expected";
             return null;
         };
+
         /**
          * Creates a Spell message from a plain object. Also converts values to their respective internal types.
          * @function fromObject
@@ -17520,6 +18700,7 @@ $root.NT = (function () {
                 message.usesRemaining = object.usesRemaining | 0;
             return message;
         };
+
         /**
          * Creates a plain object from a Spell message. Also converts values to other types if specified.
          * @function toObject
@@ -17556,6 +18737,7 @@ $root.NT = (function () {
                 object.usesRemaining = message.usesRemaining;
             return object;
         };
+
         /**
          * Converts this Spell to JSON.
          * @function toJSON
@@ -17566,6 +18748,7 @@ $root.NT = (function () {
         Spell.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
+
         /**
          * Gets the default type url for Spell
          * @function getTypeUrl
@@ -17580,9 +18763,12 @@ $root.NT = (function () {
             }
             return typeUrlPrefix + "/NT.Spell";
         };
+
         return Spell;
     })();
-    NT.Item = (function () {
+
+    NT.Item = (function() {
+
         /**
          * Properties of an Item.
          * @memberof NT
@@ -17595,6 +18781,7 @@ $root.NT = (function () {
          * @property {boolean|null} [isChest] Item isChest
          * @property {string|null} [itemType] Item itemType
          */
+
         /**
          * Constructs a new Item.
          * @memberof NT
@@ -17610,6 +18797,7 @@ $root.NT = (function () {
                     if (properties[keys[i]] != null)
                         this[keys[i]] = properties[keys[i]];
         }
+
         /**
          * Item id.
          * @member {string} id
@@ -17617,6 +18805,7 @@ $root.NT = (function () {
          * @instance
          */
         Item.prototype.id = "";
+
         /**
          * Item color.
          * @member {NT.Item.IColor|null|undefined} color
@@ -17624,6 +18813,7 @@ $root.NT = (function () {
          * @instance
          */
         Item.prototype.color = null;
+
         /**
          * Item content.
          * @member {Array.<NT.Item.IMaterial>} content
@@ -17631,6 +18821,7 @@ $root.NT = (function () {
          * @instance
          */
         Item.prototype.content = $util.emptyArray;
+
         /**
          * Item sentBy.
          * @member {string|null|undefined} sentBy
@@ -17638,6 +18829,7 @@ $root.NT = (function () {
          * @instance
          */
         Item.prototype.sentBy = null;
+
         /**
          * Item contributedBy.
          * @member {string|null|undefined} contributedBy
@@ -17645,6 +18837,7 @@ $root.NT = (function () {
          * @instance
          */
         Item.prototype.contributedBy = null;
+
         /**
          * Item isChest.
          * @member {boolean} isChest
@@ -17652,6 +18845,7 @@ $root.NT = (function () {
          * @instance
          */
         Item.prototype.isChest = false;
+
         /**
          * Item itemType.
          * @member {string} itemType
@@ -17659,8 +18853,10 @@ $root.NT = (function () {
          * @instance
          */
         Item.prototype.itemType = "";
+
         // OneOf field names bound to virtual getters and setters
         var $oneOfFields;
+
         /**
          * Item _sentBy.
          * @member {"sentBy"|undefined} _sentBy
@@ -17671,6 +18867,7 @@ $root.NT = (function () {
             get: $util.oneOfGetter($oneOfFields = ["sentBy"]),
             set: $util.oneOfSetter($oneOfFields)
         });
+
         /**
          * Item _contributedBy.
          * @member {"contributedBy"|undefined} _contributedBy
@@ -17681,6 +18878,7 @@ $root.NT = (function () {
             get: $util.oneOfGetter($oneOfFields = ["contributedBy"]),
             set: $util.oneOfSetter($oneOfFields)
         });
+
         /**
          * Creates a new Item instance using the specified properties.
          * @function create
@@ -17692,6 +18890,7 @@ $root.NT = (function () {
         Item.create = function create(properties) {
             return new Item(properties);
         };
+
         /**
          * Encodes the specified Item message. Does not implicitly {@link NT.Item.verify|verify} messages.
          * @function encode
@@ -17705,22 +18904,23 @@ $root.NT = (function () {
             if (!writer)
                 writer = $Writer.create();
             if (message.id != null && Object.hasOwnProperty.call(message, "id"))
-                writer.uint32(/* id 1, wireType 2 =*/ 10).string(message.id);
+                writer.uint32(/* id 1, wireType 2 =*/10).string(message.id);
             if (message.color != null && Object.hasOwnProperty.call(message, "color"))
-                $root.NT.Item.Color.encode(message.color, writer.uint32(/* id 2, wireType 2 =*/ 18).fork()).ldelim();
+                $root.NT.Item.Color.encode(message.color, writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
             if (message.content != null && message.content.length)
                 for (var i = 0; i < message.content.length; ++i)
-                    $root.NT.Item.Material.encode(message.content[i], writer.uint32(/* id 3, wireType 2 =*/ 26).fork()).ldelim();
+                    $root.NT.Item.Material.encode(message.content[i], writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
             if (message.sentBy != null && Object.hasOwnProperty.call(message, "sentBy"))
-                writer.uint32(/* id 4, wireType 2 =*/ 34).string(message.sentBy);
+                writer.uint32(/* id 4, wireType 2 =*/34).string(message.sentBy);
             if (message.contributedBy != null && Object.hasOwnProperty.call(message, "contributedBy"))
-                writer.uint32(/* id 5, wireType 2 =*/ 42).string(message.contributedBy);
+                writer.uint32(/* id 5, wireType 2 =*/42).string(message.contributedBy);
             if (message.isChest != null && Object.hasOwnProperty.call(message, "isChest"))
-                writer.uint32(/* id 6, wireType 0 =*/ 48).bool(message.isChest);
+                writer.uint32(/* id 6, wireType 0 =*/48).bool(message.isChest);
             if (message.itemType != null && Object.hasOwnProperty.call(message, "itemType"))
-                writer.uint32(/* id 7, wireType 2 =*/ 58).string(message.itemType);
+                writer.uint32(/* id 7, wireType 2 =*/58).string(message.itemType);
             return writer;
         };
+
         /**
          * Encodes the specified Item message, length delimited. Does not implicitly {@link NT.Item.verify|verify} messages.
          * @function encodeDelimited
@@ -17733,6 +18933,7 @@ $root.NT = (function () {
         Item.encodeDelimited = function encodeDelimited(message, writer) {
             return this.encode(message, writer).ldelim();
         };
+
         /**
          * Decodes an Item message from the specified reader or buffer.
          * @function decode
@@ -17751,43 +18952,44 @@ $root.NT = (function () {
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                    case 1: {
+                case 1: {
                         message.id = reader.string();
                         break;
                     }
-                    case 2: {
+                case 2: {
                         message.color = $root.NT.Item.Color.decode(reader, reader.uint32());
                         break;
                     }
-                    case 3: {
+                case 3: {
                         if (!(message.content && message.content.length))
                             message.content = [];
                         message.content.push($root.NT.Item.Material.decode(reader, reader.uint32()));
                         break;
                     }
-                    case 4: {
+                case 4: {
                         message.sentBy = reader.string();
                         break;
                     }
-                    case 5: {
+                case 5: {
                         message.contributedBy = reader.string();
                         break;
                     }
-                    case 6: {
+                case 6: {
                         message.isChest = reader.bool();
                         break;
                     }
-                    case 7: {
+                case 7: {
                         message.itemType = reader.string();
                         break;
                     }
-                    default:
-                        reader.skipType(tag & 7);
-                        break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
                 }
             }
             return message;
         };
+
         /**
          * Decodes an Item message from the specified reader or buffer, length delimited.
          * @function decodeDelimited
@@ -17803,6 +19005,7 @@ $root.NT = (function () {
                 reader = new $Reader(reader);
             return this.decode(reader, reader.uint32());
         };
+
         /**
          * Verifies an Item message.
          * @function verify
@@ -17850,6 +19053,7 @@ $root.NT = (function () {
                     return "itemType: string expected";
             return null;
         };
+
         /**
          * Creates an Item message from a plain object. Also converts values to their respective internal types.
          * @function fromObject
@@ -17889,6 +19093,7 @@ $root.NT = (function () {
                 message.itemType = String(object.itemType);
             return message;
         };
+
         /**
          * Creates a plain object from an Item message. Also converts values to other types if specified.
          * @function toObject
@@ -17935,6 +19140,7 @@ $root.NT = (function () {
                 object.itemType = message.itemType;
             return object;
         };
+
         /**
          * Converts this Item to JSON.
          * @function toJSON
@@ -17945,6 +19151,7 @@ $root.NT = (function () {
         Item.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
+
         /**
          * Gets the default type url for Item
          * @function getTypeUrl
@@ -17959,7 +19166,9 @@ $root.NT = (function () {
             }
             return typeUrlPrefix + "/NT.Item";
         };
-        Item.Color = (function () {
+
+        Item.Color = (function() {
+
             /**
              * Properties of a Color.
              * @memberof NT.Item
@@ -17968,6 +19177,7 @@ $root.NT = (function () {
              * @property {number|null} [g] Color g
              * @property {number|null} [b] Color b
              */
+
             /**
              * Constructs a new Color.
              * @memberof NT.Item
@@ -17982,6 +19192,7 @@ $root.NT = (function () {
                         if (properties[keys[i]] != null)
                             this[keys[i]] = properties[keys[i]];
             }
+
             /**
              * Color r.
              * @member {number} r
@@ -17989,6 +19200,7 @@ $root.NT = (function () {
              * @instance
              */
             Color.prototype.r = 0;
+
             /**
              * Color g.
              * @member {number} g
@@ -17996,6 +19208,7 @@ $root.NT = (function () {
              * @instance
              */
             Color.prototype.g = 0;
+
             /**
              * Color b.
              * @member {number} b
@@ -18003,6 +19216,7 @@ $root.NT = (function () {
              * @instance
              */
             Color.prototype.b = 0;
+
             /**
              * Creates a new Color instance using the specified properties.
              * @function create
@@ -18014,6 +19228,7 @@ $root.NT = (function () {
             Color.create = function create(properties) {
                 return new Color(properties);
             };
+
             /**
              * Encodes the specified Color message. Does not implicitly {@link NT.Item.Color.verify|verify} messages.
              * @function encode
@@ -18027,13 +19242,14 @@ $root.NT = (function () {
                 if (!writer)
                     writer = $Writer.create();
                 if (message.r != null && Object.hasOwnProperty.call(message, "r"))
-                    writer.uint32(/* id 1, wireType 5 =*/ 13).float(message.r);
+                    writer.uint32(/* id 1, wireType 5 =*/13).float(message.r);
                 if (message.g != null && Object.hasOwnProperty.call(message, "g"))
-                    writer.uint32(/* id 2, wireType 5 =*/ 21).float(message.g);
+                    writer.uint32(/* id 2, wireType 5 =*/21).float(message.g);
                 if (message.b != null && Object.hasOwnProperty.call(message, "b"))
-                    writer.uint32(/* id 3, wireType 5 =*/ 29).float(message.b);
+                    writer.uint32(/* id 3, wireType 5 =*/29).float(message.b);
                 return writer;
             };
+
             /**
              * Encodes the specified Color message, length delimited. Does not implicitly {@link NT.Item.Color.verify|verify} messages.
              * @function encodeDelimited
@@ -18046,6 +19262,7 @@ $root.NT = (function () {
             Color.encodeDelimited = function encodeDelimited(message, writer) {
                 return this.encode(message, writer).ldelim();
             };
+
             /**
              * Decodes a Color message from the specified reader or buffer.
              * @function decode
@@ -18064,25 +19281,26 @@ $root.NT = (function () {
                 while (reader.pos < end) {
                     var tag = reader.uint32();
                     switch (tag >>> 3) {
-                        case 1: {
+                    case 1: {
                             message.r = reader.float();
                             break;
                         }
-                        case 2: {
+                    case 2: {
                             message.g = reader.float();
                             break;
                         }
-                        case 3: {
+                    case 3: {
                             message.b = reader.float();
                             break;
                         }
-                        default:
-                            reader.skipType(tag & 7);
-                            break;
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
                     }
                 }
                 return message;
             };
+
             /**
              * Decodes a Color message from the specified reader or buffer, length delimited.
              * @function decodeDelimited
@@ -18098,6 +19316,7 @@ $root.NT = (function () {
                     reader = new $Reader(reader);
                 return this.decode(reader, reader.uint32());
             };
+
             /**
              * Verifies a Color message.
              * @function verify
@@ -18120,6 +19339,7 @@ $root.NT = (function () {
                         return "b: number expected";
                 return null;
             };
+
             /**
              * Creates a Color message from a plain object. Also converts values to their respective internal types.
              * @function fromObject
@@ -18140,6 +19360,7 @@ $root.NT = (function () {
                     message.b = Number(object.b);
                 return message;
             };
+
             /**
              * Creates a plain object from a Color message. Also converts values to other types if specified.
              * @function toObject
@@ -18166,6 +19387,7 @@ $root.NT = (function () {
                     object.b = options.json && !isFinite(message.b) ? String(message.b) : message.b;
                 return object;
             };
+
             /**
              * Converts this Color to JSON.
              * @function toJSON
@@ -18176,6 +19398,7 @@ $root.NT = (function () {
             Color.prototype.toJSON = function toJSON() {
                 return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
             };
+
             /**
              * Gets the default type url for Color
              * @function getTypeUrl
@@ -18190,9 +19413,12 @@ $root.NT = (function () {
                 }
                 return typeUrlPrefix + "/NT.Item.Color";
             };
+
             return Color;
         })();
-        Item.Material = (function () {
+
+        Item.Material = (function() {
+
             /**
              * Properties of a Material.
              * @memberof NT.Item
@@ -18200,6 +19426,7 @@ $root.NT = (function () {
              * @property {number|null} [id] Material id
              * @property {number|null} [amount] Material amount
              */
+
             /**
              * Constructs a new Material.
              * @memberof NT.Item
@@ -18214,6 +19441,7 @@ $root.NT = (function () {
                         if (properties[keys[i]] != null)
                             this[keys[i]] = properties[keys[i]];
             }
+
             /**
              * Material id.
              * @member {number} id
@@ -18221,6 +19449,7 @@ $root.NT = (function () {
              * @instance
              */
             Material.prototype.id = 0;
+
             /**
              * Material amount.
              * @member {number} amount
@@ -18228,6 +19457,7 @@ $root.NT = (function () {
              * @instance
              */
             Material.prototype.amount = 0;
+
             /**
              * Creates a new Material instance using the specified properties.
              * @function create
@@ -18239,6 +19469,7 @@ $root.NT = (function () {
             Material.create = function create(properties) {
                 return new Material(properties);
             };
+
             /**
              * Encodes the specified Material message. Does not implicitly {@link NT.Item.Material.verify|verify} messages.
              * @function encode
@@ -18252,11 +19483,12 @@ $root.NT = (function () {
                 if (!writer)
                     writer = $Writer.create();
                 if (message.id != null && Object.hasOwnProperty.call(message, "id"))
-                    writer.uint32(/* id 1, wireType 0 =*/ 8).uint32(message.id);
+                    writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.id);
                 if (message.amount != null && Object.hasOwnProperty.call(message, "amount"))
-                    writer.uint32(/* id 2, wireType 0 =*/ 16).uint32(message.amount);
+                    writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.amount);
                 return writer;
             };
+
             /**
              * Encodes the specified Material message, length delimited. Does not implicitly {@link NT.Item.Material.verify|verify} messages.
              * @function encodeDelimited
@@ -18269,6 +19501,7 @@ $root.NT = (function () {
             Material.encodeDelimited = function encodeDelimited(message, writer) {
                 return this.encode(message, writer).ldelim();
             };
+
             /**
              * Decodes a Material message from the specified reader or buffer.
              * @function decode
@@ -18287,21 +19520,22 @@ $root.NT = (function () {
                 while (reader.pos < end) {
                     var tag = reader.uint32();
                     switch (tag >>> 3) {
-                        case 1: {
+                    case 1: {
                             message.id = reader.uint32();
                             break;
                         }
-                        case 2: {
+                    case 2: {
                             message.amount = reader.uint32();
                             break;
                         }
-                        default:
-                            reader.skipType(tag & 7);
-                            break;
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
                     }
                 }
                 return message;
             };
+
             /**
              * Decodes a Material message from the specified reader or buffer, length delimited.
              * @function decodeDelimited
@@ -18317,6 +19551,7 @@ $root.NT = (function () {
                     reader = new $Reader(reader);
                 return this.decode(reader, reader.uint32());
             };
+
             /**
              * Verifies a Material message.
              * @function verify
@@ -18336,6 +19571,7 @@ $root.NT = (function () {
                         return "amount: integer expected";
                 return null;
             };
+
             /**
              * Creates a Material message from a plain object. Also converts values to their respective internal types.
              * @function fromObject
@@ -18354,6 +19590,7 @@ $root.NT = (function () {
                     message.amount = object.amount >>> 0;
                 return message;
             };
+
             /**
              * Creates a plain object from a Material message. Also converts values to other types if specified.
              * @function toObject
@@ -18377,6 +19614,7 @@ $root.NT = (function () {
                     object.amount = message.amount;
                 return object;
             };
+
             /**
              * Converts this Material to JSON.
              * @function toJSON
@@ -18387,6 +19625,7 @@ $root.NT = (function () {
             Material.prototype.toJSON = function toJSON() {
                 return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
             };
+
             /**
              * Gets the default type url for Material
              * @function getTypeUrl
@@ -18401,11 +19640,15 @@ $root.NT = (function () {
                 }
                 return typeUrlPrefix + "/NT.Item.Material";
             };
+
             return Material;
         })();
+
         return Item;
     })();
-    NT.EntityItem = (function () {
+
+    NT.EntityItem = (function() {
+
         /**
          * Properties of an EntityItem.
          * @memberof NT
@@ -18415,6 +19658,7 @@ $root.NT = (function () {
          * @property {string|null} [sprite] EntityItem sprite
          * @property {string|null} [sentBy] EntityItem sentBy
          */
+
         /**
          * Constructs a new EntityItem.
          * @memberof NT
@@ -18429,6 +19673,7 @@ $root.NT = (function () {
                     if (properties[keys[i]] != null)
                         this[keys[i]] = properties[keys[i]];
         }
+
         /**
          * EntityItem id.
          * @member {string} id
@@ -18436,6 +19681,7 @@ $root.NT = (function () {
          * @instance
          */
         EntityItem.prototype.id = "";
+
         /**
          * EntityItem path.
          * @member {string} path
@@ -18443,6 +19689,7 @@ $root.NT = (function () {
          * @instance
          */
         EntityItem.prototype.path = "";
+
         /**
          * EntityItem sprite.
          * @member {string} sprite
@@ -18450,6 +19697,7 @@ $root.NT = (function () {
          * @instance
          */
         EntityItem.prototype.sprite = "";
+
         /**
          * EntityItem sentBy.
          * @member {string|null|undefined} sentBy
@@ -18457,8 +19705,10 @@ $root.NT = (function () {
          * @instance
          */
         EntityItem.prototype.sentBy = null;
+
         // OneOf field names bound to virtual getters and setters
         var $oneOfFields;
+
         /**
          * EntityItem _sentBy.
          * @member {"sentBy"|undefined} _sentBy
@@ -18469,6 +19719,7 @@ $root.NT = (function () {
             get: $util.oneOfGetter($oneOfFields = ["sentBy"]),
             set: $util.oneOfSetter($oneOfFields)
         });
+
         /**
          * Creates a new EntityItem instance using the specified properties.
          * @function create
@@ -18480,6 +19731,7 @@ $root.NT = (function () {
         EntityItem.create = function create(properties) {
             return new EntityItem(properties);
         };
+
         /**
          * Encodes the specified EntityItem message. Does not implicitly {@link NT.EntityItem.verify|verify} messages.
          * @function encode
@@ -18493,15 +19745,16 @@ $root.NT = (function () {
             if (!writer)
                 writer = $Writer.create();
             if (message.id != null && Object.hasOwnProperty.call(message, "id"))
-                writer.uint32(/* id 1, wireType 2 =*/ 10).string(message.id);
+                writer.uint32(/* id 1, wireType 2 =*/10).string(message.id);
             if (message.path != null && Object.hasOwnProperty.call(message, "path"))
-                writer.uint32(/* id 2, wireType 2 =*/ 18).string(message.path);
+                writer.uint32(/* id 2, wireType 2 =*/18).string(message.path);
             if (message.sprite != null && Object.hasOwnProperty.call(message, "sprite"))
-                writer.uint32(/* id 3, wireType 2 =*/ 26).string(message.sprite);
+                writer.uint32(/* id 3, wireType 2 =*/26).string(message.sprite);
             if (message.sentBy != null && Object.hasOwnProperty.call(message, "sentBy"))
-                writer.uint32(/* id 4, wireType 2 =*/ 34).string(message.sentBy);
+                writer.uint32(/* id 4, wireType 2 =*/34).string(message.sentBy);
             return writer;
         };
+
         /**
          * Encodes the specified EntityItem message, length delimited. Does not implicitly {@link NT.EntityItem.verify|verify} messages.
          * @function encodeDelimited
@@ -18514,6 +19767,7 @@ $root.NT = (function () {
         EntityItem.encodeDelimited = function encodeDelimited(message, writer) {
             return this.encode(message, writer).ldelim();
         };
+
         /**
          * Decodes an EntityItem message from the specified reader or buffer.
          * @function decode
@@ -18532,29 +19786,30 @@ $root.NT = (function () {
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                    case 1: {
+                case 1: {
                         message.id = reader.string();
                         break;
                     }
-                    case 2: {
+                case 2: {
                         message.path = reader.string();
                         break;
                     }
-                    case 3: {
+                case 3: {
                         message.sprite = reader.string();
                         break;
                     }
-                    case 4: {
+                case 4: {
                         message.sentBy = reader.string();
                         break;
                     }
-                    default:
-                        reader.skipType(tag & 7);
-                        break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
                 }
             }
             return message;
         };
+
         /**
          * Decodes an EntityItem message from the specified reader or buffer, length delimited.
          * @function decodeDelimited
@@ -18570,6 +19825,7 @@ $root.NT = (function () {
                 reader = new $Reader(reader);
             return this.decode(reader, reader.uint32());
         };
+
         /**
          * Verifies an EntityItem message.
          * @function verify
@@ -18598,6 +19854,7 @@ $root.NT = (function () {
             }
             return null;
         };
+
         /**
          * Creates an EntityItem message from a plain object. Also converts values to their respective internal types.
          * @function fromObject
@@ -18620,6 +19877,7 @@ $root.NT = (function () {
                 message.sentBy = String(object.sentBy);
             return message;
         };
+
         /**
          * Creates a plain object from an EntityItem message. Also converts values to other types if specified.
          * @function toObject
@@ -18651,6 +19909,7 @@ $root.NT = (function () {
             }
             return object;
         };
+
         /**
          * Converts this EntityItem to JSON.
          * @function toJSON
@@ -18661,6 +19920,7 @@ $root.NT = (function () {
         EntityItem.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
+
         /**
          * Gets the default type url for EntityItem
          * @function getTypeUrl
@@ -18675,9 +19935,12 @@ $root.NT = (function () {
             }
             return typeUrlPrefix + "/NT.EntityItem";
         };
+
         return EntityItem;
     })();
-    NT.LobbyAction = (function () {
+
+    NT.LobbyAction = (function() {
+
         /**
          * Properties of a LobbyAction.
          * @memberof NT
@@ -18713,6 +19976,7 @@ $root.NT = (function () {
          * @property {NT.IServerRoomAddToList|null} [sRoomAddToList] LobbyAction sRoomAddToList
          * @property {NT.IClientRunOver|null} [cRunOver] LobbyAction cRunOver
          */
+
         /**
          * Constructs a new LobbyAction.
          * @memberof NT
@@ -18727,6 +19991,7 @@ $root.NT = (function () {
                     if (properties[keys[i]] != null)
                         this[keys[i]] = properties[keys[i]];
         }
+
         /**
          * LobbyAction cRoomCreate.
          * @member {NT.IClientRoomCreate|null|undefined} cRoomCreate
@@ -18734,6 +19999,7 @@ $root.NT = (function () {
          * @instance
          */
         LobbyAction.prototype.cRoomCreate = null;
+
         /**
          * LobbyAction sRoomCreated.
          * @member {NT.IServerRoomCreated|null|undefined} sRoomCreated
@@ -18741,6 +20007,7 @@ $root.NT = (function () {
          * @instance
          */
         LobbyAction.prototype.sRoomCreated = null;
+
         /**
          * LobbyAction sRoomCreateFailed.
          * @member {NT.IServerRoomCreateFailed|null|undefined} sRoomCreateFailed
@@ -18748,6 +20015,7 @@ $root.NT = (function () {
          * @instance
          */
         LobbyAction.prototype.sRoomCreateFailed = null;
+
         /**
          * LobbyAction cRoomUpdate.
          * @member {NT.IClientRoomUpdate|null|undefined} cRoomUpdate
@@ -18755,6 +20023,7 @@ $root.NT = (function () {
          * @instance
          */
         LobbyAction.prototype.cRoomUpdate = null;
+
         /**
          * LobbyAction sRoomUpdated.
          * @member {NT.IServerRoomUpdated|null|undefined} sRoomUpdated
@@ -18762,6 +20031,7 @@ $root.NT = (function () {
          * @instance
          */
         LobbyAction.prototype.sRoomUpdated = null;
+
         /**
          * LobbyAction sRoomUpdateFailed.
          * @member {NT.IServerRoomUpdateFailed|null|undefined} sRoomUpdateFailed
@@ -18769,6 +20039,7 @@ $root.NT = (function () {
          * @instance
          */
         LobbyAction.prototype.sRoomUpdateFailed = null;
+
         /**
          * LobbyAction cRoomFlagsUpdate.
          * @member {NT.IClientRoomFlagsUpdate|null|undefined} cRoomFlagsUpdate
@@ -18776,6 +20047,7 @@ $root.NT = (function () {
          * @instance
          */
         LobbyAction.prototype.cRoomFlagsUpdate = null;
+
         /**
          * LobbyAction sRoomFlagsUpdated.
          * @member {NT.IServerRoomFlagsUpdated|null|undefined} sRoomFlagsUpdated
@@ -18783,6 +20055,7 @@ $root.NT = (function () {
          * @instance
          */
         LobbyAction.prototype.sRoomFlagsUpdated = null;
+
         /**
          * LobbyAction sRoomFlagsUpdateFailed.
          * @member {NT.IServerRoomFlagsUpdateFailed|null|undefined} sRoomFlagsUpdateFailed
@@ -18790,6 +20063,7 @@ $root.NT = (function () {
          * @instance
          */
         LobbyAction.prototype.sRoomFlagsUpdateFailed = null;
+
         /**
          * LobbyAction cRoomDelete.
          * @member {NT.IClientRoomDelete|null|undefined} cRoomDelete
@@ -18797,6 +20071,7 @@ $root.NT = (function () {
          * @instance
          */
         LobbyAction.prototype.cRoomDelete = null;
+
         /**
          * LobbyAction sRoomDeleted.
          * @member {NT.IServerRoomDeleted|null|undefined} sRoomDeleted
@@ -18804,6 +20079,7 @@ $root.NT = (function () {
          * @instance
          */
         LobbyAction.prototype.sRoomDeleted = null;
+
         /**
          * LobbyAction cJoinRoom.
          * @member {NT.IClientJoinRoom|null|undefined} cJoinRoom
@@ -18811,6 +20087,7 @@ $root.NT = (function () {
          * @instance
          */
         LobbyAction.prototype.cJoinRoom = null;
+
         /**
          * LobbyAction sJoinRoomSuccess.
          * @member {NT.IServerJoinRoomSuccess|null|undefined} sJoinRoomSuccess
@@ -18818,6 +20095,7 @@ $root.NT = (function () {
          * @instance
          */
         LobbyAction.prototype.sJoinRoomSuccess = null;
+
         /**
          * LobbyAction sJoinRoomFailed.
          * @member {NT.IServerJoinRoomFailed|null|undefined} sJoinRoomFailed
@@ -18825,6 +20103,7 @@ $root.NT = (function () {
          * @instance
          */
         LobbyAction.prototype.sJoinRoomFailed = null;
+
         /**
          * LobbyAction sUserJoinedRoom.
          * @member {NT.IServerUserJoinedRoom|null|undefined} sUserJoinedRoom
@@ -18832,6 +20111,7 @@ $root.NT = (function () {
          * @instance
          */
         LobbyAction.prototype.sUserJoinedRoom = null;
+
         /**
          * LobbyAction cLeaveRoom.
          * @member {NT.IClientLeaveRoom|null|undefined} cLeaveRoom
@@ -18839,6 +20119,7 @@ $root.NT = (function () {
          * @instance
          */
         LobbyAction.prototype.cLeaveRoom = null;
+
         /**
          * LobbyAction sUserLeftRoom.
          * @member {NT.IServerUserLeftRoom|null|undefined} sUserLeftRoom
@@ -18846,6 +20127,7 @@ $root.NT = (function () {
          * @instance
          */
         LobbyAction.prototype.sUserLeftRoom = null;
+
         /**
          * LobbyAction cKickUser.
          * @member {NT.IClientKickUser|null|undefined} cKickUser
@@ -18853,6 +20135,7 @@ $root.NT = (function () {
          * @instance
          */
         LobbyAction.prototype.cKickUser = null;
+
         /**
          * LobbyAction sUserKicked.
          * @member {NT.IServerUserKicked|null|undefined} sUserKicked
@@ -18860,6 +20143,7 @@ $root.NT = (function () {
          * @instance
          */
         LobbyAction.prototype.sUserKicked = null;
+
         /**
          * LobbyAction cBanUser.
          * @member {NT.IClientBanUser|null|undefined} cBanUser
@@ -18867,6 +20151,7 @@ $root.NT = (function () {
          * @instance
          */
         LobbyAction.prototype.cBanUser = null;
+
         /**
          * LobbyAction sUserBanned.
          * @member {NT.IServerUserBanned|null|undefined} sUserBanned
@@ -18874,6 +20159,7 @@ $root.NT = (function () {
          * @instance
          */
         LobbyAction.prototype.sUserBanned = null;
+
         /**
          * LobbyAction cReadyState.
          * @member {NT.IClientReadyState|null|undefined} cReadyState
@@ -18881,6 +20167,7 @@ $root.NT = (function () {
          * @instance
          */
         LobbyAction.prototype.cReadyState = null;
+
         /**
          * LobbyAction sUserReadyState.
          * @member {NT.IServerUserReadyState|null|undefined} sUserReadyState
@@ -18888,6 +20175,7 @@ $root.NT = (function () {
          * @instance
          */
         LobbyAction.prototype.sUserReadyState = null;
+
         /**
          * LobbyAction cStartRun.
          * @member {NT.IClientStartRun|null|undefined} cStartRun
@@ -18895,6 +20183,7 @@ $root.NT = (function () {
          * @instance
          */
         LobbyAction.prototype.cStartRun = null;
+
         /**
          * LobbyAction sHostStart.
          * @member {NT.IServerHostStart|null|undefined} sHostStart
@@ -18902,6 +20191,7 @@ $root.NT = (function () {
          * @instance
          */
         LobbyAction.prototype.sHostStart = null;
+
         /**
          * LobbyAction cRequestRoomList.
          * @member {NT.IClientRequestRoomList|null|undefined} cRequestRoomList
@@ -18909,6 +20199,7 @@ $root.NT = (function () {
          * @instance
          */
         LobbyAction.prototype.cRequestRoomList = null;
+
         /**
          * LobbyAction sRoomList.
          * @member {NT.IServerRoomList|null|undefined} sRoomList
@@ -18916,6 +20207,7 @@ $root.NT = (function () {
          * @instance
          */
         LobbyAction.prototype.sRoomList = null;
+
         /**
          * LobbyAction sDisconnected.
          * @member {NT.IServerDisconnected|null|undefined} sDisconnected
@@ -18923,6 +20215,7 @@ $root.NT = (function () {
          * @instance
          */
         LobbyAction.prototype.sDisconnected = null;
+
         /**
          * LobbyAction sRoomAddToList.
          * @member {NT.IServerRoomAddToList|null|undefined} sRoomAddToList
@@ -18930,6 +20223,7 @@ $root.NT = (function () {
          * @instance
          */
         LobbyAction.prototype.sRoomAddToList = null;
+
         /**
          * LobbyAction cRunOver.
          * @member {NT.IClientRunOver|null|undefined} cRunOver
@@ -18937,8 +20231,10 @@ $root.NT = (function () {
          * @instance
          */
         LobbyAction.prototype.cRunOver = null;
+
         // OneOf field names bound to virtual getters and setters
         var $oneOfFields;
+
         /**
          * LobbyAction action.
          * @member {"cRoomCreate"|"sRoomCreated"|"sRoomCreateFailed"|"cRoomUpdate"|"sRoomUpdated"|"sRoomUpdateFailed"|"cRoomFlagsUpdate"|"sRoomFlagsUpdated"|"sRoomFlagsUpdateFailed"|"cRoomDelete"|"sRoomDeleted"|"cJoinRoom"|"sJoinRoomSuccess"|"sJoinRoomFailed"|"sUserJoinedRoom"|"cLeaveRoom"|"sUserLeftRoom"|"cKickUser"|"sUserKicked"|"cBanUser"|"sUserBanned"|"cReadyState"|"sUserReadyState"|"cStartRun"|"sHostStart"|"cRequestRoomList"|"sRoomList"|"sDisconnected"|"sRoomAddToList"|"cRunOver"|undefined} action
@@ -18949,6 +20245,7 @@ $root.NT = (function () {
             get: $util.oneOfGetter($oneOfFields = ["cRoomCreate", "sRoomCreated", "sRoomCreateFailed", "cRoomUpdate", "sRoomUpdated", "sRoomUpdateFailed", "cRoomFlagsUpdate", "sRoomFlagsUpdated", "sRoomFlagsUpdateFailed", "cRoomDelete", "sRoomDeleted", "cJoinRoom", "sJoinRoomSuccess", "sJoinRoomFailed", "sUserJoinedRoom", "cLeaveRoom", "sUserLeftRoom", "cKickUser", "sUserKicked", "cBanUser", "sUserBanned", "cReadyState", "sUserReadyState", "cStartRun", "sHostStart", "cRequestRoomList", "sRoomList", "sDisconnected", "sRoomAddToList", "cRunOver"]),
             set: $util.oneOfSetter($oneOfFields)
         });
+
         /**
          * Creates a new LobbyAction instance using the specified properties.
          * @function create
@@ -18960,6 +20257,7 @@ $root.NT = (function () {
         LobbyAction.create = function create(properties) {
             return new LobbyAction(properties);
         };
+
         /**
          * Encodes the specified LobbyAction message. Does not implicitly {@link NT.LobbyAction.verify|verify} messages.
          * @function encode
@@ -18973,67 +20271,68 @@ $root.NT = (function () {
             if (!writer)
                 writer = $Writer.create();
             if (message.cRoomCreate != null && Object.hasOwnProperty.call(message, "cRoomCreate"))
-                $root.NT.ClientRoomCreate.encode(message.cRoomCreate, writer.uint32(/* id 1, wireType 2 =*/ 10).fork()).ldelim();
+                $root.NT.ClientRoomCreate.encode(message.cRoomCreate, writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
             if (message.sRoomCreated != null && Object.hasOwnProperty.call(message, "sRoomCreated"))
-                $root.NT.ServerRoomCreated.encode(message.sRoomCreated, writer.uint32(/* id 2, wireType 2 =*/ 18).fork()).ldelim();
+                $root.NT.ServerRoomCreated.encode(message.sRoomCreated, writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
             if (message.sRoomCreateFailed != null && Object.hasOwnProperty.call(message, "sRoomCreateFailed"))
-                $root.NT.ServerRoomCreateFailed.encode(message.sRoomCreateFailed, writer.uint32(/* id 3, wireType 2 =*/ 26).fork()).ldelim();
+                $root.NT.ServerRoomCreateFailed.encode(message.sRoomCreateFailed, writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
             if (message.cRoomUpdate != null && Object.hasOwnProperty.call(message, "cRoomUpdate"))
-                $root.NT.ClientRoomUpdate.encode(message.cRoomUpdate, writer.uint32(/* id 4, wireType 2 =*/ 34).fork()).ldelim();
+                $root.NT.ClientRoomUpdate.encode(message.cRoomUpdate, writer.uint32(/* id 4, wireType 2 =*/34).fork()).ldelim();
             if (message.sRoomUpdated != null && Object.hasOwnProperty.call(message, "sRoomUpdated"))
-                $root.NT.ServerRoomUpdated.encode(message.sRoomUpdated, writer.uint32(/* id 5, wireType 2 =*/ 42).fork()).ldelim();
+                $root.NT.ServerRoomUpdated.encode(message.sRoomUpdated, writer.uint32(/* id 5, wireType 2 =*/42).fork()).ldelim();
             if (message.sRoomUpdateFailed != null && Object.hasOwnProperty.call(message, "sRoomUpdateFailed"))
-                $root.NT.ServerRoomUpdateFailed.encode(message.sRoomUpdateFailed, writer.uint32(/* id 6, wireType 2 =*/ 50).fork()).ldelim();
+                $root.NT.ServerRoomUpdateFailed.encode(message.sRoomUpdateFailed, writer.uint32(/* id 6, wireType 2 =*/50).fork()).ldelim();
             if (message.cRoomFlagsUpdate != null && Object.hasOwnProperty.call(message, "cRoomFlagsUpdate"))
-                $root.NT.ClientRoomFlagsUpdate.encode(message.cRoomFlagsUpdate, writer.uint32(/* id 7, wireType 2 =*/ 58).fork()).ldelim();
+                $root.NT.ClientRoomFlagsUpdate.encode(message.cRoomFlagsUpdate, writer.uint32(/* id 7, wireType 2 =*/58).fork()).ldelim();
             if (message.sRoomFlagsUpdated != null && Object.hasOwnProperty.call(message, "sRoomFlagsUpdated"))
-                $root.NT.ServerRoomFlagsUpdated.encode(message.sRoomFlagsUpdated, writer.uint32(/* id 8, wireType 2 =*/ 66).fork()).ldelim();
+                $root.NT.ServerRoomFlagsUpdated.encode(message.sRoomFlagsUpdated, writer.uint32(/* id 8, wireType 2 =*/66).fork()).ldelim();
             if (message.sRoomFlagsUpdateFailed != null && Object.hasOwnProperty.call(message, "sRoomFlagsUpdateFailed"))
-                $root.NT.ServerRoomFlagsUpdateFailed.encode(message.sRoomFlagsUpdateFailed, writer.uint32(/* id 9, wireType 2 =*/ 74).fork()).ldelim();
+                $root.NT.ServerRoomFlagsUpdateFailed.encode(message.sRoomFlagsUpdateFailed, writer.uint32(/* id 9, wireType 2 =*/74).fork()).ldelim();
             if (message.cRoomDelete != null && Object.hasOwnProperty.call(message, "cRoomDelete"))
-                $root.NT.ClientRoomDelete.encode(message.cRoomDelete, writer.uint32(/* id 10, wireType 2 =*/ 82).fork()).ldelim();
+                $root.NT.ClientRoomDelete.encode(message.cRoomDelete, writer.uint32(/* id 10, wireType 2 =*/82).fork()).ldelim();
             if (message.sRoomDeleted != null && Object.hasOwnProperty.call(message, "sRoomDeleted"))
-                $root.NT.ServerRoomDeleted.encode(message.sRoomDeleted, writer.uint32(/* id 11, wireType 2 =*/ 90).fork()).ldelim();
+                $root.NT.ServerRoomDeleted.encode(message.sRoomDeleted, writer.uint32(/* id 11, wireType 2 =*/90).fork()).ldelim();
             if (message.cJoinRoom != null && Object.hasOwnProperty.call(message, "cJoinRoom"))
-                $root.NT.ClientJoinRoom.encode(message.cJoinRoom, writer.uint32(/* id 12, wireType 2 =*/ 98).fork()).ldelim();
+                $root.NT.ClientJoinRoom.encode(message.cJoinRoom, writer.uint32(/* id 12, wireType 2 =*/98).fork()).ldelim();
             if (message.sJoinRoomSuccess != null && Object.hasOwnProperty.call(message, "sJoinRoomSuccess"))
-                $root.NT.ServerJoinRoomSuccess.encode(message.sJoinRoomSuccess, writer.uint32(/* id 13, wireType 2 =*/ 106).fork()).ldelim();
+                $root.NT.ServerJoinRoomSuccess.encode(message.sJoinRoomSuccess, writer.uint32(/* id 13, wireType 2 =*/106).fork()).ldelim();
             if (message.sJoinRoomFailed != null && Object.hasOwnProperty.call(message, "sJoinRoomFailed"))
-                $root.NT.ServerJoinRoomFailed.encode(message.sJoinRoomFailed, writer.uint32(/* id 14, wireType 2 =*/ 114).fork()).ldelim();
+                $root.NT.ServerJoinRoomFailed.encode(message.sJoinRoomFailed, writer.uint32(/* id 14, wireType 2 =*/114).fork()).ldelim();
             if (message.sUserJoinedRoom != null && Object.hasOwnProperty.call(message, "sUserJoinedRoom"))
-                $root.NT.ServerUserJoinedRoom.encode(message.sUserJoinedRoom, writer.uint32(/* id 15, wireType 2 =*/ 122).fork()).ldelim();
+                $root.NT.ServerUserJoinedRoom.encode(message.sUserJoinedRoom, writer.uint32(/* id 15, wireType 2 =*/122).fork()).ldelim();
             if (message.cLeaveRoom != null && Object.hasOwnProperty.call(message, "cLeaveRoom"))
-                $root.NT.ClientLeaveRoom.encode(message.cLeaveRoom, writer.uint32(/* id 16, wireType 2 =*/ 130).fork()).ldelim();
+                $root.NT.ClientLeaveRoom.encode(message.cLeaveRoom, writer.uint32(/* id 16, wireType 2 =*/130).fork()).ldelim();
             if (message.sUserLeftRoom != null && Object.hasOwnProperty.call(message, "sUserLeftRoom"))
-                $root.NT.ServerUserLeftRoom.encode(message.sUserLeftRoom, writer.uint32(/* id 17, wireType 2 =*/ 138).fork()).ldelim();
+                $root.NT.ServerUserLeftRoom.encode(message.sUserLeftRoom, writer.uint32(/* id 17, wireType 2 =*/138).fork()).ldelim();
             if (message.cKickUser != null && Object.hasOwnProperty.call(message, "cKickUser"))
-                $root.NT.ClientKickUser.encode(message.cKickUser, writer.uint32(/* id 18, wireType 2 =*/ 146).fork()).ldelim();
+                $root.NT.ClientKickUser.encode(message.cKickUser, writer.uint32(/* id 18, wireType 2 =*/146).fork()).ldelim();
             if (message.sUserKicked != null && Object.hasOwnProperty.call(message, "sUserKicked"))
-                $root.NT.ServerUserKicked.encode(message.sUserKicked, writer.uint32(/* id 19, wireType 2 =*/ 154).fork()).ldelim();
+                $root.NT.ServerUserKicked.encode(message.sUserKicked, writer.uint32(/* id 19, wireType 2 =*/154).fork()).ldelim();
             if (message.cBanUser != null && Object.hasOwnProperty.call(message, "cBanUser"))
-                $root.NT.ClientBanUser.encode(message.cBanUser, writer.uint32(/* id 20, wireType 2 =*/ 162).fork()).ldelim();
+                $root.NT.ClientBanUser.encode(message.cBanUser, writer.uint32(/* id 20, wireType 2 =*/162).fork()).ldelim();
             if (message.sUserBanned != null && Object.hasOwnProperty.call(message, "sUserBanned"))
-                $root.NT.ServerUserBanned.encode(message.sUserBanned, writer.uint32(/* id 21, wireType 2 =*/ 170).fork()).ldelim();
+                $root.NT.ServerUserBanned.encode(message.sUserBanned, writer.uint32(/* id 21, wireType 2 =*/170).fork()).ldelim();
             if (message.cReadyState != null && Object.hasOwnProperty.call(message, "cReadyState"))
-                $root.NT.ClientReadyState.encode(message.cReadyState, writer.uint32(/* id 22, wireType 2 =*/ 178).fork()).ldelim();
+                $root.NT.ClientReadyState.encode(message.cReadyState, writer.uint32(/* id 22, wireType 2 =*/178).fork()).ldelim();
             if (message.sUserReadyState != null && Object.hasOwnProperty.call(message, "sUserReadyState"))
-                $root.NT.ServerUserReadyState.encode(message.sUserReadyState, writer.uint32(/* id 23, wireType 2 =*/ 186).fork()).ldelim();
+                $root.NT.ServerUserReadyState.encode(message.sUserReadyState, writer.uint32(/* id 23, wireType 2 =*/186).fork()).ldelim();
             if (message.cStartRun != null && Object.hasOwnProperty.call(message, "cStartRun"))
-                $root.NT.ClientStartRun.encode(message.cStartRun, writer.uint32(/* id 24, wireType 2 =*/ 194).fork()).ldelim();
+                $root.NT.ClientStartRun.encode(message.cStartRun, writer.uint32(/* id 24, wireType 2 =*/194).fork()).ldelim();
             if (message.sHostStart != null && Object.hasOwnProperty.call(message, "sHostStart"))
-                $root.NT.ServerHostStart.encode(message.sHostStart, writer.uint32(/* id 25, wireType 2 =*/ 202).fork()).ldelim();
+                $root.NT.ServerHostStart.encode(message.sHostStart, writer.uint32(/* id 25, wireType 2 =*/202).fork()).ldelim();
             if (message.cRequestRoomList != null && Object.hasOwnProperty.call(message, "cRequestRoomList"))
-                $root.NT.ClientRequestRoomList.encode(message.cRequestRoomList, writer.uint32(/* id 27, wireType 2 =*/ 218).fork()).ldelim();
+                $root.NT.ClientRequestRoomList.encode(message.cRequestRoomList, writer.uint32(/* id 27, wireType 2 =*/218).fork()).ldelim();
             if (message.sRoomList != null && Object.hasOwnProperty.call(message, "sRoomList"))
-                $root.NT.ServerRoomList.encode(message.sRoomList, writer.uint32(/* id 28, wireType 2 =*/ 226).fork()).ldelim();
+                $root.NT.ServerRoomList.encode(message.sRoomList, writer.uint32(/* id 28, wireType 2 =*/226).fork()).ldelim();
             if (message.sDisconnected != null && Object.hasOwnProperty.call(message, "sDisconnected"))
-                $root.NT.ServerDisconnected.encode(message.sDisconnected, writer.uint32(/* id 31, wireType 2 =*/ 250).fork()).ldelim();
+                $root.NT.ServerDisconnected.encode(message.sDisconnected, writer.uint32(/* id 31, wireType 2 =*/250).fork()).ldelim();
             if (message.sRoomAddToList != null && Object.hasOwnProperty.call(message, "sRoomAddToList"))
-                $root.NT.ServerRoomAddToList.encode(message.sRoomAddToList, writer.uint32(/* id 32, wireType 2 =*/ 258).fork()).ldelim();
+                $root.NT.ServerRoomAddToList.encode(message.sRoomAddToList, writer.uint32(/* id 32, wireType 2 =*/258).fork()).ldelim();
             if (message.cRunOver != null && Object.hasOwnProperty.call(message, "cRunOver"))
-                $root.NT.ClientRunOver.encode(message.cRunOver, writer.uint32(/* id 33, wireType 2 =*/ 266).fork()).ldelim();
+                $root.NT.ClientRunOver.encode(message.cRunOver, writer.uint32(/* id 33, wireType 2 =*/266).fork()).ldelim();
             return writer;
         };
+
         /**
          * Encodes the specified LobbyAction message, length delimited. Does not implicitly {@link NT.LobbyAction.verify|verify} messages.
          * @function encodeDelimited
@@ -19046,6 +20345,7 @@ $root.NT = (function () {
         LobbyAction.encodeDelimited = function encodeDelimited(message, writer) {
             return this.encode(message, writer).ldelim();
         };
+
         /**
          * Decodes a LobbyAction message from the specified reader or buffer.
          * @function decode
@@ -19064,133 +20364,134 @@ $root.NT = (function () {
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                    case 1: {
+                case 1: {
                         message.cRoomCreate = $root.NT.ClientRoomCreate.decode(reader, reader.uint32());
                         break;
                     }
-                    case 2: {
+                case 2: {
                         message.sRoomCreated = $root.NT.ServerRoomCreated.decode(reader, reader.uint32());
                         break;
                     }
-                    case 3: {
+                case 3: {
                         message.sRoomCreateFailed = $root.NT.ServerRoomCreateFailed.decode(reader, reader.uint32());
                         break;
                     }
-                    case 4: {
+                case 4: {
                         message.cRoomUpdate = $root.NT.ClientRoomUpdate.decode(reader, reader.uint32());
                         break;
                     }
-                    case 5: {
+                case 5: {
                         message.sRoomUpdated = $root.NT.ServerRoomUpdated.decode(reader, reader.uint32());
                         break;
                     }
-                    case 6: {
+                case 6: {
                         message.sRoomUpdateFailed = $root.NT.ServerRoomUpdateFailed.decode(reader, reader.uint32());
                         break;
                     }
-                    case 7: {
+                case 7: {
                         message.cRoomFlagsUpdate = $root.NT.ClientRoomFlagsUpdate.decode(reader, reader.uint32());
                         break;
                     }
-                    case 8: {
+                case 8: {
                         message.sRoomFlagsUpdated = $root.NT.ServerRoomFlagsUpdated.decode(reader, reader.uint32());
                         break;
                     }
-                    case 9: {
+                case 9: {
                         message.sRoomFlagsUpdateFailed = $root.NT.ServerRoomFlagsUpdateFailed.decode(reader, reader.uint32());
                         break;
                     }
-                    case 10: {
+                case 10: {
                         message.cRoomDelete = $root.NT.ClientRoomDelete.decode(reader, reader.uint32());
                         break;
                     }
-                    case 11: {
+                case 11: {
                         message.sRoomDeleted = $root.NT.ServerRoomDeleted.decode(reader, reader.uint32());
                         break;
                     }
-                    case 12: {
+                case 12: {
                         message.cJoinRoom = $root.NT.ClientJoinRoom.decode(reader, reader.uint32());
                         break;
                     }
-                    case 13: {
+                case 13: {
                         message.sJoinRoomSuccess = $root.NT.ServerJoinRoomSuccess.decode(reader, reader.uint32());
                         break;
                     }
-                    case 14: {
+                case 14: {
                         message.sJoinRoomFailed = $root.NT.ServerJoinRoomFailed.decode(reader, reader.uint32());
                         break;
                     }
-                    case 15: {
+                case 15: {
                         message.sUserJoinedRoom = $root.NT.ServerUserJoinedRoom.decode(reader, reader.uint32());
                         break;
                     }
-                    case 16: {
+                case 16: {
                         message.cLeaveRoom = $root.NT.ClientLeaveRoom.decode(reader, reader.uint32());
                         break;
                     }
-                    case 17: {
+                case 17: {
                         message.sUserLeftRoom = $root.NT.ServerUserLeftRoom.decode(reader, reader.uint32());
                         break;
                     }
-                    case 18: {
+                case 18: {
                         message.cKickUser = $root.NT.ClientKickUser.decode(reader, reader.uint32());
                         break;
                     }
-                    case 19: {
+                case 19: {
                         message.sUserKicked = $root.NT.ServerUserKicked.decode(reader, reader.uint32());
                         break;
                     }
-                    case 20: {
+                case 20: {
                         message.cBanUser = $root.NT.ClientBanUser.decode(reader, reader.uint32());
                         break;
                     }
-                    case 21: {
+                case 21: {
                         message.sUserBanned = $root.NT.ServerUserBanned.decode(reader, reader.uint32());
                         break;
                     }
-                    case 22: {
+                case 22: {
                         message.cReadyState = $root.NT.ClientReadyState.decode(reader, reader.uint32());
                         break;
                     }
-                    case 23: {
+                case 23: {
                         message.sUserReadyState = $root.NT.ServerUserReadyState.decode(reader, reader.uint32());
                         break;
                     }
-                    case 24: {
+                case 24: {
                         message.cStartRun = $root.NT.ClientStartRun.decode(reader, reader.uint32());
                         break;
                     }
-                    case 25: {
+                case 25: {
                         message.sHostStart = $root.NT.ServerHostStart.decode(reader, reader.uint32());
                         break;
                     }
-                    case 27: {
+                case 27: {
                         message.cRequestRoomList = $root.NT.ClientRequestRoomList.decode(reader, reader.uint32());
                         break;
                     }
-                    case 28: {
+                case 28: {
                         message.sRoomList = $root.NT.ServerRoomList.decode(reader, reader.uint32());
                         break;
                     }
-                    case 31: {
+                case 31: {
                         message.sDisconnected = $root.NT.ServerDisconnected.decode(reader, reader.uint32());
                         break;
                     }
-                    case 32: {
+                case 32: {
                         message.sRoomAddToList = $root.NT.ServerRoomAddToList.decode(reader, reader.uint32());
                         break;
                     }
-                    case 33: {
+                case 33: {
                         message.cRunOver = $root.NT.ClientRunOver.decode(reader, reader.uint32());
                         break;
                     }
-                    default:
-                        reader.skipType(tag & 7);
-                        break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
                 }
             }
             return message;
         };
+
         /**
          * Decodes a LobbyAction message from the specified reader or buffer, length delimited.
          * @function decodeDelimited
@@ -19206,6 +20507,7 @@ $root.NT = (function () {
                 reader = new $Reader(reader);
             return this.decode(reader, reader.uint32());
         };
+
         /**
          * Verifies a LobbyAction message.
          * @function verify
@@ -19518,6 +20820,7 @@ $root.NT = (function () {
             }
             return null;
         };
+
         /**
          * Creates a LobbyAction message from a plain object. Also converts values to their respective internal types.
          * @function fromObject
@@ -19682,6 +20985,7 @@ $root.NT = (function () {
             }
             return message;
         };
+
         /**
          * Creates a plain object from a LobbyAction message. Also converts values to other types if specified.
          * @function toObject
@@ -19847,6 +21151,7 @@ $root.NT = (function () {
             }
             return object;
         };
+
         /**
          * Converts this LobbyAction to JSON.
          * @function toJSON
@@ -19857,6 +21162,7 @@ $root.NT = (function () {
         LobbyAction.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
+
         /**
          * Gets the default type url for LobbyAction
          * @function getTypeUrl
@@ -19871,15 +21177,19 @@ $root.NT = (function () {
             }
             return typeUrlPrefix + "/NT.LobbyAction";
         };
+
         return LobbyAction;
     })();
-    NT.ClientRunOver = (function () {
+
+    NT.ClientRunOver = (function() {
+
         /**
          * Properties of a ClientRunOver.
          * @memberof NT
          * @interface IClientRunOver
          * @property {boolean|null} [idk] ClientRunOver idk
          */
+
         /**
          * Constructs a new ClientRunOver.
          * @memberof NT
@@ -19894,6 +21204,7 @@ $root.NT = (function () {
                     if (properties[keys[i]] != null)
                         this[keys[i]] = properties[keys[i]];
         }
+
         /**
          * ClientRunOver idk.
          * @member {boolean|null|undefined} idk
@@ -19901,8 +21212,10 @@ $root.NT = (function () {
          * @instance
          */
         ClientRunOver.prototype.idk = null;
+
         // OneOf field names bound to virtual getters and setters
         var $oneOfFields;
+
         /**
          * ClientRunOver _idk.
          * @member {"idk"|undefined} _idk
@@ -19913,6 +21226,7 @@ $root.NT = (function () {
             get: $util.oneOfGetter($oneOfFields = ["idk"]),
             set: $util.oneOfSetter($oneOfFields)
         });
+
         /**
          * Creates a new ClientRunOver instance using the specified properties.
          * @function create
@@ -19924,6 +21238,7 @@ $root.NT = (function () {
         ClientRunOver.create = function create(properties) {
             return new ClientRunOver(properties);
         };
+
         /**
          * Encodes the specified ClientRunOver message. Does not implicitly {@link NT.ClientRunOver.verify|verify} messages.
          * @function encode
@@ -19937,9 +21252,10 @@ $root.NT = (function () {
             if (!writer)
                 writer = $Writer.create();
             if (message.idk != null && Object.hasOwnProperty.call(message, "idk"))
-                writer.uint32(/* id 1, wireType 0 =*/ 8).bool(message.idk);
+                writer.uint32(/* id 1, wireType 0 =*/8).bool(message.idk);
             return writer;
         };
+
         /**
          * Encodes the specified ClientRunOver message, length delimited. Does not implicitly {@link NT.ClientRunOver.verify|verify} messages.
          * @function encodeDelimited
@@ -19952,6 +21268,7 @@ $root.NT = (function () {
         ClientRunOver.encodeDelimited = function encodeDelimited(message, writer) {
             return this.encode(message, writer).ldelim();
         };
+
         /**
          * Decodes a ClientRunOver message from the specified reader or buffer.
          * @function decode
@@ -19970,17 +21287,18 @@ $root.NT = (function () {
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                    case 1: {
+                case 1: {
                         message.idk = reader.bool();
                         break;
                     }
-                    default:
-                        reader.skipType(tag & 7);
-                        break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
                 }
             }
             return message;
         };
+
         /**
          * Decodes a ClientRunOver message from the specified reader or buffer, length delimited.
          * @function decodeDelimited
@@ -19996,6 +21314,7 @@ $root.NT = (function () {
                 reader = new $Reader(reader);
             return this.decode(reader, reader.uint32());
         };
+
         /**
          * Verifies a ClientRunOver message.
          * @function verify
@@ -20015,6 +21334,7 @@ $root.NT = (function () {
             }
             return null;
         };
+
         /**
          * Creates a ClientRunOver message from a plain object. Also converts values to their respective internal types.
          * @function fromObject
@@ -20031,6 +21351,7 @@ $root.NT = (function () {
                 message.idk = Boolean(object.idk);
             return message;
         };
+
         /**
          * Creates a plain object from a ClientRunOver message. Also converts values to other types if specified.
          * @function toObject
@@ -20051,6 +21372,7 @@ $root.NT = (function () {
             }
             return object;
         };
+
         /**
          * Converts this ClientRunOver to JSON.
          * @function toJSON
@@ -20061,6 +21383,7 @@ $root.NT = (function () {
         ClientRunOver.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
+
         /**
          * Gets the default type url for ClientRunOver
          * @function getTypeUrl
@@ -20075,15 +21398,19 @@ $root.NT = (function () {
             }
             return typeUrlPrefix + "/NT.ClientRunOver";
         };
+
         return ClientRunOver;
     })();
-    NT.ServerDisconnected = (function () {
+
+    NT.ServerDisconnected = (function() {
+
         /**
          * Properties of a ServerDisconnected.
          * @memberof NT
          * @interface IServerDisconnected
          * @property {string|null} [reason] ServerDisconnected reason
          */
+
         /**
          * Constructs a new ServerDisconnected.
          * @memberof NT
@@ -20098,6 +21425,7 @@ $root.NT = (function () {
                     if (properties[keys[i]] != null)
                         this[keys[i]] = properties[keys[i]];
         }
+
         /**
          * ServerDisconnected reason.
          * @member {string} reason
@@ -20105,6 +21433,7 @@ $root.NT = (function () {
          * @instance
          */
         ServerDisconnected.prototype.reason = "";
+
         /**
          * Creates a new ServerDisconnected instance using the specified properties.
          * @function create
@@ -20116,6 +21445,7 @@ $root.NT = (function () {
         ServerDisconnected.create = function create(properties) {
             return new ServerDisconnected(properties);
         };
+
         /**
          * Encodes the specified ServerDisconnected message. Does not implicitly {@link NT.ServerDisconnected.verify|verify} messages.
          * @function encode
@@ -20129,9 +21459,10 @@ $root.NT = (function () {
             if (!writer)
                 writer = $Writer.create();
             if (message.reason != null && Object.hasOwnProperty.call(message, "reason"))
-                writer.uint32(/* id 1, wireType 2 =*/ 10).string(message.reason);
+                writer.uint32(/* id 1, wireType 2 =*/10).string(message.reason);
             return writer;
         };
+
         /**
          * Encodes the specified ServerDisconnected message, length delimited. Does not implicitly {@link NT.ServerDisconnected.verify|verify} messages.
          * @function encodeDelimited
@@ -20144,6 +21475,7 @@ $root.NT = (function () {
         ServerDisconnected.encodeDelimited = function encodeDelimited(message, writer) {
             return this.encode(message, writer).ldelim();
         };
+
         /**
          * Decodes a ServerDisconnected message from the specified reader or buffer.
          * @function decode
@@ -20162,17 +21494,18 @@ $root.NT = (function () {
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                    case 1: {
+                case 1: {
                         message.reason = reader.string();
                         break;
                     }
-                    default:
-                        reader.skipType(tag & 7);
-                        break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
                 }
             }
             return message;
         };
+
         /**
          * Decodes a ServerDisconnected message from the specified reader or buffer, length delimited.
          * @function decodeDelimited
@@ -20188,6 +21521,7 @@ $root.NT = (function () {
                 reader = new $Reader(reader);
             return this.decode(reader, reader.uint32());
         };
+
         /**
          * Verifies a ServerDisconnected message.
          * @function verify
@@ -20204,6 +21538,7 @@ $root.NT = (function () {
                     return "reason: string expected";
             return null;
         };
+
         /**
          * Creates a ServerDisconnected message from a plain object. Also converts values to their respective internal types.
          * @function fromObject
@@ -20220,6 +21555,7 @@ $root.NT = (function () {
                 message.reason = String(object.reason);
             return message;
         };
+
         /**
          * Creates a plain object from a ServerDisconnected message. Also converts values to other types if specified.
          * @function toObject
@@ -20239,6 +21575,7 @@ $root.NT = (function () {
                 object.reason = message.reason;
             return object;
         };
+
         /**
          * Converts this ServerDisconnected to JSON.
          * @function toJSON
@@ -20249,6 +21586,7 @@ $root.NT = (function () {
         ServerDisconnected.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
+
         /**
          * Gets the default type url for ServerDisconnected
          * @function getTypeUrl
@@ -20263,15 +21601,19 @@ $root.NT = (function () {
             }
             return typeUrlPrefix + "/NT.ServerDisconnected";
         };
+
         return ServerDisconnected;
     })();
-    NT.ClientRoomDelete = (function () {
+
+    NT.ClientRoomDelete = (function() {
+
         /**
          * Properties of a ClientRoomDelete.
          * @memberof NT
          * @interface IClientRoomDelete
          * @property {string|null} [id] ClientRoomDelete id
          */
+
         /**
          * Constructs a new ClientRoomDelete.
          * @memberof NT
@@ -20286,6 +21628,7 @@ $root.NT = (function () {
                     if (properties[keys[i]] != null)
                         this[keys[i]] = properties[keys[i]];
         }
+
         /**
          * ClientRoomDelete id.
          * @member {string} id
@@ -20293,6 +21636,7 @@ $root.NT = (function () {
          * @instance
          */
         ClientRoomDelete.prototype.id = "";
+
         /**
          * Creates a new ClientRoomDelete instance using the specified properties.
          * @function create
@@ -20304,6 +21648,7 @@ $root.NT = (function () {
         ClientRoomDelete.create = function create(properties) {
             return new ClientRoomDelete(properties);
         };
+
         /**
          * Encodes the specified ClientRoomDelete message. Does not implicitly {@link NT.ClientRoomDelete.verify|verify} messages.
          * @function encode
@@ -20317,9 +21662,10 @@ $root.NT = (function () {
             if (!writer)
                 writer = $Writer.create();
             if (message.id != null && Object.hasOwnProperty.call(message, "id"))
-                writer.uint32(/* id 1, wireType 2 =*/ 10).string(message.id);
+                writer.uint32(/* id 1, wireType 2 =*/10).string(message.id);
             return writer;
         };
+
         /**
          * Encodes the specified ClientRoomDelete message, length delimited. Does not implicitly {@link NT.ClientRoomDelete.verify|verify} messages.
          * @function encodeDelimited
@@ -20332,6 +21678,7 @@ $root.NT = (function () {
         ClientRoomDelete.encodeDelimited = function encodeDelimited(message, writer) {
             return this.encode(message, writer).ldelim();
         };
+
         /**
          * Decodes a ClientRoomDelete message from the specified reader or buffer.
          * @function decode
@@ -20350,17 +21697,18 @@ $root.NT = (function () {
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                    case 1: {
+                case 1: {
                         message.id = reader.string();
                         break;
                     }
-                    default:
-                        reader.skipType(tag & 7);
-                        break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
                 }
             }
             return message;
         };
+
         /**
          * Decodes a ClientRoomDelete message from the specified reader or buffer, length delimited.
          * @function decodeDelimited
@@ -20376,6 +21724,7 @@ $root.NT = (function () {
                 reader = new $Reader(reader);
             return this.decode(reader, reader.uint32());
         };
+
         /**
          * Verifies a ClientRoomDelete message.
          * @function verify
@@ -20392,6 +21741,7 @@ $root.NT = (function () {
                     return "id: string expected";
             return null;
         };
+
         /**
          * Creates a ClientRoomDelete message from a plain object. Also converts values to their respective internal types.
          * @function fromObject
@@ -20408,6 +21758,7 @@ $root.NT = (function () {
                 message.id = String(object.id);
             return message;
         };
+
         /**
          * Creates a plain object from a ClientRoomDelete message. Also converts values to other types if specified.
          * @function toObject
@@ -20427,6 +21778,7 @@ $root.NT = (function () {
                 object.id = message.id;
             return object;
         };
+
         /**
          * Converts this ClientRoomDelete to JSON.
          * @function toJSON
@@ -20437,6 +21789,7 @@ $root.NT = (function () {
         ClientRoomDelete.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
+
         /**
          * Gets the default type url for ClientRoomDelete
          * @function getTypeUrl
@@ -20451,15 +21804,19 @@ $root.NT = (function () {
             }
             return typeUrlPrefix + "/NT.ClientRoomDelete";
         };
+
         return ClientRoomDelete;
     })();
-    NT.ServerRoomDeleted = (function () {
+
+    NT.ServerRoomDeleted = (function() {
+
         /**
          * Properties of a ServerRoomDeleted.
          * @memberof NT
          * @interface IServerRoomDeleted
          * @property {string|null} [id] ServerRoomDeleted id
          */
+
         /**
          * Constructs a new ServerRoomDeleted.
          * @memberof NT
@@ -20474,6 +21831,7 @@ $root.NT = (function () {
                     if (properties[keys[i]] != null)
                         this[keys[i]] = properties[keys[i]];
         }
+
         /**
          * ServerRoomDeleted id.
          * @member {string} id
@@ -20481,6 +21839,7 @@ $root.NT = (function () {
          * @instance
          */
         ServerRoomDeleted.prototype.id = "";
+
         /**
          * Creates a new ServerRoomDeleted instance using the specified properties.
          * @function create
@@ -20492,6 +21851,7 @@ $root.NT = (function () {
         ServerRoomDeleted.create = function create(properties) {
             return new ServerRoomDeleted(properties);
         };
+
         /**
          * Encodes the specified ServerRoomDeleted message. Does not implicitly {@link NT.ServerRoomDeleted.verify|verify} messages.
          * @function encode
@@ -20505,9 +21865,10 @@ $root.NT = (function () {
             if (!writer)
                 writer = $Writer.create();
             if (message.id != null && Object.hasOwnProperty.call(message, "id"))
-                writer.uint32(/* id 1, wireType 2 =*/ 10).string(message.id);
+                writer.uint32(/* id 1, wireType 2 =*/10).string(message.id);
             return writer;
         };
+
         /**
          * Encodes the specified ServerRoomDeleted message, length delimited. Does not implicitly {@link NT.ServerRoomDeleted.verify|verify} messages.
          * @function encodeDelimited
@@ -20520,6 +21881,7 @@ $root.NT = (function () {
         ServerRoomDeleted.encodeDelimited = function encodeDelimited(message, writer) {
             return this.encode(message, writer).ldelim();
         };
+
         /**
          * Decodes a ServerRoomDeleted message from the specified reader or buffer.
          * @function decode
@@ -20538,17 +21900,18 @@ $root.NT = (function () {
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                    case 1: {
+                case 1: {
                         message.id = reader.string();
                         break;
                     }
-                    default:
-                        reader.skipType(tag & 7);
-                        break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
                 }
             }
             return message;
         };
+
         /**
          * Decodes a ServerRoomDeleted message from the specified reader or buffer, length delimited.
          * @function decodeDelimited
@@ -20564,6 +21927,7 @@ $root.NT = (function () {
                 reader = new $Reader(reader);
             return this.decode(reader, reader.uint32());
         };
+
         /**
          * Verifies a ServerRoomDeleted message.
          * @function verify
@@ -20580,6 +21944,7 @@ $root.NT = (function () {
                     return "id: string expected";
             return null;
         };
+
         /**
          * Creates a ServerRoomDeleted message from a plain object. Also converts values to their respective internal types.
          * @function fromObject
@@ -20596,6 +21961,7 @@ $root.NT = (function () {
                 message.id = String(object.id);
             return message;
         };
+
         /**
          * Creates a plain object from a ServerRoomDeleted message. Also converts values to other types if specified.
          * @function toObject
@@ -20615,6 +21981,7 @@ $root.NT = (function () {
                 object.id = message.id;
             return object;
         };
+
         /**
          * Converts this ServerRoomDeleted to JSON.
          * @function toJSON
@@ -20625,6 +21992,7 @@ $root.NT = (function () {
         ServerRoomDeleted.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
+
         /**
          * Gets the default type url for ServerRoomDeleted
          * @function getTypeUrl
@@ -20639,9 +22007,12 @@ $root.NT = (function () {
             }
             return typeUrlPrefix + "/NT.ServerRoomDeleted";
         };
+
         return ServerRoomDeleted;
     })();
-    NT.ClientRoomCreate = (function () {
+
+    NT.ClientRoomCreate = (function() {
+
         /**
          * Properties of a ClientRoomCreate.
          * @memberof NT
@@ -20651,6 +22022,7 @@ $root.NT = (function () {
          * @property {number|null} [maxUsers] ClientRoomCreate maxUsers
          * @property {string|null} [password] ClientRoomCreate password
          */
+
         /**
          * Constructs a new ClientRoomCreate.
          * @memberof NT
@@ -20665,6 +22037,7 @@ $root.NT = (function () {
                     if (properties[keys[i]] != null)
                         this[keys[i]] = properties[keys[i]];
         }
+
         /**
          * ClientRoomCreate name.
          * @member {string} name
@@ -20672,6 +22045,7 @@ $root.NT = (function () {
          * @instance
          */
         ClientRoomCreate.prototype.name = "";
+
         /**
          * ClientRoomCreate gamemode.
          * @member {number} gamemode
@@ -20679,6 +22053,7 @@ $root.NT = (function () {
          * @instance
          */
         ClientRoomCreate.prototype.gamemode = 0;
+
         /**
          * ClientRoomCreate maxUsers.
          * @member {number} maxUsers
@@ -20686,6 +22061,7 @@ $root.NT = (function () {
          * @instance
          */
         ClientRoomCreate.prototype.maxUsers = 0;
+
         /**
          * ClientRoomCreate password.
          * @member {string|null|undefined} password
@@ -20693,8 +22069,10 @@ $root.NT = (function () {
          * @instance
          */
         ClientRoomCreate.prototype.password = null;
+
         // OneOf field names bound to virtual getters and setters
         var $oneOfFields;
+
         /**
          * ClientRoomCreate _password.
          * @member {"password"|undefined} _password
@@ -20705,6 +22083,7 @@ $root.NT = (function () {
             get: $util.oneOfGetter($oneOfFields = ["password"]),
             set: $util.oneOfSetter($oneOfFields)
         });
+
         /**
          * Creates a new ClientRoomCreate instance using the specified properties.
          * @function create
@@ -20716,6 +22095,7 @@ $root.NT = (function () {
         ClientRoomCreate.create = function create(properties) {
             return new ClientRoomCreate(properties);
         };
+
         /**
          * Encodes the specified ClientRoomCreate message. Does not implicitly {@link NT.ClientRoomCreate.verify|verify} messages.
          * @function encode
@@ -20729,15 +22109,16 @@ $root.NT = (function () {
             if (!writer)
                 writer = $Writer.create();
             if (message.name != null && Object.hasOwnProperty.call(message, "name"))
-                writer.uint32(/* id 1, wireType 2 =*/ 10).string(message.name);
+                writer.uint32(/* id 1, wireType 2 =*/10).string(message.name);
             if (message.gamemode != null && Object.hasOwnProperty.call(message, "gamemode"))
-                writer.uint32(/* id 2, wireType 0 =*/ 16).uint32(message.gamemode);
+                writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.gamemode);
             if (message.maxUsers != null && Object.hasOwnProperty.call(message, "maxUsers"))
-                writer.uint32(/* id 3, wireType 0 =*/ 24).uint32(message.maxUsers);
+                writer.uint32(/* id 3, wireType 0 =*/24).uint32(message.maxUsers);
             if (message.password != null && Object.hasOwnProperty.call(message, "password"))
-                writer.uint32(/* id 4, wireType 2 =*/ 34).string(message.password);
+                writer.uint32(/* id 4, wireType 2 =*/34).string(message.password);
             return writer;
         };
+
         /**
          * Encodes the specified ClientRoomCreate message, length delimited. Does not implicitly {@link NT.ClientRoomCreate.verify|verify} messages.
          * @function encodeDelimited
@@ -20750,6 +22131,7 @@ $root.NT = (function () {
         ClientRoomCreate.encodeDelimited = function encodeDelimited(message, writer) {
             return this.encode(message, writer).ldelim();
         };
+
         /**
          * Decodes a ClientRoomCreate message from the specified reader or buffer.
          * @function decode
@@ -20768,29 +22150,30 @@ $root.NT = (function () {
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                    case 1: {
+                case 1: {
                         message.name = reader.string();
                         break;
                     }
-                    case 2: {
+                case 2: {
                         message.gamemode = reader.uint32();
                         break;
                     }
-                    case 3: {
+                case 3: {
                         message.maxUsers = reader.uint32();
                         break;
                     }
-                    case 4: {
+                case 4: {
                         message.password = reader.string();
                         break;
                     }
-                    default:
-                        reader.skipType(tag & 7);
-                        break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
                 }
             }
             return message;
         };
+
         /**
          * Decodes a ClientRoomCreate message from the specified reader or buffer, length delimited.
          * @function decodeDelimited
@@ -20806,6 +22189,7 @@ $root.NT = (function () {
                 reader = new $Reader(reader);
             return this.decode(reader, reader.uint32());
         };
+
         /**
          * Verifies a ClientRoomCreate message.
          * @function verify
@@ -20834,6 +22218,7 @@ $root.NT = (function () {
             }
             return null;
         };
+
         /**
          * Creates a ClientRoomCreate message from a plain object. Also converts values to their respective internal types.
          * @function fromObject
@@ -20856,6 +22241,7 @@ $root.NT = (function () {
                 message.password = String(object.password);
             return message;
         };
+
         /**
          * Creates a plain object from a ClientRoomCreate message. Also converts values to other types if specified.
          * @function toObject
@@ -20887,6 +22273,7 @@ $root.NT = (function () {
             }
             return object;
         };
+
         /**
          * Converts this ClientRoomCreate to JSON.
          * @function toJSON
@@ -20897,6 +22284,7 @@ $root.NT = (function () {
         ClientRoomCreate.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
+
         /**
          * Gets the default type url for ClientRoomCreate
          * @function getTypeUrl
@@ -20911,9 +22299,12 @@ $root.NT = (function () {
             }
             return typeUrlPrefix + "/NT.ClientRoomCreate";
         };
+
         return ClientRoomCreate;
     })();
-    NT.ServerRoomCreated = (function () {
+
+    NT.ServerRoomCreated = (function() {
+
         /**
          * Properties of a ServerRoomCreated.
          * @memberof NT
@@ -20926,6 +22317,7 @@ $root.NT = (function () {
          * @property {boolean|null} [locked] ServerRoomCreated locked
          * @property {Array.<NT.ServerRoomCreated.IUser>|null} [users] ServerRoomCreated users
          */
+
         /**
          * Constructs a new ServerRoomCreated.
          * @memberof NT
@@ -20941,6 +22333,7 @@ $root.NT = (function () {
                     if (properties[keys[i]] != null)
                         this[keys[i]] = properties[keys[i]];
         }
+
         /**
          * ServerRoomCreated id.
          * @member {string} id
@@ -20948,6 +22341,7 @@ $root.NT = (function () {
          * @instance
          */
         ServerRoomCreated.prototype.id = "";
+
         /**
          * ServerRoomCreated name.
          * @member {string} name
@@ -20955,6 +22349,7 @@ $root.NT = (function () {
          * @instance
          */
         ServerRoomCreated.prototype.name = "";
+
         /**
          * ServerRoomCreated gamemode.
          * @member {number} gamemode
@@ -20962,6 +22357,7 @@ $root.NT = (function () {
          * @instance
          */
         ServerRoomCreated.prototype.gamemode = 0;
+
         /**
          * ServerRoomCreated maxUsers.
          * @member {number} maxUsers
@@ -20969,6 +22365,7 @@ $root.NT = (function () {
          * @instance
          */
         ServerRoomCreated.prototype.maxUsers = 0;
+
         /**
          * ServerRoomCreated password.
          * @member {string|null|undefined} password
@@ -20976,6 +22373,7 @@ $root.NT = (function () {
          * @instance
          */
         ServerRoomCreated.prototype.password = null;
+
         /**
          * ServerRoomCreated locked.
          * @member {boolean} locked
@@ -20983,6 +22381,7 @@ $root.NT = (function () {
          * @instance
          */
         ServerRoomCreated.prototype.locked = false;
+
         /**
          * ServerRoomCreated users.
          * @member {Array.<NT.ServerRoomCreated.IUser>} users
@@ -20990,8 +22389,10 @@ $root.NT = (function () {
          * @instance
          */
         ServerRoomCreated.prototype.users = $util.emptyArray;
+
         // OneOf field names bound to virtual getters and setters
         var $oneOfFields;
+
         /**
          * ServerRoomCreated _password.
          * @member {"password"|undefined} _password
@@ -21002,6 +22403,7 @@ $root.NT = (function () {
             get: $util.oneOfGetter($oneOfFields = ["password"]),
             set: $util.oneOfSetter($oneOfFields)
         });
+
         /**
          * Creates a new ServerRoomCreated instance using the specified properties.
          * @function create
@@ -21013,6 +22415,7 @@ $root.NT = (function () {
         ServerRoomCreated.create = function create(properties) {
             return new ServerRoomCreated(properties);
         };
+
         /**
          * Encodes the specified ServerRoomCreated message. Does not implicitly {@link NT.ServerRoomCreated.verify|verify} messages.
          * @function encode
@@ -21026,22 +22429,23 @@ $root.NT = (function () {
             if (!writer)
                 writer = $Writer.create();
             if (message.id != null && Object.hasOwnProperty.call(message, "id"))
-                writer.uint32(/* id 1, wireType 2 =*/ 10).string(message.id);
+                writer.uint32(/* id 1, wireType 2 =*/10).string(message.id);
             if (message.name != null && Object.hasOwnProperty.call(message, "name"))
-                writer.uint32(/* id 2, wireType 2 =*/ 18).string(message.name);
+                writer.uint32(/* id 2, wireType 2 =*/18).string(message.name);
             if (message.gamemode != null && Object.hasOwnProperty.call(message, "gamemode"))
-                writer.uint32(/* id 3, wireType 0 =*/ 24).uint32(message.gamemode);
+                writer.uint32(/* id 3, wireType 0 =*/24).uint32(message.gamemode);
             if (message.maxUsers != null && Object.hasOwnProperty.call(message, "maxUsers"))
-                writer.uint32(/* id 4, wireType 0 =*/ 32).uint32(message.maxUsers);
+                writer.uint32(/* id 4, wireType 0 =*/32).uint32(message.maxUsers);
             if (message.password != null && Object.hasOwnProperty.call(message, "password"))
-                writer.uint32(/* id 5, wireType 2 =*/ 42).string(message.password);
+                writer.uint32(/* id 5, wireType 2 =*/42).string(message.password);
             if (message.locked != null && Object.hasOwnProperty.call(message, "locked"))
-                writer.uint32(/* id 6, wireType 0 =*/ 48).bool(message.locked);
+                writer.uint32(/* id 6, wireType 0 =*/48).bool(message.locked);
             if (message.users != null && message.users.length)
                 for (var i = 0; i < message.users.length; ++i)
-                    $root.NT.ServerRoomCreated.User.encode(message.users[i], writer.uint32(/* id 7, wireType 2 =*/ 58).fork()).ldelim();
+                    $root.NT.ServerRoomCreated.User.encode(message.users[i], writer.uint32(/* id 7, wireType 2 =*/58).fork()).ldelim();
             return writer;
         };
+
         /**
          * Encodes the specified ServerRoomCreated message, length delimited. Does not implicitly {@link NT.ServerRoomCreated.verify|verify} messages.
          * @function encodeDelimited
@@ -21054,6 +22458,7 @@ $root.NT = (function () {
         ServerRoomCreated.encodeDelimited = function encodeDelimited(message, writer) {
             return this.encode(message, writer).ldelim();
         };
+
         /**
          * Decodes a ServerRoomCreated message from the specified reader or buffer.
          * @function decode
@@ -21072,43 +22477,44 @@ $root.NT = (function () {
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                    case 1: {
+                case 1: {
                         message.id = reader.string();
                         break;
                     }
-                    case 2: {
+                case 2: {
                         message.name = reader.string();
                         break;
                     }
-                    case 3: {
+                case 3: {
                         message.gamemode = reader.uint32();
                         break;
                     }
-                    case 4: {
+                case 4: {
                         message.maxUsers = reader.uint32();
                         break;
                     }
-                    case 5: {
+                case 5: {
                         message.password = reader.string();
                         break;
                     }
-                    case 6: {
+                case 6: {
                         message.locked = reader.bool();
                         break;
                     }
-                    case 7: {
+                case 7: {
                         if (!(message.users && message.users.length))
                             message.users = [];
                         message.users.push($root.NT.ServerRoomCreated.User.decode(reader, reader.uint32()));
                         break;
                     }
-                    default:
-                        reader.skipType(tag & 7);
-                        break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
                 }
             }
             return message;
         };
+
         /**
          * Decodes a ServerRoomCreated message from the specified reader or buffer, length delimited.
          * @function decodeDelimited
@@ -21124,6 +22530,7 @@ $root.NT = (function () {
                 reader = new $Reader(reader);
             return this.decode(reader, reader.uint32());
         };
+
         /**
          * Verifies a ServerRoomCreated message.
          * @function verify
@@ -21167,6 +22574,7 @@ $root.NT = (function () {
             }
             return null;
         };
+
         /**
          * Creates a ServerRoomCreated message from a plain object. Also converts values to their respective internal types.
          * @function fromObject
@@ -21203,6 +22611,7 @@ $root.NT = (function () {
             }
             return message;
         };
+
         /**
          * Creates a plain object from a ServerRoomCreated message. Also converts values to other types if specified.
          * @function toObject
@@ -21247,6 +22656,7 @@ $root.NT = (function () {
             }
             return object;
         };
+
         /**
          * Converts this ServerRoomCreated to JSON.
          * @function toJSON
@@ -21257,6 +22667,7 @@ $root.NT = (function () {
         ServerRoomCreated.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
+
         /**
          * Gets the default type url for ServerRoomCreated
          * @function getTypeUrl
@@ -21271,7 +22682,9 @@ $root.NT = (function () {
             }
             return typeUrlPrefix + "/NT.ServerRoomCreated";
         };
-        ServerRoomCreated.User = (function () {
+
+        ServerRoomCreated.User = (function() {
+
             /**
              * Properties of a User.
              * @memberof NT.ServerRoomCreated
@@ -21281,6 +22694,7 @@ $root.NT = (function () {
              * @property {boolean|null} [ready] User ready
              * @property {boolean|null} [owner] User owner
              */
+
             /**
              * Constructs a new User.
              * @memberof NT.ServerRoomCreated
@@ -21295,6 +22709,7 @@ $root.NT = (function () {
                         if (properties[keys[i]] != null)
                             this[keys[i]] = properties[keys[i]];
             }
+
             /**
              * User userId.
              * @member {string} userId
@@ -21302,6 +22717,7 @@ $root.NT = (function () {
              * @instance
              */
             User.prototype.userId = "";
+
             /**
              * User name.
              * @member {string} name
@@ -21309,6 +22725,7 @@ $root.NT = (function () {
              * @instance
              */
             User.prototype.name = "";
+
             /**
              * User ready.
              * @member {boolean} ready
@@ -21316,6 +22733,7 @@ $root.NT = (function () {
              * @instance
              */
             User.prototype.ready = false;
+
             /**
              * User owner.
              * @member {boolean} owner
@@ -21323,6 +22741,7 @@ $root.NT = (function () {
              * @instance
              */
             User.prototype.owner = false;
+
             /**
              * Creates a new User instance using the specified properties.
              * @function create
@@ -21334,6 +22753,7 @@ $root.NT = (function () {
             User.create = function create(properties) {
                 return new User(properties);
             };
+
             /**
              * Encodes the specified User message. Does not implicitly {@link NT.ServerRoomCreated.User.verify|verify} messages.
              * @function encode
@@ -21347,15 +22767,16 @@ $root.NT = (function () {
                 if (!writer)
                     writer = $Writer.create();
                 if (message.userId != null && Object.hasOwnProperty.call(message, "userId"))
-                    writer.uint32(/* id 1, wireType 2 =*/ 10).string(message.userId);
+                    writer.uint32(/* id 1, wireType 2 =*/10).string(message.userId);
                 if (message.name != null && Object.hasOwnProperty.call(message, "name"))
-                    writer.uint32(/* id 2, wireType 2 =*/ 18).string(message.name);
+                    writer.uint32(/* id 2, wireType 2 =*/18).string(message.name);
                 if (message.ready != null && Object.hasOwnProperty.call(message, "ready"))
-                    writer.uint32(/* id 3, wireType 0 =*/ 24).bool(message.ready);
+                    writer.uint32(/* id 3, wireType 0 =*/24).bool(message.ready);
                 if (message.owner != null && Object.hasOwnProperty.call(message, "owner"))
-                    writer.uint32(/* id 4, wireType 0 =*/ 32).bool(message.owner);
+                    writer.uint32(/* id 4, wireType 0 =*/32).bool(message.owner);
                 return writer;
             };
+
             /**
              * Encodes the specified User message, length delimited. Does not implicitly {@link NT.ServerRoomCreated.User.verify|verify} messages.
              * @function encodeDelimited
@@ -21368,6 +22789,7 @@ $root.NT = (function () {
             User.encodeDelimited = function encodeDelimited(message, writer) {
                 return this.encode(message, writer).ldelim();
             };
+
             /**
              * Decodes a User message from the specified reader or buffer.
              * @function decode
@@ -21386,29 +22808,30 @@ $root.NT = (function () {
                 while (reader.pos < end) {
                     var tag = reader.uint32();
                     switch (tag >>> 3) {
-                        case 1: {
+                    case 1: {
                             message.userId = reader.string();
                             break;
                         }
-                        case 2: {
+                    case 2: {
                             message.name = reader.string();
                             break;
                         }
-                        case 3: {
+                    case 3: {
                             message.ready = reader.bool();
                             break;
                         }
-                        case 4: {
+                    case 4: {
                             message.owner = reader.bool();
                             break;
                         }
-                        default:
-                            reader.skipType(tag & 7);
-                            break;
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
                     }
                 }
                 return message;
             };
+
             /**
              * Decodes a User message from the specified reader or buffer, length delimited.
              * @function decodeDelimited
@@ -21424,6 +22847,7 @@ $root.NT = (function () {
                     reader = new $Reader(reader);
                 return this.decode(reader, reader.uint32());
             };
+
             /**
              * Verifies a User message.
              * @function verify
@@ -21449,6 +22873,7 @@ $root.NT = (function () {
                         return "owner: boolean expected";
                 return null;
             };
+
             /**
              * Creates a User message from a plain object. Also converts values to their respective internal types.
              * @function fromObject
@@ -21471,6 +22896,7 @@ $root.NT = (function () {
                     message.owner = Boolean(object.owner);
                 return message;
             };
+
             /**
              * Creates a plain object from a User message. Also converts values to other types if specified.
              * @function toObject
@@ -21500,6 +22926,7 @@ $root.NT = (function () {
                     object.owner = message.owner;
                 return object;
             };
+
             /**
              * Converts this User to JSON.
              * @function toJSON
@@ -21510,6 +22937,7 @@ $root.NT = (function () {
             User.prototype.toJSON = function toJSON() {
                 return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
             };
+
             /**
              * Gets the default type url for User
              * @function getTypeUrl
@@ -21524,17 +22952,22 @@ $root.NT = (function () {
                 }
                 return typeUrlPrefix + "/NT.ServerRoomCreated.User";
             };
+
             return User;
         })();
+
         return ServerRoomCreated;
     })();
-    NT.ServerRoomCreateFailed = (function () {
+
+    NT.ServerRoomCreateFailed = (function() {
+
         /**
          * Properties of a ServerRoomCreateFailed.
          * @memberof NT
          * @interface IServerRoomCreateFailed
          * @property {string|null} [reason] ServerRoomCreateFailed reason
          */
+
         /**
          * Constructs a new ServerRoomCreateFailed.
          * @memberof NT
@@ -21549,6 +22982,7 @@ $root.NT = (function () {
                     if (properties[keys[i]] != null)
                         this[keys[i]] = properties[keys[i]];
         }
+
         /**
          * ServerRoomCreateFailed reason.
          * @member {string} reason
@@ -21556,6 +22990,7 @@ $root.NT = (function () {
          * @instance
          */
         ServerRoomCreateFailed.prototype.reason = "";
+
         /**
          * Creates a new ServerRoomCreateFailed instance using the specified properties.
          * @function create
@@ -21567,6 +23002,7 @@ $root.NT = (function () {
         ServerRoomCreateFailed.create = function create(properties) {
             return new ServerRoomCreateFailed(properties);
         };
+
         /**
          * Encodes the specified ServerRoomCreateFailed message. Does not implicitly {@link NT.ServerRoomCreateFailed.verify|verify} messages.
          * @function encode
@@ -21580,9 +23016,10 @@ $root.NT = (function () {
             if (!writer)
                 writer = $Writer.create();
             if (message.reason != null && Object.hasOwnProperty.call(message, "reason"))
-                writer.uint32(/* id 1, wireType 2 =*/ 10).string(message.reason);
+                writer.uint32(/* id 1, wireType 2 =*/10).string(message.reason);
             return writer;
         };
+
         /**
          * Encodes the specified ServerRoomCreateFailed message, length delimited. Does not implicitly {@link NT.ServerRoomCreateFailed.verify|verify} messages.
          * @function encodeDelimited
@@ -21595,6 +23032,7 @@ $root.NT = (function () {
         ServerRoomCreateFailed.encodeDelimited = function encodeDelimited(message, writer) {
             return this.encode(message, writer).ldelim();
         };
+
         /**
          * Decodes a ServerRoomCreateFailed message from the specified reader or buffer.
          * @function decode
@@ -21613,17 +23051,18 @@ $root.NT = (function () {
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                    case 1: {
+                case 1: {
                         message.reason = reader.string();
                         break;
                     }
-                    default:
-                        reader.skipType(tag & 7);
-                        break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
                 }
             }
             return message;
         };
+
         /**
          * Decodes a ServerRoomCreateFailed message from the specified reader or buffer, length delimited.
          * @function decodeDelimited
@@ -21639,6 +23078,7 @@ $root.NT = (function () {
                 reader = new $Reader(reader);
             return this.decode(reader, reader.uint32());
         };
+
         /**
          * Verifies a ServerRoomCreateFailed message.
          * @function verify
@@ -21655,6 +23095,7 @@ $root.NT = (function () {
                     return "reason: string expected";
             return null;
         };
+
         /**
          * Creates a ServerRoomCreateFailed message from a plain object. Also converts values to their respective internal types.
          * @function fromObject
@@ -21671,6 +23112,7 @@ $root.NT = (function () {
                 message.reason = String(object.reason);
             return message;
         };
+
         /**
          * Creates a plain object from a ServerRoomCreateFailed message. Also converts values to other types if specified.
          * @function toObject
@@ -21690,6 +23132,7 @@ $root.NT = (function () {
                 object.reason = message.reason;
             return object;
         };
+
         /**
          * Converts this ServerRoomCreateFailed to JSON.
          * @function toJSON
@@ -21700,6 +23143,7 @@ $root.NT = (function () {
         ServerRoomCreateFailed.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
+
         /**
          * Gets the default type url for ServerRoomCreateFailed
          * @function getTypeUrl
@@ -21714,9 +23158,12 @@ $root.NT = (function () {
             }
             return typeUrlPrefix + "/NT.ServerRoomCreateFailed";
         };
+
         return ServerRoomCreateFailed;
     })();
-    NT.ClientRoomUpdate = (function () {
+
+    NT.ClientRoomUpdate = (function() {
+
         /**
          * Properties of a ClientRoomUpdate.
          * @memberof NT
@@ -21727,6 +23174,7 @@ $root.NT = (function () {
          * @property {string|null} [password] ClientRoomUpdate password
          * @property {boolean|null} [locked] ClientRoomUpdate locked
          */
+
         /**
          * Constructs a new ClientRoomUpdate.
          * @memberof NT
@@ -21741,6 +23189,7 @@ $root.NT = (function () {
                     if (properties[keys[i]] != null)
                         this[keys[i]] = properties[keys[i]];
         }
+
         /**
          * ClientRoomUpdate name.
          * @member {string|null|undefined} name
@@ -21748,6 +23197,7 @@ $root.NT = (function () {
          * @instance
          */
         ClientRoomUpdate.prototype.name = null;
+
         /**
          * ClientRoomUpdate gamemode.
          * @member {number|null|undefined} gamemode
@@ -21755,6 +23205,7 @@ $root.NT = (function () {
          * @instance
          */
         ClientRoomUpdate.prototype.gamemode = null;
+
         /**
          * ClientRoomUpdate maxUsers.
          * @member {number|null|undefined} maxUsers
@@ -21762,6 +23213,7 @@ $root.NT = (function () {
          * @instance
          */
         ClientRoomUpdate.prototype.maxUsers = null;
+
         /**
          * ClientRoomUpdate password.
          * @member {string|null|undefined} password
@@ -21769,6 +23221,7 @@ $root.NT = (function () {
          * @instance
          */
         ClientRoomUpdate.prototype.password = null;
+
         /**
          * ClientRoomUpdate locked.
          * @member {boolean|null|undefined} locked
@@ -21776,8 +23229,10 @@ $root.NT = (function () {
          * @instance
          */
         ClientRoomUpdate.prototype.locked = null;
+
         // OneOf field names bound to virtual getters and setters
         var $oneOfFields;
+
         /**
          * ClientRoomUpdate _name.
          * @member {"name"|undefined} _name
@@ -21788,6 +23243,7 @@ $root.NT = (function () {
             get: $util.oneOfGetter($oneOfFields = ["name"]),
             set: $util.oneOfSetter($oneOfFields)
         });
+
         /**
          * ClientRoomUpdate _gamemode.
          * @member {"gamemode"|undefined} _gamemode
@@ -21798,6 +23254,7 @@ $root.NT = (function () {
             get: $util.oneOfGetter($oneOfFields = ["gamemode"]),
             set: $util.oneOfSetter($oneOfFields)
         });
+
         /**
          * ClientRoomUpdate _maxUsers.
          * @member {"maxUsers"|undefined} _maxUsers
@@ -21808,6 +23265,7 @@ $root.NT = (function () {
             get: $util.oneOfGetter($oneOfFields = ["maxUsers"]),
             set: $util.oneOfSetter($oneOfFields)
         });
+
         /**
          * ClientRoomUpdate _password.
          * @member {"password"|undefined} _password
@@ -21818,6 +23276,7 @@ $root.NT = (function () {
             get: $util.oneOfGetter($oneOfFields = ["password"]),
             set: $util.oneOfSetter($oneOfFields)
         });
+
         /**
          * ClientRoomUpdate _locked.
          * @member {"locked"|undefined} _locked
@@ -21828,6 +23287,7 @@ $root.NT = (function () {
             get: $util.oneOfGetter($oneOfFields = ["locked"]),
             set: $util.oneOfSetter($oneOfFields)
         });
+
         /**
          * Creates a new ClientRoomUpdate instance using the specified properties.
          * @function create
@@ -21839,6 +23299,7 @@ $root.NT = (function () {
         ClientRoomUpdate.create = function create(properties) {
             return new ClientRoomUpdate(properties);
         };
+
         /**
          * Encodes the specified ClientRoomUpdate message. Does not implicitly {@link NT.ClientRoomUpdate.verify|verify} messages.
          * @function encode
@@ -21852,17 +23313,18 @@ $root.NT = (function () {
             if (!writer)
                 writer = $Writer.create();
             if (message.name != null && Object.hasOwnProperty.call(message, "name"))
-                writer.uint32(/* id 1, wireType 2 =*/ 10).string(message.name);
+                writer.uint32(/* id 1, wireType 2 =*/10).string(message.name);
             if (message.gamemode != null && Object.hasOwnProperty.call(message, "gamemode"))
-                writer.uint32(/* id 2, wireType 0 =*/ 16).uint32(message.gamemode);
+                writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.gamemode);
             if (message.maxUsers != null && Object.hasOwnProperty.call(message, "maxUsers"))
-                writer.uint32(/* id 3, wireType 0 =*/ 24).uint32(message.maxUsers);
+                writer.uint32(/* id 3, wireType 0 =*/24).uint32(message.maxUsers);
             if (message.password != null && Object.hasOwnProperty.call(message, "password"))
-                writer.uint32(/* id 4, wireType 2 =*/ 34).string(message.password);
+                writer.uint32(/* id 4, wireType 2 =*/34).string(message.password);
             if (message.locked != null && Object.hasOwnProperty.call(message, "locked"))
-                writer.uint32(/* id 5, wireType 0 =*/ 40).bool(message.locked);
+                writer.uint32(/* id 5, wireType 0 =*/40).bool(message.locked);
             return writer;
         };
+
         /**
          * Encodes the specified ClientRoomUpdate message, length delimited. Does not implicitly {@link NT.ClientRoomUpdate.verify|verify} messages.
          * @function encodeDelimited
@@ -21875,6 +23337,7 @@ $root.NT = (function () {
         ClientRoomUpdate.encodeDelimited = function encodeDelimited(message, writer) {
             return this.encode(message, writer).ldelim();
         };
+
         /**
          * Decodes a ClientRoomUpdate message from the specified reader or buffer.
          * @function decode
@@ -21893,33 +23356,34 @@ $root.NT = (function () {
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                    case 1: {
+                case 1: {
                         message.name = reader.string();
                         break;
                     }
-                    case 2: {
+                case 2: {
                         message.gamemode = reader.uint32();
                         break;
                     }
-                    case 3: {
+                case 3: {
                         message.maxUsers = reader.uint32();
                         break;
                     }
-                    case 4: {
+                case 4: {
                         message.password = reader.string();
                         break;
                     }
-                    case 5: {
+                case 5: {
                         message.locked = reader.bool();
                         break;
                     }
-                    default:
-                        reader.skipType(tag & 7);
-                        break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
                 }
             }
             return message;
         };
+
         /**
          * Decodes a ClientRoomUpdate message from the specified reader or buffer, length delimited.
          * @function decodeDelimited
@@ -21935,6 +23399,7 @@ $root.NT = (function () {
                 reader = new $Reader(reader);
             return this.decode(reader, reader.uint32());
         };
+
         /**
          * Verifies a ClientRoomUpdate message.
          * @function verify
@@ -21974,6 +23439,7 @@ $root.NT = (function () {
             }
             return null;
         };
+
         /**
          * Creates a ClientRoomUpdate message from a plain object. Also converts values to their respective internal types.
          * @function fromObject
@@ -21998,6 +23464,7 @@ $root.NT = (function () {
                 message.locked = Boolean(object.locked);
             return message;
         };
+
         /**
          * Creates a plain object from a ClientRoomUpdate message. Also converts values to other types if specified.
          * @function toObject
@@ -22038,6 +23505,7 @@ $root.NT = (function () {
             }
             return object;
         };
+
         /**
          * Converts this ClientRoomUpdate to JSON.
          * @function toJSON
@@ -22048,6 +23516,7 @@ $root.NT = (function () {
         ClientRoomUpdate.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
+
         /**
          * Gets the default type url for ClientRoomUpdate
          * @function getTypeUrl
@@ -22062,9 +23531,12 @@ $root.NT = (function () {
             }
             return typeUrlPrefix + "/NT.ClientRoomUpdate";
         };
+
         return ClientRoomUpdate;
     })();
-    NT.ServerRoomUpdated = (function () {
+
+    NT.ServerRoomUpdated = (function() {
+
         /**
          * Properties of a ServerRoomUpdated.
          * @memberof NT
@@ -22075,6 +23547,7 @@ $root.NT = (function () {
          * @property {string|null} [password] ServerRoomUpdated password
          * @property {boolean|null} [locked] ServerRoomUpdated locked
          */
+
         /**
          * Constructs a new ServerRoomUpdated.
          * @memberof NT
@@ -22089,6 +23562,7 @@ $root.NT = (function () {
                     if (properties[keys[i]] != null)
                         this[keys[i]] = properties[keys[i]];
         }
+
         /**
          * ServerRoomUpdated name.
          * @member {string|null|undefined} name
@@ -22096,6 +23570,7 @@ $root.NT = (function () {
          * @instance
          */
         ServerRoomUpdated.prototype.name = null;
+
         /**
          * ServerRoomUpdated gamemode.
          * @member {number|null|undefined} gamemode
@@ -22103,6 +23578,7 @@ $root.NT = (function () {
          * @instance
          */
         ServerRoomUpdated.prototype.gamemode = null;
+
         /**
          * ServerRoomUpdated maxUsers.
          * @member {number|null|undefined} maxUsers
@@ -22110,6 +23586,7 @@ $root.NT = (function () {
          * @instance
          */
         ServerRoomUpdated.prototype.maxUsers = null;
+
         /**
          * ServerRoomUpdated password.
          * @member {string|null|undefined} password
@@ -22117,6 +23594,7 @@ $root.NT = (function () {
          * @instance
          */
         ServerRoomUpdated.prototype.password = null;
+
         /**
          * ServerRoomUpdated locked.
          * @member {boolean|null|undefined} locked
@@ -22124,8 +23602,10 @@ $root.NT = (function () {
          * @instance
          */
         ServerRoomUpdated.prototype.locked = null;
+
         // OneOf field names bound to virtual getters and setters
         var $oneOfFields;
+
         /**
          * ServerRoomUpdated _name.
          * @member {"name"|undefined} _name
@@ -22136,6 +23616,7 @@ $root.NT = (function () {
             get: $util.oneOfGetter($oneOfFields = ["name"]),
             set: $util.oneOfSetter($oneOfFields)
         });
+
         /**
          * ServerRoomUpdated _gamemode.
          * @member {"gamemode"|undefined} _gamemode
@@ -22146,6 +23627,7 @@ $root.NT = (function () {
             get: $util.oneOfGetter($oneOfFields = ["gamemode"]),
             set: $util.oneOfSetter($oneOfFields)
         });
+
         /**
          * ServerRoomUpdated _maxUsers.
          * @member {"maxUsers"|undefined} _maxUsers
@@ -22156,6 +23638,7 @@ $root.NT = (function () {
             get: $util.oneOfGetter($oneOfFields = ["maxUsers"]),
             set: $util.oneOfSetter($oneOfFields)
         });
+
         /**
          * ServerRoomUpdated _password.
          * @member {"password"|undefined} _password
@@ -22166,6 +23649,7 @@ $root.NT = (function () {
             get: $util.oneOfGetter($oneOfFields = ["password"]),
             set: $util.oneOfSetter($oneOfFields)
         });
+
         /**
          * ServerRoomUpdated _locked.
          * @member {"locked"|undefined} _locked
@@ -22176,6 +23660,7 @@ $root.NT = (function () {
             get: $util.oneOfGetter($oneOfFields = ["locked"]),
             set: $util.oneOfSetter($oneOfFields)
         });
+
         /**
          * Creates a new ServerRoomUpdated instance using the specified properties.
          * @function create
@@ -22187,6 +23672,7 @@ $root.NT = (function () {
         ServerRoomUpdated.create = function create(properties) {
             return new ServerRoomUpdated(properties);
         };
+
         /**
          * Encodes the specified ServerRoomUpdated message. Does not implicitly {@link NT.ServerRoomUpdated.verify|verify} messages.
          * @function encode
@@ -22200,17 +23686,18 @@ $root.NT = (function () {
             if (!writer)
                 writer = $Writer.create();
             if (message.name != null && Object.hasOwnProperty.call(message, "name"))
-                writer.uint32(/* id 1, wireType 2 =*/ 10).string(message.name);
+                writer.uint32(/* id 1, wireType 2 =*/10).string(message.name);
             if (message.gamemode != null && Object.hasOwnProperty.call(message, "gamemode"))
-                writer.uint32(/* id 2, wireType 0 =*/ 16).uint32(message.gamemode);
+                writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.gamemode);
             if (message.maxUsers != null && Object.hasOwnProperty.call(message, "maxUsers"))
-                writer.uint32(/* id 3, wireType 0 =*/ 24).uint32(message.maxUsers);
+                writer.uint32(/* id 3, wireType 0 =*/24).uint32(message.maxUsers);
             if (message.password != null && Object.hasOwnProperty.call(message, "password"))
-                writer.uint32(/* id 4, wireType 2 =*/ 34).string(message.password);
+                writer.uint32(/* id 4, wireType 2 =*/34).string(message.password);
             if (message.locked != null && Object.hasOwnProperty.call(message, "locked"))
-                writer.uint32(/* id 5, wireType 0 =*/ 40).bool(message.locked);
+                writer.uint32(/* id 5, wireType 0 =*/40).bool(message.locked);
             return writer;
         };
+
         /**
          * Encodes the specified ServerRoomUpdated message, length delimited. Does not implicitly {@link NT.ServerRoomUpdated.verify|verify} messages.
          * @function encodeDelimited
@@ -22223,6 +23710,7 @@ $root.NT = (function () {
         ServerRoomUpdated.encodeDelimited = function encodeDelimited(message, writer) {
             return this.encode(message, writer).ldelim();
         };
+
         /**
          * Decodes a ServerRoomUpdated message from the specified reader or buffer.
          * @function decode
@@ -22241,33 +23729,34 @@ $root.NT = (function () {
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                    case 1: {
+                case 1: {
                         message.name = reader.string();
                         break;
                     }
-                    case 2: {
+                case 2: {
                         message.gamemode = reader.uint32();
                         break;
                     }
-                    case 3: {
+                case 3: {
                         message.maxUsers = reader.uint32();
                         break;
                     }
-                    case 4: {
+                case 4: {
                         message.password = reader.string();
                         break;
                     }
-                    case 5: {
+                case 5: {
                         message.locked = reader.bool();
                         break;
                     }
-                    default:
-                        reader.skipType(tag & 7);
-                        break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
                 }
             }
             return message;
         };
+
         /**
          * Decodes a ServerRoomUpdated message from the specified reader or buffer, length delimited.
          * @function decodeDelimited
@@ -22283,6 +23772,7 @@ $root.NT = (function () {
                 reader = new $Reader(reader);
             return this.decode(reader, reader.uint32());
         };
+
         /**
          * Verifies a ServerRoomUpdated message.
          * @function verify
@@ -22322,6 +23812,7 @@ $root.NT = (function () {
             }
             return null;
         };
+
         /**
          * Creates a ServerRoomUpdated message from a plain object. Also converts values to their respective internal types.
          * @function fromObject
@@ -22346,6 +23837,7 @@ $root.NT = (function () {
                 message.locked = Boolean(object.locked);
             return message;
         };
+
         /**
          * Creates a plain object from a ServerRoomUpdated message. Also converts values to other types if specified.
          * @function toObject
@@ -22386,6 +23878,7 @@ $root.NT = (function () {
             }
             return object;
         };
+
         /**
          * Converts this ServerRoomUpdated to JSON.
          * @function toJSON
@@ -22396,6 +23889,7 @@ $root.NT = (function () {
         ServerRoomUpdated.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
+
         /**
          * Gets the default type url for ServerRoomUpdated
          * @function getTypeUrl
@@ -22410,15 +23904,19 @@ $root.NT = (function () {
             }
             return typeUrlPrefix + "/NT.ServerRoomUpdated";
         };
+
         return ServerRoomUpdated;
     })();
-    NT.ServerRoomUpdateFailed = (function () {
+
+    NT.ServerRoomUpdateFailed = (function() {
+
         /**
          * Properties of a ServerRoomUpdateFailed.
          * @memberof NT
          * @interface IServerRoomUpdateFailed
          * @property {string|null} [reason] ServerRoomUpdateFailed reason
          */
+
         /**
          * Constructs a new ServerRoomUpdateFailed.
          * @memberof NT
@@ -22433,6 +23931,7 @@ $root.NT = (function () {
                     if (properties[keys[i]] != null)
                         this[keys[i]] = properties[keys[i]];
         }
+
         /**
          * ServerRoomUpdateFailed reason.
          * @member {string} reason
@@ -22440,6 +23939,7 @@ $root.NT = (function () {
          * @instance
          */
         ServerRoomUpdateFailed.prototype.reason = "";
+
         /**
          * Creates a new ServerRoomUpdateFailed instance using the specified properties.
          * @function create
@@ -22451,6 +23951,7 @@ $root.NT = (function () {
         ServerRoomUpdateFailed.create = function create(properties) {
             return new ServerRoomUpdateFailed(properties);
         };
+
         /**
          * Encodes the specified ServerRoomUpdateFailed message. Does not implicitly {@link NT.ServerRoomUpdateFailed.verify|verify} messages.
          * @function encode
@@ -22464,9 +23965,10 @@ $root.NT = (function () {
             if (!writer)
                 writer = $Writer.create();
             if (message.reason != null && Object.hasOwnProperty.call(message, "reason"))
-                writer.uint32(/* id 1, wireType 2 =*/ 10).string(message.reason);
+                writer.uint32(/* id 1, wireType 2 =*/10).string(message.reason);
             return writer;
         };
+
         /**
          * Encodes the specified ServerRoomUpdateFailed message, length delimited. Does not implicitly {@link NT.ServerRoomUpdateFailed.verify|verify} messages.
          * @function encodeDelimited
@@ -22479,6 +23981,7 @@ $root.NT = (function () {
         ServerRoomUpdateFailed.encodeDelimited = function encodeDelimited(message, writer) {
             return this.encode(message, writer).ldelim();
         };
+
         /**
          * Decodes a ServerRoomUpdateFailed message from the specified reader or buffer.
          * @function decode
@@ -22497,17 +24000,18 @@ $root.NT = (function () {
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                    case 1: {
+                case 1: {
                         message.reason = reader.string();
                         break;
                     }
-                    default:
-                        reader.skipType(tag & 7);
-                        break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
                 }
             }
             return message;
         };
+
         /**
          * Decodes a ServerRoomUpdateFailed message from the specified reader or buffer, length delimited.
          * @function decodeDelimited
@@ -22523,6 +24027,7 @@ $root.NT = (function () {
                 reader = new $Reader(reader);
             return this.decode(reader, reader.uint32());
         };
+
         /**
          * Verifies a ServerRoomUpdateFailed message.
          * @function verify
@@ -22539,6 +24044,7 @@ $root.NT = (function () {
                     return "reason: string expected";
             return null;
         };
+
         /**
          * Creates a ServerRoomUpdateFailed message from a plain object. Also converts values to their respective internal types.
          * @function fromObject
@@ -22555,6 +24061,7 @@ $root.NT = (function () {
                 message.reason = String(object.reason);
             return message;
         };
+
         /**
          * Creates a plain object from a ServerRoomUpdateFailed message. Also converts values to other types if specified.
          * @function toObject
@@ -22574,6 +24081,7 @@ $root.NT = (function () {
                 object.reason = message.reason;
             return object;
         };
+
         /**
          * Converts this ServerRoomUpdateFailed to JSON.
          * @function toJSON
@@ -22584,6 +24092,7 @@ $root.NT = (function () {
         ServerRoomUpdateFailed.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
+
         /**
          * Gets the default type url for ServerRoomUpdateFailed
          * @function getTypeUrl
@@ -22598,15 +24107,19 @@ $root.NT = (function () {
             }
             return typeUrlPrefix + "/NT.ServerRoomUpdateFailed";
         };
+
         return ServerRoomUpdateFailed;
     })();
-    NT.ClientRoomFlagsUpdate = (function () {
+
+    NT.ClientRoomFlagsUpdate = (function() {
+
         /**
          * Properties of a ClientRoomFlagsUpdate.
          * @memberof NT
          * @interface IClientRoomFlagsUpdate
          * @property {Array.<NT.ClientRoomFlagsUpdate.IGameFlag>|null} [flags] ClientRoomFlagsUpdate flags
          */
+
         /**
          * Constructs a new ClientRoomFlagsUpdate.
          * @memberof NT
@@ -22622,6 +24135,7 @@ $root.NT = (function () {
                     if (properties[keys[i]] != null)
                         this[keys[i]] = properties[keys[i]];
         }
+
         /**
          * ClientRoomFlagsUpdate flags.
          * @member {Array.<NT.ClientRoomFlagsUpdate.IGameFlag>} flags
@@ -22629,6 +24143,7 @@ $root.NT = (function () {
          * @instance
          */
         ClientRoomFlagsUpdate.prototype.flags = $util.emptyArray;
+
         /**
          * Creates a new ClientRoomFlagsUpdate instance using the specified properties.
          * @function create
@@ -22640,6 +24155,7 @@ $root.NT = (function () {
         ClientRoomFlagsUpdate.create = function create(properties) {
             return new ClientRoomFlagsUpdate(properties);
         };
+
         /**
          * Encodes the specified ClientRoomFlagsUpdate message. Does not implicitly {@link NT.ClientRoomFlagsUpdate.verify|verify} messages.
          * @function encode
@@ -22654,9 +24170,10 @@ $root.NT = (function () {
                 writer = $Writer.create();
             if (message.flags != null && message.flags.length)
                 for (var i = 0; i < message.flags.length; ++i)
-                    $root.NT.ClientRoomFlagsUpdate.GameFlag.encode(message.flags[i], writer.uint32(/* id 1, wireType 2 =*/ 10).fork()).ldelim();
+                    $root.NT.ClientRoomFlagsUpdate.GameFlag.encode(message.flags[i], writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
             return writer;
         };
+
         /**
          * Encodes the specified ClientRoomFlagsUpdate message, length delimited. Does not implicitly {@link NT.ClientRoomFlagsUpdate.verify|verify} messages.
          * @function encodeDelimited
@@ -22669,6 +24186,7 @@ $root.NT = (function () {
         ClientRoomFlagsUpdate.encodeDelimited = function encodeDelimited(message, writer) {
             return this.encode(message, writer).ldelim();
         };
+
         /**
          * Decodes a ClientRoomFlagsUpdate message from the specified reader or buffer.
          * @function decode
@@ -22687,19 +24205,20 @@ $root.NT = (function () {
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                    case 1: {
+                case 1: {
                         if (!(message.flags && message.flags.length))
                             message.flags = [];
                         message.flags.push($root.NT.ClientRoomFlagsUpdate.GameFlag.decode(reader, reader.uint32()));
                         break;
                     }
-                    default:
-                        reader.skipType(tag & 7);
-                        break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
                 }
             }
             return message;
         };
+
         /**
          * Decodes a ClientRoomFlagsUpdate message from the specified reader or buffer, length delimited.
          * @function decodeDelimited
@@ -22715,6 +24234,7 @@ $root.NT = (function () {
                 reader = new $Reader(reader);
             return this.decode(reader, reader.uint32());
         };
+
         /**
          * Verifies a ClientRoomFlagsUpdate message.
          * @function verify
@@ -22737,6 +24257,7 @@ $root.NT = (function () {
             }
             return null;
         };
+
         /**
          * Creates a ClientRoomFlagsUpdate message from a plain object. Also converts values to their respective internal types.
          * @function fromObject
@@ -22761,6 +24282,7 @@ $root.NT = (function () {
             }
             return message;
         };
+
         /**
          * Creates a plain object from a ClientRoomFlagsUpdate message. Also converts values to other types if specified.
          * @function toObject
@@ -22783,6 +24305,7 @@ $root.NT = (function () {
             }
             return object;
         };
+
         /**
          * Converts this ClientRoomFlagsUpdate to JSON.
          * @function toJSON
@@ -22793,6 +24316,7 @@ $root.NT = (function () {
         ClientRoomFlagsUpdate.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
+
         /**
          * Gets the default type url for ClientRoomFlagsUpdate
          * @function getTypeUrl
@@ -22807,7 +24331,9 @@ $root.NT = (function () {
             }
             return typeUrlPrefix + "/NT.ClientRoomFlagsUpdate";
         };
-        ClientRoomFlagsUpdate.GameFlag = (function () {
+
+        ClientRoomFlagsUpdate.GameFlag = (function() {
+
             /**
              * Properties of a GameFlag.
              * @memberof NT.ClientRoomFlagsUpdate
@@ -22819,6 +24345,7 @@ $root.NT = (function () {
              * @property {boolean|null} [boolVal] GameFlag boolVal
              * @property {number|null} [uIntVal] GameFlag uIntVal
              */
+
             /**
              * Constructs a new GameFlag.
              * @memberof NT.ClientRoomFlagsUpdate
@@ -22833,6 +24360,7 @@ $root.NT = (function () {
                         if (properties[keys[i]] != null)
                             this[keys[i]] = properties[keys[i]];
             }
+
             /**
              * GameFlag flag.
              * @member {string} flag
@@ -22840,6 +24368,7 @@ $root.NT = (function () {
              * @instance
              */
             GameFlag.prototype.flag = "";
+
             /**
              * GameFlag intVal.
              * @member {number|null|undefined} intVal
@@ -22847,6 +24376,7 @@ $root.NT = (function () {
              * @instance
              */
             GameFlag.prototype.intVal = null;
+
             /**
              * GameFlag strVal.
              * @member {string|null|undefined} strVal
@@ -22854,6 +24384,7 @@ $root.NT = (function () {
              * @instance
              */
             GameFlag.prototype.strVal = null;
+
             /**
              * GameFlag floatVal.
              * @member {number|null|undefined} floatVal
@@ -22861,6 +24392,7 @@ $root.NT = (function () {
              * @instance
              */
             GameFlag.prototype.floatVal = null;
+
             /**
              * GameFlag boolVal.
              * @member {boolean|null|undefined} boolVal
@@ -22868,6 +24400,7 @@ $root.NT = (function () {
              * @instance
              */
             GameFlag.prototype.boolVal = null;
+
             /**
              * GameFlag uIntVal.
              * @member {number|null|undefined} uIntVal
@@ -22875,8 +24408,10 @@ $root.NT = (function () {
              * @instance
              */
             GameFlag.prototype.uIntVal = null;
+
             // OneOf field names bound to virtual getters and setters
             var $oneOfFields;
+
             /**
              * GameFlag _intVal.
              * @member {"intVal"|undefined} _intVal
@@ -22887,6 +24422,7 @@ $root.NT = (function () {
                 get: $util.oneOfGetter($oneOfFields = ["intVal"]),
                 set: $util.oneOfSetter($oneOfFields)
             });
+
             /**
              * GameFlag _strVal.
              * @member {"strVal"|undefined} _strVal
@@ -22897,6 +24433,7 @@ $root.NT = (function () {
                 get: $util.oneOfGetter($oneOfFields = ["strVal"]),
                 set: $util.oneOfSetter($oneOfFields)
             });
+
             /**
              * GameFlag _floatVal.
              * @member {"floatVal"|undefined} _floatVal
@@ -22907,6 +24444,7 @@ $root.NT = (function () {
                 get: $util.oneOfGetter($oneOfFields = ["floatVal"]),
                 set: $util.oneOfSetter($oneOfFields)
             });
+
             /**
              * GameFlag _boolVal.
              * @member {"boolVal"|undefined} _boolVal
@@ -22917,6 +24455,7 @@ $root.NT = (function () {
                 get: $util.oneOfGetter($oneOfFields = ["boolVal"]),
                 set: $util.oneOfSetter($oneOfFields)
             });
+
             /**
              * GameFlag _uIntVal.
              * @member {"uIntVal"|undefined} _uIntVal
@@ -22927,6 +24466,7 @@ $root.NT = (function () {
                 get: $util.oneOfGetter($oneOfFields = ["uIntVal"]),
                 set: $util.oneOfSetter($oneOfFields)
             });
+
             /**
              * Creates a new GameFlag instance using the specified properties.
              * @function create
@@ -22938,6 +24478,7 @@ $root.NT = (function () {
             GameFlag.create = function create(properties) {
                 return new GameFlag(properties);
             };
+
             /**
              * Encodes the specified GameFlag message. Does not implicitly {@link NT.ClientRoomFlagsUpdate.GameFlag.verify|verify} messages.
              * @function encode
@@ -22951,19 +24492,20 @@ $root.NT = (function () {
                 if (!writer)
                     writer = $Writer.create();
                 if (message.flag != null && Object.hasOwnProperty.call(message, "flag"))
-                    writer.uint32(/* id 1, wireType 2 =*/ 10).string(message.flag);
+                    writer.uint32(/* id 1, wireType 2 =*/10).string(message.flag);
                 if (message.intVal != null && Object.hasOwnProperty.call(message, "intVal"))
-                    writer.uint32(/* id 2, wireType 0 =*/ 16).int32(message.intVal);
+                    writer.uint32(/* id 2, wireType 0 =*/16).int32(message.intVal);
                 if (message.strVal != null && Object.hasOwnProperty.call(message, "strVal"))
-                    writer.uint32(/* id 3, wireType 2 =*/ 26).string(message.strVal);
+                    writer.uint32(/* id 3, wireType 2 =*/26).string(message.strVal);
                 if (message.floatVal != null && Object.hasOwnProperty.call(message, "floatVal"))
-                    writer.uint32(/* id 4, wireType 5 =*/ 37).float(message.floatVal);
+                    writer.uint32(/* id 4, wireType 5 =*/37).float(message.floatVal);
                 if (message.boolVal != null && Object.hasOwnProperty.call(message, "boolVal"))
-                    writer.uint32(/* id 5, wireType 0 =*/ 40).bool(message.boolVal);
+                    writer.uint32(/* id 5, wireType 0 =*/40).bool(message.boolVal);
                 if (message.uIntVal != null && Object.hasOwnProperty.call(message, "uIntVal"))
-                    writer.uint32(/* id 6, wireType 0 =*/ 48).uint32(message.uIntVal);
+                    writer.uint32(/* id 6, wireType 0 =*/48).uint32(message.uIntVal);
                 return writer;
             };
+
             /**
              * Encodes the specified GameFlag message, length delimited. Does not implicitly {@link NT.ClientRoomFlagsUpdate.GameFlag.verify|verify} messages.
              * @function encodeDelimited
@@ -22976,6 +24518,7 @@ $root.NT = (function () {
             GameFlag.encodeDelimited = function encodeDelimited(message, writer) {
                 return this.encode(message, writer).ldelim();
             };
+
             /**
              * Decodes a GameFlag message from the specified reader or buffer.
              * @function decode
@@ -22994,37 +24537,38 @@ $root.NT = (function () {
                 while (reader.pos < end) {
                     var tag = reader.uint32();
                     switch (tag >>> 3) {
-                        case 1: {
+                    case 1: {
                             message.flag = reader.string();
                             break;
                         }
-                        case 2: {
+                    case 2: {
                             message.intVal = reader.int32();
                             break;
                         }
-                        case 3: {
+                    case 3: {
                             message.strVal = reader.string();
                             break;
                         }
-                        case 4: {
+                    case 4: {
                             message.floatVal = reader.float();
                             break;
                         }
-                        case 5: {
+                    case 5: {
                             message.boolVal = reader.bool();
                             break;
                         }
-                        case 6: {
+                    case 6: {
                             message.uIntVal = reader.uint32();
                             break;
                         }
-                        default:
-                            reader.skipType(tag & 7);
-                            break;
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
                     }
                 }
                 return message;
             };
+
             /**
              * Decodes a GameFlag message from the specified reader or buffer, length delimited.
              * @function decodeDelimited
@@ -23040,6 +24584,7 @@ $root.NT = (function () {
                     reader = new $Reader(reader);
                 return this.decode(reader, reader.uint32());
             };
+
             /**
              * Verifies a GameFlag message.
              * @function verify
@@ -23082,6 +24627,7 @@ $root.NT = (function () {
                 }
                 return null;
             };
+
             /**
              * Creates a GameFlag message from a plain object. Also converts values to their respective internal types.
              * @function fromObject
@@ -23108,6 +24654,7 @@ $root.NT = (function () {
                     message.uIntVal = object.uIntVal >>> 0;
                 return message;
             };
+
             /**
              * Creates a plain object from a GameFlag message. Also converts values to other types if specified.
              * @function toObject
@@ -23152,6 +24699,7 @@ $root.NT = (function () {
                 }
                 return object;
             };
+
             /**
              * Converts this GameFlag to JSON.
              * @function toJSON
@@ -23162,6 +24710,7 @@ $root.NT = (function () {
             GameFlag.prototype.toJSON = function toJSON() {
                 return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
             };
+
             /**
              * Gets the default type url for GameFlag
              * @function getTypeUrl
@@ -23176,17 +24725,22 @@ $root.NT = (function () {
                 }
                 return typeUrlPrefix + "/NT.ClientRoomFlagsUpdate.GameFlag";
             };
+
             return GameFlag;
         })();
+
         return ClientRoomFlagsUpdate;
     })();
-    NT.ServerRoomFlagsUpdated = (function () {
+
+    NT.ServerRoomFlagsUpdated = (function() {
+
         /**
          * Properties of a ServerRoomFlagsUpdated.
          * @memberof NT
          * @interface IServerRoomFlagsUpdated
          * @property {Array.<NT.ServerRoomFlagsUpdated.IGameFlag>|null} [flags] ServerRoomFlagsUpdated flags
          */
+
         /**
          * Constructs a new ServerRoomFlagsUpdated.
          * @memberof NT
@@ -23202,6 +24756,7 @@ $root.NT = (function () {
                     if (properties[keys[i]] != null)
                         this[keys[i]] = properties[keys[i]];
         }
+
         /**
          * ServerRoomFlagsUpdated flags.
          * @member {Array.<NT.ServerRoomFlagsUpdated.IGameFlag>} flags
@@ -23209,6 +24764,7 @@ $root.NT = (function () {
          * @instance
          */
         ServerRoomFlagsUpdated.prototype.flags = $util.emptyArray;
+
         /**
          * Creates a new ServerRoomFlagsUpdated instance using the specified properties.
          * @function create
@@ -23220,6 +24776,7 @@ $root.NT = (function () {
         ServerRoomFlagsUpdated.create = function create(properties) {
             return new ServerRoomFlagsUpdated(properties);
         };
+
         /**
          * Encodes the specified ServerRoomFlagsUpdated message. Does not implicitly {@link NT.ServerRoomFlagsUpdated.verify|verify} messages.
          * @function encode
@@ -23234,9 +24791,10 @@ $root.NT = (function () {
                 writer = $Writer.create();
             if (message.flags != null && message.flags.length)
                 for (var i = 0; i < message.flags.length; ++i)
-                    $root.NT.ServerRoomFlagsUpdated.GameFlag.encode(message.flags[i], writer.uint32(/* id 1, wireType 2 =*/ 10).fork()).ldelim();
+                    $root.NT.ServerRoomFlagsUpdated.GameFlag.encode(message.flags[i], writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
             return writer;
         };
+
         /**
          * Encodes the specified ServerRoomFlagsUpdated message, length delimited. Does not implicitly {@link NT.ServerRoomFlagsUpdated.verify|verify} messages.
          * @function encodeDelimited
@@ -23249,6 +24807,7 @@ $root.NT = (function () {
         ServerRoomFlagsUpdated.encodeDelimited = function encodeDelimited(message, writer) {
             return this.encode(message, writer).ldelim();
         };
+
         /**
          * Decodes a ServerRoomFlagsUpdated message from the specified reader or buffer.
          * @function decode
@@ -23267,19 +24826,20 @@ $root.NT = (function () {
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                    case 1: {
+                case 1: {
                         if (!(message.flags && message.flags.length))
                             message.flags = [];
                         message.flags.push($root.NT.ServerRoomFlagsUpdated.GameFlag.decode(reader, reader.uint32()));
                         break;
                     }
-                    default:
-                        reader.skipType(tag & 7);
-                        break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
                 }
             }
             return message;
         };
+
         /**
          * Decodes a ServerRoomFlagsUpdated message from the specified reader or buffer, length delimited.
          * @function decodeDelimited
@@ -23295,6 +24855,7 @@ $root.NT = (function () {
                 reader = new $Reader(reader);
             return this.decode(reader, reader.uint32());
         };
+
         /**
          * Verifies a ServerRoomFlagsUpdated message.
          * @function verify
@@ -23317,6 +24878,7 @@ $root.NT = (function () {
             }
             return null;
         };
+
         /**
          * Creates a ServerRoomFlagsUpdated message from a plain object. Also converts values to their respective internal types.
          * @function fromObject
@@ -23341,6 +24903,7 @@ $root.NT = (function () {
             }
             return message;
         };
+
         /**
          * Creates a plain object from a ServerRoomFlagsUpdated message. Also converts values to other types if specified.
          * @function toObject
@@ -23363,6 +24926,7 @@ $root.NT = (function () {
             }
             return object;
         };
+
         /**
          * Converts this ServerRoomFlagsUpdated to JSON.
          * @function toJSON
@@ -23373,6 +24937,7 @@ $root.NT = (function () {
         ServerRoomFlagsUpdated.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
+
         /**
          * Gets the default type url for ServerRoomFlagsUpdated
          * @function getTypeUrl
@@ -23387,7 +24952,9 @@ $root.NT = (function () {
             }
             return typeUrlPrefix + "/NT.ServerRoomFlagsUpdated";
         };
-        ServerRoomFlagsUpdated.GameFlag = (function () {
+
+        ServerRoomFlagsUpdated.GameFlag = (function() {
+
             /**
              * Properties of a GameFlag.
              * @memberof NT.ServerRoomFlagsUpdated
@@ -23399,6 +24966,7 @@ $root.NT = (function () {
              * @property {boolean|null} [boolVal] GameFlag boolVal
              * @property {number|null} [uIntVal] GameFlag uIntVal
              */
+
             /**
              * Constructs a new GameFlag.
              * @memberof NT.ServerRoomFlagsUpdated
@@ -23413,6 +24981,7 @@ $root.NT = (function () {
                         if (properties[keys[i]] != null)
                             this[keys[i]] = properties[keys[i]];
             }
+
             /**
              * GameFlag flag.
              * @member {string} flag
@@ -23420,6 +24989,7 @@ $root.NT = (function () {
              * @instance
              */
             GameFlag.prototype.flag = "";
+
             /**
              * GameFlag intVal.
              * @member {number|null|undefined} intVal
@@ -23427,6 +24997,7 @@ $root.NT = (function () {
              * @instance
              */
             GameFlag.prototype.intVal = null;
+
             /**
              * GameFlag strVal.
              * @member {string|null|undefined} strVal
@@ -23434,6 +25005,7 @@ $root.NT = (function () {
              * @instance
              */
             GameFlag.prototype.strVal = null;
+
             /**
              * GameFlag floatVal.
              * @member {number|null|undefined} floatVal
@@ -23441,6 +25013,7 @@ $root.NT = (function () {
              * @instance
              */
             GameFlag.prototype.floatVal = null;
+
             /**
              * GameFlag boolVal.
              * @member {boolean|null|undefined} boolVal
@@ -23448,6 +25021,7 @@ $root.NT = (function () {
              * @instance
              */
             GameFlag.prototype.boolVal = null;
+
             /**
              * GameFlag uIntVal.
              * @member {number|null|undefined} uIntVal
@@ -23455,8 +25029,10 @@ $root.NT = (function () {
              * @instance
              */
             GameFlag.prototype.uIntVal = null;
+
             // OneOf field names bound to virtual getters and setters
             var $oneOfFields;
+
             /**
              * GameFlag _intVal.
              * @member {"intVal"|undefined} _intVal
@@ -23467,6 +25043,7 @@ $root.NT = (function () {
                 get: $util.oneOfGetter($oneOfFields = ["intVal"]),
                 set: $util.oneOfSetter($oneOfFields)
             });
+
             /**
              * GameFlag _strVal.
              * @member {"strVal"|undefined} _strVal
@@ -23477,6 +25054,7 @@ $root.NT = (function () {
                 get: $util.oneOfGetter($oneOfFields = ["strVal"]),
                 set: $util.oneOfSetter($oneOfFields)
             });
+
             /**
              * GameFlag _floatVal.
              * @member {"floatVal"|undefined} _floatVal
@@ -23487,6 +25065,7 @@ $root.NT = (function () {
                 get: $util.oneOfGetter($oneOfFields = ["floatVal"]),
                 set: $util.oneOfSetter($oneOfFields)
             });
+
             /**
              * GameFlag _boolVal.
              * @member {"boolVal"|undefined} _boolVal
@@ -23497,6 +25076,7 @@ $root.NT = (function () {
                 get: $util.oneOfGetter($oneOfFields = ["boolVal"]),
                 set: $util.oneOfSetter($oneOfFields)
             });
+
             /**
              * GameFlag _uIntVal.
              * @member {"uIntVal"|undefined} _uIntVal
@@ -23507,6 +25087,7 @@ $root.NT = (function () {
                 get: $util.oneOfGetter($oneOfFields = ["uIntVal"]),
                 set: $util.oneOfSetter($oneOfFields)
             });
+
             /**
              * Creates a new GameFlag instance using the specified properties.
              * @function create
@@ -23518,6 +25099,7 @@ $root.NT = (function () {
             GameFlag.create = function create(properties) {
                 return new GameFlag(properties);
             };
+
             /**
              * Encodes the specified GameFlag message. Does not implicitly {@link NT.ServerRoomFlagsUpdated.GameFlag.verify|verify} messages.
              * @function encode
@@ -23531,19 +25113,20 @@ $root.NT = (function () {
                 if (!writer)
                     writer = $Writer.create();
                 if (message.flag != null && Object.hasOwnProperty.call(message, "flag"))
-                    writer.uint32(/* id 1, wireType 2 =*/ 10).string(message.flag);
+                    writer.uint32(/* id 1, wireType 2 =*/10).string(message.flag);
                 if (message.intVal != null && Object.hasOwnProperty.call(message, "intVal"))
-                    writer.uint32(/* id 2, wireType 0 =*/ 16).int32(message.intVal);
+                    writer.uint32(/* id 2, wireType 0 =*/16).int32(message.intVal);
                 if (message.strVal != null && Object.hasOwnProperty.call(message, "strVal"))
-                    writer.uint32(/* id 3, wireType 2 =*/ 26).string(message.strVal);
+                    writer.uint32(/* id 3, wireType 2 =*/26).string(message.strVal);
                 if (message.floatVal != null && Object.hasOwnProperty.call(message, "floatVal"))
-                    writer.uint32(/* id 4, wireType 5 =*/ 37).float(message.floatVal);
+                    writer.uint32(/* id 4, wireType 5 =*/37).float(message.floatVal);
                 if (message.boolVal != null && Object.hasOwnProperty.call(message, "boolVal"))
-                    writer.uint32(/* id 5, wireType 0 =*/ 40).bool(message.boolVal);
+                    writer.uint32(/* id 5, wireType 0 =*/40).bool(message.boolVal);
                 if (message.uIntVal != null && Object.hasOwnProperty.call(message, "uIntVal"))
-                    writer.uint32(/* id 6, wireType 0 =*/ 48).uint32(message.uIntVal);
+                    writer.uint32(/* id 6, wireType 0 =*/48).uint32(message.uIntVal);
                 return writer;
             };
+
             /**
              * Encodes the specified GameFlag message, length delimited. Does not implicitly {@link NT.ServerRoomFlagsUpdated.GameFlag.verify|verify} messages.
              * @function encodeDelimited
@@ -23556,6 +25139,7 @@ $root.NT = (function () {
             GameFlag.encodeDelimited = function encodeDelimited(message, writer) {
                 return this.encode(message, writer).ldelim();
             };
+
             /**
              * Decodes a GameFlag message from the specified reader or buffer.
              * @function decode
@@ -23574,37 +25158,38 @@ $root.NT = (function () {
                 while (reader.pos < end) {
                     var tag = reader.uint32();
                     switch (tag >>> 3) {
-                        case 1: {
+                    case 1: {
                             message.flag = reader.string();
                             break;
                         }
-                        case 2: {
+                    case 2: {
                             message.intVal = reader.int32();
                             break;
                         }
-                        case 3: {
+                    case 3: {
                             message.strVal = reader.string();
                             break;
                         }
-                        case 4: {
+                    case 4: {
                             message.floatVal = reader.float();
                             break;
                         }
-                        case 5: {
+                    case 5: {
                             message.boolVal = reader.bool();
                             break;
                         }
-                        case 6: {
+                    case 6: {
                             message.uIntVal = reader.uint32();
                             break;
                         }
-                        default:
-                            reader.skipType(tag & 7);
-                            break;
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
                     }
                 }
                 return message;
             };
+
             /**
              * Decodes a GameFlag message from the specified reader or buffer, length delimited.
              * @function decodeDelimited
@@ -23620,6 +25205,7 @@ $root.NT = (function () {
                     reader = new $Reader(reader);
                 return this.decode(reader, reader.uint32());
             };
+
             /**
              * Verifies a GameFlag message.
              * @function verify
@@ -23662,6 +25248,7 @@ $root.NT = (function () {
                 }
                 return null;
             };
+
             /**
              * Creates a GameFlag message from a plain object. Also converts values to their respective internal types.
              * @function fromObject
@@ -23688,6 +25275,7 @@ $root.NT = (function () {
                     message.uIntVal = object.uIntVal >>> 0;
                 return message;
             };
+
             /**
              * Creates a plain object from a GameFlag message. Also converts values to other types if specified.
              * @function toObject
@@ -23732,6 +25320,7 @@ $root.NT = (function () {
                 }
                 return object;
             };
+
             /**
              * Converts this GameFlag to JSON.
              * @function toJSON
@@ -23742,6 +25331,7 @@ $root.NT = (function () {
             GameFlag.prototype.toJSON = function toJSON() {
                 return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
             };
+
             /**
              * Gets the default type url for GameFlag
              * @function getTypeUrl
@@ -23756,17 +25346,22 @@ $root.NT = (function () {
                 }
                 return typeUrlPrefix + "/NT.ServerRoomFlagsUpdated.GameFlag";
             };
+
             return GameFlag;
         })();
+
         return ServerRoomFlagsUpdated;
     })();
-    NT.ServerRoomFlagsUpdateFailed = (function () {
+
+    NT.ServerRoomFlagsUpdateFailed = (function() {
+
         /**
          * Properties of a ServerRoomFlagsUpdateFailed.
          * @memberof NT
          * @interface IServerRoomFlagsUpdateFailed
          * @property {string|null} [reason] ServerRoomFlagsUpdateFailed reason
          */
+
         /**
          * Constructs a new ServerRoomFlagsUpdateFailed.
          * @memberof NT
@@ -23781,6 +25376,7 @@ $root.NT = (function () {
                     if (properties[keys[i]] != null)
                         this[keys[i]] = properties[keys[i]];
         }
+
         /**
          * ServerRoomFlagsUpdateFailed reason.
          * @member {string} reason
@@ -23788,6 +25384,7 @@ $root.NT = (function () {
          * @instance
          */
         ServerRoomFlagsUpdateFailed.prototype.reason = "";
+
         /**
          * Creates a new ServerRoomFlagsUpdateFailed instance using the specified properties.
          * @function create
@@ -23799,6 +25396,7 @@ $root.NT = (function () {
         ServerRoomFlagsUpdateFailed.create = function create(properties) {
             return new ServerRoomFlagsUpdateFailed(properties);
         };
+
         /**
          * Encodes the specified ServerRoomFlagsUpdateFailed message. Does not implicitly {@link NT.ServerRoomFlagsUpdateFailed.verify|verify} messages.
          * @function encode
@@ -23812,9 +25410,10 @@ $root.NT = (function () {
             if (!writer)
                 writer = $Writer.create();
             if (message.reason != null && Object.hasOwnProperty.call(message, "reason"))
-                writer.uint32(/* id 1, wireType 2 =*/ 10).string(message.reason);
+                writer.uint32(/* id 1, wireType 2 =*/10).string(message.reason);
             return writer;
         };
+
         /**
          * Encodes the specified ServerRoomFlagsUpdateFailed message, length delimited. Does not implicitly {@link NT.ServerRoomFlagsUpdateFailed.verify|verify} messages.
          * @function encodeDelimited
@@ -23827,6 +25426,7 @@ $root.NT = (function () {
         ServerRoomFlagsUpdateFailed.encodeDelimited = function encodeDelimited(message, writer) {
             return this.encode(message, writer).ldelim();
         };
+
         /**
          * Decodes a ServerRoomFlagsUpdateFailed message from the specified reader or buffer.
          * @function decode
@@ -23845,17 +25445,18 @@ $root.NT = (function () {
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                    case 1: {
+                case 1: {
                         message.reason = reader.string();
                         break;
                     }
-                    default:
-                        reader.skipType(tag & 7);
-                        break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
                 }
             }
             return message;
         };
+
         /**
          * Decodes a ServerRoomFlagsUpdateFailed message from the specified reader or buffer, length delimited.
          * @function decodeDelimited
@@ -23871,6 +25472,7 @@ $root.NT = (function () {
                 reader = new $Reader(reader);
             return this.decode(reader, reader.uint32());
         };
+
         /**
          * Verifies a ServerRoomFlagsUpdateFailed message.
          * @function verify
@@ -23887,6 +25489,7 @@ $root.NT = (function () {
                     return "reason: string expected";
             return null;
         };
+
         /**
          * Creates a ServerRoomFlagsUpdateFailed message from a plain object. Also converts values to their respective internal types.
          * @function fromObject
@@ -23903,6 +25506,7 @@ $root.NT = (function () {
                 message.reason = String(object.reason);
             return message;
         };
+
         /**
          * Creates a plain object from a ServerRoomFlagsUpdateFailed message. Also converts values to other types if specified.
          * @function toObject
@@ -23922,6 +25526,7 @@ $root.NT = (function () {
                 object.reason = message.reason;
             return object;
         };
+
         /**
          * Converts this ServerRoomFlagsUpdateFailed to JSON.
          * @function toJSON
@@ -23932,6 +25537,7 @@ $root.NT = (function () {
         ServerRoomFlagsUpdateFailed.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
+
         /**
          * Gets the default type url for ServerRoomFlagsUpdateFailed
          * @function getTypeUrl
@@ -23946,9 +25552,12 @@ $root.NT = (function () {
             }
             return typeUrlPrefix + "/NT.ServerRoomFlagsUpdateFailed";
         };
+
         return ServerRoomFlagsUpdateFailed;
     })();
-    NT.ClientJoinRoom = (function () {
+
+    NT.ClientJoinRoom = (function() {
+
         /**
          * Properties of a ClientJoinRoom.
          * @memberof NT
@@ -23956,6 +25565,7 @@ $root.NT = (function () {
          * @property {string|null} [id] ClientJoinRoom id
          * @property {string|null} [password] ClientJoinRoom password
          */
+
         /**
          * Constructs a new ClientJoinRoom.
          * @memberof NT
@@ -23970,6 +25580,7 @@ $root.NT = (function () {
                     if (properties[keys[i]] != null)
                         this[keys[i]] = properties[keys[i]];
         }
+
         /**
          * ClientJoinRoom id.
          * @member {string} id
@@ -23977,6 +25588,7 @@ $root.NT = (function () {
          * @instance
          */
         ClientJoinRoom.prototype.id = "";
+
         /**
          * ClientJoinRoom password.
          * @member {string|null|undefined} password
@@ -23984,8 +25596,10 @@ $root.NT = (function () {
          * @instance
          */
         ClientJoinRoom.prototype.password = null;
+
         // OneOf field names bound to virtual getters and setters
         var $oneOfFields;
+
         /**
          * ClientJoinRoom _password.
          * @member {"password"|undefined} _password
@@ -23996,6 +25610,7 @@ $root.NT = (function () {
             get: $util.oneOfGetter($oneOfFields = ["password"]),
             set: $util.oneOfSetter($oneOfFields)
         });
+
         /**
          * Creates a new ClientJoinRoom instance using the specified properties.
          * @function create
@@ -24007,6 +25622,7 @@ $root.NT = (function () {
         ClientJoinRoom.create = function create(properties) {
             return new ClientJoinRoom(properties);
         };
+
         /**
          * Encodes the specified ClientJoinRoom message. Does not implicitly {@link NT.ClientJoinRoom.verify|verify} messages.
          * @function encode
@@ -24020,11 +25636,12 @@ $root.NT = (function () {
             if (!writer)
                 writer = $Writer.create();
             if (message.id != null && Object.hasOwnProperty.call(message, "id"))
-                writer.uint32(/* id 1, wireType 2 =*/ 10).string(message.id);
+                writer.uint32(/* id 1, wireType 2 =*/10).string(message.id);
             if (message.password != null && Object.hasOwnProperty.call(message, "password"))
-                writer.uint32(/* id 2, wireType 2 =*/ 18).string(message.password);
+                writer.uint32(/* id 2, wireType 2 =*/18).string(message.password);
             return writer;
         };
+
         /**
          * Encodes the specified ClientJoinRoom message, length delimited. Does not implicitly {@link NT.ClientJoinRoom.verify|verify} messages.
          * @function encodeDelimited
@@ -24037,6 +25654,7 @@ $root.NT = (function () {
         ClientJoinRoom.encodeDelimited = function encodeDelimited(message, writer) {
             return this.encode(message, writer).ldelim();
         };
+
         /**
          * Decodes a ClientJoinRoom message from the specified reader or buffer.
          * @function decode
@@ -24055,21 +25673,22 @@ $root.NT = (function () {
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                    case 1: {
+                case 1: {
                         message.id = reader.string();
                         break;
                     }
-                    case 2: {
+                case 2: {
                         message.password = reader.string();
                         break;
                     }
-                    default:
-                        reader.skipType(tag & 7);
-                        break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
                 }
             }
             return message;
         };
+
         /**
          * Decodes a ClientJoinRoom message from the specified reader or buffer, length delimited.
          * @function decodeDelimited
@@ -24085,6 +25704,7 @@ $root.NT = (function () {
                 reader = new $Reader(reader);
             return this.decode(reader, reader.uint32());
         };
+
         /**
          * Verifies a ClientJoinRoom message.
          * @function verify
@@ -24107,6 +25727,7 @@ $root.NT = (function () {
             }
             return null;
         };
+
         /**
          * Creates a ClientJoinRoom message from a plain object. Also converts values to their respective internal types.
          * @function fromObject
@@ -24125,6 +25746,7 @@ $root.NT = (function () {
                 message.password = String(object.password);
             return message;
         };
+
         /**
          * Creates a plain object from a ClientJoinRoom message. Also converts values to other types if specified.
          * @function toObject
@@ -24149,6 +25771,7 @@ $root.NT = (function () {
             }
             return object;
         };
+
         /**
          * Converts this ClientJoinRoom to JSON.
          * @function toJSON
@@ -24159,6 +25782,7 @@ $root.NT = (function () {
         ClientJoinRoom.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
+
         /**
          * Gets the default type url for ClientJoinRoom
          * @function getTypeUrl
@@ -24173,9 +25797,12 @@ $root.NT = (function () {
             }
             return typeUrlPrefix + "/NT.ClientJoinRoom";
         };
+
         return ClientJoinRoom;
     })();
-    NT.ServerJoinRoomSuccess = (function () {
+
+    NT.ServerJoinRoomSuccess = (function() {
+
         /**
          * Properties of a ServerJoinRoomSuccess.
          * @memberof NT
@@ -24188,6 +25815,7 @@ $root.NT = (function () {
          * @property {boolean|null} [locked] ServerJoinRoomSuccess locked
          * @property {Array.<NT.ServerJoinRoomSuccess.IUser>|null} [users] ServerJoinRoomSuccess users
          */
+
         /**
          * Constructs a new ServerJoinRoomSuccess.
          * @memberof NT
@@ -24203,6 +25831,7 @@ $root.NT = (function () {
                     if (properties[keys[i]] != null)
                         this[keys[i]] = properties[keys[i]];
         }
+
         /**
          * ServerJoinRoomSuccess id.
          * @member {string} id
@@ -24210,6 +25839,7 @@ $root.NT = (function () {
          * @instance
          */
         ServerJoinRoomSuccess.prototype.id = "";
+
         /**
          * ServerJoinRoomSuccess name.
          * @member {string} name
@@ -24217,6 +25847,7 @@ $root.NT = (function () {
          * @instance
          */
         ServerJoinRoomSuccess.prototype.name = "";
+
         /**
          * ServerJoinRoomSuccess gamemode.
          * @member {number} gamemode
@@ -24224,6 +25855,7 @@ $root.NT = (function () {
          * @instance
          */
         ServerJoinRoomSuccess.prototype.gamemode = 0;
+
         /**
          * ServerJoinRoomSuccess maxUsers.
          * @member {number} maxUsers
@@ -24231,6 +25863,7 @@ $root.NT = (function () {
          * @instance
          */
         ServerJoinRoomSuccess.prototype.maxUsers = 0;
+
         /**
          * ServerJoinRoomSuccess password.
          * @member {string|null|undefined} password
@@ -24238,6 +25871,7 @@ $root.NT = (function () {
          * @instance
          */
         ServerJoinRoomSuccess.prototype.password = null;
+
         /**
          * ServerJoinRoomSuccess locked.
          * @member {boolean} locked
@@ -24245,6 +25879,7 @@ $root.NT = (function () {
          * @instance
          */
         ServerJoinRoomSuccess.prototype.locked = false;
+
         /**
          * ServerJoinRoomSuccess users.
          * @member {Array.<NT.ServerJoinRoomSuccess.IUser>} users
@@ -24252,8 +25887,10 @@ $root.NT = (function () {
          * @instance
          */
         ServerJoinRoomSuccess.prototype.users = $util.emptyArray;
+
         // OneOf field names bound to virtual getters and setters
         var $oneOfFields;
+
         /**
          * ServerJoinRoomSuccess _password.
          * @member {"password"|undefined} _password
@@ -24264,6 +25901,7 @@ $root.NT = (function () {
             get: $util.oneOfGetter($oneOfFields = ["password"]),
             set: $util.oneOfSetter($oneOfFields)
         });
+
         /**
          * Creates a new ServerJoinRoomSuccess instance using the specified properties.
          * @function create
@@ -24275,6 +25913,7 @@ $root.NT = (function () {
         ServerJoinRoomSuccess.create = function create(properties) {
             return new ServerJoinRoomSuccess(properties);
         };
+
         /**
          * Encodes the specified ServerJoinRoomSuccess message. Does not implicitly {@link NT.ServerJoinRoomSuccess.verify|verify} messages.
          * @function encode
@@ -24288,22 +25927,23 @@ $root.NT = (function () {
             if (!writer)
                 writer = $Writer.create();
             if (message.id != null && Object.hasOwnProperty.call(message, "id"))
-                writer.uint32(/* id 1, wireType 2 =*/ 10).string(message.id);
+                writer.uint32(/* id 1, wireType 2 =*/10).string(message.id);
             if (message.name != null && Object.hasOwnProperty.call(message, "name"))
-                writer.uint32(/* id 2, wireType 2 =*/ 18).string(message.name);
+                writer.uint32(/* id 2, wireType 2 =*/18).string(message.name);
             if (message.gamemode != null && Object.hasOwnProperty.call(message, "gamemode"))
-                writer.uint32(/* id 3, wireType 0 =*/ 24).uint32(message.gamemode);
+                writer.uint32(/* id 3, wireType 0 =*/24).uint32(message.gamemode);
             if (message.maxUsers != null && Object.hasOwnProperty.call(message, "maxUsers"))
-                writer.uint32(/* id 4, wireType 0 =*/ 32).uint32(message.maxUsers);
+                writer.uint32(/* id 4, wireType 0 =*/32).uint32(message.maxUsers);
             if (message.password != null && Object.hasOwnProperty.call(message, "password"))
-                writer.uint32(/* id 5, wireType 2 =*/ 42).string(message.password);
+                writer.uint32(/* id 5, wireType 2 =*/42).string(message.password);
             if (message.locked != null && Object.hasOwnProperty.call(message, "locked"))
-                writer.uint32(/* id 6, wireType 0 =*/ 48).bool(message.locked);
+                writer.uint32(/* id 6, wireType 0 =*/48).bool(message.locked);
             if (message.users != null && message.users.length)
                 for (var i = 0; i < message.users.length; ++i)
-                    $root.NT.ServerJoinRoomSuccess.User.encode(message.users[i], writer.uint32(/* id 7, wireType 2 =*/ 58).fork()).ldelim();
+                    $root.NT.ServerJoinRoomSuccess.User.encode(message.users[i], writer.uint32(/* id 7, wireType 2 =*/58).fork()).ldelim();
             return writer;
         };
+
         /**
          * Encodes the specified ServerJoinRoomSuccess message, length delimited. Does not implicitly {@link NT.ServerJoinRoomSuccess.verify|verify} messages.
          * @function encodeDelimited
@@ -24316,6 +25956,7 @@ $root.NT = (function () {
         ServerJoinRoomSuccess.encodeDelimited = function encodeDelimited(message, writer) {
             return this.encode(message, writer).ldelim();
         };
+
         /**
          * Decodes a ServerJoinRoomSuccess message from the specified reader or buffer.
          * @function decode
@@ -24334,43 +25975,44 @@ $root.NT = (function () {
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                    case 1: {
+                case 1: {
                         message.id = reader.string();
                         break;
                     }
-                    case 2: {
+                case 2: {
                         message.name = reader.string();
                         break;
                     }
-                    case 3: {
+                case 3: {
                         message.gamemode = reader.uint32();
                         break;
                     }
-                    case 4: {
+                case 4: {
                         message.maxUsers = reader.uint32();
                         break;
                     }
-                    case 5: {
+                case 5: {
                         message.password = reader.string();
                         break;
                     }
-                    case 6: {
+                case 6: {
                         message.locked = reader.bool();
                         break;
                     }
-                    case 7: {
+                case 7: {
                         if (!(message.users && message.users.length))
                             message.users = [];
                         message.users.push($root.NT.ServerJoinRoomSuccess.User.decode(reader, reader.uint32()));
                         break;
                     }
-                    default:
-                        reader.skipType(tag & 7);
-                        break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
                 }
             }
             return message;
         };
+
         /**
          * Decodes a ServerJoinRoomSuccess message from the specified reader or buffer, length delimited.
          * @function decodeDelimited
@@ -24386,6 +26028,7 @@ $root.NT = (function () {
                 reader = new $Reader(reader);
             return this.decode(reader, reader.uint32());
         };
+
         /**
          * Verifies a ServerJoinRoomSuccess message.
          * @function verify
@@ -24429,6 +26072,7 @@ $root.NT = (function () {
             }
             return null;
         };
+
         /**
          * Creates a ServerJoinRoomSuccess message from a plain object. Also converts values to their respective internal types.
          * @function fromObject
@@ -24465,6 +26109,7 @@ $root.NT = (function () {
             }
             return message;
         };
+
         /**
          * Creates a plain object from a ServerJoinRoomSuccess message. Also converts values to other types if specified.
          * @function toObject
@@ -24509,6 +26154,7 @@ $root.NT = (function () {
             }
             return object;
         };
+
         /**
          * Converts this ServerJoinRoomSuccess to JSON.
          * @function toJSON
@@ -24519,6 +26165,7 @@ $root.NT = (function () {
         ServerJoinRoomSuccess.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
+
         /**
          * Gets the default type url for ServerJoinRoomSuccess
          * @function getTypeUrl
@@ -24533,7 +26180,9 @@ $root.NT = (function () {
             }
             return typeUrlPrefix + "/NT.ServerJoinRoomSuccess";
         };
-        ServerJoinRoomSuccess.User = (function () {
+
+        ServerJoinRoomSuccess.User = (function() {
+
             /**
              * Properties of a User.
              * @memberof NT.ServerJoinRoomSuccess
@@ -24543,6 +26192,7 @@ $root.NT = (function () {
              * @property {boolean|null} [ready] User ready
              * @property {boolean|null} [owner] User owner
              */
+
             /**
              * Constructs a new User.
              * @memberof NT.ServerJoinRoomSuccess
@@ -24557,6 +26207,7 @@ $root.NT = (function () {
                         if (properties[keys[i]] != null)
                             this[keys[i]] = properties[keys[i]];
             }
+
             /**
              * User userId.
              * @member {string} userId
@@ -24564,6 +26215,7 @@ $root.NT = (function () {
              * @instance
              */
             User.prototype.userId = "";
+
             /**
              * User name.
              * @member {string} name
@@ -24571,6 +26223,7 @@ $root.NT = (function () {
              * @instance
              */
             User.prototype.name = "";
+
             /**
              * User ready.
              * @member {boolean} ready
@@ -24578,6 +26231,7 @@ $root.NT = (function () {
              * @instance
              */
             User.prototype.ready = false;
+
             /**
              * User owner.
              * @member {boolean} owner
@@ -24585,6 +26239,7 @@ $root.NT = (function () {
              * @instance
              */
             User.prototype.owner = false;
+
             /**
              * Creates a new User instance using the specified properties.
              * @function create
@@ -24596,6 +26251,7 @@ $root.NT = (function () {
             User.create = function create(properties) {
                 return new User(properties);
             };
+
             /**
              * Encodes the specified User message. Does not implicitly {@link NT.ServerJoinRoomSuccess.User.verify|verify} messages.
              * @function encode
@@ -24609,15 +26265,16 @@ $root.NT = (function () {
                 if (!writer)
                     writer = $Writer.create();
                 if (message.userId != null && Object.hasOwnProperty.call(message, "userId"))
-                    writer.uint32(/* id 1, wireType 2 =*/ 10).string(message.userId);
+                    writer.uint32(/* id 1, wireType 2 =*/10).string(message.userId);
                 if (message.name != null && Object.hasOwnProperty.call(message, "name"))
-                    writer.uint32(/* id 2, wireType 2 =*/ 18).string(message.name);
+                    writer.uint32(/* id 2, wireType 2 =*/18).string(message.name);
                 if (message.ready != null && Object.hasOwnProperty.call(message, "ready"))
-                    writer.uint32(/* id 3, wireType 0 =*/ 24).bool(message.ready);
+                    writer.uint32(/* id 3, wireType 0 =*/24).bool(message.ready);
                 if (message.owner != null && Object.hasOwnProperty.call(message, "owner"))
-                    writer.uint32(/* id 4, wireType 0 =*/ 32).bool(message.owner);
+                    writer.uint32(/* id 4, wireType 0 =*/32).bool(message.owner);
                 return writer;
             };
+
             /**
              * Encodes the specified User message, length delimited. Does not implicitly {@link NT.ServerJoinRoomSuccess.User.verify|verify} messages.
              * @function encodeDelimited
@@ -24630,6 +26287,7 @@ $root.NT = (function () {
             User.encodeDelimited = function encodeDelimited(message, writer) {
                 return this.encode(message, writer).ldelim();
             };
+
             /**
              * Decodes a User message from the specified reader or buffer.
              * @function decode
@@ -24648,29 +26306,30 @@ $root.NT = (function () {
                 while (reader.pos < end) {
                     var tag = reader.uint32();
                     switch (tag >>> 3) {
-                        case 1: {
+                    case 1: {
                             message.userId = reader.string();
                             break;
                         }
-                        case 2: {
+                    case 2: {
                             message.name = reader.string();
                             break;
                         }
-                        case 3: {
+                    case 3: {
                             message.ready = reader.bool();
                             break;
                         }
-                        case 4: {
+                    case 4: {
                             message.owner = reader.bool();
                             break;
                         }
-                        default:
-                            reader.skipType(tag & 7);
-                            break;
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
                     }
                 }
                 return message;
             };
+
             /**
              * Decodes a User message from the specified reader or buffer, length delimited.
              * @function decodeDelimited
@@ -24686,6 +26345,7 @@ $root.NT = (function () {
                     reader = new $Reader(reader);
                 return this.decode(reader, reader.uint32());
             };
+
             /**
              * Verifies a User message.
              * @function verify
@@ -24711,6 +26371,7 @@ $root.NT = (function () {
                         return "owner: boolean expected";
                 return null;
             };
+
             /**
              * Creates a User message from a plain object. Also converts values to their respective internal types.
              * @function fromObject
@@ -24733,6 +26394,7 @@ $root.NT = (function () {
                     message.owner = Boolean(object.owner);
                 return message;
             };
+
             /**
              * Creates a plain object from a User message. Also converts values to other types if specified.
              * @function toObject
@@ -24762,6 +26424,7 @@ $root.NT = (function () {
                     object.owner = message.owner;
                 return object;
             };
+
             /**
              * Converts this User to JSON.
              * @function toJSON
@@ -24772,6 +26435,7 @@ $root.NT = (function () {
             User.prototype.toJSON = function toJSON() {
                 return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
             };
+
             /**
              * Gets the default type url for User
              * @function getTypeUrl
@@ -24786,17 +26450,22 @@ $root.NT = (function () {
                 }
                 return typeUrlPrefix + "/NT.ServerJoinRoomSuccess.User";
             };
+
             return User;
         })();
+
         return ServerJoinRoomSuccess;
     })();
-    NT.ServerJoinRoomFailed = (function () {
+
+    NT.ServerJoinRoomFailed = (function() {
+
         /**
          * Properties of a ServerJoinRoomFailed.
          * @memberof NT
          * @interface IServerJoinRoomFailed
          * @property {string|null} [reason] ServerJoinRoomFailed reason
          */
+
         /**
          * Constructs a new ServerJoinRoomFailed.
          * @memberof NT
@@ -24811,6 +26480,7 @@ $root.NT = (function () {
                     if (properties[keys[i]] != null)
                         this[keys[i]] = properties[keys[i]];
         }
+
         /**
          * ServerJoinRoomFailed reason.
          * @member {string} reason
@@ -24818,6 +26488,7 @@ $root.NT = (function () {
          * @instance
          */
         ServerJoinRoomFailed.prototype.reason = "";
+
         /**
          * Creates a new ServerJoinRoomFailed instance using the specified properties.
          * @function create
@@ -24829,6 +26500,7 @@ $root.NT = (function () {
         ServerJoinRoomFailed.create = function create(properties) {
             return new ServerJoinRoomFailed(properties);
         };
+
         /**
          * Encodes the specified ServerJoinRoomFailed message. Does not implicitly {@link NT.ServerJoinRoomFailed.verify|verify} messages.
          * @function encode
@@ -24842,9 +26514,10 @@ $root.NT = (function () {
             if (!writer)
                 writer = $Writer.create();
             if (message.reason != null && Object.hasOwnProperty.call(message, "reason"))
-                writer.uint32(/* id 1, wireType 2 =*/ 10).string(message.reason);
+                writer.uint32(/* id 1, wireType 2 =*/10).string(message.reason);
             return writer;
         };
+
         /**
          * Encodes the specified ServerJoinRoomFailed message, length delimited. Does not implicitly {@link NT.ServerJoinRoomFailed.verify|verify} messages.
          * @function encodeDelimited
@@ -24857,6 +26530,7 @@ $root.NT = (function () {
         ServerJoinRoomFailed.encodeDelimited = function encodeDelimited(message, writer) {
             return this.encode(message, writer).ldelim();
         };
+
         /**
          * Decodes a ServerJoinRoomFailed message from the specified reader or buffer.
          * @function decode
@@ -24875,17 +26549,18 @@ $root.NT = (function () {
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                    case 1: {
+                case 1: {
                         message.reason = reader.string();
                         break;
                     }
-                    default:
-                        reader.skipType(tag & 7);
-                        break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
                 }
             }
             return message;
         };
+
         /**
          * Decodes a ServerJoinRoomFailed message from the specified reader or buffer, length delimited.
          * @function decodeDelimited
@@ -24901,6 +26576,7 @@ $root.NT = (function () {
                 reader = new $Reader(reader);
             return this.decode(reader, reader.uint32());
         };
+
         /**
          * Verifies a ServerJoinRoomFailed message.
          * @function verify
@@ -24917,6 +26593,7 @@ $root.NT = (function () {
                     return "reason: string expected";
             return null;
         };
+
         /**
          * Creates a ServerJoinRoomFailed message from a plain object. Also converts values to their respective internal types.
          * @function fromObject
@@ -24933,6 +26610,7 @@ $root.NT = (function () {
                 message.reason = String(object.reason);
             return message;
         };
+
         /**
          * Creates a plain object from a ServerJoinRoomFailed message. Also converts values to other types if specified.
          * @function toObject
@@ -24952,6 +26630,7 @@ $root.NT = (function () {
                 object.reason = message.reason;
             return object;
         };
+
         /**
          * Converts this ServerJoinRoomFailed to JSON.
          * @function toJSON
@@ -24962,6 +26641,7 @@ $root.NT = (function () {
         ServerJoinRoomFailed.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
+
         /**
          * Gets the default type url for ServerJoinRoomFailed
          * @function getTypeUrl
@@ -24976,9 +26656,12 @@ $root.NT = (function () {
             }
             return typeUrlPrefix + "/NT.ServerJoinRoomFailed";
         };
+
         return ServerJoinRoomFailed;
     })();
-    NT.ServerUserJoinedRoom = (function () {
+
+    NT.ServerUserJoinedRoom = (function() {
+
         /**
          * Properties of a ServerUserJoinedRoom.
          * @memberof NT
@@ -24986,6 +26669,7 @@ $root.NT = (function () {
          * @property {string|null} [userId] ServerUserJoinedRoom userId
          * @property {string|null} [name] ServerUserJoinedRoom name
          */
+
         /**
          * Constructs a new ServerUserJoinedRoom.
          * @memberof NT
@@ -25000,6 +26684,7 @@ $root.NT = (function () {
                     if (properties[keys[i]] != null)
                         this[keys[i]] = properties[keys[i]];
         }
+
         /**
          * ServerUserJoinedRoom userId.
          * @member {string} userId
@@ -25007,6 +26692,7 @@ $root.NT = (function () {
          * @instance
          */
         ServerUserJoinedRoom.prototype.userId = "";
+
         /**
          * ServerUserJoinedRoom name.
          * @member {string} name
@@ -25014,6 +26700,7 @@ $root.NT = (function () {
          * @instance
          */
         ServerUserJoinedRoom.prototype.name = "";
+
         /**
          * Creates a new ServerUserJoinedRoom instance using the specified properties.
          * @function create
@@ -25025,6 +26712,7 @@ $root.NT = (function () {
         ServerUserJoinedRoom.create = function create(properties) {
             return new ServerUserJoinedRoom(properties);
         };
+
         /**
          * Encodes the specified ServerUserJoinedRoom message. Does not implicitly {@link NT.ServerUserJoinedRoom.verify|verify} messages.
          * @function encode
@@ -25038,11 +26726,12 @@ $root.NT = (function () {
             if (!writer)
                 writer = $Writer.create();
             if (message.userId != null && Object.hasOwnProperty.call(message, "userId"))
-                writer.uint32(/* id 1, wireType 2 =*/ 10).string(message.userId);
+                writer.uint32(/* id 1, wireType 2 =*/10).string(message.userId);
             if (message.name != null && Object.hasOwnProperty.call(message, "name"))
-                writer.uint32(/* id 2, wireType 2 =*/ 18).string(message.name);
+                writer.uint32(/* id 2, wireType 2 =*/18).string(message.name);
             return writer;
         };
+
         /**
          * Encodes the specified ServerUserJoinedRoom message, length delimited. Does not implicitly {@link NT.ServerUserJoinedRoom.verify|verify} messages.
          * @function encodeDelimited
@@ -25055,6 +26744,7 @@ $root.NT = (function () {
         ServerUserJoinedRoom.encodeDelimited = function encodeDelimited(message, writer) {
             return this.encode(message, writer).ldelim();
         };
+
         /**
          * Decodes a ServerUserJoinedRoom message from the specified reader or buffer.
          * @function decode
@@ -25073,21 +26763,22 @@ $root.NT = (function () {
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                    case 1: {
+                case 1: {
                         message.userId = reader.string();
                         break;
                     }
-                    case 2: {
+                case 2: {
                         message.name = reader.string();
                         break;
                     }
-                    default:
-                        reader.skipType(tag & 7);
-                        break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
                 }
             }
             return message;
         };
+
         /**
          * Decodes a ServerUserJoinedRoom message from the specified reader or buffer, length delimited.
          * @function decodeDelimited
@@ -25103,6 +26794,7 @@ $root.NT = (function () {
                 reader = new $Reader(reader);
             return this.decode(reader, reader.uint32());
         };
+
         /**
          * Verifies a ServerUserJoinedRoom message.
          * @function verify
@@ -25122,6 +26814,7 @@ $root.NT = (function () {
                     return "name: string expected";
             return null;
         };
+
         /**
          * Creates a ServerUserJoinedRoom message from a plain object. Also converts values to their respective internal types.
          * @function fromObject
@@ -25140,6 +26833,7 @@ $root.NT = (function () {
                 message.name = String(object.name);
             return message;
         };
+
         /**
          * Creates a plain object from a ServerUserJoinedRoom message. Also converts values to other types if specified.
          * @function toObject
@@ -25163,6 +26857,7 @@ $root.NT = (function () {
                 object.name = message.name;
             return object;
         };
+
         /**
          * Converts this ServerUserJoinedRoom to JSON.
          * @function toJSON
@@ -25173,6 +26868,7 @@ $root.NT = (function () {
         ServerUserJoinedRoom.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
+
         /**
          * Gets the default type url for ServerUserJoinedRoom
          * @function getTypeUrl
@@ -25187,15 +26883,19 @@ $root.NT = (function () {
             }
             return typeUrlPrefix + "/NT.ServerUserJoinedRoom";
         };
+
         return ServerUserJoinedRoom;
     })();
-    NT.ClientLeaveRoom = (function () {
+
+    NT.ClientLeaveRoom = (function() {
+
         /**
          * Properties of a ClientLeaveRoom.
          * @memberof NT
          * @interface IClientLeaveRoom
          * @property {string|null} [userId] ClientLeaveRoom userId
          */
+
         /**
          * Constructs a new ClientLeaveRoom.
          * @memberof NT
@@ -25210,6 +26910,7 @@ $root.NT = (function () {
                     if (properties[keys[i]] != null)
                         this[keys[i]] = properties[keys[i]];
         }
+
         /**
          * ClientLeaveRoom userId.
          * @member {string} userId
@@ -25217,6 +26918,7 @@ $root.NT = (function () {
          * @instance
          */
         ClientLeaveRoom.prototype.userId = "";
+
         /**
          * Creates a new ClientLeaveRoom instance using the specified properties.
          * @function create
@@ -25228,6 +26930,7 @@ $root.NT = (function () {
         ClientLeaveRoom.create = function create(properties) {
             return new ClientLeaveRoom(properties);
         };
+
         /**
          * Encodes the specified ClientLeaveRoom message. Does not implicitly {@link NT.ClientLeaveRoom.verify|verify} messages.
          * @function encode
@@ -25241,9 +26944,10 @@ $root.NT = (function () {
             if (!writer)
                 writer = $Writer.create();
             if (message.userId != null && Object.hasOwnProperty.call(message, "userId"))
-                writer.uint32(/* id 1, wireType 2 =*/ 10).string(message.userId);
+                writer.uint32(/* id 1, wireType 2 =*/10).string(message.userId);
             return writer;
         };
+
         /**
          * Encodes the specified ClientLeaveRoom message, length delimited. Does not implicitly {@link NT.ClientLeaveRoom.verify|verify} messages.
          * @function encodeDelimited
@@ -25256,6 +26960,7 @@ $root.NT = (function () {
         ClientLeaveRoom.encodeDelimited = function encodeDelimited(message, writer) {
             return this.encode(message, writer).ldelim();
         };
+
         /**
          * Decodes a ClientLeaveRoom message from the specified reader or buffer.
          * @function decode
@@ -25274,17 +26979,18 @@ $root.NT = (function () {
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                    case 1: {
+                case 1: {
                         message.userId = reader.string();
                         break;
                     }
-                    default:
-                        reader.skipType(tag & 7);
-                        break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
                 }
             }
             return message;
         };
+
         /**
          * Decodes a ClientLeaveRoom message from the specified reader or buffer, length delimited.
          * @function decodeDelimited
@@ -25300,6 +27006,7 @@ $root.NT = (function () {
                 reader = new $Reader(reader);
             return this.decode(reader, reader.uint32());
         };
+
         /**
          * Verifies a ClientLeaveRoom message.
          * @function verify
@@ -25316,6 +27023,7 @@ $root.NT = (function () {
                     return "userId: string expected";
             return null;
         };
+
         /**
          * Creates a ClientLeaveRoom message from a plain object. Also converts values to their respective internal types.
          * @function fromObject
@@ -25332,6 +27040,7 @@ $root.NT = (function () {
                 message.userId = String(object.userId);
             return message;
         };
+
         /**
          * Creates a plain object from a ClientLeaveRoom message. Also converts values to other types if specified.
          * @function toObject
@@ -25351,6 +27060,7 @@ $root.NT = (function () {
                 object.userId = message.userId;
             return object;
         };
+
         /**
          * Converts this ClientLeaveRoom to JSON.
          * @function toJSON
@@ -25361,6 +27071,7 @@ $root.NT = (function () {
         ClientLeaveRoom.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
+
         /**
          * Gets the default type url for ClientLeaveRoom
          * @function getTypeUrl
@@ -25375,15 +27086,19 @@ $root.NT = (function () {
             }
             return typeUrlPrefix + "/NT.ClientLeaveRoom";
         };
+
         return ClientLeaveRoom;
     })();
-    NT.ServerUserLeftRoom = (function () {
+
+    NT.ServerUserLeftRoom = (function() {
+
         /**
          * Properties of a ServerUserLeftRoom.
          * @memberof NT
          * @interface IServerUserLeftRoom
          * @property {string|null} [userId] ServerUserLeftRoom userId
          */
+
         /**
          * Constructs a new ServerUserLeftRoom.
          * @memberof NT
@@ -25398,6 +27113,7 @@ $root.NT = (function () {
                     if (properties[keys[i]] != null)
                         this[keys[i]] = properties[keys[i]];
         }
+
         /**
          * ServerUserLeftRoom userId.
          * @member {string} userId
@@ -25405,6 +27121,7 @@ $root.NT = (function () {
          * @instance
          */
         ServerUserLeftRoom.prototype.userId = "";
+
         /**
          * Creates a new ServerUserLeftRoom instance using the specified properties.
          * @function create
@@ -25416,6 +27133,7 @@ $root.NT = (function () {
         ServerUserLeftRoom.create = function create(properties) {
             return new ServerUserLeftRoom(properties);
         };
+
         /**
          * Encodes the specified ServerUserLeftRoom message. Does not implicitly {@link NT.ServerUserLeftRoom.verify|verify} messages.
          * @function encode
@@ -25429,9 +27147,10 @@ $root.NT = (function () {
             if (!writer)
                 writer = $Writer.create();
             if (message.userId != null && Object.hasOwnProperty.call(message, "userId"))
-                writer.uint32(/* id 1, wireType 2 =*/ 10).string(message.userId);
+                writer.uint32(/* id 1, wireType 2 =*/10).string(message.userId);
             return writer;
         };
+
         /**
          * Encodes the specified ServerUserLeftRoom message, length delimited. Does not implicitly {@link NT.ServerUserLeftRoom.verify|verify} messages.
          * @function encodeDelimited
@@ -25444,6 +27163,7 @@ $root.NT = (function () {
         ServerUserLeftRoom.encodeDelimited = function encodeDelimited(message, writer) {
             return this.encode(message, writer).ldelim();
         };
+
         /**
          * Decodes a ServerUserLeftRoom message from the specified reader or buffer.
          * @function decode
@@ -25462,17 +27182,18 @@ $root.NT = (function () {
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                    case 1: {
+                case 1: {
                         message.userId = reader.string();
                         break;
                     }
-                    default:
-                        reader.skipType(tag & 7);
-                        break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
                 }
             }
             return message;
         };
+
         /**
          * Decodes a ServerUserLeftRoom message from the specified reader or buffer, length delimited.
          * @function decodeDelimited
@@ -25488,6 +27209,7 @@ $root.NT = (function () {
                 reader = new $Reader(reader);
             return this.decode(reader, reader.uint32());
         };
+
         /**
          * Verifies a ServerUserLeftRoom message.
          * @function verify
@@ -25504,6 +27226,7 @@ $root.NT = (function () {
                     return "userId: string expected";
             return null;
         };
+
         /**
          * Creates a ServerUserLeftRoom message from a plain object. Also converts values to their respective internal types.
          * @function fromObject
@@ -25520,6 +27243,7 @@ $root.NT = (function () {
                 message.userId = String(object.userId);
             return message;
         };
+
         /**
          * Creates a plain object from a ServerUserLeftRoom message. Also converts values to other types if specified.
          * @function toObject
@@ -25539,6 +27263,7 @@ $root.NT = (function () {
                 object.userId = message.userId;
             return object;
         };
+
         /**
          * Converts this ServerUserLeftRoom to JSON.
          * @function toJSON
@@ -25549,6 +27274,7 @@ $root.NT = (function () {
         ServerUserLeftRoom.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
+
         /**
          * Gets the default type url for ServerUserLeftRoom
          * @function getTypeUrl
@@ -25563,15 +27289,19 @@ $root.NT = (function () {
             }
             return typeUrlPrefix + "/NT.ServerUserLeftRoom";
         };
+
         return ServerUserLeftRoom;
     })();
-    NT.ClientKickUser = (function () {
+
+    NT.ClientKickUser = (function() {
+
         /**
          * Properties of a ClientKickUser.
          * @memberof NT
          * @interface IClientKickUser
          * @property {string|null} [userId] ClientKickUser userId
          */
+
         /**
          * Constructs a new ClientKickUser.
          * @memberof NT
@@ -25586,6 +27316,7 @@ $root.NT = (function () {
                     if (properties[keys[i]] != null)
                         this[keys[i]] = properties[keys[i]];
         }
+
         /**
          * ClientKickUser userId.
          * @member {string} userId
@@ -25593,6 +27324,7 @@ $root.NT = (function () {
          * @instance
          */
         ClientKickUser.prototype.userId = "";
+
         /**
          * Creates a new ClientKickUser instance using the specified properties.
          * @function create
@@ -25604,6 +27336,7 @@ $root.NT = (function () {
         ClientKickUser.create = function create(properties) {
             return new ClientKickUser(properties);
         };
+
         /**
          * Encodes the specified ClientKickUser message. Does not implicitly {@link NT.ClientKickUser.verify|verify} messages.
          * @function encode
@@ -25617,9 +27350,10 @@ $root.NT = (function () {
             if (!writer)
                 writer = $Writer.create();
             if (message.userId != null && Object.hasOwnProperty.call(message, "userId"))
-                writer.uint32(/* id 1, wireType 2 =*/ 10).string(message.userId);
+                writer.uint32(/* id 1, wireType 2 =*/10).string(message.userId);
             return writer;
         };
+
         /**
          * Encodes the specified ClientKickUser message, length delimited. Does not implicitly {@link NT.ClientKickUser.verify|verify} messages.
          * @function encodeDelimited
@@ -25632,6 +27366,7 @@ $root.NT = (function () {
         ClientKickUser.encodeDelimited = function encodeDelimited(message, writer) {
             return this.encode(message, writer).ldelim();
         };
+
         /**
          * Decodes a ClientKickUser message from the specified reader or buffer.
          * @function decode
@@ -25650,17 +27385,18 @@ $root.NT = (function () {
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                    case 1: {
+                case 1: {
                         message.userId = reader.string();
                         break;
                     }
-                    default:
-                        reader.skipType(tag & 7);
-                        break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
                 }
             }
             return message;
         };
+
         /**
          * Decodes a ClientKickUser message from the specified reader or buffer, length delimited.
          * @function decodeDelimited
@@ -25676,6 +27412,7 @@ $root.NT = (function () {
                 reader = new $Reader(reader);
             return this.decode(reader, reader.uint32());
         };
+
         /**
          * Verifies a ClientKickUser message.
          * @function verify
@@ -25692,6 +27429,7 @@ $root.NT = (function () {
                     return "userId: string expected";
             return null;
         };
+
         /**
          * Creates a ClientKickUser message from a plain object. Also converts values to their respective internal types.
          * @function fromObject
@@ -25708,6 +27446,7 @@ $root.NT = (function () {
                 message.userId = String(object.userId);
             return message;
         };
+
         /**
          * Creates a plain object from a ClientKickUser message. Also converts values to other types if specified.
          * @function toObject
@@ -25727,6 +27466,7 @@ $root.NT = (function () {
                 object.userId = message.userId;
             return object;
         };
+
         /**
          * Converts this ClientKickUser to JSON.
          * @function toJSON
@@ -25737,6 +27477,7 @@ $root.NT = (function () {
         ClientKickUser.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
+
         /**
          * Gets the default type url for ClientKickUser
          * @function getTypeUrl
@@ -25751,15 +27492,19 @@ $root.NT = (function () {
             }
             return typeUrlPrefix + "/NT.ClientKickUser";
         };
+
         return ClientKickUser;
     })();
-    NT.ServerUserKicked = (function () {
+
+    NT.ServerUserKicked = (function() {
+
         /**
          * Properties of a ServerUserKicked.
          * @memberof NT
          * @interface IServerUserKicked
          * @property {string|null} [userId] ServerUserKicked userId
          */
+
         /**
          * Constructs a new ServerUserKicked.
          * @memberof NT
@@ -25774,6 +27519,7 @@ $root.NT = (function () {
                     if (properties[keys[i]] != null)
                         this[keys[i]] = properties[keys[i]];
         }
+
         /**
          * ServerUserKicked userId.
          * @member {string} userId
@@ -25781,6 +27527,7 @@ $root.NT = (function () {
          * @instance
          */
         ServerUserKicked.prototype.userId = "";
+
         /**
          * Creates a new ServerUserKicked instance using the specified properties.
          * @function create
@@ -25792,6 +27539,7 @@ $root.NT = (function () {
         ServerUserKicked.create = function create(properties) {
             return new ServerUserKicked(properties);
         };
+
         /**
          * Encodes the specified ServerUserKicked message. Does not implicitly {@link NT.ServerUserKicked.verify|verify} messages.
          * @function encode
@@ -25805,9 +27553,10 @@ $root.NT = (function () {
             if (!writer)
                 writer = $Writer.create();
             if (message.userId != null && Object.hasOwnProperty.call(message, "userId"))
-                writer.uint32(/* id 1, wireType 2 =*/ 10).string(message.userId);
+                writer.uint32(/* id 1, wireType 2 =*/10).string(message.userId);
             return writer;
         };
+
         /**
          * Encodes the specified ServerUserKicked message, length delimited. Does not implicitly {@link NT.ServerUserKicked.verify|verify} messages.
          * @function encodeDelimited
@@ -25820,6 +27569,7 @@ $root.NT = (function () {
         ServerUserKicked.encodeDelimited = function encodeDelimited(message, writer) {
             return this.encode(message, writer).ldelim();
         };
+
         /**
          * Decodes a ServerUserKicked message from the specified reader or buffer.
          * @function decode
@@ -25838,17 +27588,18 @@ $root.NT = (function () {
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                    case 1: {
+                case 1: {
                         message.userId = reader.string();
                         break;
                     }
-                    default:
-                        reader.skipType(tag & 7);
-                        break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
                 }
             }
             return message;
         };
+
         /**
          * Decodes a ServerUserKicked message from the specified reader or buffer, length delimited.
          * @function decodeDelimited
@@ -25864,6 +27615,7 @@ $root.NT = (function () {
                 reader = new $Reader(reader);
             return this.decode(reader, reader.uint32());
         };
+
         /**
          * Verifies a ServerUserKicked message.
          * @function verify
@@ -25880,6 +27632,7 @@ $root.NT = (function () {
                     return "userId: string expected";
             return null;
         };
+
         /**
          * Creates a ServerUserKicked message from a plain object. Also converts values to their respective internal types.
          * @function fromObject
@@ -25896,6 +27649,7 @@ $root.NT = (function () {
                 message.userId = String(object.userId);
             return message;
         };
+
         /**
          * Creates a plain object from a ServerUserKicked message. Also converts values to other types if specified.
          * @function toObject
@@ -25915,6 +27669,7 @@ $root.NT = (function () {
                 object.userId = message.userId;
             return object;
         };
+
         /**
          * Converts this ServerUserKicked to JSON.
          * @function toJSON
@@ -25925,6 +27680,7 @@ $root.NT = (function () {
         ServerUserKicked.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
+
         /**
          * Gets the default type url for ServerUserKicked
          * @function getTypeUrl
@@ -25939,15 +27695,19 @@ $root.NT = (function () {
             }
             return typeUrlPrefix + "/NT.ServerUserKicked";
         };
+
         return ServerUserKicked;
     })();
-    NT.ClientBanUser = (function () {
+
+    NT.ClientBanUser = (function() {
+
         /**
          * Properties of a ClientBanUser.
          * @memberof NT
          * @interface IClientBanUser
          * @property {string|null} [userId] ClientBanUser userId
          */
+
         /**
          * Constructs a new ClientBanUser.
          * @memberof NT
@@ -25962,6 +27722,7 @@ $root.NT = (function () {
                     if (properties[keys[i]] != null)
                         this[keys[i]] = properties[keys[i]];
         }
+
         /**
          * ClientBanUser userId.
          * @member {string} userId
@@ -25969,6 +27730,7 @@ $root.NT = (function () {
          * @instance
          */
         ClientBanUser.prototype.userId = "";
+
         /**
          * Creates a new ClientBanUser instance using the specified properties.
          * @function create
@@ -25980,6 +27742,7 @@ $root.NT = (function () {
         ClientBanUser.create = function create(properties) {
             return new ClientBanUser(properties);
         };
+
         /**
          * Encodes the specified ClientBanUser message. Does not implicitly {@link NT.ClientBanUser.verify|verify} messages.
          * @function encode
@@ -25993,9 +27756,10 @@ $root.NT = (function () {
             if (!writer)
                 writer = $Writer.create();
             if (message.userId != null && Object.hasOwnProperty.call(message, "userId"))
-                writer.uint32(/* id 1, wireType 2 =*/ 10).string(message.userId);
+                writer.uint32(/* id 1, wireType 2 =*/10).string(message.userId);
             return writer;
         };
+
         /**
          * Encodes the specified ClientBanUser message, length delimited. Does not implicitly {@link NT.ClientBanUser.verify|verify} messages.
          * @function encodeDelimited
@@ -26008,6 +27772,7 @@ $root.NT = (function () {
         ClientBanUser.encodeDelimited = function encodeDelimited(message, writer) {
             return this.encode(message, writer).ldelim();
         };
+
         /**
          * Decodes a ClientBanUser message from the specified reader or buffer.
          * @function decode
@@ -26026,17 +27791,18 @@ $root.NT = (function () {
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                    case 1: {
+                case 1: {
                         message.userId = reader.string();
                         break;
                     }
-                    default:
-                        reader.skipType(tag & 7);
-                        break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
                 }
             }
             return message;
         };
+
         /**
          * Decodes a ClientBanUser message from the specified reader or buffer, length delimited.
          * @function decodeDelimited
@@ -26052,6 +27818,7 @@ $root.NT = (function () {
                 reader = new $Reader(reader);
             return this.decode(reader, reader.uint32());
         };
+
         /**
          * Verifies a ClientBanUser message.
          * @function verify
@@ -26068,6 +27835,7 @@ $root.NT = (function () {
                     return "userId: string expected";
             return null;
         };
+
         /**
          * Creates a ClientBanUser message from a plain object. Also converts values to their respective internal types.
          * @function fromObject
@@ -26084,6 +27852,7 @@ $root.NT = (function () {
                 message.userId = String(object.userId);
             return message;
         };
+
         /**
          * Creates a plain object from a ClientBanUser message. Also converts values to other types if specified.
          * @function toObject
@@ -26103,6 +27872,7 @@ $root.NT = (function () {
                 object.userId = message.userId;
             return object;
         };
+
         /**
          * Converts this ClientBanUser to JSON.
          * @function toJSON
@@ -26113,6 +27883,7 @@ $root.NT = (function () {
         ClientBanUser.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
+
         /**
          * Gets the default type url for ClientBanUser
          * @function getTypeUrl
@@ -26127,15 +27898,19 @@ $root.NT = (function () {
             }
             return typeUrlPrefix + "/NT.ClientBanUser";
         };
+
         return ClientBanUser;
     })();
-    NT.ServerUserBanned = (function () {
+
+    NT.ServerUserBanned = (function() {
+
         /**
          * Properties of a ServerUserBanned.
          * @memberof NT
          * @interface IServerUserBanned
          * @property {string|null} [userId] ServerUserBanned userId
          */
+
         /**
          * Constructs a new ServerUserBanned.
          * @memberof NT
@@ -26150,6 +27925,7 @@ $root.NT = (function () {
                     if (properties[keys[i]] != null)
                         this[keys[i]] = properties[keys[i]];
         }
+
         /**
          * ServerUserBanned userId.
          * @member {string} userId
@@ -26157,6 +27933,7 @@ $root.NT = (function () {
          * @instance
          */
         ServerUserBanned.prototype.userId = "";
+
         /**
          * Creates a new ServerUserBanned instance using the specified properties.
          * @function create
@@ -26168,6 +27945,7 @@ $root.NT = (function () {
         ServerUserBanned.create = function create(properties) {
             return new ServerUserBanned(properties);
         };
+
         /**
          * Encodes the specified ServerUserBanned message. Does not implicitly {@link NT.ServerUserBanned.verify|verify} messages.
          * @function encode
@@ -26181,9 +27959,10 @@ $root.NT = (function () {
             if (!writer)
                 writer = $Writer.create();
             if (message.userId != null && Object.hasOwnProperty.call(message, "userId"))
-                writer.uint32(/* id 1, wireType 2 =*/ 10).string(message.userId);
+                writer.uint32(/* id 1, wireType 2 =*/10).string(message.userId);
             return writer;
         };
+
         /**
          * Encodes the specified ServerUserBanned message, length delimited. Does not implicitly {@link NT.ServerUserBanned.verify|verify} messages.
          * @function encodeDelimited
@@ -26196,6 +27975,7 @@ $root.NT = (function () {
         ServerUserBanned.encodeDelimited = function encodeDelimited(message, writer) {
             return this.encode(message, writer).ldelim();
         };
+
         /**
          * Decodes a ServerUserBanned message from the specified reader or buffer.
          * @function decode
@@ -26214,17 +27994,18 @@ $root.NT = (function () {
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                    case 1: {
+                case 1: {
                         message.userId = reader.string();
                         break;
                     }
-                    default:
-                        reader.skipType(tag & 7);
-                        break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
                 }
             }
             return message;
         };
+
         /**
          * Decodes a ServerUserBanned message from the specified reader or buffer, length delimited.
          * @function decodeDelimited
@@ -26240,6 +28021,7 @@ $root.NT = (function () {
                 reader = new $Reader(reader);
             return this.decode(reader, reader.uint32());
         };
+
         /**
          * Verifies a ServerUserBanned message.
          * @function verify
@@ -26256,6 +28038,7 @@ $root.NT = (function () {
                     return "userId: string expected";
             return null;
         };
+
         /**
          * Creates a ServerUserBanned message from a plain object. Also converts values to their respective internal types.
          * @function fromObject
@@ -26272,6 +28055,7 @@ $root.NT = (function () {
                 message.userId = String(object.userId);
             return message;
         };
+
         /**
          * Creates a plain object from a ServerUserBanned message. Also converts values to other types if specified.
          * @function toObject
@@ -26291,6 +28075,7 @@ $root.NT = (function () {
                 object.userId = message.userId;
             return object;
         };
+
         /**
          * Converts this ServerUserBanned to JSON.
          * @function toJSON
@@ -26301,6 +28086,7 @@ $root.NT = (function () {
         ServerUserBanned.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
+
         /**
          * Gets the default type url for ServerUserBanned
          * @function getTypeUrl
@@ -26315,9 +28101,12 @@ $root.NT = (function () {
             }
             return typeUrlPrefix + "/NT.ServerUserBanned";
         };
+
         return ServerUserBanned;
     })();
-    NT.ClientReadyState = (function () {
+
+    NT.ClientReadyState = (function() {
+
         /**
          * Properties of a ClientReadyState.
          * @memberof NT
@@ -26328,6 +28117,7 @@ $root.NT = (function () {
          * @property {string|null} [version] ClientReadyState version
          * @property {boolean|null} [beta] ClientReadyState beta
          */
+
         /**
          * Constructs a new ClientReadyState.
          * @memberof NT
@@ -26343,6 +28133,7 @@ $root.NT = (function () {
                     if (properties[keys[i]] != null)
                         this[keys[i]] = properties[keys[i]];
         }
+
         /**
          * ClientReadyState ready.
          * @member {boolean} ready
@@ -26350,6 +28141,7 @@ $root.NT = (function () {
          * @instance
          */
         ClientReadyState.prototype.ready = false;
+
         /**
          * ClientReadyState seed.
          * @member {string|null|undefined} seed
@@ -26357,6 +28149,7 @@ $root.NT = (function () {
          * @instance
          */
         ClientReadyState.prototype.seed = null;
+
         /**
          * ClientReadyState mods.
          * @member {Array.<string>} mods
@@ -26364,6 +28157,7 @@ $root.NT = (function () {
          * @instance
          */
         ClientReadyState.prototype.mods = $util.emptyArray;
+
         /**
          * ClientReadyState version.
          * @member {string|null|undefined} version
@@ -26371,6 +28165,7 @@ $root.NT = (function () {
          * @instance
          */
         ClientReadyState.prototype.version = null;
+
         /**
          * ClientReadyState beta.
          * @member {boolean|null|undefined} beta
@@ -26378,8 +28173,10 @@ $root.NT = (function () {
          * @instance
          */
         ClientReadyState.prototype.beta = null;
+
         // OneOf field names bound to virtual getters and setters
         var $oneOfFields;
+
         /**
          * ClientReadyState _seed.
          * @member {"seed"|undefined} _seed
@@ -26390,6 +28187,7 @@ $root.NT = (function () {
             get: $util.oneOfGetter($oneOfFields = ["seed"]),
             set: $util.oneOfSetter($oneOfFields)
         });
+
         /**
          * ClientReadyState _version.
          * @member {"version"|undefined} _version
@@ -26400,6 +28198,7 @@ $root.NT = (function () {
             get: $util.oneOfGetter($oneOfFields = ["version"]),
             set: $util.oneOfSetter($oneOfFields)
         });
+
         /**
          * ClientReadyState _beta.
          * @member {"beta"|undefined} _beta
@@ -26410,6 +28209,7 @@ $root.NT = (function () {
             get: $util.oneOfGetter($oneOfFields = ["beta"]),
             set: $util.oneOfSetter($oneOfFields)
         });
+
         /**
          * Creates a new ClientReadyState instance using the specified properties.
          * @function create
@@ -26421,6 +28221,7 @@ $root.NT = (function () {
         ClientReadyState.create = function create(properties) {
             return new ClientReadyState(properties);
         };
+
         /**
          * Encodes the specified ClientReadyState message. Does not implicitly {@link NT.ClientReadyState.verify|verify} messages.
          * @function encode
@@ -26434,18 +28235,19 @@ $root.NT = (function () {
             if (!writer)
                 writer = $Writer.create();
             if (message.ready != null && Object.hasOwnProperty.call(message, "ready"))
-                writer.uint32(/* id 1, wireType 0 =*/ 8).bool(message.ready);
+                writer.uint32(/* id 1, wireType 0 =*/8).bool(message.ready);
             if (message.seed != null && Object.hasOwnProperty.call(message, "seed"))
-                writer.uint32(/* id 2, wireType 2 =*/ 18).string(message.seed);
+                writer.uint32(/* id 2, wireType 2 =*/18).string(message.seed);
             if (message.mods != null && message.mods.length)
                 for (var i = 0; i < message.mods.length; ++i)
-                    writer.uint32(/* id 3, wireType 2 =*/ 26).string(message.mods[i]);
+                    writer.uint32(/* id 3, wireType 2 =*/26).string(message.mods[i]);
             if (message.version != null && Object.hasOwnProperty.call(message, "version"))
-                writer.uint32(/* id 4, wireType 2 =*/ 34).string(message.version);
+                writer.uint32(/* id 4, wireType 2 =*/34).string(message.version);
             if (message.beta != null && Object.hasOwnProperty.call(message, "beta"))
-                writer.uint32(/* id 5, wireType 0 =*/ 40).bool(message.beta);
+                writer.uint32(/* id 5, wireType 0 =*/40).bool(message.beta);
             return writer;
         };
+
         /**
          * Encodes the specified ClientReadyState message, length delimited. Does not implicitly {@link NT.ClientReadyState.verify|verify} messages.
          * @function encodeDelimited
@@ -26458,6 +28260,7 @@ $root.NT = (function () {
         ClientReadyState.encodeDelimited = function encodeDelimited(message, writer) {
             return this.encode(message, writer).ldelim();
         };
+
         /**
          * Decodes a ClientReadyState message from the specified reader or buffer.
          * @function decode
@@ -26476,35 +28279,36 @@ $root.NT = (function () {
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                    case 1: {
+                case 1: {
                         message.ready = reader.bool();
                         break;
                     }
-                    case 2: {
+                case 2: {
                         message.seed = reader.string();
                         break;
                     }
-                    case 3: {
+                case 3: {
                         if (!(message.mods && message.mods.length))
                             message.mods = [];
                         message.mods.push(reader.string());
                         break;
                     }
-                    case 4: {
+                case 4: {
                         message.version = reader.string();
                         break;
                     }
-                    case 5: {
+                case 5: {
                         message.beta = reader.bool();
                         break;
                     }
-                    default:
-                        reader.skipType(tag & 7);
-                        break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
                 }
             }
             return message;
         };
+
         /**
          * Decodes a ClientReadyState message from the specified reader or buffer, length delimited.
          * @function decodeDelimited
@@ -26520,6 +28324,7 @@ $root.NT = (function () {
                 reader = new $Reader(reader);
             return this.decode(reader, reader.uint32());
         };
+
         /**
          * Verifies a ClientReadyState message.
          * @function verify
@@ -26559,6 +28364,7 @@ $root.NT = (function () {
             }
             return null;
         };
+
         /**
          * Creates a ClientReadyState message from a plain object. Also converts values to their respective internal types.
          * @function fromObject
@@ -26588,6 +28394,7 @@ $root.NT = (function () {
                 message.beta = Boolean(object.beta);
             return message;
         };
+
         /**
          * Creates a plain object from a ClientReadyState message. Also converts values to other types if specified.
          * @function toObject
@@ -26629,6 +28436,7 @@ $root.NT = (function () {
             }
             return object;
         };
+
         /**
          * Converts this ClientReadyState to JSON.
          * @function toJSON
@@ -26639,6 +28447,7 @@ $root.NT = (function () {
         ClientReadyState.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
+
         /**
          * Gets the default type url for ClientReadyState
          * @function getTypeUrl
@@ -26653,9 +28462,12 @@ $root.NT = (function () {
             }
             return typeUrlPrefix + "/NT.ClientReadyState";
         };
+
         return ClientReadyState;
     })();
-    NT.ServerUserReadyState = (function () {
+
+    NT.ServerUserReadyState = (function() {
+
         /**
          * Properties of a ServerUserReadyState.
          * @memberof NT
@@ -26667,6 +28479,7 @@ $root.NT = (function () {
          * @property {string|null} [version] ServerUserReadyState version
          * @property {boolean|null} [beta] ServerUserReadyState beta
          */
+
         /**
          * Constructs a new ServerUserReadyState.
          * @memberof NT
@@ -26682,6 +28495,7 @@ $root.NT = (function () {
                     if (properties[keys[i]] != null)
                         this[keys[i]] = properties[keys[i]];
         }
+
         /**
          * ServerUserReadyState userId.
          * @member {string} userId
@@ -26689,6 +28503,7 @@ $root.NT = (function () {
          * @instance
          */
         ServerUserReadyState.prototype.userId = "";
+
         /**
          * ServerUserReadyState ready.
          * @member {boolean} ready
@@ -26696,6 +28511,7 @@ $root.NT = (function () {
          * @instance
          */
         ServerUserReadyState.prototype.ready = false;
+
         /**
          * ServerUserReadyState seed.
          * @member {string|null|undefined} seed
@@ -26703,6 +28519,7 @@ $root.NT = (function () {
          * @instance
          */
         ServerUserReadyState.prototype.seed = null;
+
         /**
          * ServerUserReadyState mods.
          * @member {Array.<string>} mods
@@ -26710,6 +28527,7 @@ $root.NT = (function () {
          * @instance
          */
         ServerUserReadyState.prototype.mods = $util.emptyArray;
+
         /**
          * ServerUserReadyState version.
          * @member {string|null|undefined} version
@@ -26717,6 +28535,7 @@ $root.NT = (function () {
          * @instance
          */
         ServerUserReadyState.prototype.version = null;
+
         /**
          * ServerUserReadyState beta.
          * @member {boolean|null|undefined} beta
@@ -26724,8 +28543,10 @@ $root.NT = (function () {
          * @instance
          */
         ServerUserReadyState.prototype.beta = null;
+
         // OneOf field names bound to virtual getters and setters
         var $oneOfFields;
+
         /**
          * ServerUserReadyState _seed.
          * @member {"seed"|undefined} _seed
@@ -26736,6 +28557,7 @@ $root.NT = (function () {
             get: $util.oneOfGetter($oneOfFields = ["seed"]),
             set: $util.oneOfSetter($oneOfFields)
         });
+
         /**
          * ServerUserReadyState _version.
          * @member {"version"|undefined} _version
@@ -26746,6 +28568,7 @@ $root.NT = (function () {
             get: $util.oneOfGetter($oneOfFields = ["version"]),
             set: $util.oneOfSetter($oneOfFields)
         });
+
         /**
          * ServerUserReadyState _beta.
          * @member {"beta"|undefined} _beta
@@ -26756,6 +28579,7 @@ $root.NT = (function () {
             get: $util.oneOfGetter($oneOfFields = ["beta"]),
             set: $util.oneOfSetter($oneOfFields)
         });
+
         /**
          * Creates a new ServerUserReadyState instance using the specified properties.
          * @function create
@@ -26767,6 +28591,7 @@ $root.NT = (function () {
         ServerUserReadyState.create = function create(properties) {
             return new ServerUserReadyState(properties);
         };
+
         /**
          * Encodes the specified ServerUserReadyState message. Does not implicitly {@link NT.ServerUserReadyState.verify|verify} messages.
          * @function encode
@@ -26780,20 +28605,21 @@ $root.NT = (function () {
             if (!writer)
                 writer = $Writer.create();
             if (message.userId != null && Object.hasOwnProperty.call(message, "userId"))
-                writer.uint32(/* id 1, wireType 2 =*/ 10).string(message.userId);
+                writer.uint32(/* id 1, wireType 2 =*/10).string(message.userId);
             if (message.ready != null && Object.hasOwnProperty.call(message, "ready"))
-                writer.uint32(/* id 2, wireType 0 =*/ 16).bool(message.ready);
+                writer.uint32(/* id 2, wireType 0 =*/16).bool(message.ready);
             if (message.seed != null && Object.hasOwnProperty.call(message, "seed"))
-                writer.uint32(/* id 3, wireType 2 =*/ 26).string(message.seed);
+                writer.uint32(/* id 3, wireType 2 =*/26).string(message.seed);
             if (message.mods != null && message.mods.length)
                 for (var i = 0; i < message.mods.length; ++i)
-                    writer.uint32(/* id 4, wireType 2 =*/ 34).string(message.mods[i]);
+                    writer.uint32(/* id 4, wireType 2 =*/34).string(message.mods[i]);
             if (message.version != null && Object.hasOwnProperty.call(message, "version"))
-                writer.uint32(/* id 5, wireType 2 =*/ 42).string(message.version);
+                writer.uint32(/* id 5, wireType 2 =*/42).string(message.version);
             if (message.beta != null && Object.hasOwnProperty.call(message, "beta"))
-                writer.uint32(/* id 6, wireType 0 =*/ 48).bool(message.beta);
+                writer.uint32(/* id 6, wireType 0 =*/48).bool(message.beta);
             return writer;
         };
+
         /**
          * Encodes the specified ServerUserReadyState message, length delimited. Does not implicitly {@link NT.ServerUserReadyState.verify|verify} messages.
          * @function encodeDelimited
@@ -26806,6 +28632,7 @@ $root.NT = (function () {
         ServerUserReadyState.encodeDelimited = function encodeDelimited(message, writer) {
             return this.encode(message, writer).ldelim();
         };
+
         /**
          * Decodes a ServerUserReadyState message from the specified reader or buffer.
          * @function decode
@@ -26824,39 +28651,40 @@ $root.NT = (function () {
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                    case 1: {
+                case 1: {
                         message.userId = reader.string();
                         break;
                     }
-                    case 2: {
+                case 2: {
                         message.ready = reader.bool();
                         break;
                     }
-                    case 3: {
+                case 3: {
                         message.seed = reader.string();
                         break;
                     }
-                    case 4: {
+                case 4: {
                         if (!(message.mods && message.mods.length))
                             message.mods = [];
                         message.mods.push(reader.string());
                         break;
                     }
-                    case 5: {
+                case 5: {
                         message.version = reader.string();
                         break;
                     }
-                    case 6: {
+                case 6: {
                         message.beta = reader.bool();
                         break;
                     }
-                    default:
-                        reader.skipType(tag & 7);
-                        break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
                 }
             }
             return message;
         };
+
         /**
          * Decodes a ServerUserReadyState message from the specified reader or buffer, length delimited.
          * @function decodeDelimited
@@ -26872,6 +28700,7 @@ $root.NT = (function () {
                 reader = new $Reader(reader);
             return this.decode(reader, reader.uint32());
         };
+
         /**
          * Verifies a ServerUserReadyState message.
          * @function verify
@@ -26914,6 +28743,7 @@ $root.NT = (function () {
             }
             return null;
         };
+
         /**
          * Creates a ServerUserReadyState message from a plain object. Also converts values to their respective internal types.
          * @function fromObject
@@ -26945,6 +28775,7 @@ $root.NT = (function () {
                 message.beta = Boolean(object.beta);
             return message;
         };
+
         /**
          * Creates a plain object from a ServerUserReadyState message. Also converts values to other types if specified.
          * @function toObject
@@ -26990,6 +28821,7 @@ $root.NT = (function () {
             }
             return object;
         };
+
         /**
          * Converts this ServerUserReadyState to JSON.
          * @function toJSON
@@ -27000,6 +28832,7 @@ $root.NT = (function () {
         ServerUserReadyState.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
+
         /**
          * Gets the default type url for ServerUserReadyState
          * @function getTypeUrl
@@ -27014,15 +28847,19 @@ $root.NT = (function () {
             }
             return typeUrlPrefix + "/NT.ServerUserReadyState";
         };
+
         return ServerUserReadyState;
     })();
-    NT.ClientStartRun = (function () {
+
+    NT.ClientStartRun = (function() {
+
         /**
          * Properties of a ClientStartRun.
          * @memberof NT
          * @interface IClientStartRun
          * @property {boolean|null} [forced] ClientStartRun forced
          */
+
         /**
          * Constructs a new ClientStartRun.
          * @memberof NT
@@ -27037,6 +28874,7 @@ $root.NT = (function () {
                     if (properties[keys[i]] != null)
                         this[keys[i]] = properties[keys[i]];
         }
+
         /**
          * ClientStartRun forced.
          * @member {boolean} forced
@@ -27044,6 +28882,7 @@ $root.NT = (function () {
          * @instance
          */
         ClientStartRun.prototype.forced = false;
+
         /**
          * Creates a new ClientStartRun instance using the specified properties.
          * @function create
@@ -27055,6 +28894,7 @@ $root.NT = (function () {
         ClientStartRun.create = function create(properties) {
             return new ClientStartRun(properties);
         };
+
         /**
          * Encodes the specified ClientStartRun message. Does not implicitly {@link NT.ClientStartRun.verify|verify} messages.
          * @function encode
@@ -27068,9 +28908,10 @@ $root.NT = (function () {
             if (!writer)
                 writer = $Writer.create();
             if (message.forced != null && Object.hasOwnProperty.call(message, "forced"))
-                writer.uint32(/* id 1, wireType 0 =*/ 8).bool(message.forced);
+                writer.uint32(/* id 1, wireType 0 =*/8).bool(message.forced);
             return writer;
         };
+
         /**
          * Encodes the specified ClientStartRun message, length delimited. Does not implicitly {@link NT.ClientStartRun.verify|verify} messages.
          * @function encodeDelimited
@@ -27083,6 +28924,7 @@ $root.NT = (function () {
         ClientStartRun.encodeDelimited = function encodeDelimited(message, writer) {
             return this.encode(message, writer).ldelim();
         };
+
         /**
          * Decodes a ClientStartRun message from the specified reader or buffer.
          * @function decode
@@ -27101,17 +28943,18 @@ $root.NT = (function () {
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                    case 1: {
+                case 1: {
                         message.forced = reader.bool();
                         break;
                     }
-                    default:
-                        reader.skipType(tag & 7);
-                        break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
                 }
             }
             return message;
         };
+
         /**
          * Decodes a ClientStartRun message from the specified reader or buffer, length delimited.
          * @function decodeDelimited
@@ -27127,6 +28970,7 @@ $root.NT = (function () {
                 reader = new $Reader(reader);
             return this.decode(reader, reader.uint32());
         };
+
         /**
          * Verifies a ClientStartRun message.
          * @function verify
@@ -27143,6 +28987,7 @@ $root.NT = (function () {
                     return "forced: boolean expected";
             return null;
         };
+
         /**
          * Creates a ClientStartRun message from a plain object. Also converts values to their respective internal types.
          * @function fromObject
@@ -27159,6 +29004,7 @@ $root.NT = (function () {
                 message.forced = Boolean(object.forced);
             return message;
         };
+
         /**
          * Creates a plain object from a ClientStartRun message. Also converts values to other types if specified.
          * @function toObject
@@ -27178,6 +29024,7 @@ $root.NT = (function () {
                 object.forced = message.forced;
             return object;
         };
+
         /**
          * Converts this ClientStartRun to JSON.
          * @function toJSON
@@ -27188,6 +29035,7 @@ $root.NT = (function () {
         ClientStartRun.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
+
         /**
          * Gets the default type url for ClientStartRun
          * @function getTypeUrl
@@ -27202,15 +29050,19 @@ $root.NT = (function () {
             }
             return typeUrlPrefix + "/NT.ClientStartRun";
         };
+
         return ClientStartRun;
     })();
-    NT.ServerHostStart = (function () {
+
+    NT.ServerHostStart = (function() {
+
         /**
          * Properties of a ServerHostStart.
          * @memberof NT
          * @interface IServerHostStart
          * @property {boolean|null} [forced] ServerHostStart forced
          */
+
         /**
          * Constructs a new ServerHostStart.
          * @memberof NT
@@ -27225,6 +29077,7 @@ $root.NT = (function () {
                     if (properties[keys[i]] != null)
                         this[keys[i]] = properties[keys[i]];
         }
+
         /**
          * ServerHostStart forced.
          * @member {boolean} forced
@@ -27232,6 +29085,7 @@ $root.NT = (function () {
          * @instance
          */
         ServerHostStart.prototype.forced = false;
+
         /**
          * Creates a new ServerHostStart instance using the specified properties.
          * @function create
@@ -27243,6 +29097,7 @@ $root.NT = (function () {
         ServerHostStart.create = function create(properties) {
             return new ServerHostStart(properties);
         };
+
         /**
          * Encodes the specified ServerHostStart message. Does not implicitly {@link NT.ServerHostStart.verify|verify} messages.
          * @function encode
@@ -27256,9 +29111,10 @@ $root.NT = (function () {
             if (!writer)
                 writer = $Writer.create();
             if (message.forced != null && Object.hasOwnProperty.call(message, "forced"))
-                writer.uint32(/* id 1, wireType 0 =*/ 8).bool(message.forced);
+                writer.uint32(/* id 1, wireType 0 =*/8).bool(message.forced);
             return writer;
         };
+
         /**
          * Encodes the specified ServerHostStart message, length delimited. Does not implicitly {@link NT.ServerHostStart.verify|verify} messages.
          * @function encodeDelimited
@@ -27271,6 +29127,7 @@ $root.NT = (function () {
         ServerHostStart.encodeDelimited = function encodeDelimited(message, writer) {
             return this.encode(message, writer).ldelim();
         };
+
         /**
          * Decodes a ServerHostStart message from the specified reader or buffer.
          * @function decode
@@ -27289,17 +29146,18 @@ $root.NT = (function () {
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                    case 1: {
+                case 1: {
                         message.forced = reader.bool();
                         break;
                     }
-                    default:
-                        reader.skipType(tag & 7);
-                        break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
                 }
             }
             return message;
         };
+
         /**
          * Decodes a ServerHostStart message from the specified reader or buffer, length delimited.
          * @function decodeDelimited
@@ -27315,6 +29173,7 @@ $root.NT = (function () {
                 reader = new $Reader(reader);
             return this.decode(reader, reader.uint32());
         };
+
         /**
          * Verifies a ServerHostStart message.
          * @function verify
@@ -27331,6 +29190,7 @@ $root.NT = (function () {
                     return "forced: boolean expected";
             return null;
         };
+
         /**
          * Creates a ServerHostStart message from a plain object. Also converts values to their respective internal types.
          * @function fromObject
@@ -27347,6 +29207,7 @@ $root.NT = (function () {
                 message.forced = Boolean(object.forced);
             return message;
         };
+
         /**
          * Creates a plain object from a ServerHostStart message. Also converts values to other types if specified.
          * @function toObject
@@ -27366,6 +29227,7 @@ $root.NT = (function () {
                 object.forced = message.forced;
             return object;
         };
+
         /**
          * Converts this ServerHostStart to JSON.
          * @function toJSON
@@ -27376,6 +29238,7 @@ $root.NT = (function () {
         ServerHostStart.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
+
         /**
          * Gets the default type url for ServerHostStart
          * @function getTypeUrl
@@ -27390,15 +29253,19 @@ $root.NT = (function () {
             }
             return typeUrlPrefix + "/NT.ServerHostStart";
         };
+
         return ServerHostStart;
     })();
-    NT.ClientRequestRoomList = (function () {
+
+    NT.ClientRequestRoomList = (function() {
+
         /**
          * Properties of a ClientRequestRoomList.
          * @memberof NT
          * @interface IClientRequestRoomList
          * @property {number|null} [page] ClientRequestRoomList page
          */
+
         /**
          * Constructs a new ClientRequestRoomList.
          * @memberof NT
@@ -27413,6 +29280,7 @@ $root.NT = (function () {
                     if (properties[keys[i]] != null)
                         this[keys[i]] = properties[keys[i]];
         }
+
         /**
          * ClientRequestRoomList page.
          * @member {number} page
@@ -27420,6 +29288,7 @@ $root.NT = (function () {
          * @instance
          */
         ClientRequestRoomList.prototype.page = 0;
+
         /**
          * Creates a new ClientRequestRoomList instance using the specified properties.
          * @function create
@@ -27431,6 +29300,7 @@ $root.NT = (function () {
         ClientRequestRoomList.create = function create(properties) {
             return new ClientRequestRoomList(properties);
         };
+
         /**
          * Encodes the specified ClientRequestRoomList message. Does not implicitly {@link NT.ClientRequestRoomList.verify|verify} messages.
          * @function encode
@@ -27444,9 +29314,10 @@ $root.NT = (function () {
             if (!writer)
                 writer = $Writer.create();
             if (message.page != null && Object.hasOwnProperty.call(message, "page"))
-                writer.uint32(/* id 1, wireType 0 =*/ 8).uint32(message.page);
+                writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.page);
             return writer;
         };
+
         /**
          * Encodes the specified ClientRequestRoomList message, length delimited. Does not implicitly {@link NT.ClientRequestRoomList.verify|verify} messages.
          * @function encodeDelimited
@@ -27459,6 +29330,7 @@ $root.NT = (function () {
         ClientRequestRoomList.encodeDelimited = function encodeDelimited(message, writer) {
             return this.encode(message, writer).ldelim();
         };
+
         /**
          * Decodes a ClientRequestRoomList message from the specified reader or buffer.
          * @function decode
@@ -27477,17 +29349,18 @@ $root.NT = (function () {
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                    case 1: {
+                case 1: {
                         message.page = reader.uint32();
                         break;
                     }
-                    default:
-                        reader.skipType(tag & 7);
-                        break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
                 }
             }
             return message;
         };
+
         /**
          * Decodes a ClientRequestRoomList message from the specified reader or buffer, length delimited.
          * @function decodeDelimited
@@ -27503,6 +29376,7 @@ $root.NT = (function () {
                 reader = new $Reader(reader);
             return this.decode(reader, reader.uint32());
         };
+
         /**
          * Verifies a ClientRequestRoomList message.
          * @function verify
@@ -27519,6 +29393,7 @@ $root.NT = (function () {
                     return "page: integer expected";
             return null;
         };
+
         /**
          * Creates a ClientRequestRoomList message from a plain object. Also converts values to their respective internal types.
          * @function fromObject
@@ -27535,6 +29410,7 @@ $root.NT = (function () {
                 message.page = object.page >>> 0;
             return message;
         };
+
         /**
          * Creates a plain object from a ClientRequestRoomList message. Also converts values to other types if specified.
          * @function toObject
@@ -27554,6 +29430,7 @@ $root.NT = (function () {
                 object.page = message.page;
             return object;
         };
+
         /**
          * Converts this ClientRequestRoomList to JSON.
          * @function toJSON
@@ -27564,6 +29441,7 @@ $root.NT = (function () {
         ClientRequestRoomList.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
+
         /**
          * Gets the default type url for ClientRequestRoomList
          * @function getTypeUrl
@@ -27578,9 +29456,12 @@ $root.NT = (function () {
             }
             return typeUrlPrefix + "/NT.ClientRequestRoomList";
         };
+
         return ClientRequestRoomList;
     })();
-    NT.ServerRoomList = (function () {
+
+    NT.ServerRoomList = (function() {
+
         /**
          * Properties of a ServerRoomList.
          * @memberof NT
@@ -27588,6 +29469,7 @@ $root.NT = (function () {
          * @property {Array.<NT.ServerRoomList.IRoom>|null} [rooms] ServerRoomList rooms
          * @property {number|null} [pages] ServerRoomList pages
          */
+
         /**
          * Constructs a new ServerRoomList.
          * @memberof NT
@@ -27603,6 +29485,7 @@ $root.NT = (function () {
                     if (properties[keys[i]] != null)
                         this[keys[i]] = properties[keys[i]];
         }
+
         /**
          * ServerRoomList rooms.
          * @member {Array.<NT.ServerRoomList.IRoom>} rooms
@@ -27610,6 +29493,7 @@ $root.NT = (function () {
          * @instance
          */
         ServerRoomList.prototype.rooms = $util.emptyArray;
+
         /**
          * ServerRoomList pages.
          * @member {number|null|undefined} pages
@@ -27617,8 +29501,10 @@ $root.NT = (function () {
          * @instance
          */
         ServerRoomList.prototype.pages = null;
+
         // OneOf field names bound to virtual getters and setters
         var $oneOfFields;
+
         /**
          * ServerRoomList _pages.
          * @member {"pages"|undefined} _pages
@@ -27629,6 +29515,7 @@ $root.NT = (function () {
             get: $util.oneOfGetter($oneOfFields = ["pages"]),
             set: $util.oneOfSetter($oneOfFields)
         });
+
         /**
          * Creates a new ServerRoomList instance using the specified properties.
          * @function create
@@ -27640,6 +29527,7 @@ $root.NT = (function () {
         ServerRoomList.create = function create(properties) {
             return new ServerRoomList(properties);
         };
+
         /**
          * Encodes the specified ServerRoomList message. Does not implicitly {@link NT.ServerRoomList.verify|verify} messages.
          * @function encode
@@ -27654,11 +29542,12 @@ $root.NT = (function () {
                 writer = $Writer.create();
             if (message.rooms != null && message.rooms.length)
                 for (var i = 0; i < message.rooms.length; ++i)
-                    $root.NT.ServerRoomList.Room.encode(message.rooms[i], writer.uint32(/* id 1, wireType 2 =*/ 10).fork()).ldelim();
+                    $root.NT.ServerRoomList.Room.encode(message.rooms[i], writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
             if (message.pages != null && Object.hasOwnProperty.call(message, "pages"))
-                writer.uint32(/* id 2, wireType 0 =*/ 16).uint32(message.pages);
+                writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.pages);
             return writer;
         };
+
         /**
          * Encodes the specified ServerRoomList message, length delimited. Does not implicitly {@link NT.ServerRoomList.verify|verify} messages.
          * @function encodeDelimited
@@ -27671,6 +29560,7 @@ $root.NT = (function () {
         ServerRoomList.encodeDelimited = function encodeDelimited(message, writer) {
             return this.encode(message, writer).ldelim();
         };
+
         /**
          * Decodes a ServerRoomList message from the specified reader or buffer.
          * @function decode
@@ -27689,23 +29579,24 @@ $root.NT = (function () {
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                    case 1: {
+                case 1: {
                         if (!(message.rooms && message.rooms.length))
                             message.rooms = [];
                         message.rooms.push($root.NT.ServerRoomList.Room.decode(reader, reader.uint32()));
                         break;
                     }
-                    case 2: {
+                case 2: {
                         message.pages = reader.uint32();
                         break;
                     }
-                    default:
-                        reader.skipType(tag & 7);
-                        break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
                 }
             }
             return message;
         };
+
         /**
          * Decodes a ServerRoomList message from the specified reader or buffer, length delimited.
          * @function decodeDelimited
@@ -27721,6 +29612,7 @@ $root.NT = (function () {
                 reader = new $Reader(reader);
             return this.decode(reader, reader.uint32());
         };
+
         /**
          * Verifies a ServerRoomList message.
          * @function verify
@@ -27749,6 +29641,7 @@ $root.NT = (function () {
             }
             return null;
         };
+
         /**
          * Creates a ServerRoomList message from a plain object. Also converts values to their respective internal types.
          * @function fromObject
@@ -27775,6 +29668,7 @@ $root.NT = (function () {
                 message.pages = object.pages >>> 0;
             return message;
         };
+
         /**
          * Creates a plain object from a ServerRoomList message. Also converts values to other types if specified.
          * @function toObject
@@ -27802,6 +29696,7 @@ $root.NT = (function () {
             }
             return object;
         };
+
         /**
          * Converts this ServerRoomList to JSON.
          * @function toJSON
@@ -27812,6 +29707,7 @@ $root.NT = (function () {
         ServerRoomList.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
+
         /**
          * Gets the default type url for ServerRoomList
          * @function getTypeUrl
@@ -27826,7 +29722,9 @@ $root.NT = (function () {
             }
             return typeUrlPrefix + "/NT.ServerRoomList";
         };
-        ServerRoomList.Room = (function () {
+
+        ServerRoomList.Room = (function() {
+
             /**
              * Properties of a Room.
              * @memberof NT.ServerRoomList
@@ -27840,6 +29738,7 @@ $root.NT = (function () {
              * @property {string|null} [owner] Room owner
              * @property {boolean|null} [locked] Room locked
              */
+
             /**
              * Constructs a new Room.
              * @memberof NT.ServerRoomList
@@ -27854,6 +29753,7 @@ $root.NT = (function () {
                         if (properties[keys[i]] != null)
                             this[keys[i]] = properties[keys[i]];
             }
+
             /**
              * Room id.
              * @member {string} id
@@ -27861,6 +29761,7 @@ $root.NT = (function () {
              * @instance
              */
             Room.prototype.id = "";
+
             /**
              * Room name.
              * @member {string} name
@@ -27868,6 +29769,7 @@ $root.NT = (function () {
              * @instance
              */
             Room.prototype.name = "";
+
             /**
              * Room gamemode.
              * @member {number} gamemode
@@ -27875,6 +29777,7 @@ $root.NT = (function () {
              * @instance
              */
             Room.prototype.gamemode = 0;
+
             /**
              * Room curUsers.
              * @member {number} curUsers
@@ -27882,6 +29785,7 @@ $root.NT = (function () {
              * @instance
              */
             Room.prototype.curUsers = 0;
+
             /**
              * Room maxUsers.
              * @member {number} maxUsers
@@ -27889,6 +29793,7 @@ $root.NT = (function () {
              * @instance
              */
             Room.prototype.maxUsers = 0;
+
             /**
              * Room protected.
              * @member {boolean} protected
@@ -27896,6 +29801,7 @@ $root.NT = (function () {
              * @instance
              */
             Room.prototype["protected"] = false;
+
             /**
              * Room owner.
              * @member {string} owner
@@ -27903,6 +29809,7 @@ $root.NT = (function () {
              * @instance
              */
             Room.prototype.owner = "";
+
             /**
              * Room locked.
              * @member {boolean} locked
@@ -27910,6 +29817,7 @@ $root.NT = (function () {
              * @instance
              */
             Room.prototype.locked = false;
+
             /**
              * Creates a new Room instance using the specified properties.
              * @function create
@@ -27921,6 +29829,7 @@ $root.NT = (function () {
             Room.create = function create(properties) {
                 return new Room(properties);
             };
+
             /**
              * Encodes the specified Room message. Does not implicitly {@link NT.ServerRoomList.Room.verify|verify} messages.
              * @function encode
@@ -27934,23 +29843,24 @@ $root.NT = (function () {
                 if (!writer)
                     writer = $Writer.create();
                 if (message.id != null && Object.hasOwnProperty.call(message, "id"))
-                    writer.uint32(/* id 1, wireType 2 =*/ 10).string(message.id);
+                    writer.uint32(/* id 1, wireType 2 =*/10).string(message.id);
                 if (message.name != null && Object.hasOwnProperty.call(message, "name"))
-                    writer.uint32(/* id 2, wireType 2 =*/ 18).string(message.name);
+                    writer.uint32(/* id 2, wireType 2 =*/18).string(message.name);
                 if (message.gamemode != null && Object.hasOwnProperty.call(message, "gamemode"))
-                    writer.uint32(/* id 3, wireType 0 =*/ 24).uint32(message.gamemode);
+                    writer.uint32(/* id 3, wireType 0 =*/24).uint32(message.gamemode);
                 if (message.curUsers != null && Object.hasOwnProperty.call(message, "curUsers"))
-                    writer.uint32(/* id 4, wireType 0 =*/ 32).uint32(message.curUsers);
+                    writer.uint32(/* id 4, wireType 0 =*/32).uint32(message.curUsers);
                 if (message.maxUsers != null && Object.hasOwnProperty.call(message, "maxUsers"))
-                    writer.uint32(/* id 5, wireType 0 =*/ 40).uint32(message.maxUsers);
+                    writer.uint32(/* id 5, wireType 0 =*/40).uint32(message.maxUsers);
                 if (message["protected"] != null && Object.hasOwnProperty.call(message, "protected"))
-                    writer.uint32(/* id 6, wireType 0 =*/ 48).bool(message["protected"]);
+                    writer.uint32(/* id 6, wireType 0 =*/48).bool(message["protected"]);
                 if (message.owner != null && Object.hasOwnProperty.call(message, "owner"))
-                    writer.uint32(/* id 7, wireType 2 =*/ 58).string(message.owner);
+                    writer.uint32(/* id 7, wireType 2 =*/58).string(message.owner);
                 if (message.locked != null && Object.hasOwnProperty.call(message, "locked"))
-                    writer.uint32(/* id 8, wireType 0 =*/ 64).bool(message.locked);
+                    writer.uint32(/* id 8, wireType 0 =*/64).bool(message.locked);
                 return writer;
             };
+
             /**
              * Encodes the specified Room message, length delimited. Does not implicitly {@link NT.ServerRoomList.Room.verify|verify} messages.
              * @function encodeDelimited
@@ -27963,6 +29873,7 @@ $root.NT = (function () {
             Room.encodeDelimited = function encodeDelimited(message, writer) {
                 return this.encode(message, writer).ldelim();
             };
+
             /**
              * Decodes a Room message from the specified reader or buffer.
              * @function decode
@@ -27981,45 +29892,46 @@ $root.NT = (function () {
                 while (reader.pos < end) {
                     var tag = reader.uint32();
                     switch (tag >>> 3) {
-                        case 1: {
+                    case 1: {
                             message.id = reader.string();
                             break;
                         }
-                        case 2: {
+                    case 2: {
                             message.name = reader.string();
                             break;
                         }
-                        case 3: {
+                    case 3: {
                             message.gamemode = reader.uint32();
                             break;
                         }
-                        case 4: {
+                    case 4: {
                             message.curUsers = reader.uint32();
                             break;
                         }
-                        case 5: {
+                    case 5: {
                             message.maxUsers = reader.uint32();
                             break;
                         }
-                        case 6: {
+                    case 6: {
                             message["protected"] = reader.bool();
                             break;
                         }
-                        case 7: {
+                    case 7: {
                             message.owner = reader.string();
                             break;
                         }
-                        case 8: {
+                    case 8: {
                             message.locked = reader.bool();
                             break;
                         }
-                        default:
-                            reader.skipType(tag & 7);
-                            break;
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
                     }
                 }
                 return message;
             };
+
             /**
              * Decodes a Room message from the specified reader or buffer, length delimited.
              * @function decodeDelimited
@@ -28035,6 +29947,7 @@ $root.NT = (function () {
                     reader = new $Reader(reader);
                 return this.decode(reader, reader.uint32());
             };
+
             /**
              * Verifies a Room message.
              * @function verify
@@ -28072,6 +29985,7 @@ $root.NT = (function () {
                         return "locked: boolean expected";
                 return null;
             };
+
             /**
              * Creates a Room message from a plain object. Also converts values to their respective internal types.
              * @function fromObject
@@ -28102,6 +30016,7 @@ $root.NT = (function () {
                     message.locked = Boolean(object.locked);
                 return message;
             };
+
             /**
              * Creates a plain object from a Room message. Also converts values to other types if specified.
              * @function toObject
@@ -28143,6 +30058,7 @@ $root.NT = (function () {
                     object.locked = message.locked;
                 return object;
             };
+
             /**
              * Converts this Room to JSON.
              * @function toJSON
@@ -28153,6 +30069,7 @@ $root.NT = (function () {
             Room.prototype.toJSON = function toJSON() {
                 return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
             };
+
             /**
              * Gets the default type url for Room
              * @function getTypeUrl
@@ -28167,17 +30084,22 @@ $root.NT = (function () {
                 }
                 return typeUrlPrefix + "/NT.ServerRoomList.Room";
             };
+
             return Room;
         })();
+
         return ServerRoomList;
     })();
-    NT.ServerRoomAddToList = (function () {
+
+    NT.ServerRoomAddToList = (function() {
+
         /**
          * Properties of a ServerRoomAddToList.
          * @memberof NT
          * @interface IServerRoomAddToList
          * @property {NT.ServerRoomAddToList.IRoom|null} [room] ServerRoomAddToList room
          */
+
         /**
          * Constructs a new ServerRoomAddToList.
          * @memberof NT
@@ -28192,6 +30114,7 @@ $root.NT = (function () {
                     if (properties[keys[i]] != null)
                         this[keys[i]] = properties[keys[i]];
         }
+
         /**
          * ServerRoomAddToList room.
          * @member {NT.ServerRoomAddToList.IRoom|null|undefined} room
@@ -28199,6 +30122,7 @@ $root.NT = (function () {
          * @instance
          */
         ServerRoomAddToList.prototype.room = null;
+
         /**
          * Creates a new ServerRoomAddToList instance using the specified properties.
          * @function create
@@ -28210,6 +30134,7 @@ $root.NT = (function () {
         ServerRoomAddToList.create = function create(properties) {
             return new ServerRoomAddToList(properties);
         };
+
         /**
          * Encodes the specified ServerRoomAddToList message. Does not implicitly {@link NT.ServerRoomAddToList.verify|verify} messages.
          * @function encode
@@ -28223,9 +30148,10 @@ $root.NT = (function () {
             if (!writer)
                 writer = $Writer.create();
             if (message.room != null && Object.hasOwnProperty.call(message, "room"))
-                $root.NT.ServerRoomAddToList.Room.encode(message.room, writer.uint32(/* id 1, wireType 2 =*/ 10).fork()).ldelim();
+                $root.NT.ServerRoomAddToList.Room.encode(message.room, writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
             return writer;
         };
+
         /**
          * Encodes the specified ServerRoomAddToList message, length delimited. Does not implicitly {@link NT.ServerRoomAddToList.verify|verify} messages.
          * @function encodeDelimited
@@ -28238,6 +30164,7 @@ $root.NT = (function () {
         ServerRoomAddToList.encodeDelimited = function encodeDelimited(message, writer) {
             return this.encode(message, writer).ldelim();
         };
+
         /**
          * Decodes a ServerRoomAddToList message from the specified reader or buffer.
          * @function decode
@@ -28256,17 +30183,18 @@ $root.NT = (function () {
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                    case 1: {
+                case 1: {
                         message.room = $root.NT.ServerRoomAddToList.Room.decode(reader, reader.uint32());
                         break;
                     }
-                    default:
-                        reader.skipType(tag & 7);
-                        break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
                 }
             }
             return message;
         };
+
         /**
          * Decodes a ServerRoomAddToList message from the specified reader or buffer, length delimited.
          * @function decodeDelimited
@@ -28282,6 +30210,7 @@ $root.NT = (function () {
                 reader = new $Reader(reader);
             return this.decode(reader, reader.uint32());
         };
+
         /**
          * Verifies a ServerRoomAddToList message.
          * @function verify
@@ -28300,6 +30229,7 @@ $root.NT = (function () {
             }
             return null;
         };
+
         /**
          * Creates a ServerRoomAddToList message from a plain object. Also converts values to their respective internal types.
          * @function fromObject
@@ -28319,6 +30249,7 @@ $root.NT = (function () {
             }
             return message;
         };
+
         /**
          * Creates a plain object from a ServerRoomAddToList message. Also converts values to other types if specified.
          * @function toObject
@@ -28338,6 +30269,7 @@ $root.NT = (function () {
                 object.room = $root.NT.ServerRoomAddToList.Room.toObject(message.room, options);
             return object;
         };
+
         /**
          * Converts this ServerRoomAddToList to JSON.
          * @function toJSON
@@ -28348,6 +30280,7 @@ $root.NT = (function () {
         ServerRoomAddToList.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
+
         /**
          * Gets the default type url for ServerRoomAddToList
          * @function getTypeUrl
@@ -28362,7 +30295,9 @@ $root.NT = (function () {
             }
             return typeUrlPrefix + "/NT.ServerRoomAddToList";
         };
-        ServerRoomAddToList.Room = (function () {
+
+        ServerRoomAddToList.Room = (function() {
+
             /**
              * Properties of a Room.
              * @memberof NT.ServerRoomAddToList
@@ -28376,6 +30311,7 @@ $root.NT = (function () {
              * @property {string|null} [owner] Room owner
              * @property {boolean|null} [locked] Room locked
              */
+
             /**
              * Constructs a new Room.
              * @memberof NT.ServerRoomAddToList
@@ -28390,6 +30326,7 @@ $root.NT = (function () {
                         if (properties[keys[i]] != null)
                             this[keys[i]] = properties[keys[i]];
             }
+
             /**
              * Room id.
              * @member {string} id
@@ -28397,6 +30334,7 @@ $root.NT = (function () {
              * @instance
              */
             Room.prototype.id = "";
+
             /**
              * Room name.
              * @member {string} name
@@ -28404,6 +30342,7 @@ $root.NT = (function () {
              * @instance
              */
             Room.prototype.name = "";
+
             /**
              * Room gamemode.
              * @member {number} gamemode
@@ -28411,6 +30350,7 @@ $root.NT = (function () {
              * @instance
              */
             Room.prototype.gamemode = 0;
+
             /**
              * Room curUsers.
              * @member {number} curUsers
@@ -28418,6 +30358,7 @@ $root.NT = (function () {
              * @instance
              */
             Room.prototype.curUsers = 0;
+
             /**
              * Room maxUsers.
              * @member {number} maxUsers
@@ -28425,6 +30366,7 @@ $root.NT = (function () {
              * @instance
              */
             Room.prototype.maxUsers = 0;
+
             /**
              * Room protected.
              * @member {boolean} protected
@@ -28432,6 +30374,7 @@ $root.NT = (function () {
              * @instance
              */
             Room.prototype["protected"] = false;
+
             /**
              * Room owner.
              * @member {string} owner
@@ -28439,6 +30382,7 @@ $root.NT = (function () {
              * @instance
              */
             Room.prototype.owner = "";
+
             /**
              * Room locked.
              * @member {boolean} locked
@@ -28446,6 +30390,7 @@ $root.NT = (function () {
              * @instance
              */
             Room.prototype.locked = false;
+
             /**
              * Creates a new Room instance using the specified properties.
              * @function create
@@ -28457,6 +30402,7 @@ $root.NT = (function () {
             Room.create = function create(properties) {
                 return new Room(properties);
             };
+
             /**
              * Encodes the specified Room message. Does not implicitly {@link NT.ServerRoomAddToList.Room.verify|verify} messages.
              * @function encode
@@ -28470,23 +30416,24 @@ $root.NT = (function () {
                 if (!writer)
                     writer = $Writer.create();
                 if (message.id != null && Object.hasOwnProperty.call(message, "id"))
-                    writer.uint32(/* id 1, wireType 2 =*/ 10).string(message.id);
+                    writer.uint32(/* id 1, wireType 2 =*/10).string(message.id);
                 if (message.name != null && Object.hasOwnProperty.call(message, "name"))
-                    writer.uint32(/* id 2, wireType 2 =*/ 18).string(message.name);
+                    writer.uint32(/* id 2, wireType 2 =*/18).string(message.name);
                 if (message.gamemode != null && Object.hasOwnProperty.call(message, "gamemode"))
-                    writer.uint32(/* id 3, wireType 0 =*/ 24).uint32(message.gamemode);
+                    writer.uint32(/* id 3, wireType 0 =*/24).uint32(message.gamemode);
                 if (message.curUsers != null && Object.hasOwnProperty.call(message, "curUsers"))
-                    writer.uint32(/* id 4, wireType 0 =*/ 32).uint32(message.curUsers);
+                    writer.uint32(/* id 4, wireType 0 =*/32).uint32(message.curUsers);
                 if (message.maxUsers != null && Object.hasOwnProperty.call(message, "maxUsers"))
-                    writer.uint32(/* id 5, wireType 0 =*/ 40).uint32(message.maxUsers);
+                    writer.uint32(/* id 5, wireType 0 =*/40).uint32(message.maxUsers);
                 if (message["protected"] != null && Object.hasOwnProperty.call(message, "protected"))
-                    writer.uint32(/* id 6, wireType 0 =*/ 48).bool(message["protected"]);
+                    writer.uint32(/* id 6, wireType 0 =*/48).bool(message["protected"]);
                 if (message.owner != null && Object.hasOwnProperty.call(message, "owner"))
-                    writer.uint32(/* id 7, wireType 2 =*/ 58).string(message.owner);
+                    writer.uint32(/* id 7, wireType 2 =*/58).string(message.owner);
                 if (message.locked != null && Object.hasOwnProperty.call(message, "locked"))
-                    writer.uint32(/* id 8, wireType 0 =*/ 64).bool(message.locked);
+                    writer.uint32(/* id 8, wireType 0 =*/64).bool(message.locked);
                 return writer;
             };
+
             /**
              * Encodes the specified Room message, length delimited. Does not implicitly {@link NT.ServerRoomAddToList.Room.verify|verify} messages.
              * @function encodeDelimited
@@ -28499,6 +30446,7 @@ $root.NT = (function () {
             Room.encodeDelimited = function encodeDelimited(message, writer) {
                 return this.encode(message, writer).ldelim();
             };
+
             /**
              * Decodes a Room message from the specified reader or buffer.
              * @function decode
@@ -28517,45 +30465,46 @@ $root.NT = (function () {
                 while (reader.pos < end) {
                     var tag = reader.uint32();
                     switch (tag >>> 3) {
-                        case 1: {
+                    case 1: {
                             message.id = reader.string();
                             break;
                         }
-                        case 2: {
+                    case 2: {
                             message.name = reader.string();
                             break;
                         }
-                        case 3: {
+                    case 3: {
                             message.gamemode = reader.uint32();
                             break;
                         }
-                        case 4: {
+                    case 4: {
                             message.curUsers = reader.uint32();
                             break;
                         }
-                        case 5: {
+                    case 5: {
                             message.maxUsers = reader.uint32();
                             break;
                         }
-                        case 6: {
+                    case 6: {
                             message["protected"] = reader.bool();
                             break;
                         }
-                        case 7: {
+                    case 7: {
                             message.owner = reader.string();
                             break;
                         }
-                        case 8: {
+                    case 8: {
                             message.locked = reader.bool();
                             break;
                         }
-                        default:
-                            reader.skipType(tag & 7);
-                            break;
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
                     }
                 }
                 return message;
             };
+
             /**
              * Decodes a Room message from the specified reader or buffer, length delimited.
              * @function decodeDelimited
@@ -28571,6 +30520,7 @@ $root.NT = (function () {
                     reader = new $Reader(reader);
                 return this.decode(reader, reader.uint32());
             };
+
             /**
              * Verifies a Room message.
              * @function verify
@@ -28608,6 +30558,7 @@ $root.NT = (function () {
                         return "locked: boolean expected";
                 return null;
             };
+
             /**
              * Creates a Room message from a plain object. Also converts values to their respective internal types.
              * @function fromObject
@@ -28638,6 +30589,7 @@ $root.NT = (function () {
                     message.locked = Boolean(object.locked);
                 return message;
             };
+
             /**
              * Creates a plain object from a Room message. Also converts values to other types if specified.
              * @function toObject
@@ -28679,6 +30631,7 @@ $root.NT = (function () {
                     object.locked = message.locked;
                 return object;
             };
+
             /**
              * Converts this Room to JSON.
              * @function toJSON
@@ -28689,6 +30642,7 @@ $root.NT = (function () {
             Room.prototype.toJSON = function toJSON() {
                 return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
             };
+
             /**
              * Gets the default type url for Room
              * @function getTypeUrl
@@ -28703,10 +30657,14 @@ $root.NT = (function () {
                 }
                 return typeUrlPrefix + "/NT.ServerRoomAddToList.Room";
             };
+
             return Room;
         })();
+
         return ServerRoomAddToList;
     })();
+
     return NT;
 })();
+
 module.exports = $root;

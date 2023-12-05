@@ -4,7 +4,7 @@ import {
   decodeBitfield,
   decodeStable,
   encodeBitfield,
-  encodeStable
+  encodeStable,
 } from './compact_move';
 import { NT } from './pbjs_pb';
 
@@ -13,8 +13,8 @@ describe('compact move encoding', () => {
     const tests: { targetBytes: number; maxError: number; value: number }[] = [
       { targetBytes: 1, maxError: (Math.PI * 2 + 1) / 2 ** 7 },
       { targetBytes: 2, maxError: (Math.PI * 2 + 1) / 2 ** 14 },
-      { targetBytes: 3, maxError: (Math.PI * 2 + 1) / 2 ** 21 }
-    ].flatMap((obj) =>
+      { targetBytes: 3, maxError: (Math.PI * 2 + 1) / 2 ** 21 },
+    ].flatMap(obj =>
       [
         -Math.PI,
         -1,
@@ -25,8 +25,8 @@ describe('compact move encoding', () => {
         Math.random() * (Math.PI * 2) - Math.PI,
         Math.random() * (Math.PI * 2) - Math.PI,
         Math.random() * (Math.PI * 2) - Math.PI,
-        Math.random() * (Math.PI * 2) - Math.PI
-      ].map((value) => ({ ...obj, value }))
+        Math.random() * (Math.PI * 2) - Math.PI,
+      ].map(value => ({ ...obj, value }))
     );
 
     it.each(tests)('bytes<=$targetBytes maxError<=$maxError value=$value', ({ targetBytes, maxError, value }) => {
@@ -43,8 +43,8 @@ describe('compact move encoding', () => {
     const tests: { fractionalDigits: number; maxError: number; value: number }[] = [
       { fractionalDigits: 1, maxError: 0.1 / 2 },
       { fractionalDigits: 2, maxError: 0.01 / 2 },
-      { fractionalDigits: 3, maxError: 0.001 / 2 }
-    ].flatMap((obj) =>
+      { fractionalDigits: 3, maxError: 0.001 / 2 },
+    ].flatMap(obj =>
       [
         5,
         5.49,
@@ -56,8 +56,8 @@ describe('compact move encoding', () => {
         1 + Math.random(),
         1 + Math.random(),
         1 + Math.random(),
-        1 + Math.random()
-      ].map((value) => ({ ...obj, value }))
+        1 + Math.random(),
+      ].map(value => ({ ...obj, value }))
     );
 
     it.each(tests)(
@@ -82,7 +82,7 @@ describe('compact move encoding', () => {
     it('avoids cumulative error', () => {
       const vs = new Array(30).fill(1).map((v, idx) => idx * 1.05);
       const { encodeDelta, decodeDelta } = createDeltaCoder(1);
-      const { init, deltas } = encodeDelta(30, (i) => vs[i]);
+      const { init, deltas } = encodeDelta(30, i => vs[i]);
       const res: number[] = new Array(30);
       decodeDelta(init, deltas, (i, v) => {
         res[i] = v;
@@ -94,10 +94,10 @@ describe('compact move encoding', () => {
     const tests: { name: string; vs: number[] }[] = [
       { name: 'empty', vs: [] },
       { name: 'asymmetrical', vs: [-1, 1, 1, -1, -1] },
-      { name: 'max length', vs: new Array(32).fill(1) }
+      { name: 'max length', vs: new Array(32).fill(1) },
     ];
     it.each(tests)('$name', ({ vs }) => {
-      const encoded = encodeBitfield(vs.length, (i) => vs[i]);
+      const encoded = encodeBitfield(vs.length, i => vs[i]);
       const decoded = new Array(vs.length);
       decodeBitfield(vs.length, encoded, (i, v) => {
         decoded[i] = v;
@@ -116,10 +116,10 @@ describe('compact move encoding', () => {
       { name: 'empty', vs: [] },
       { name: '0->1 midway', vs: [0, 0, 1, 1] },
       { name: '0->1->0', vs: [0, 1, 0] },
-      { name: 'all 1', vs: [1, 1, 1] }
+      { name: 'all 1', vs: [1, 1, 1] },
     ];
     it.each(tests)('$name', ({ vs }) => {
-      const { idxs, vals } = encodeStable(vs.length, (i) => vs[i]);
+      const { idxs, vals } = encodeStable(vs.length, i => vs[i]);
       const decoded = new Array(vs.length);
       decodeStable(vs.length, idxs, vals, (i, v) => {
         decoded[i] = v;

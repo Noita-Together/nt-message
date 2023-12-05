@@ -24,7 +24,7 @@ export const createArmrCoder = (targetBytes: number) => {
      * between -PI and PI.
      * @see {createArmrCoder}
      */
-    decodeArmR: (v: number) => (v * pi2) / factor - Math.PI
+    decodeArmR: (v: number) => (v * pi2) / factor - Math.PI,
   };
 };
 
@@ -57,7 +57,7 @@ export const createDeltaCoder = (fractionalDigits: number) => {
         cum += deltas[i] / factor;
         set(i + 1, cum);
       }
-    }
+    },
   };
 };
 
@@ -125,13 +125,13 @@ export const createFrameCoder = (opts: FrameCoderConfig = {}) => {
     if (numFrames === 0) return new NT.CompactPlayerFrames();
     if (numFrames > 32) throw new Error('cannot compact more than 32 frames');
 
-    const { init: xInit, deltas: xDeltas } = encodeDelta(numFrames, (i) => frames[i]!.x!);
-    const { init: yInit, deltas: yDeltas } = encodeDelta(numFrames, (i) => frames[i]!.y!);
-    const armR: number[] = frames.map((f) => encodeArmR(f.armR!));
-    const armScaleY = encodeBitfield(numFrames, (i) => frames[i]!.armScaleY!);
-    const scaleX = encodeBitfield(numFrames, (i) => frames[i]!.scaleX!);
-    const { idxs: animIdx, vals: animVal } = encodeStable(numFrames, (i) => frames[i]!.anim!);
-    const { idxs: heldIdx, vals: heldVal } = encodeStable(numFrames, (i) => frames[i]!.held!);
+    const { init: xInit, deltas: xDeltas } = encodeDelta(numFrames, i => frames[i]!.x!);
+    const { init: yInit, deltas: yDeltas } = encodeDelta(numFrames, i => frames[i]!.y!);
+    const armR: number[] = frames.map(f => encodeArmR(f.armR!));
+    const armScaleY = encodeBitfield(numFrames, i => frames[i]!.armScaleY!);
+    const scaleX = encodeBitfield(numFrames, i => frames[i]!.scaleX!);
+    const { idxs: animIdx, vals: animVal } = encodeStable(numFrames, i => frames[i]!.anim!);
+    const { idxs: heldIdx, vals: heldVal } = encodeStable(numFrames, i => frames[i]!.held!);
 
     return new NT.CompactPlayerFrames({
       xInit,
@@ -144,7 +144,7 @@ export const createFrameCoder = (opts: FrameCoderConfig = {}) => {
       animIdx,
       animVal,
       heldIdx,
-      heldVal
+      heldVal,
     });
   };
 

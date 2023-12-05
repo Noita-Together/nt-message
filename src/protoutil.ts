@@ -56,7 +56,10 @@ const writeVarint32 = (buf: Buffer, val: number, pos: number): number => {
   throw new RangeError('Invalid value (too many bits)');
 };
 
-export const tagPlayerMove = (cpf: Buffer, pmId: Buffer): Buffer | undefined => {
+export const tagPlayerMove = (
+  cpf: Buffer,
+  pmId: Buffer,
+): Buffer | undefined => {
   // reject c2s CompactPlayerFrames with userId specified
   const embeddedUserId = new ProtoHax(cpf).with(cpfPlayerId).Bytes();
   if (embeddedUserId.length > 0) return;
@@ -75,7 +78,11 @@ export const tagPlayerMove = (cpf: Buffer, pmId: Buffer): Buffer | undefined => 
   const gameActionPayloadSize = spmPayloadSize + spmHeaderSize;
   const gameActionHeaderSize = sizeofVarint32(gameActionPayloadSize) + 1;
 
-  const msgLength = gameActionHeaderSize + spmHeaderSize + userFramesHeaderSize + userFramesPayloadSize;
+  const msgLength =
+    gameActionHeaderSize +
+    spmHeaderSize +
+    userFramesHeaderSize +
+    userFramesPayloadSize;
 
   const buf = Buffer.alloc(msgLength);
 
