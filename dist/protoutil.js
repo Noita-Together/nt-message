@@ -71,7 +71,10 @@ const tagPlayerMove = (cpf, pmId) => {
     const spmHeaderSize = sizeofVarint32(spmPayloadSize) + 1;
     const gameActionPayloadSize = spmPayloadSize + spmHeaderSize;
     const gameActionHeaderSize = sizeofVarint32(gameActionPayloadSize) + 1;
-    const msgLength = gameActionHeaderSize + spmHeaderSize + userFramesHeaderSize + userFramesPayloadSize;
+    const msgLength = gameActionHeaderSize +
+        spmHeaderSize +
+        userFramesHeaderSize +
+        userFramesPayloadSize;
     const buf = Buffer.alloc(msgLength);
     let pos = 0;
     // write GameAction tag+length

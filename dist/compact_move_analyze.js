@@ -18,7 +18,7 @@ const stats = {
     armScaleY: { min: Infinity, max: -Infinity, zero: 0, nan: 0 },
     scaleX: { min: Infinity, max: -Infinity, zero: 0, nan: 0 },
     anim: { min: Infinity, max: -Infinity, zero: 0, nan: 0 },
-    held: { min: Infinity, max: -Infinity, zero: 0, nan: 0 }
+    held: { min: Infinity, max: -Infinity, zero: 0, nan: 0 },
 };
 const addStat = (key, v) => {
     if (isNaN(v)) {
@@ -64,7 +64,7 @@ const diffFrame = (a, b, xyTolerance = 0.051, armrTolerance = (Math.PI * 2 + 1) 
         armScaleY: [a.armScaleY, b.armScaleY],
         scaleX: [a.scaleX, b.scaleX],
         held: [a.held, b.held],
-        anim: [a.anim, b.anim]
+        anim: [a.anim, b.anim],
     };
 };
 const diffFrames = (a, b) => {
@@ -91,10 +91,10 @@ const { encodeFrames, decodeFrames } = (0, compact_move_1.createFrameCoder)();
     try {
         const rl = (0, node_readline_1.createInterface)({
             input: (0, node_fs_1.createReadStream)(infile),
-            crlfDelay: Infinity
+            crlfDelay: Infinity,
         });
         let prec = { x: 0, y: 0, armR: 0 };
-        rl.on('line', (line) => {
+        rl.on('line', line => {
             const obj = JSON.parse(line);
             if (!obj.frames || !obj.frames.length)
                 return;
@@ -128,7 +128,7 @@ const { encodeFrames, decodeFrames } = (0, compact_move_1.createFrameCoder)();
             oldSizeAt90: oldSizeAt90.toLocaleString() + 'b',
             newSize: newSize.toLocaleString() + 'b',
             newSizeAt90: newSizeAt90.toLocaleString() + 'b',
-            pctAt90: ((100 * newSizeAt90) / oldSizeAt90).toFixed(2) + '%'
+            pctAt90: ((100 * newSizeAt90) / oldSizeAt90).toFixed(2) + '%',
         });
         console.log(prec);
         // console.log(stats);

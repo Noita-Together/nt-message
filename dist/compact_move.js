@@ -25,7 +25,7 @@ const createArmrCoder = (targetBytes) => {
          * between -PI and PI.
          * @see {createArmrCoder}
          */
-        decodeArmR: (v) => (v * pi2) / factor - Math.PI
+        decodeArmR: (v) => (v * pi2) / factor - Math.PI,
     };
 };
 exports.createArmrCoder = createArmrCoder;
@@ -57,7 +57,7 @@ const createDeltaCoder = (fractionalDigits) => {
                 cum += deltas[i] / factor;
                 set(i + 1, cum);
             }
-        }
+        },
     };
 };
 exports.createDeltaCoder = createDeltaCoder;
@@ -123,13 +123,13 @@ const createFrameCoder = (opts = {}) => {
             return new pbjs_pb_1.NT.CompactPlayerFrames();
         if (numFrames > 32)
             throw new Error('cannot compact more than 32 frames');
-        const { init: xInit, deltas: xDeltas } = encodeDelta(numFrames, (i) => frames[i].x);
-        const { init: yInit, deltas: yDeltas } = encodeDelta(numFrames, (i) => frames[i].y);
-        const armR = frames.map((f) => encodeArmR(f.armR));
-        const armScaleY = (0, exports.encodeBitfield)(numFrames, (i) => frames[i].armScaleY);
-        const scaleX = (0, exports.encodeBitfield)(numFrames, (i) => frames[i].scaleX);
-        const { idxs: animIdx, vals: animVal } = (0, exports.encodeStable)(numFrames, (i) => frames[i].anim);
-        const { idxs: heldIdx, vals: heldVal } = (0, exports.encodeStable)(numFrames, (i) => frames[i].held);
+        const { init: xInit, deltas: xDeltas } = encodeDelta(numFrames, i => frames[i].x);
+        const { init: yInit, deltas: yDeltas } = encodeDelta(numFrames, i => frames[i].y);
+        const armR = frames.map(f => encodeArmR(f.armR));
+        const armScaleY = (0, exports.encodeBitfield)(numFrames, i => frames[i].armScaleY);
+        const scaleX = (0, exports.encodeBitfield)(numFrames, i => frames[i].scaleX);
+        const { idxs: animIdx, vals: animVal } = (0, exports.encodeStable)(numFrames, i => frames[i].anim);
+        const { idxs: heldIdx, vals: heldVal } = (0, exports.encodeStable)(numFrames, i => frames[i].held);
         return new pbjs_pb_1.NT.CompactPlayerFrames({
             xInit,
             xDeltas,
@@ -141,7 +141,7 @@ const createFrameCoder = (opts = {}) => {
             animIdx,
             animVal,
             heldIdx,
-            heldVal
+            heldVal,
         });
     };
     const decodeFrames = (pm) => {

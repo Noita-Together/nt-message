@@ -16,10 +16,14 @@ exports.M = {};
 for (const key of pbreflect_1.gameActions) {
     exports.M[key] = ((data, encoded) => encoded
         ? pbjs_pb_1.NT.Envelope.encode({ gameAction: { [key]: data } }).finish()
-        : pbjs_pb_1.NT.Envelope.fromObject({ gameAction: { [key]: data } }));
+        : pbjs_pb_1.NT.Envelope.fromObject({
+            gameAction: { [key]: data },
+        }));
 }
 for (const key of pbreflect_1.lobbyActions) {
     exports.M[key] = ((data, encoded) => encoded
         ? pbjs_pb_1.NT.Envelope.encode({ lobbyAction: { [key]: data } }).finish()
-        : pbjs_pb_1.NT.Envelope.fromObject({ lobbyAction: { [key]: data } }));
+        : pbjs_pb_1.NT.Envelope.fromObject({
+            lobbyAction: { [key]: data },
+        }));
 }
