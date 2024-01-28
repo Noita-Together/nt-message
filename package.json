@@ -1,5 +1,5 @@
 {
-  "name": "nt-message",
+  "name": "@noita-together/nt-message",
   "version": "1.0.0",
   "description": "Supporting protobuf functions for Noita Together",
   "scripts": {
