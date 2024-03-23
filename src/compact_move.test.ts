@@ -99,13 +99,18 @@ describe('compact move encoding', () => {
     it.each(tests)('$name', ({ vs }) => {
       const encoded = encodeBitfield(vs.length, i => vs[i]);
       const decoded = new Array(vs.length);
-      decodeBitfield(vs.length, encoded, (i, v) => {
-        decoded[i] = v;
-      });
+      decodeBitfield(vs.length, encoded, (i, v) => (decoded[i] = v));
       expect(decoded).toStrictEqual(vs);
     });
-    it('throws on invalid values', () => {
-      expect(() => encodeBitfield(1, () => 2)).toThrow('Invalid');
+    it('throws on invalid values (with snap disabled)', () => {
+      expect(() => encodeBitfield(1, () => 2, false)).toThrow('Invalid');
+    });
+    it('succeeds on invalid values (with snap enabled)', () => {
+      const vs = [-2, -1.3, -1, -0.5, 0, 0.5, 1, 1.3, 2];
+      const encoded = encodeBitfield(vs.length, i => vs[i]);
+      const decoded = new Array(vs.length);
+      decodeBitfield(vs.length, encoded, (i, v) => (decoded[i] = v));
+      expect(decoded).toStrictEqual([-1, -1, -1, -1, -1, 1, 1, 1, 1]);
     });
     it('throws on too-long arrays', () => {
       expect(() => encodeBitfield(33, () => 1)).toThrow('Cannot encode');

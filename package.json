@@ -1,6 +1,6 @@
 {
   "name": "@noita-together/nt-message",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Supporting protobuf functions for Noita Together",
   "scripts": {
     "build_proto": "pbjs -w commonjs -t static-module ./proto/messages.proto > ./src/pbjs_pb.js && pbts ./src/pbjs_pb.js > ./src/pbjs_pb.d.ts && pbjs -t json ./proto/messages.proto > ./src/pbjs_pb.json",
