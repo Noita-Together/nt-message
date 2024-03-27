@@ -4,7 +4,13 @@
 
 set -e
 
-protected_branch="main"
+protected_branch="refs/heads/main"
+current_branch="$(git symbolic-ref HEAD)"
+
+# Only run this hook for the "main" branch
+if [[ "$current_branch" != "$protected_branch" ]]; then
+    exit 0
+fi
 
 # Check if we actually have commits to push
 commits="$(git log "@{u}..")"
@@ -12,18 +18,15 @@ if [ -z "$commits" ]; then
     exit 0
 fi
 
-current_branch="$(git symbolic-ref HEAD | sed -e 's,.*/\(.*\),\1,')"
-
-if [[ "$current_branch" = "$protected_branch" ]]; then
-    if ! npm run build; then
-        printf "\n%s\n\n" "Build/test failed"
-        exit 1
-    fi
-
-    if ! git diff --quiet; then
-        git status
-        printf "\n%s\n\n" "Build generated differences; commit the result then try again"
-        exit 1
-    fi
+if ! npm run build; then
+    printf "\n%s\n\n" "Build/test failed"
+    exit 1
 fi
+
+if ! git diff --quiet; then
+    git status
+    printf "\n%s\n\n" "Build generated differences; commit the result then try again"
+    exit 1
+fi
+
 exit 0

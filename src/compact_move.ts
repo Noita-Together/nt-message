@@ -61,11 +61,20 @@ export const createDeltaCoder = (fractionalDigits: number) => {
   };
 };
 
-export const encodeBitfield = (len: number, next: (i: number) => number): number => {
+export const encodeBitfield = (len: number, next: (i: number) => number, snap: boolean = true): number => {
   if (len > 32) throw new Error('Cannot encode more than 32 values in a bitfield');
   let res = 0;
   for (let i = 0; i < len; i++) {
-    const val = next(i);
+    let val = next(i);
+    // scaleX and armScaleY are _usually_ 1 / -1, but might be fractional if the player
+    // is using mods or e.g. gets hit by shrinking mage. shrinking mage wasn't accounted
+    // for initially, so it crashes NT. for compatibility, we'll "snap" to +- 1 when
+    // encountering fractional digits; this will cause other players not to see the
+    // "shrunken" mina, but gameplay will continue as normal.
+    if (snap && Math.abs(val) !== 1) {
+      // 0 is probably invalid, but we don't have to break NT if we encounter it
+      val = val > 0 ? 1 : -1;
+    }
     // values must be -1 or 1
     if (val !== -1 && val !== 1) throw new Error('Invalid value: ' + val);
     res |= ((val + 1) >>> 1) << i;
