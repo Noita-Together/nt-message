@@ -28,7 +28,7 @@ export declare const createDeltaCoder: (fractionalDigits: number) => {
     };
     decodeDelta: (init: number, deltas: number[], set: (i: number, v: number) => void) => void;
 };
-export declare const encodeBitfield: (len: number, next: (i: number) => number) => number;
+export declare const encodeBitfield: (len: number, next: (i: number) => number, snap?: boolean) => number;
 export declare const decodeBitfield: (len: number, val: number, set: (i: number, val: number) => void) => void;
 export declare const encodeStable: (len: number, get: (i: number) => number) => {
     idxs: number[];
