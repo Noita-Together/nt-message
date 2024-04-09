@@ -1,4 +1,16 @@
 declare const NT: {
+    Hello: {
+        fields: {
+            protocolVersion: {
+                type: string;
+                id: number;
+            };
+            reconnectToken: {
+                type: string;
+                id: number;
+            };
+        };
+    };
     Envelope: {
         oneofs: {
             kind: {
@@ -11,6 +23,10 @@ declare const NT: {
                 id: number;
             };
             lobbyAction: {
+                type: string;
+                id: number;
+            };
+            hello: {
                 type: string;
                 id: number;
             };

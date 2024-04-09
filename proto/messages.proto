@@ -1,10 +1,16 @@
 syntax = "proto3";
 package NT;
 
+message Hello {
+    int32 protocol_version = 1;
+    string reconnect_token = 2;
+}
+
 message Envelope {
     oneof kind {
         GameAction game_action = 1;
         LobbyAction lobby_action = 50;
+        Hello hello = 100;
     }
 }
 

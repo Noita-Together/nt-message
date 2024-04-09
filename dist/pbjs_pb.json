@@ -2,12 +2,25 @@
   "nested": {
     "NT": {
       "nested": {
+        "Hello": {
+          "fields": {
+            "protocolVersion": {
+              "type": "int32",
+              "id": 1
+            },
+            "reconnectToken": {
+              "type": "string",
+              "id": 2
+            }
+          }
+        },
         "Envelope": {
           "oneofs": {
             "kind": {
               "oneof": [
                 "gameAction",
-                "lobbyAction"
+                "lobbyAction",
+                "hello"
               ]
             }
           },
@@ -19,6 +32,10 @@
             "lobbyAction": {
               "type": "LobbyAction",
               "id": 50
+            },
+            "hello": {
+              "type": "Hello",
+              "id": 100
             }
           }
         },

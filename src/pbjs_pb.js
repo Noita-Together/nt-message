@@ -18,6 +18,233 @@ $root.NT = (function() {
      */
     var NT = {};
 
+    NT.Hello = (function() {
+
+        /**
+         * Properties of a Hello.
+         * @memberof NT
+         * @interface IHello
+         * @property {number|null} [protocolVersion] Hello protocolVersion
+         * @property {string|null} [reconnectToken] Hello reconnectToken
+         */
+
+        /**
+         * Constructs a new Hello.
+         * @memberof NT
+         * @classdesc Represents a Hello.
+         * @implements IHello
+         * @constructor
+         * @param {NT.IHello=} [properties] Properties to set
+         */
+        function Hello(properties) {
+            if (properties)
+                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * Hello protocolVersion.
+         * @member {number} protocolVersion
+         * @memberof NT.Hello
+         * @instance
+         */
+        Hello.prototype.protocolVersion = 0;
+
+        /**
+         * Hello reconnectToken.
+         * @member {string} reconnectToken
+         * @memberof NT.Hello
+         * @instance
+         */
+        Hello.prototype.reconnectToken = "";
+
+        /**
+         * Creates a new Hello instance using the specified properties.
+         * @function create
+         * @memberof NT.Hello
+         * @static
+         * @param {NT.IHello=} [properties] Properties to set
+         * @returns {NT.Hello} Hello instance
+         */
+        Hello.create = function create(properties) {
+            return new Hello(properties);
+        };
+
+        /**
+         * Encodes the specified Hello message. Does not implicitly {@link NT.Hello.verify|verify} messages.
+         * @function encode
+         * @memberof NT.Hello
+         * @static
+         * @param {NT.IHello} message Hello message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        Hello.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.protocolVersion != null && Object.hasOwnProperty.call(message, "protocolVersion"))
+                writer.uint32(/* id 1, wireType 0 =*/8).int32(message.protocolVersion);
+            if (message.reconnectToken != null && Object.hasOwnProperty.call(message, "reconnectToken"))
+                writer.uint32(/* id 2, wireType 2 =*/18).string(message.reconnectToken);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified Hello message, length delimited. Does not implicitly {@link NT.Hello.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof NT.Hello
+         * @static
+         * @param {NT.IHello} message Hello message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        Hello.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a Hello message from the specified reader or buffer.
+         * @function decode
+         * @memberof NT.Hello
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {NT.Hello} Hello
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        Hello.decode = function decode(reader, length) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.NT.Hello();
+            while (reader.pos < end) {
+                var tag = reader.uint32();
+                switch (tag >>> 3) {
+                case 1: {
+                        message.protocolVersion = reader.int32();
+                        break;
+                    }
+                case 2: {
+                        message.reconnectToken = reader.string();
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a Hello message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof NT.Hello
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {NT.Hello} Hello
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        Hello.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a Hello message.
+         * @function verify
+         * @memberof NT.Hello
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        Hello.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.protocolVersion != null && message.hasOwnProperty("protocolVersion"))
+                if (!$util.isInteger(message.protocolVersion))
+                    return "protocolVersion: integer expected";
+            if (message.reconnectToken != null && message.hasOwnProperty("reconnectToken"))
+                if (!$util.isString(message.reconnectToken))
+                    return "reconnectToken: string expected";
+            return null;
+        };
+
+        /**
+         * Creates a Hello message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof NT.Hello
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {NT.Hello} Hello
+         */
+        Hello.fromObject = function fromObject(object) {
+            if (object instanceof $root.NT.Hello)
+                return object;
+            var message = new $root.NT.Hello();
+            if (object.protocolVersion != null)
+                message.protocolVersion = object.protocolVersion | 0;
+            if (object.reconnectToken != null)
+                message.reconnectToken = String(object.reconnectToken);
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a Hello message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof NT.Hello
+         * @static
+         * @param {NT.Hello} message Hello
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        Hello.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            var object = {};
+            if (options.defaults) {
+                object.protocolVersion = 0;
+                object.reconnectToken = "";
+            }
+            if (message.protocolVersion != null && message.hasOwnProperty("protocolVersion"))
+                object.protocolVersion = message.protocolVersion;
+            if (message.reconnectToken != null && message.hasOwnProperty("reconnectToken"))
+                object.reconnectToken = message.reconnectToken;
+            return object;
+        };
+
+        /**
+         * Converts this Hello to JSON.
+         * @function toJSON
+         * @memberof NT.Hello
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        Hello.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for Hello
+         * @function getTypeUrl
+         * @memberof NT.Hello
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        Hello.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/NT.Hello";
+        };
+
+        return Hello;
+    })();
+
     NT.Envelope = (function() {
 
         /**
@@ -26,6 +253,7 @@ $root.NT = (function() {
          * @interface IEnvelope
          * @property {NT.IGameAction|null} [gameAction] Envelope gameAction
          * @property {NT.ILobbyAction|null} [lobbyAction] Envelope lobbyAction
+         * @property {NT.IHello|null} [hello] Envelope hello
          */
 
         /**
@@ -59,17 +287,25 @@ $root.NT = (function() {
          */
         Envelope.prototype.lobbyAction = null;
 
+        /**
+         * Envelope hello.
+         * @member {NT.IHello|null|undefined} hello
+         * @memberof NT.Envelope
+         * @instance
+         */
+        Envelope.prototype.hello = null;
+
         // OneOf field names bound to virtual getters and setters
         var $oneOfFields;
 
         /**
          * Envelope kind.
-         * @member {"gameAction"|"lobbyAction"|undefined} kind
+         * @member {"gameAction"|"lobbyAction"|"hello"|undefined} kind
          * @memberof NT.Envelope
          * @instance
          */
         Object.defineProperty(Envelope.prototype, "kind", {
-            get: $util.oneOfGetter($oneOfFields = ["gameAction", "lobbyAction"]),
+            get: $util.oneOfGetter($oneOfFields = ["gameAction", "lobbyAction", "hello"]),
             set: $util.oneOfSetter($oneOfFields)
         });
 
@@ -101,6 +337,8 @@ $root.NT = (function() {
                 $root.NT.GameAction.encode(message.gameAction, writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
             if (message.lobbyAction != null && Object.hasOwnProperty.call(message, "lobbyAction"))
                 $root.NT.LobbyAction.encode(message.lobbyAction, writer.uint32(/* id 50, wireType 2 =*/402).fork()).ldelim();
+            if (message.hello != null && Object.hasOwnProperty.call(message, "hello"))
+                $root.NT.Hello.encode(message.hello, writer.uint32(/* id 100, wireType 2 =*/802).fork()).ldelim();
             return writer;
         };
 
@@ -141,6 +379,10 @@ $root.NT = (function() {
                     }
                 case 50: {
                         message.lobbyAction = $root.NT.LobbyAction.decode(reader, reader.uint32());
+                        break;
+                    }
+                case 100: {
+                        message.hello = $root.NT.Hello.decode(reader, reader.uint32());
                         break;
                     }
                 default:
@@ -197,6 +439,16 @@ $root.NT = (function() {
                         return "lobbyAction." + error;
                 }
             }
+            if (message.hello != null && message.hasOwnProperty("hello")) {
+                if (properties.kind === 1)
+                    return "kind: multiple values";
+                properties.kind = 1;
+                {
+                    var error = $root.NT.Hello.verify(message.hello);
+                    if (error)
+                        return "hello." + error;
+                }
+            }
             return null;
         };
 
@@ -221,6 +473,11 @@ $root.NT = (function() {
                 if (typeof object.lobbyAction !== "object")
                     throw TypeError(".NT.Envelope.lobbyAction: object expected");
                 message.lobbyAction = $root.NT.LobbyAction.fromObject(object.lobbyAction);
+            }
+            if (object.hello != null) {
+                if (typeof object.hello !== "object")
+                    throw TypeError(".NT.Envelope.hello: object expected");
+                message.hello = $root.NT.Hello.fromObject(object.hello);
             }
             return message;
         };
@@ -247,6 +504,11 @@ $root.NT = (function() {
                 object.lobbyAction = $root.NT.LobbyAction.toObject(message.lobbyAction, options);
                 if (options.oneofs)
                     object.kind = "lobbyAction";
+            }
+            if (message.hello != null && message.hasOwnProperty("hello")) {
+                object.hello = $root.NT.Hello.toObject(message.hello, options);
+                if (options.oneofs)
+                    object.kind = "hello";
             }
             return object;
         };

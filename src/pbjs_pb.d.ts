@@ -3,6 +3,109 @@ import Long = require("long");
 /** Namespace NT. */
 export namespace NT {
 
+    /** Properties of a Hello. */
+    interface IHello {
+
+        /** Hello protocolVersion */
+        protocolVersion?: (number|null);
+
+        /** Hello reconnectToken */
+        reconnectToken?: (string|null);
+    }
+
+    /** Represents a Hello. */
+    class Hello implements IHello {
+
+        /**
+         * Constructs a new Hello.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: NT.IHello);
+
+        /** Hello protocolVersion. */
+        public protocolVersion: number;
+
+        /** Hello reconnectToken. */
+        public reconnectToken: string;
+
+        /**
+         * Creates a new Hello instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns Hello instance
+         */
+        public static create(properties?: NT.IHello): NT.Hello;
+
+        /**
+         * Encodes the specified Hello message. Does not implicitly {@link NT.Hello.verify|verify} messages.
+         * @param message Hello message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: NT.IHello, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified Hello message, length delimited. Does not implicitly {@link NT.Hello.verify|verify} messages.
+         * @param message Hello message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: NT.IHello, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a Hello message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns Hello
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): NT.Hello;
+
+        /**
+         * Decodes a Hello message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns Hello
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): NT.Hello;
+
+        /**
+         * Verifies a Hello message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a Hello message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns Hello
+         */
+        public static fromObject(object: { [k: string]: any }): NT.Hello;
+
+        /**
+         * Creates a plain object from a Hello message. Also converts values to other types if specified.
+         * @param message Hello
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: NT.Hello, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this Hello to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the default type url for Hello
+         * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns The default type url
+         */
+        public static getTypeUrl(typeUrlPrefix?: string): string;
+    }
+
     /** Properties of an Envelope. */
     interface IEnvelope {
 
@@ -11,6 +114,9 @@ export namespace NT {
 
         /** Envelope lobbyAction */
         lobbyAction?: (NT.ILobbyAction|null);
+
+        /** Envelope hello */
+        hello?: (NT.IHello|null);
     }
 
     /** Represents an Envelope. */
@@ -28,8 +134,11 @@ export namespace NT {
         /** Envelope lobbyAction. */
         public lobbyAction?: (NT.ILobbyAction|null);
 
+        /** Envelope hello. */
+        public hello?: (NT.IHello|null);
+
         /** Envelope kind. */
-        public kind?: ("gameAction"|"lobbyAction");
+        public kind?: ("gameAction"|"lobbyAction"|"hello");
 
         /**
          * Creates a new Envelope instance using the specified properties.
