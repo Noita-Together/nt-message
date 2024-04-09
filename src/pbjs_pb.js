@@ -25,7 +25,6 @@ $root.NT = (function() {
          * @memberof NT
          * @interface IHello
          * @property {number|null} [protocolVersion] Hello protocolVersion
-         * @property {string|null} [reconnectToken] Hello reconnectToken
          */
 
         /**
@@ -50,14 +49,6 @@ $root.NT = (function() {
          * @instance
          */
         Hello.prototype.protocolVersion = 0;
-
-        /**
-         * Hello reconnectToken.
-         * @member {string} reconnectToken
-         * @memberof NT.Hello
-         * @instance
-         */
-        Hello.prototype.reconnectToken = "";
 
         /**
          * Creates a new Hello instance using the specified properties.
@@ -85,8 +76,6 @@ $root.NT = (function() {
                 writer = $Writer.create();
             if (message.protocolVersion != null && Object.hasOwnProperty.call(message, "protocolVersion"))
                 writer.uint32(/* id 1, wireType 0 =*/8).int32(message.protocolVersion);
-            if (message.reconnectToken != null && Object.hasOwnProperty.call(message, "reconnectToken"))
-                writer.uint32(/* id 2, wireType 2 =*/18).string(message.reconnectToken);
             return writer;
         };
 
@@ -123,10 +112,6 @@ $root.NT = (function() {
                 switch (tag >>> 3) {
                 case 1: {
                         message.protocolVersion = reader.int32();
-                        break;
-                    }
-                case 2: {
-                        message.reconnectToken = reader.string();
                         break;
                     }
                 default:
@@ -167,9 +152,6 @@ $root.NT = (function() {
             if (message.protocolVersion != null && message.hasOwnProperty("protocolVersion"))
                 if (!$util.isInteger(message.protocolVersion))
                     return "protocolVersion: integer expected";
-            if (message.reconnectToken != null && message.hasOwnProperty("reconnectToken"))
-                if (!$util.isString(message.reconnectToken))
-                    return "reconnectToken: string expected";
             return null;
         };
 
@@ -187,8 +169,6 @@ $root.NT = (function() {
             var message = new $root.NT.Hello();
             if (object.protocolVersion != null)
                 message.protocolVersion = object.protocolVersion | 0;
-            if (object.reconnectToken != null)
-                message.reconnectToken = String(object.reconnectToken);
             return message;
         };
 
@@ -205,14 +185,10 @@ $root.NT = (function() {
             if (!options)
                 options = {};
             var object = {};
-            if (options.defaults) {
+            if (options.defaults)
                 object.protocolVersion = 0;
-                object.reconnectToken = "";
-            }
             if (message.protocolVersion != null && message.hasOwnProperty("protocolVersion"))
                 object.protocolVersion = message.protocolVersion;
-            if (message.reconnectToken != null && message.hasOwnProperty("reconnectToken"))
-                object.reconnectToken = message.reconnectToken;
             return object;
         };
 

@@ -7,10 +7,6 @@
             "protocolVersion": {
               "type": "int32",
               "id": 1
-            },
-            "reconnectToken": {
-              "type": "string",
-              "id": 2
             }
           }
         },

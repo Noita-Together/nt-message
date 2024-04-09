@@ -5,10 +5,6 @@ declare const NT: {
                 type: string;
                 id: number;
             };
-            reconnectToken: {
-                type: string;
-                id: number;
-            };
         };
     };
     Envelope: {

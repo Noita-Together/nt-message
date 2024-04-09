@@ -3,7 +3,6 @@ package NT;
 
 message Hello {
     int32 protocol_version = 1;
-    string reconnect_token = 2;
 }
 
 message Envelope {

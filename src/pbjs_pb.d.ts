@@ -8,9 +8,6 @@ export namespace NT {
 
         /** Hello protocolVersion */
         protocolVersion?: (number|null);
-
-        /** Hello reconnectToken */
-        reconnectToken?: (string|null);
     }
 
     /** Represents a Hello. */
@@ -24,9 +21,6 @@ export namespace NT {
 
         /** Hello protocolVersion. */
         public protocolVersion: number;
-
-        /** Hello reconnectToken. */
-        public reconnectToken: string;
 
         /**
          * Creates a new Hello instance using the specified properties.
