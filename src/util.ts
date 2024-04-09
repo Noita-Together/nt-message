@@ -13,6 +13,9 @@ export type GameActionCreators = {
 export type LobbyActionCreators = {
   [K in keyof NT.ILobbyAction]-?: ActionCreator<NT.ILobbyAction[K]>;
 };
+export type TransportMessageCreators = {
+  hello: ActionCreator<NT.Hello>;
+};
 
 /**
  * Factory functions for each action type. Each function
@@ -23,7 +26,7 @@ export type LobbyActionCreators = {
  * M.cChat({ message: 'hi there' })
  * ```
  */
-export const M: GameActionCreators & LobbyActionCreators = {} as any;
+export const M: GameActionCreators & LobbyActionCreators & TransportMessageCreators = {} as any;
 
 for (const key of gameActions) {
   M[key] = ((data, encoded) =>
@@ -41,3 +44,8 @@ for (const key of lobbyActions) {
           lobbyAction: { [key]: data },
         })) as ActionCreator<NT.ILobbyAction[typeof key]>;
 }
+
+M['hello'] = ((data: NT.IHello, encoded) =>
+  encoded
+    ? NT.Envelope.encode({ hello: data }).finish()
+    : NT.Envelope.fromObject({ hello: data })) as ActionCreator<NT.IHello>;

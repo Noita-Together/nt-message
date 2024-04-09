@@ -10,6 +10,9 @@ export type GameActionCreators = {
 export type LobbyActionCreators = {
     [K in keyof NT.ILobbyAction]-?: ActionCreator<NT.ILobbyAction[K]>;
 };
+export type TransportMessageCreators = {
+    hello: ActionCreator<NT.Hello>;
+};
 /**
  * Factory functions for each action type. Each function
  * accepts an action payload and returns an `NT.Envelope` instance
@@ -19,4 +22,4 @@ export type LobbyActionCreators = {
  * M.cChat({ message: 'hi there' })
  * ```
  */
-export declare const M: GameActionCreators & LobbyActionCreators;
+export declare const M: GameActionCreators & LobbyActionCreators & TransportMessageCreators;

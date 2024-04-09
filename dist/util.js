@@ -27,3 +27,6 @@ for (const key of pbreflect_1.lobbyActions) {
             lobbyAction: { [key]: data },
         }));
 }
+exports.M['hello'] = ((data, encoded) => encoded
+    ? pbjs_pb_1.NT.Envelope.encode({ hello: data }).finish()
+    : pbjs_pb_1.NT.Envelope.fromObject({ hello: data }));
