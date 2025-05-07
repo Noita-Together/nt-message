@@ -19975,6 +19975,9 @@ $root.NT = (function() {
          * @property {NT.IServerDisconnected|null} [sDisconnected] LobbyAction sDisconnected
          * @property {NT.IServerRoomAddToList|null} [sRoomAddToList] LobbyAction sRoomAddToList
          * @property {NT.IClientRunOver|null} [cRunOver] LobbyAction cRunOver
+         * @property {NT.IClientModFlagsUpdate|null} [cRoomModFlagsUpdate] LobbyAction cRoomModFlagsUpdate
+         * @property {NT.IServerModFlagsUpdated|null} [sRoomModFlagsUpdated] LobbyAction sRoomModFlagsUpdated
+         * @property {NT.IServerModFlagsUpdateFailed|null} [sRoomModFlagsUpdateFailed] LobbyAction sRoomModFlagsUpdateFailed
          */
 
         /**
@@ -20232,17 +20235,41 @@ $root.NT = (function() {
          */
         LobbyAction.prototype.cRunOver = null;
 
+        /**
+         * LobbyAction cRoomModFlagsUpdate.
+         * @member {NT.IClientModFlagsUpdate|null|undefined} cRoomModFlagsUpdate
+         * @memberof NT.LobbyAction
+         * @instance
+         */
+        LobbyAction.prototype.cRoomModFlagsUpdate = null;
+
+        /**
+         * LobbyAction sRoomModFlagsUpdated.
+         * @member {NT.IServerModFlagsUpdated|null|undefined} sRoomModFlagsUpdated
+         * @memberof NT.LobbyAction
+         * @instance
+         */
+        LobbyAction.prototype.sRoomModFlagsUpdated = null;
+
+        /**
+         * LobbyAction sRoomModFlagsUpdateFailed.
+         * @member {NT.IServerModFlagsUpdateFailed|null|undefined} sRoomModFlagsUpdateFailed
+         * @memberof NT.LobbyAction
+         * @instance
+         */
+        LobbyAction.prototype.sRoomModFlagsUpdateFailed = null;
+
         // OneOf field names bound to virtual getters and setters
         var $oneOfFields;
 
         /**
          * LobbyAction action.
-         * @member {"cRoomCreate"|"sRoomCreated"|"sRoomCreateFailed"|"cRoomUpdate"|"sRoomUpdated"|"sRoomUpdateFailed"|"cRoomFlagsUpdate"|"sRoomFlagsUpdated"|"sRoomFlagsUpdateFailed"|"cRoomDelete"|"sRoomDeleted"|"cJoinRoom"|"sJoinRoomSuccess"|"sJoinRoomFailed"|"sUserJoinedRoom"|"cLeaveRoom"|"sUserLeftRoom"|"cKickUser"|"sUserKicked"|"cBanUser"|"sUserBanned"|"cReadyState"|"sUserReadyState"|"cStartRun"|"sHostStart"|"cRequestRoomList"|"sRoomList"|"sDisconnected"|"sRoomAddToList"|"cRunOver"|undefined} action
+         * @member {"cRoomCreate"|"sRoomCreated"|"sRoomCreateFailed"|"cRoomUpdate"|"sRoomUpdated"|"sRoomUpdateFailed"|"cRoomFlagsUpdate"|"sRoomFlagsUpdated"|"sRoomFlagsUpdateFailed"|"cRoomDelete"|"sRoomDeleted"|"cJoinRoom"|"sJoinRoomSuccess"|"sJoinRoomFailed"|"sUserJoinedRoom"|"cLeaveRoom"|"sUserLeftRoom"|"cKickUser"|"sUserKicked"|"cBanUser"|"sUserBanned"|"cReadyState"|"sUserReadyState"|"cStartRun"|"sHostStart"|"cRequestRoomList"|"sRoomList"|"sDisconnected"|"sRoomAddToList"|"cRunOver"|"cRoomModFlagsUpdate"|"sRoomModFlagsUpdated"|"sRoomModFlagsUpdateFailed"|undefined} action
          * @memberof NT.LobbyAction
          * @instance
          */
         Object.defineProperty(LobbyAction.prototype, "action", {
-            get: $util.oneOfGetter($oneOfFields = ["cRoomCreate", "sRoomCreated", "sRoomCreateFailed", "cRoomUpdate", "sRoomUpdated", "sRoomUpdateFailed", "cRoomFlagsUpdate", "sRoomFlagsUpdated", "sRoomFlagsUpdateFailed", "cRoomDelete", "sRoomDeleted", "cJoinRoom", "sJoinRoomSuccess", "sJoinRoomFailed", "sUserJoinedRoom", "cLeaveRoom", "sUserLeftRoom", "cKickUser", "sUserKicked", "cBanUser", "sUserBanned", "cReadyState", "sUserReadyState", "cStartRun", "sHostStart", "cRequestRoomList", "sRoomList", "sDisconnected", "sRoomAddToList", "cRunOver"]),
+            get: $util.oneOfGetter($oneOfFields = ["cRoomCreate", "sRoomCreated", "sRoomCreateFailed", "cRoomUpdate", "sRoomUpdated", "sRoomUpdateFailed", "cRoomFlagsUpdate", "sRoomFlagsUpdated", "sRoomFlagsUpdateFailed", "cRoomDelete", "sRoomDeleted", "cJoinRoom", "sJoinRoomSuccess", "sJoinRoomFailed", "sUserJoinedRoom", "cLeaveRoom", "sUserLeftRoom", "cKickUser", "sUserKicked", "cBanUser", "sUserBanned", "cReadyState", "sUserReadyState", "cStartRun", "sHostStart", "cRequestRoomList", "sRoomList", "sDisconnected", "sRoomAddToList", "cRunOver", "cRoomModFlagsUpdate", "sRoomModFlagsUpdated", "sRoomModFlagsUpdateFailed"]),
             set: $util.oneOfSetter($oneOfFields)
         });
 
@@ -20330,6 +20357,12 @@ $root.NT = (function() {
                 $root.NT.ServerRoomAddToList.encode(message.sRoomAddToList, writer.uint32(/* id 32, wireType 2 =*/258).fork()).ldelim();
             if (message.cRunOver != null && Object.hasOwnProperty.call(message, "cRunOver"))
                 $root.NT.ClientRunOver.encode(message.cRunOver, writer.uint32(/* id 33, wireType 2 =*/266).fork()).ldelim();
+            if (message.cRoomModFlagsUpdate != null && Object.hasOwnProperty.call(message, "cRoomModFlagsUpdate"))
+                $root.NT.ClientModFlagsUpdate.encode(message.cRoomModFlagsUpdate, writer.uint32(/* id 34, wireType 2 =*/274).fork()).ldelim();
+            if (message.sRoomModFlagsUpdated != null && Object.hasOwnProperty.call(message, "sRoomModFlagsUpdated"))
+                $root.NT.ServerModFlagsUpdated.encode(message.sRoomModFlagsUpdated, writer.uint32(/* id 35, wireType 2 =*/282).fork()).ldelim();
+            if (message.sRoomModFlagsUpdateFailed != null && Object.hasOwnProperty.call(message, "sRoomModFlagsUpdateFailed"))
+                $root.NT.ServerModFlagsUpdateFailed.encode(message.sRoomModFlagsUpdateFailed, writer.uint32(/* id 36, wireType 2 =*/290).fork()).ldelim();
             return writer;
         };
 
@@ -20482,6 +20515,18 @@ $root.NT = (function() {
                     }
                 case 33: {
                         message.cRunOver = $root.NT.ClientRunOver.decode(reader, reader.uint32());
+                        break;
+                    }
+                case 34: {
+                        message.cRoomModFlagsUpdate = $root.NT.ClientModFlagsUpdate.decode(reader, reader.uint32());
+                        break;
+                    }
+                case 35: {
+                        message.sRoomModFlagsUpdated = $root.NT.ServerModFlagsUpdated.decode(reader, reader.uint32());
+                        break;
+                    }
+                case 36: {
+                        message.sRoomModFlagsUpdateFailed = $root.NT.ServerModFlagsUpdateFailed.decode(reader, reader.uint32());
                         break;
                     }
                 default:
@@ -20818,6 +20863,36 @@ $root.NT = (function() {
                         return "cRunOver." + error;
                 }
             }
+            if (message.cRoomModFlagsUpdate != null && message.hasOwnProperty("cRoomModFlagsUpdate")) {
+                if (properties.action === 1)
+                    return "action: multiple values";
+                properties.action = 1;
+                {
+                    var error = $root.NT.ClientModFlagsUpdate.verify(message.cRoomModFlagsUpdate);
+                    if (error)
+                        return "cRoomModFlagsUpdate." + error;
+                }
+            }
+            if (message.sRoomModFlagsUpdated != null && message.hasOwnProperty("sRoomModFlagsUpdated")) {
+                if (properties.action === 1)
+                    return "action: multiple values";
+                properties.action = 1;
+                {
+                    var error = $root.NT.ServerModFlagsUpdated.verify(message.sRoomModFlagsUpdated);
+                    if (error)
+                        return "sRoomModFlagsUpdated." + error;
+                }
+            }
+            if (message.sRoomModFlagsUpdateFailed != null && message.hasOwnProperty("sRoomModFlagsUpdateFailed")) {
+                if (properties.action === 1)
+                    return "action: multiple values";
+                properties.action = 1;
+                {
+                    var error = $root.NT.ServerModFlagsUpdateFailed.verify(message.sRoomModFlagsUpdateFailed);
+                    if (error)
+                        return "sRoomModFlagsUpdateFailed." + error;
+                }
+            }
             return null;
         };
 
@@ -20982,6 +21057,21 @@ $root.NT = (function() {
                 if (typeof object.cRunOver !== "object")
                     throw TypeError(".NT.LobbyAction.cRunOver: object expected");
                 message.cRunOver = $root.NT.ClientRunOver.fromObject(object.cRunOver);
+            }
+            if (object.cRoomModFlagsUpdate != null) {
+                if (typeof object.cRoomModFlagsUpdate !== "object")
+                    throw TypeError(".NT.LobbyAction.cRoomModFlagsUpdate: object expected");
+                message.cRoomModFlagsUpdate = $root.NT.ClientModFlagsUpdate.fromObject(object.cRoomModFlagsUpdate);
+            }
+            if (object.sRoomModFlagsUpdated != null) {
+                if (typeof object.sRoomModFlagsUpdated !== "object")
+                    throw TypeError(".NT.LobbyAction.sRoomModFlagsUpdated: object expected");
+                message.sRoomModFlagsUpdated = $root.NT.ServerModFlagsUpdated.fromObject(object.sRoomModFlagsUpdated);
+            }
+            if (object.sRoomModFlagsUpdateFailed != null) {
+                if (typeof object.sRoomModFlagsUpdateFailed !== "object")
+                    throw TypeError(".NT.LobbyAction.sRoomModFlagsUpdateFailed: object expected");
+                message.sRoomModFlagsUpdateFailed = $root.NT.ServerModFlagsUpdateFailed.fromObject(object.sRoomModFlagsUpdateFailed);
             }
             return message;
         };
@@ -21148,6 +21238,21 @@ $root.NT = (function() {
                 object.cRunOver = $root.NT.ClientRunOver.toObject(message.cRunOver, options);
                 if (options.oneofs)
                     object.action = "cRunOver";
+            }
+            if (message.cRoomModFlagsUpdate != null && message.hasOwnProperty("cRoomModFlagsUpdate")) {
+                object.cRoomModFlagsUpdate = $root.NT.ClientModFlagsUpdate.toObject(message.cRoomModFlagsUpdate, options);
+                if (options.oneofs)
+                    object.action = "cRoomModFlagsUpdate";
+            }
+            if (message.sRoomModFlagsUpdated != null && message.hasOwnProperty("sRoomModFlagsUpdated")) {
+                object.sRoomModFlagsUpdated = $root.NT.ServerModFlagsUpdated.toObject(message.sRoomModFlagsUpdated, options);
+                if (options.oneofs)
+                    object.action = "sRoomModFlagsUpdated";
+            }
+            if (message.sRoomModFlagsUpdateFailed != null && message.hasOwnProperty("sRoomModFlagsUpdateFailed")) {
+                object.sRoomModFlagsUpdateFailed = $root.NT.ServerModFlagsUpdateFailed.toObject(message.sRoomModFlagsUpdateFailed, options);
+                if (options.oneofs)
+                    object.action = "sRoomModFlagsUpdateFailed";
             }
             return object;
         };
@@ -25554,6 +25659,751 @@ $root.NT = (function() {
         };
 
         return ServerRoomFlagsUpdateFailed;
+    })();
+
+    /**
+     * ModFlagsListType enum.
+     * @name NT.ModFlagsListType
+     * @enum {number}
+     * @property {number} UNSPECIFIED=0 UNSPECIFIED value
+     * @property {number} ALLOWED=1 ALLOWED value
+     * @property {number} DENIED=2 DENIED value
+     */
+    NT.ModFlagsListType = (function() {
+        var valuesById = {}, values = Object.create(valuesById);
+        values[valuesById[0] = "UNSPECIFIED"] = 0;
+        values[valuesById[1] = "ALLOWED"] = 1;
+        values[valuesById[2] = "DENIED"] = 2;
+        return values;
+    })();
+
+    NT.ClientModFlagsUpdate = (function() {
+
+        /**
+         * Properties of a ClientModFlagsUpdate.
+         * @memberof NT
+         * @interface IClientModFlagsUpdate
+         * @property {Object.<string,NT.ModFlagsListType>|null} [modFlags] ClientModFlagsUpdate modFlags
+         */
+
+        /**
+         * Constructs a new ClientModFlagsUpdate.
+         * @memberof NT
+         * @classdesc Represents a ClientModFlagsUpdate.
+         * @implements IClientModFlagsUpdate
+         * @constructor
+         * @param {NT.IClientModFlagsUpdate=} [properties] Properties to set
+         */
+        function ClientModFlagsUpdate(properties) {
+            this.modFlags = {};
+            if (properties)
+                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * ClientModFlagsUpdate modFlags.
+         * @member {Object.<string,NT.ModFlagsListType>} modFlags
+         * @memberof NT.ClientModFlagsUpdate
+         * @instance
+         */
+        ClientModFlagsUpdate.prototype.modFlags = $util.emptyObject;
+
+        /**
+         * Creates a new ClientModFlagsUpdate instance using the specified properties.
+         * @function create
+         * @memberof NT.ClientModFlagsUpdate
+         * @static
+         * @param {NT.IClientModFlagsUpdate=} [properties] Properties to set
+         * @returns {NT.ClientModFlagsUpdate} ClientModFlagsUpdate instance
+         */
+        ClientModFlagsUpdate.create = function create(properties) {
+            return new ClientModFlagsUpdate(properties);
+        };
+
+        /**
+         * Encodes the specified ClientModFlagsUpdate message. Does not implicitly {@link NT.ClientModFlagsUpdate.verify|verify} messages.
+         * @function encode
+         * @memberof NT.ClientModFlagsUpdate
+         * @static
+         * @param {NT.IClientModFlagsUpdate} message ClientModFlagsUpdate message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        ClientModFlagsUpdate.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.modFlags != null && Object.hasOwnProperty.call(message, "modFlags"))
+                for (var keys = Object.keys(message.modFlags), i = 0; i < keys.length; ++i)
+                    writer.uint32(/* id 1, wireType 2 =*/10).fork().uint32(/* id 1, wireType 2 =*/10).string(keys[i]).uint32(/* id 2, wireType 0 =*/16).int32(message.modFlags[keys[i]]).ldelim();
+            return writer;
+        };
+
+        /**
+         * Encodes the specified ClientModFlagsUpdate message, length delimited. Does not implicitly {@link NT.ClientModFlagsUpdate.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof NT.ClientModFlagsUpdate
+         * @static
+         * @param {NT.IClientModFlagsUpdate} message ClientModFlagsUpdate message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        ClientModFlagsUpdate.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a ClientModFlagsUpdate message from the specified reader or buffer.
+         * @function decode
+         * @memberof NT.ClientModFlagsUpdate
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {NT.ClientModFlagsUpdate} ClientModFlagsUpdate
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        ClientModFlagsUpdate.decode = function decode(reader, length) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.NT.ClientModFlagsUpdate(), key, value;
+            while (reader.pos < end) {
+                var tag = reader.uint32();
+                switch (tag >>> 3) {
+                case 1: {
+                        if (message.modFlags === $util.emptyObject)
+                            message.modFlags = {};
+                        var end2 = reader.uint32() + reader.pos;
+                        key = "";
+                        value = 0;
+                        while (reader.pos < end2) {
+                            var tag2 = reader.uint32();
+                            switch (tag2 >>> 3) {
+                            case 1:
+                                key = reader.string();
+                                break;
+                            case 2:
+                                value = reader.int32();
+                                break;
+                            default:
+                                reader.skipType(tag2 & 7);
+                                break;
+                            }
+                        }
+                        message.modFlags[key] = value;
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a ClientModFlagsUpdate message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof NT.ClientModFlagsUpdate
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {NT.ClientModFlagsUpdate} ClientModFlagsUpdate
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        ClientModFlagsUpdate.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a ClientModFlagsUpdate message.
+         * @function verify
+         * @memberof NT.ClientModFlagsUpdate
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        ClientModFlagsUpdate.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.modFlags != null && message.hasOwnProperty("modFlags")) {
+                if (!$util.isObject(message.modFlags))
+                    return "modFlags: object expected";
+                var key = Object.keys(message.modFlags);
+                for (var i = 0; i < key.length; ++i)
+                    switch (message.modFlags[key[i]]) {
+                    default:
+                        return "modFlags: enum value{k:string} expected";
+                    case 0:
+                    case 1:
+                    case 2:
+                        break;
+                    }
+            }
+            return null;
+        };
+
+        /**
+         * Creates a ClientModFlagsUpdate message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof NT.ClientModFlagsUpdate
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {NT.ClientModFlagsUpdate} ClientModFlagsUpdate
+         */
+        ClientModFlagsUpdate.fromObject = function fromObject(object) {
+            if (object instanceof $root.NT.ClientModFlagsUpdate)
+                return object;
+            var message = new $root.NT.ClientModFlagsUpdate();
+            if (object.modFlags) {
+                if (typeof object.modFlags !== "object")
+                    throw TypeError(".NT.ClientModFlagsUpdate.modFlags: object expected");
+                message.modFlags = {};
+                for (var keys = Object.keys(object.modFlags), i = 0; i < keys.length; ++i)
+                    switch (object.modFlags[keys[i]]) {
+                    default:
+                        if (typeof object.modFlags[keys[i]] === "number") {
+                            message.modFlags[keys[i]] = object.modFlags[keys[i]];
+                            break;
+                        }
+                        break;
+                    case "UNSPECIFIED":
+                    case 0:
+                        message.modFlags[keys[i]] = 0;
+                        break;
+                    case "ALLOWED":
+                    case 1:
+                        message.modFlags[keys[i]] = 1;
+                        break;
+                    case "DENIED":
+                    case 2:
+                        message.modFlags[keys[i]] = 2;
+                        break;
+                    }
+            }
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a ClientModFlagsUpdate message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof NT.ClientModFlagsUpdate
+         * @static
+         * @param {NT.ClientModFlagsUpdate} message ClientModFlagsUpdate
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        ClientModFlagsUpdate.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            var object = {};
+            if (options.objects || options.defaults)
+                object.modFlags = {};
+            var keys2;
+            if (message.modFlags && (keys2 = Object.keys(message.modFlags)).length) {
+                object.modFlags = {};
+                for (var j = 0; j < keys2.length; ++j)
+                    object.modFlags[keys2[j]] = options.enums === String ? $root.NT.ModFlagsListType[message.modFlags[keys2[j]]] === undefined ? message.modFlags[keys2[j]] : $root.NT.ModFlagsListType[message.modFlags[keys2[j]]] : message.modFlags[keys2[j]];
+            }
+            return object;
+        };
+
+        /**
+         * Converts this ClientModFlagsUpdate to JSON.
+         * @function toJSON
+         * @memberof NT.ClientModFlagsUpdate
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        ClientModFlagsUpdate.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for ClientModFlagsUpdate
+         * @function getTypeUrl
+         * @memberof NT.ClientModFlagsUpdate
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        ClientModFlagsUpdate.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/NT.ClientModFlagsUpdate";
+        };
+
+        return ClientModFlagsUpdate;
+    })();
+
+    NT.ServerModFlagsUpdated = (function() {
+
+        /**
+         * Properties of a ServerModFlagsUpdated.
+         * @memberof NT
+         * @interface IServerModFlagsUpdated
+         * @property {Object.<string,NT.ModFlagsListType>|null} [modFlags] ServerModFlagsUpdated modFlags
+         */
+
+        /**
+         * Constructs a new ServerModFlagsUpdated.
+         * @memberof NT
+         * @classdesc Represents a ServerModFlagsUpdated.
+         * @implements IServerModFlagsUpdated
+         * @constructor
+         * @param {NT.IServerModFlagsUpdated=} [properties] Properties to set
+         */
+        function ServerModFlagsUpdated(properties) {
+            this.modFlags = {};
+            if (properties)
+                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * ServerModFlagsUpdated modFlags.
+         * @member {Object.<string,NT.ModFlagsListType>} modFlags
+         * @memberof NT.ServerModFlagsUpdated
+         * @instance
+         */
+        ServerModFlagsUpdated.prototype.modFlags = $util.emptyObject;
+
+        /**
+         * Creates a new ServerModFlagsUpdated instance using the specified properties.
+         * @function create
+         * @memberof NT.ServerModFlagsUpdated
+         * @static
+         * @param {NT.IServerModFlagsUpdated=} [properties] Properties to set
+         * @returns {NT.ServerModFlagsUpdated} ServerModFlagsUpdated instance
+         */
+        ServerModFlagsUpdated.create = function create(properties) {
+            return new ServerModFlagsUpdated(properties);
+        };
+
+        /**
+         * Encodes the specified ServerModFlagsUpdated message. Does not implicitly {@link NT.ServerModFlagsUpdated.verify|verify} messages.
+         * @function encode
+         * @memberof NT.ServerModFlagsUpdated
+         * @static
+         * @param {NT.IServerModFlagsUpdated} message ServerModFlagsUpdated message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        ServerModFlagsUpdated.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.modFlags != null && Object.hasOwnProperty.call(message, "modFlags"))
+                for (var keys = Object.keys(message.modFlags), i = 0; i < keys.length; ++i)
+                    writer.uint32(/* id 1, wireType 2 =*/10).fork().uint32(/* id 1, wireType 2 =*/10).string(keys[i]).uint32(/* id 2, wireType 0 =*/16).int32(message.modFlags[keys[i]]).ldelim();
+            return writer;
+        };
+
+        /**
+         * Encodes the specified ServerModFlagsUpdated message, length delimited. Does not implicitly {@link NT.ServerModFlagsUpdated.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof NT.ServerModFlagsUpdated
+         * @static
+         * @param {NT.IServerModFlagsUpdated} message ServerModFlagsUpdated message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        ServerModFlagsUpdated.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a ServerModFlagsUpdated message from the specified reader or buffer.
+         * @function decode
+         * @memberof NT.ServerModFlagsUpdated
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {NT.ServerModFlagsUpdated} ServerModFlagsUpdated
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        ServerModFlagsUpdated.decode = function decode(reader, length) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.NT.ServerModFlagsUpdated(), key, value;
+            while (reader.pos < end) {
+                var tag = reader.uint32();
+                switch (tag >>> 3) {
+                case 1: {
+                        if (message.modFlags === $util.emptyObject)
+                            message.modFlags = {};
+                        var end2 = reader.uint32() + reader.pos;
+                        key = "";
+                        value = 0;
+                        while (reader.pos < end2) {
+                            var tag2 = reader.uint32();
+                            switch (tag2 >>> 3) {
+                            case 1:
+                                key = reader.string();
+                                break;
+                            case 2:
+                                value = reader.int32();
+                                break;
+                            default:
+                                reader.skipType(tag2 & 7);
+                                break;
+                            }
+                        }
+                        message.modFlags[key] = value;
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a ServerModFlagsUpdated message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof NT.ServerModFlagsUpdated
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {NT.ServerModFlagsUpdated} ServerModFlagsUpdated
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        ServerModFlagsUpdated.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a ServerModFlagsUpdated message.
+         * @function verify
+         * @memberof NT.ServerModFlagsUpdated
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        ServerModFlagsUpdated.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.modFlags != null && message.hasOwnProperty("modFlags")) {
+                if (!$util.isObject(message.modFlags))
+                    return "modFlags: object expected";
+                var key = Object.keys(message.modFlags);
+                for (var i = 0; i < key.length; ++i)
+                    switch (message.modFlags[key[i]]) {
+                    default:
+                        return "modFlags: enum value{k:string} expected";
+                    case 0:
+                    case 1:
+                    case 2:
+                        break;
+                    }
+            }
+            return null;
+        };
+
+        /**
+         * Creates a ServerModFlagsUpdated message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof NT.ServerModFlagsUpdated
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {NT.ServerModFlagsUpdated} ServerModFlagsUpdated
+         */
+        ServerModFlagsUpdated.fromObject = function fromObject(object) {
+            if (object instanceof $root.NT.ServerModFlagsUpdated)
+                return object;
+            var message = new $root.NT.ServerModFlagsUpdated();
+            if (object.modFlags) {
+                if (typeof object.modFlags !== "object")
+                    throw TypeError(".NT.ServerModFlagsUpdated.modFlags: object expected");
+                message.modFlags = {};
+                for (var keys = Object.keys(object.modFlags), i = 0; i < keys.length; ++i)
+                    switch (object.modFlags[keys[i]]) {
+                    default:
+                        if (typeof object.modFlags[keys[i]] === "number") {
+                            message.modFlags[keys[i]] = object.modFlags[keys[i]];
+                            break;
+                        }
+                        break;
+                    case "UNSPECIFIED":
+                    case 0:
+                        message.modFlags[keys[i]] = 0;
+                        break;
+                    case "ALLOWED":
+                    case 1:
+                        message.modFlags[keys[i]] = 1;
+                        break;
+                    case "DENIED":
+                    case 2:
+                        message.modFlags[keys[i]] = 2;
+                        break;
+                    }
+            }
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a ServerModFlagsUpdated message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof NT.ServerModFlagsUpdated
+         * @static
+         * @param {NT.ServerModFlagsUpdated} message ServerModFlagsUpdated
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        ServerModFlagsUpdated.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            var object = {};
+            if (options.objects || options.defaults)
+                object.modFlags = {};
+            var keys2;
+            if (message.modFlags && (keys2 = Object.keys(message.modFlags)).length) {
+                object.modFlags = {};
+                for (var j = 0; j < keys2.length; ++j)
+                    object.modFlags[keys2[j]] = options.enums === String ? $root.NT.ModFlagsListType[message.modFlags[keys2[j]]] === undefined ? message.modFlags[keys2[j]] : $root.NT.ModFlagsListType[message.modFlags[keys2[j]]] : message.modFlags[keys2[j]];
+            }
+            return object;
+        };
+
+        /**
+         * Converts this ServerModFlagsUpdated to JSON.
+         * @function toJSON
+         * @memberof NT.ServerModFlagsUpdated
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        ServerModFlagsUpdated.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for ServerModFlagsUpdated
+         * @function getTypeUrl
+         * @memberof NT.ServerModFlagsUpdated
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        ServerModFlagsUpdated.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/NT.ServerModFlagsUpdated";
+        };
+
+        return ServerModFlagsUpdated;
+    })();
+
+    NT.ServerModFlagsUpdateFailed = (function() {
+
+        /**
+         * Properties of a ServerModFlagsUpdateFailed.
+         * @memberof NT
+         * @interface IServerModFlagsUpdateFailed
+         * @property {string|null} [reason] ServerModFlagsUpdateFailed reason
+         */
+
+        /**
+         * Constructs a new ServerModFlagsUpdateFailed.
+         * @memberof NT
+         * @classdesc Represents a ServerModFlagsUpdateFailed.
+         * @implements IServerModFlagsUpdateFailed
+         * @constructor
+         * @param {NT.IServerModFlagsUpdateFailed=} [properties] Properties to set
+         */
+        function ServerModFlagsUpdateFailed(properties) {
+            if (properties)
+                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * ServerModFlagsUpdateFailed reason.
+         * @member {string} reason
+         * @memberof NT.ServerModFlagsUpdateFailed
+         * @instance
+         */
+        ServerModFlagsUpdateFailed.prototype.reason = "";
+
+        /**
+         * Creates a new ServerModFlagsUpdateFailed instance using the specified properties.
+         * @function create
+         * @memberof NT.ServerModFlagsUpdateFailed
+         * @static
+         * @param {NT.IServerModFlagsUpdateFailed=} [properties] Properties to set
+         * @returns {NT.ServerModFlagsUpdateFailed} ServerModFlagsUpdateFailed instance
+         */
+        ServerModFlagsUpdateFailed.create = function create(properties) {
+            return new ServerModFlagsUpdateFailed(properties);
+        };
+
+        /**
+         * Encodes the specified ServerModFlagsUpdateFailed message. Does not implicitly {@link NT.ServerModFlagsUpdateFailed.verify|verify} messages.
+         * @function encode
+         * @memberof NT.ServerModFlagsUpdateFailed
+         * @static
+         * @param {NT.IServerModFlagsUpdateFailed} message ServerModFlagsUpdateFailed message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        ServerModFlagsUpdateFailed.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.reason != null && Object.hasOwnProperty.call(message, "reason"))
+                writer.uint32(/* id 1, wireType 2 =*/10).string(message.reason);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified ServerModFlagsUpdateFailed message, length delimited. Does not implicitly {@link NT.ServerModFlagsUpdateFailed.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof NT.ServerModFlagsUpdateFailed
+         * @static
+         * @param {NT.IServerModFlagsUpdateFailed} message ServerModFlagsUpdateFailed message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        ServerModFlagsUpdateFailed.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a ServerModFlagsUpdateFailed message from the specified reader or buffer.
+         * @function decode
+         * @memberof NT.ServerModFlagsUpdateFailed
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {NT.ServerModFlagsUpdateFailed} ServerModFlagsUpdateFailed
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        ServerModFlagsUpdateFailed.decode = function decode(reader, length) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.NT.ServerModFlagsUpdateFailed();
+            while (reader.pos < end) {
+                var tag = reader.uint32();
+                switch (tag >>> 3) {
+                case 1: {
+                        message.reason = reader.string();
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a ServerModFlagsUpdateFailed message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof NT.ServerModFlagsUpdateFailed
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {NT.ServerModFlagsUpdateFailed} ServerModFlagsUpdateFailed
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        ServerModFlagsUpdateFailed.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a ServerModFlagsUpdateFailed message.
+         * @function verify
+         * @memberof NT.ServerModFlagsUpdateFailed
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        ServerModFlagsUpdateFailed.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.reason != null && message.hasOwnProperty("reason"))
+                if (!$util.isString(message.reason))
+                    return "reason: string expected";
+            return null;
+        };
+
+        /**
+         * Creates a ServerModFlagsUpdateFailed message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof NT.ServerModFlagsUpdateFailed
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {NT.ServerModFlagsUpdateFailed} ServerModFlagsUpdateFailed
+         */
+        ServerModFlagsUpdateFailed.fromObject = function fromObject(object) {
+            if (object instanceof $root.NT.ServerModFlagsUpdateFailed)
+                return object;
+            var message = new $root.NT.ServerModFlagsUpdateFailed();
+            if (object.reason != null)
+                message.reason = String(object.reason);
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a ServerModFlagsUpdateFailed message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof NT.ServerModFlagsUpdateFailed
+         * @static
+         * @param {NT.ServerModFlagsUpdateFailed} message ServerModFlagsUpdateFailed
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        ServerModFlagsUpdateFailed.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            var object = {};
+            if (options.defaults)
+                object.reason = "";
+            if (message.reason != null && message.hasOwnProperty("reason"))
+                object.reason = message.reason;
+            return object;
+        };
+
+        /**
+         * Converts this ServerModFlagsUpdateFailed to JSON.
+         * @function toJSON
+         * @memberof NT.ServerModFlagsUpdateFailed
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        ServerModFlagsUpdateFailed.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for ServerModFlagsUpdateFailed
+         * @function getTypeUrl
+         * @memberof NT.ServerModFlagsUpdateFailed
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        ServerModFlagsUpdateFailed.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/NT.ServerModFlagsUpdateFailed";
+        };
+
+        return ServerModFlagsUpdateFailed;
     })();
 
     NT.ClientJoinRoom = (function() {

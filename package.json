@@ -5,7 +5,8 @@
   "scripts": {
     "build_proto": "pbjs -w commonjs -t static-module ./proto/messages.proto > ./src/pbjs_pb.js && pbts ./src/pbjs_pb.js > ./src/pbjs_pb.d.ts && pbjs -t json ./proto/messages.proto > ./src/pbjs_pb.json",
     "test": "npm run build_proto && tsc --noEmit && npx jest",
-    "build": "npm run test && rm -rf dist/* && npx tsc && cp src/pbjs_pb.* dist"
+    "build": "npm run test && rm -rf dist/* && npx tsc && cp src/pbjs_pb.* dist",
+    "build_windows": "npm run test && if exist dist del /F /Q dist\\* && npx tsc && copy src\\pbjs_pb.* dist"
   },
   "author": "Kris Reeves",
   "license": "MIT",

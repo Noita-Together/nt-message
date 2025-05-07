@@ -1574,7 +1574,10 @@
                 "sRoomList",
                 "sDisconnected",
                 "sRoomAddToList",
-                "cRunOver"
+                "cRunOver",
+                "cRoomModFlagsUpdate",
+                "sRoomModFlagsUpdated",
+                "sRoomModFlagsUpdateFailed"
               ]
             }
           },
@@ -1698,6 +1701,18 @@
             "cRunOver": {
               "type": "ClientRunOver",
               "id": 33
+            },
+            "cRoomModFlagsUpdate": {
+              "type": "ClientModFlagsUpdate",
+              "id": 34
+            },
+            "sRoomModFlagsUpdated": {
+              "type": "ServerModFlagsUpdated",
+              "id": 35
+            },
+            "sRoomModFlagsUpdateFailed": {
+              "type": "ServerModFlagsUpdateFailed",
+              "id": 36
             }
           }
         },
@@ -2149,6 +2164,39 @@
           }
         },
         "ServerRoomFlagsUpdateFailed": {
+          "fields": {
+            "reason": {
+              "type": "string",
+              "id": 1
+            }
+          }
+        },
+        "ModFlagsListType": {
+          "values": {
+            "UNSPECIFIED": 0,
+            "ALLOWED": 1,
+            "DENIED": 2
+          }
+        },
+        "ClientModFlagsUpdate": {
+          "fields": {
+            "modFlags": {
+              "keyType": "string",
+              "type": "ModFlagsListType",
+              "id": 1
+            }
+          }
+        },
+        "ServerModFlagsUpdated": {
+          "fields": {
+            "modFlags": {
+              "keyType": "string",
+              "type": "ModFlagsListType",
+              "id": 1
+            }
+          }
+        },
+        "ServerModFlagsUpdateFailed": {
           "fields": {
             "reason": {
               "type": "string",

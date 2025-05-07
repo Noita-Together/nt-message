@@ -8020,6 +8020,15 @@ export namespace NT {
 
         /** LobbyAction cRunOver */
         cRunOver?: (NT.IClientRunOver|null);
+
+        /** LobbyAction cRoomModFlagsUpdate */
+        cRoomModFlagsUpdate?: (NT.IClientModFlagsUpdate|null);
+
+        /** LobbyAction sRoomModFlagsUpdated */
+        sRoomModFlagsUpdated?: (NT.IServerModFlagsUpdated|null);
+
+        /** LobbyAction sRoomModFlagsUpdateFailed */
+        sRoomModFlagsUpdateFailed?: (NT.IServerModFlagsUpdateFailed|null);
     }
 
     /** Represents a LobbyAction. */
@@ -8121,8 +8130,17 @@ export namespace NT {
         /** LobbyAction cRunOver. */
         public cRunOver?: (NT.IClientRunOver|null);
 
+        /** LobbyAction cRoomModFlagsUpdate. */
+        public cRoomModFlagsUpdate?: (NT.IClientModFlagsUpdate|null);
+
+        /** LobbyAction sRoomModFlagsUpdated. */
+        public sRoomModFlagsUpdated?: (NT.IServerModFlagsUpdated|null);
+
+        /** LobbyAction sRoomModFlagsUpdateFailed. */
+        public sRoomModFlagsUpdateFailed?: (NT.IServerModFlagsUpdateFailed|null);
+
         /** LobbyAction action. */
-        public action?: ("cRoomCreate"|"sRoomCreated"|"sRoomCreateFailed"|"cRoomUpdate"|"sRoomUpdated"|"sRoomUpdateFailed"|"cRoomFlagsUpdate"|"sRoomFlagsUpdated"|"sRoomFlagsUpdateFailed"|"cRoomDelete"|"sRoomDeleted"|"cJoinRoom"|"sJoinRoomSuccess"|"sJoinRoomFailed"|"sUserJoinedRoom"|"cLeaveRoom"|"sUserLeftRoom"|"cKickUser"|"sUserKicked"|"cBanUser"|"sUserBanned"|"cReadyState"|"sUserReadyState"|"cStartRun"|"sHostStart"|"cRequestRoomList"|"sRoomList"|"sDisconnected"|"sRoomAddToList"|"cRunOver");
+        public action?: ("cRoomCreate"|"sRoomCreated"|"sRoomCreateFailed"|"cRoomUpdate"|"sRoomUpdated"|"sRoomUpdateFailed"|"cRoomFlagsUpdate"|"sRoomFlagsUpdated"|"sRoomFlagsUpdateFailed"|"cRoomDelete"|"sRoomDeleted"|"cJoinRoom"|"sJoinRoomSuccess"|"sJoinRoomFailed"|"sUserJoinedRoom"|"cLeaveRoom"|"sUserLeftRoom"|"cKickUser"|"sUserKicked"|"cBanUser"|"sUserBanned"|"cReadyState"|"sUserReadyState"|"cStartRun"|"sHostStart"|"cRequestRoomList"|"sRoomList"|"sDisconnected"|"sRoomAddToList"|"cRunOver"|"cRoomModFlagsUpdate"|"sRoomModFlagsUpdated"|"sRoomModFlagsUpdateFailed");
 
         /**
          * Creates a new LobbyAction instance using the specified properties.
@@ -10006,6 +10024,304 @@ export namespace NT {
 
         /**
          * Gets the default type url for ServerRoomFlagsUpdateFailed
+         * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns The default type url
+         */
+        public static getTypeUrl(typeUrlPrefix?: string): string;
+    }
+
+    /** ModFlagsListType enum. */
+    enum ModFlagsListType {
+        UNSPECIFIED = 0,
+        ALLOWED = 1,
+        DENIED = 2
+    }
+
+    /** Properties of a ClientModFlagsUpdate. */
+    interface IClientModFlagsUpdate {
+
+        /** ClientModFlagsUpdate modFlags */
+        modFlags?: ({ [k: string]: NT.ModFlagsListType }|null);
+    }
+
+    /** Represents a ClientModFlagsUpdate. */
+    class ClientModFlagsUpdate implements IClientModFlagsUpdate {
+
+        /**
+         * Constructs a new ClientModFlagsUpdate.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: NT.IClientModFlagsUpdate);
+
+        /** ClientModFlagsUpdate modFlags. */
+        public modFlags: { [k: string]: NT.ModFlagsListType };
+
+        /**
+         * Creates a new ClientModFlagsUpdate instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns ClientModFlagsUpdate instance
+         */
+        public static create(properties?: NT.IClientModFlagsUpdate): NT.ClientModFlagsUpdate;
+
+        /**
+         * Encodes the specified ClientModFlagsUpdate message. Does not implicitly {@link NT.ClientModFlagsUpdate.verify|verify} messages.
+         * @param message ClientModFlagsUpdate message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: NT.IClientModFlagsUpdate, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified ClientModFlagsUpdate message, length delimited. Does not implicitly {@link NT.ClientModFlagsUpdate.verify|verify} messages.
+         * @param message ClientModFlagsUpdate message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: NT.IClientModFlagsUpdate, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a ClientModFlagsUpdate message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns ClientModFlagsUpdate
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): NT.ClientModFlagsUpdate;
+
+        /**
+         * Decodes a ClientModFlagsUpdate message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns ClientModFlagsUpdate
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): NT.ClientModFlagsUpdate;
+
+        /**
+         * Verifies a ClientModFlagsUpdate message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a ClientModFlagsUpdate message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns ClientModFlagsUpdate
+         */
+        public static fromObject(object: { [k: string]: any }): NT.ClientModFlagsUpdate;
+
+        /**
+         * Creates a plain object from a ClientModFlagsUpdate message. Also converts values to other types if specified.
+         * @param message ClientModFlagsUpdate
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: NT.ClientModFlagsUpdate, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this ClientModFlagsUpdate to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the default type url for ClientModFlagsUpdate
+         * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns The default type url
+         */
+        public static getTypeUrl(typeUrlPrefix?: string): string;
+    }
+
+    /** Properties of a ServerModFlagsUpdated. */
+    interface IServerModFlagsUpdated {
+
+        /** ServerModFlagsUpdated modFlags */
+        modFlags?: ({ [k: string]: NT.ModFlagsListType }|null);
+    }
+
+    /** Represents a ServerModFlagsUpdated. */
+    class ServerModFlagsUpdated implements IServerModFlagsUpdated {
+
+        /**
+         * Constructs a new ServerModFlagsUpdated.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: NT.IServerModFlagsUpdated);
+
+        /** ServerModFlagsUpdated modFlags. */
+        public modFlags: { [k: string]: NT.ModFlagsListType };
+
+        /**
+         * Creates a new ServerModFlagsUpdated instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns ServerModFlagsUpdated instance
+         */
+        public static create(properties?: NT.IServerModFlagsUpdated): NT.ServerModFlagsUpdated;
+
+        /**
+         * Encodes the specified ServerModFlagsUpdated message. Does not implicitly {@link NT.ServerModFlagsUpdated.verify|verify} messages.
+         * @param message ServerModFlagsUpdated message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: NT.IServerModFlagsUpdated, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified ServerModFlagsUpdated message, length delimited. Does not implicitly {@link NT.ServerModFlagsUpdated.verify|verify} messages.
+         * @param message ServerModFlagsUpdated message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: NT.IServerModFlagsUpdated, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a ServerModFlagsUpdated message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns ServerModFlagsUpdated
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): NT.ServerModFlagsUpdated;
+
+        /**
+         * Decodes a ServerModFlagsUpdated message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns ServerModFlagsUpdated
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): NT.ServerModFlagsUpdated;
+
+        /**
+         * Verifies a ServerModFlagsUpdated message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a ServerModFlagsUpdated message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns ServerModFlagsUpdated
+         */
+        public static fromObject(object: { [k: string]: any }): NT.ServerModFlagsUpdated;
+
+        /**
+         * Creates a plain object from a ServerModFlagsUpdated message. Also converts values to other types if specified.
+         * @param message ServerModFlagsUpdated
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: NT.ServerModFlagsUpdated, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this ServerModFlagsUpdated to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the default type url for ServerModFlagsUpdated
+         * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns The default type url
+         */
+        public static getTypeUrl(typeUrlPrefix?: string): string;
+    }
+
+    /** Properties of a ServerModFlagsUpdateFailed. */
+    interface IServerModFlagsUpdateFailed {
+
+        /** ServerModFlagsUpdateFailed reason */
+        reason?: (string|null);
+    }
+
+    /** Represents a ServerModFlagsUpdateFailed. */
+    class ServerModFlagsUpdateFailed implements IServerModFlagsUpdateFailed {
+
+        /**
+         * Constructs a new ServerModFlagsUpdateFailed.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: NT.IServerModFlagsUpdateFailed);
+
+        /** ServerModFlagsUpdateFailed reason. */
+        public reason: string;
+
+        /**
+         * Creates a new ServerModFlagsUpdateFailed instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns ServerModFlagsUpdateFailed instance
+         */
+        public static create(properties?: NT.IServerModFlagsUpdateFailed): NT.ServerModFlagsUpdateFailed;
+
+        /**
+         * Encodes the specified ServerModFlagsUpdateFailed message. Does not implicitly {@link NT.ServerModFlagsUpdateFailed.verify|verify} messages.
+         * @param message ServerModFlagsUpdateFailed message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: NT.IServerModFlagsUpdateFailed, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified ServerModFlagsUpdateFailed message, length delimited. Does not implicitly {@link NT.ServerModFlagsUpdateFailed.verify|verify} messages.
+         * @param message ServerModFlagsUpdateFailed message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: NT.IServerModFlagsUpdateFailed, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a ServerModFlagsUpdateFailed message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns ServerModFlagsUpdateFailed
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): NT.ServerModFlagsUpdateFailed;
+
+        /**
+         * Decodes a ServerModFlagsUpdateFailed message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns ServerModFlagsUpdateFailed
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): NT.ServerModFlagsUpdateFailed;
+
+        /**
+         * Verifies a ServerModFlagsUpdateFailed message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a ServerModFlagsUpdateFailed message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns ServerModFlagsUpdateFailed
+         */
+        public static fromObject(object: { [k: string]: any }): NT.ServerModFlagsUpdateFailed;
+
+        /**
+         * Creates a plain object from a ServerModFlagsUpdateFailed message. Also converts values to other types if specified.
+         * @param message ServerModFlagsUpdateFailed
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: NT.ServerModFlagsUpdateFailed, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this ServerModFlagsUpdateFailed to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the default type url for ServerModFlagsUpdateFailed
          * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
          * @returns The default type url
          */

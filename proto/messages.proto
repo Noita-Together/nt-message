@@ -511,6 +511,10 @@ message LobbyAction {
         ServerRoomAddToList s_room_add_to_list = 32;
 
         ClientRunOver c_run_over = 33;
+
+        ClientModFlagsUpdate c_room_mod_flags_update = 34;
+        ServerModFlagsUpdated s_room_mod_flags_updated = 35;
+        ServerModFlagsUpdateFailed s_room_mod_flags_update_failed = 36;
     }
 }
 
@@ -604,6 +608,24 @@ message ServerRoomFlagsUpdated {
 }
 
 message ServerRoomFlagsUpdateFailed {
+    string reason = 1;
+}
+
+enum ModFlagsListType {
+    UNSPECIFIED = 0;
+    ALLOWED = 1;
+    DENIED = 2;
+}
+
+message ClientModFlagsUpdate {
+    map<string, ModFlagsListType> modFlags = 1;
+}
+
+message ServerModFlagsUpdated {
+    map<string, ModFlagsListType> modFlags = 1;
+}
+
+message ServerModFlagsUpdateFailed {
     string reason = 1;
 }
 
